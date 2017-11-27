@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detalle Flujo</ion-title>
+    <ion-title>Caso {{flow.CAS_CONT}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,28 +16,36 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <strong>Caso 6110</strong><br>
-      Etapa Solicitud de crédito.
+
       <ion-item-divider>
 
-        <strong>Prioridad:&nbsp;</strong>A<br>
-        <strong>Asunto:&nbsp;</strong>Notificación de fin de flujo <br>
-        <strong>Quién registra:&nbsp;</strong>Administración Seven 12<br>
-        <strong>Descripción:&nbsp;</strong>Etapa Solicitud crédito<br>
-        <strong>Fecha de recibido:&nbsp;</strong>09/02/2017<br>
-        <strong>Fecha Límite:&nbsp;</strong>09/02/2017<br>
+        <b>Prioridad:&nbsp;</b> {{flow.SEG_PRIO}}<br>
+        <b>Seguimiento:&nbsp;</b>  {{flow.SEG_CONT}}<br>
+        <b>Asunto:&nbsp;</b>{{flow.SEG_SUBJ}}<br>
+        <b>Quién registra:&nbsp;</b>{{flow.USU_NOMB}}
+        <b *ngIf="flow.SOLICITADO">Solicitado para:&nbsp;</b> <p> {{flow.SOLICITADO}}</p>
+        <b>Descripción:&nbsp;</b>
+
+          <p text-wrap>  {{flow.CAS_DESC}}</p>
+
+        <b>Fecha de recibido:&nbsp;</b> {{flow.SEG_FREC| date: 'dd/MM/yyyy' }} &nbsp;{{flow.SEG_HREC | date: 'h:mm:ss a'}} <br>
+        <b>Fecha Límite:&nbsp;</b>{{flow.SEG_FLIM | date: 'dd/MM/yyyy'}} &nbsp;{{flow.SEG_HLIM | date: 'h:mm:ss a'}}<br />
+        <h3 *ngIf="flow.ADICIO">Datos Adicionales:&nbsp;</h3> {{flow.ADICIO}}<br>
 
       </ion-item-divider>
     </ion-card-header>
     <ion-card-content>
 
       <ion-item-divider sticky>
-
-        <ion-input placeholder="Comentarios para el ejecutor"></ion-input>
+Comentarios para el ejecutor
       </ion-item-divider>
+      <ion-item>
+        <p text-wrap>    {{flow.SEG_COME}}</p>
+      </ion-item>
+
       <ion-item-divider>
 
-        <ion-input placeholder="Comentarios para el siguiente ejecutor"></ion-input>
+        <ion-textarea placeholder="Comentarios para el siguiente ejecutor"></ion-textarea>
       </ion-item-divider>
       <ion-grid>
         <ion-row>

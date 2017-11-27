@@ -25678,67 +25678,25 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-ion-calendar {
-  font-family: "Microsoft YaHei";
-}
-
-ion-calendar .center {
-  text-align: center;
-}
-
-ion-calendar .calendar-header-col {
-  font-size: 1rem;
-  color: #666;
-}
-
-ion-calendar .calendar-row:last-child {
-  border-bottom: 1px solid #eee;
-}
-
-ion-calendar .calendar-row .calendar-col {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 0.8rem;
-  font-size: 1.2rem;
-  border-left: 1px solid #eee;
-  border-top: 1px solid #eee;
-}
-
-ion-calendar .calendar-row .calendar-col:last-child {
-  border-right: 1px solid #eee;
-}
-
-ion-calendar .calendar-row .not-this-month {
-  color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#dfdfdf));
-  background: linear-gradient(#e5e5e5, #dfdfdf);
-}
-
-ion-calendar .calendar-row .today {
-  color: #fff;
-  -webkit-box-shadow: inset 0 0 10px #aaa;
-  box-shadow: inset 0 0 10px #aaa;
-  background: radial-gradient(#c5c5c5, #c8c8c8, #ccc);
-}
-
-ion-calendar .calendar-row .select {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #fff;
-  background: radial-gradient(#5c7eda, #5e89ec, #5e89ec);
-}
-
 page-flow-detail ion-card {
   border-left: 2px solid red;
 }
 
-page-flows ion-item-sliding ion-label {
+page-flow-detail p {
+  overflow: visible;
+}
+
+page-flows .FlowGreen ion-label {
+  border-left: 2px solid green;
+  padding-left: 10px;
+}
+
+page-flows .FlowRed ion-label {
   border-left: 2px solid red;
+  padding-left: 10px;
+}
+
+page-flows .FlowBlue ion-label {
+  border-left: 2px solid blue;
   padding-left: 10px;
 }

@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'flow-detail.html',
 })
 export class FlowDetailPage {
-
+flow:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.flow = navParams.get('flow');
   }
 
   ionViewDidLoad() {

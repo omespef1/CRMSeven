@@ -19,23 +19,29 @@
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar no-border-top>
-    <ion-searchbar color="primary"
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Buscar Flujos">
-    </ion-searchbar>
+    <ion-searchbar
+    [(ngModel)]="value"
+    (ionChange)="getItems($event.value)"
+    [showCancelButton]="shouldShowCancel"
+    placeholder="Buscar">
+  </ion-searchbar>
   </ion-toolbar>
+
 </ion-header>
 
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content>
+  </ion-refresher-content>
+  </ion-refresher>
   <ion-list #scheduleList>
-      <ion-item-group>
-        <ion-item-sliding #slidingItem (click)="goDetailsFlow()">
+      <ion-item-group *ngFor="let flow of flowList">
+        <ion-item-sliding #slidingItem (click)="goDetailsFlow(flow)" class="flujo" [class]= "flow.SEG_PRIO | flows">
           <button ion-item>
-        <h3>Caso 1610</h3>
+        <h3>Caso {{flow.CAS_CONT}}</h3>
         <p>
-          Etapa Solicitud de crédito.
+        {{flow.CAS_DESC}}
         </p>
       </button>
         </ion-item-sliding>
