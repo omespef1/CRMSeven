@@ -1,3 +1,4 @@
+//Plugins
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -5,8 +6,10 @@ import { MyApp } from './app.component';
 import { Calendar } from '@ionic-native/calendar';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-
+import { IonicStorageModule } from '@ionic/storage';
+import {NgCalendarModule} from 'ionic2-calendar';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 //pages
 import {SettingsPage} from '../pages/settings/settings';
 import {ActivitiesPage } from '../pages/activities/activities';
@@ -18,15 +21,11 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
-
 //providers
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
 import { SevenProvider } from '../providers/seven/seven';
-import {NgCalendarModule} from 'ionic2-calendar';
-//PipesModule
+import { UserDataProvider } from '../providers/user-data/user-data';
+//Pipes
 import {FlowsPipe} from '../pipes/flows/flows';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -46,7 +45,8 @@ import {FlowsPipe} from '../pipes/flows/flows';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    NgCalendarModule
+    NgCalendarModule,
+     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,7 +67,8 @@ import {FlowsPipe} from '../pipes/flows/flows';
     SplashScreen,
     Calendar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SevenProvider
+    SevenProvider,
+    UserDataProvider
   ]
 })
 export class AppModule {}
