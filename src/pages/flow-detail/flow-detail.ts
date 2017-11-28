@@ -23,4 +23,8 @@ flow:any;
     console.log('ionViewDidLoad FlowDetailPage');
   }
 
+  flowAprobment(){
+    
+  }
+
 }
