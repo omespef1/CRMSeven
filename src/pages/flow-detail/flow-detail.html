@@ -5,64 +5,97 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Caso {{flow.CAS_CONT}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-
-      <ion-item-divider>
-
-        <b>Prioridad:&nbsp;</b> {{flow.SEG_PRIO}}<br>
-        <b>Seguimiento:&nbsp;</b>  {{flow.SEG_CONT}}<br>
-        <b>Asunto:&nbsp;</b>{{flow.SEG_SUBJ}}<br>
-        <b>Quién registra:&nbsp;</b>{{flow.USU_NOMB}}
-        <b *ngIf="flow.SOLICITADO">Solicitado para:&nbsp;</b> <p> {{flow.SOLICITADO}}</p>
-        <b>Descripción:&nbsp;</b>
-
-          <p text-wrap>  {{flow.CAS_DESC}}</p>
-
-        <b>Fecha de recibido:&nbsp;</b> {{flow.SEG_FREC| date: 'dd/MM/yyyy' }} &nbsp;{{flow.SEG_HREC | date: 'h:mm:ss a'}} <br>
-        <b>Fecha Límite:&nbsp;</b>{{flow.SEG_FLIM | date: 'dd/MM/yyyy'}} &nbsp;{{flow.SEG_HLIM | date: 'h:mm:ss a'}}<br />
-        <h3 *ngIf="flow.ADICIO">Datos Adicionales:&nbsp;</h3> {{flow.ADICIO}}<br>
-
-      </ion-item-divider>
-    </ion-card-header>
-    <ion-card-content>
-
-      <ion-item-divider sticky>
-Comentarios para el ejecutor
-      </ion-item-divider>
-      <ion-item>
+  <ion-list>
+    <ion-item>
+     <ion-label>Prioridad</ion-label>
+     <ion-note item-end>
+    {{flow.SEG_PRIO}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Seguimiento</ion-label>
+     <ion-note item-end>
+  {{flow.SEG_CONT}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Asunto</ion-label>
+     <ion-note item-end>
+     {{flow.SEG_SUBJ}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Quién registra</ion-label>
+     <ion-note item-end>
+      {{flow.USU_NOMB}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Solicitado para</ion-label>
+     <ion-note item-end>
+    {{flow.SOLICITADO}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Recibido</ion-label>
+     <ion-note item-end>
+   {{flow.SEG_FREC| date: 'dd/MM/yyyy' }} &nbsp;{{flow.SEG_HREC | date: 'h:mm:ss a'}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+     <ion-label>Límite</ion-label>
+     <ion-note item-end>
+     {{flow.SEG_FLIM | date: 'dd/MM/yyyy'}} &nbsp;{{flow.SEG_HLIM | date: 'h:mm:ss a'}}
+     </ion-note>
+    </ion-item>
+    <ion-item *ngIf="flow.ADICIO">
+     <ion-label>Datos adicionales</ion-label>
+     <ion-note item-end>
+       {{flow.ADICIO}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+    <ion-label>Descripción</ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+        <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>
+    </ion-item>
+    <ion-item>
+    <ion-label>Comentarios para el ejecutor</ion-label>
+    </ion-item>
+    <ion-item text-wrap>
         <p text-wrap>    {{flow.SEG_COME}}</p>
-      </ion-item>
-
-      <ion-item-divider>
-
-        <ion-textarea placeholder="Comentarios para el siguiente ejecutor"></ion-textarea>
-      </ion-item-divider>
+    </ion-item>
+    <ion-item>
+    <ion-label>Comentarios para el segundo ejecutor</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="flow.COMENTARIOS"  placeholder="Ingrese sus comentarios aquí"></ion-textarea>
+    </ion-item>
+  </ion-list>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <button ion-button block color="primary">
+            <button ion-button block color="primary" (click)="flowAprobment()">
               <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Aprobar
             </button>
           </ion-col>
           <ion-col>
-            <button ion-button block color="danger">
-  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar
+            <button ion-button block color="danger" (click)="flowReject()">
+                  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar
             </button>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-card-content>
-  </ion-card>
-
 
 </ion-content>

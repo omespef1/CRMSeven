@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Refresher ,ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Refresher ,ToastController,ModalController,LoadingController} from 'ionic-angular';
 import {FlowDetailPage} from '../flow-detail/flow-detail';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
+import {UserDataProvider} from '../../providers/user-data/user-data';
 //PipesModule
 import{FlowsPipe} from '../../pipes/flows/flows';
 /**
@@ -21,7 +22,9 @@ export class FlowsPage {
   flows:any;
   value = '';
   flowList:any;
-  constructor(public navCtrl: NavController , private _seven:SevenProvider,private toast:ToastController) {
+  user:any;
+  constructor(public navCtrl: NavController , private _seven:SevenProvider,private toast:ToastController,private _user:UserDataProvider,
+  private modal:ModalController,private loading:LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -30,17 +33,32 @@ export class FlowsPage {
 
   }
   goDetailsFlow(flow:any){
-    this.navCtrl.push(FlowDetailPage,{'flow':flow});
+  let modal =  this.modal.create(FlowDetailPage,{'flow':flow})
+  modal.present();
+  modal.onDidDismiss(()=>{
+     this.getFlows();
+  });
   }
   getFlows(){
-   this._seven.getFlows('102','seven12').then(data=>{
-     console.log(data);
-     this.flows = data;
-     this.initializeItems();
-   }).catch(err=>{
-     console.log(err);
-     //Error
-   })
+    let loading = this.loading.create({
+      content:'Cargando...'
+    });
+    loading.present();
+    this._user.getUsername().then(data=>{
+        this.user = data;
+        console.log(data);
+        this._seven.getFlows(this.user).then(data=>{
+          console.log(data);
+          this.flows = data;
+          this.initializeItems();
+          loading.dismiss();
+        }).catch(err=>{
+          console.log(err);
+          loading.dismiss();
+          //Error
+        })
+    })
+
   }
   initializeItems(): void {
    this.flowList = this.flows;
@@ -56,16 +74,19 @@ export class FlowsPage {
   this.flowList = this.flowList.filter((v) =>  v.CAS_DESC.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.CAS_CONT.toString().indexOf(q.toLowerCase()) > -1 );
 }
   doRefresh(refresher: Refresher) {
-    this._seven.getFlows('102','seven12').then(data=>{
-      console.log(data);
-      this.flows = data;
-      this.initializeItems();
-      refresher.complete();
-      this.showMessage('Flujos actualizados!')
-    }).catch(err=>{
-      console.log(err);
-      //Error
+    this._user.getUsername().then(data=>{
+      this._seven.getFlows(data).then(data=>{
+        console.log(data);
+        this.flows = data;
+        this.initializeItems();
+        refresher.complete();
+        this.showMessage('Flujos actualizados!')
+      }).catch(err=>{
+        console.log(err);
+        //Error
+      })
     })
+
 
   }
   showMessage(msg:string){

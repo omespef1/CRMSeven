@@ -21,6 +21,11 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
+import {LupaPage} from '../pages/lupa/lupa';
+import {ActivitiesSearchPage} from '../pages/activities-search/activities-search';
+import {StagesSearchPage} from '../pages/stages-search/stages-search';
+import {ActivityDetailPage} from '../pages/activity-detail/activity-detail';
+import {InvitedPage} from '../pages/invited/invited';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -39,7 +44,12 @@ import {FlowsPipe} from '../pipes/flows/flows';
     FlowDetailPage,
     FlowsPipe,
     NewEventPage,
-    LoginPage
+    LoginPage,
+    LupaPage,
+    ActivitiesSearchPage,
+    StagesSearchPage,
+    ActivityDetailPage,
+    InvitedPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +70,12 @@ import {FlowsPipe} from '../pipes/flows/flows';
     ActivitiesPage,
     FlowDetailPage,
     NewEventPage,
-    LoginPage
+    LoginPage,
+    LupaPage,
+    ActivitiesSearchPage,
+    StagesSearchPage,
+    ActivityDetailPage,
+    InvitedPage
   ],
   providers: [
     StatusBar,

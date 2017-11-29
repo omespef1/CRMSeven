@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ActivitiesSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Actividades</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+    [(ngModel)]="value"
+    (ionChange)="getItems($event.value)"
+    [showCancelButton]="shouldShowCancel"
+    placeholder="Buscar">
+  </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list #AcivitiesList>
+      <ion-item-group>
+        <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">
+          <ion-label>
+          {{activity.ACT_NOMB}}
+          </ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+</ion-content>

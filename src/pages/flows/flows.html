@@ -36,8 +36,8 @@
   </ion-refresher-content>
   </ion-refresher>
   <ion-list #scheduleList>
-      <ion-item-group *ngFor="let flow of flowList">
-        <ion-item-sliding #slidingItem (click)="goDetailsFlow(flow)" class="flujo" [class]= "flow.SEG_PRIO | flows">
+      <ion-item-group>
+        <ion-item-sliding #slidingItem (click)="goDetailsFlow(flow)" class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">
           <button ion-item>
         <h3>Caso {{flow.CAS_CONT}}</h3>
         <p>

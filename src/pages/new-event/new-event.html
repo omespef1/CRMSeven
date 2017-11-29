@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>    
+  <ion-navbar>
     <ion-title>Detalle de actividad</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="close()">
@@ -22,22 +22,56 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-input  type="text" placeholder = "Título" [(ngModel)] ="event.title"></ion-input>
+      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>
+    </ion-item>
+    <ion-item button (click)="openLupa()">
+     <ion-label>Cliente</ion-label>
+     <ion-note item-end *ngIf="client">
+     {{client.PRO_NOMB}}
+     </ion-note>
     </ion-item>
     <ion-item>
-      <ion-label>Inicio </ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat ="MM/DD/YYYY HH:mm" [(ngModel)] = "event.startTime" [min] ="minDate"></ion-datetime>
+      <ion-label>Detalle cliente</ion-label>
+      <ion-note item-end *ngIf="client">
+       {{client.cdpros.DPR_NOMB}}
+      </ion-note>
     </ion-item>
     <ion-item>
+      <ion-label>Contacto</ion-label>
+      <ion-note item-end *ngIf="client">
+      {{client.conpr.CON_NOMB}}
+      </ion-note>
+    </ion-item>
+    <ion-item button (click)="openLupaActivities()">
+     <ion-label>Actividad</ion-label>
+     <ion-note item-end *ngIf="activity">
+     {{activity.ACT_NOMB}}
+     </ion-note>
+    </ion-item>
+    <ion-item button (click)="openLupaStages()">
+     <ion-label>Etapa proceso</ion-label>
+     <ion-note item-end *ngIf="stage">
+     {{stage.ETA_NOMB}}
+     </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Inicio</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="DD/MM/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>
+    </ion-item>
+    <!-- <ion-item>
       <ion-label>Fin</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat ="MM/DD/YYYY HH:mm" [(ngModel)] = "event.endTime" [min] ="minDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat ="MM/DD/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Tiem" [min] ="minDate"></ion-datetime>
+    </ion-item> -->
+    <ion-item>
+      <ion-label>Horas</ion-label>
+      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Todo el día?</ion-label>
     <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>
     </ion-item>
   </ion-list>
-<button ion-button full icon-left (click) = "save()">
+<button ion-button full icon-left (click) = "CreateActivity()">
   <ion-icon name ="checkmark"></ion-icon>Añadir evento
 </button>
 </ion-content>

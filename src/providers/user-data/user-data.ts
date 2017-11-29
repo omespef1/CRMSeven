@@ -18,7 +18,7 @@ export class UserDataProvider {
   login(username: string,info:string): void {
       this.storage.set(this.HAS_LOGGED_IN, true);
       this.setUsername(username);
-      this.setUserInfo(info)
+       this.setUserInfo(info)
       this.events.publish('user:login');
     };
     signup(username: string): void {
@@ -27,10 +27,10 @@ export class UserDataProvider {
       this.events.publish('user:signup');
     };
     logout(): void {
-      console.log("borrando usuario");
+    console.log("borrando usuario");
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove('username');
-      this.storage.remove('userinfo');
+    this.storage.remove('userinfo');
     this.events.publish('user:logout');
   };
   setUsername(username: string): void {
@@ -54,4 +54,6 @@ export class UserDataProvider {
       return value === true;
     });
   };
+
+
 }
