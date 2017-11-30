@@ -1,5 +1,5 @@
 export class Globals
         {
-           static readonly CentralizationUrl: string = 'http://localhost/SevenCentralizacion/api/GnConex/GetConnections';
+           static readonly CentralizationUrl: string = 'http://cerezo/seven/CRM/centralizacion/api/GnConex/GetConnections';
            static ClientUrl :string ;
         };

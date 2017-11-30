@@ -1740,7 +1740,7 @@ var AppModule = (function () {
 var Globals = (function () {
     function Globals() {
     }
-    Globals.CentralizationUrl = 'http://localhost/SevenCentralizacion/api/GnConex/GetConnections';
+    Globals.CentralizationUrl = 'http://cerezo/seven/CRM/centralizacion/api/GnConex/GetConnections';
     return Globals;
 }());
 
