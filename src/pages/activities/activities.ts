@@ -51,6 +51,8 @@ this.viewTitle = title;
   }
   onTimeSelected(ev){
    this.selectedDay = ev.selectedTime;
+   this.selectedDay.setMinutes(0);
+   this.selectedDay.setHours(0);
    this.LoadActivities();
   }
   onEventSelected(event){

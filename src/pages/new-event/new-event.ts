@@ -39,17 +39,13 @@ invited:any;
   private _user:UserDataProvider, private _seven:SevenProvider,private alertCtrl:AlertController) {
     let preSelectedDate = moment( this.navParams.get('selectedDay')).format();
     this.newActivity.Age_Fech = preSelectedDate;
+    this.LoadInfo();
   }
   ionViewDidLoad() {
-    this._user.getUsername().then(data=>{
-      this.usu_codi = data;
-    })
-    this.LoadInfo();
     console.log('ionViewDidLoad NewEventPage');
   }
   LoadInfo(){
     this._user.getUsername().then(data=>{
-      console.log(data);
       this.user.usu_codi = data;
     })
   }
@@ -93,9 +89,9 @@ if(this.validEvent()){
  this.newActivity.Eta_Codi = this.stage.ETA_CODI;
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.client.conpr.CON_CODI;
- if(this.invited.Usu_Codi !=null){
-   this.newActivity.Inv_Codi = this.invited.Usu_Codi
- }
+ // if(this.invited.Usu_Codi !=null){
+ //   this.newActivity.Inv_Codi = this.invited.Usu_Codi
+ // }
     this._seven.SaveActivity(this.newActivity).then(data=>{
       response = data;
       if(response.State){
