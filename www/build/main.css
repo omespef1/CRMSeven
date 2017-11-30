@@ -25782,3 +25782,17 @@ page-settings ion-avatar img {
   width: 50px !important;
   height: 50px !important;
 }
+
+page-touch-id ion-content {
+  color: white !important;
+  background-color: #1C5699 !important;
+}
+
+page-touch-id ion-content ion-grid {
+  margin-top: 40%;
+}
+
+page-touch-id .fingerprint img {
+  width: 30%;
+  height: auto;
+}

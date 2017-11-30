@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {SettingsPage} from '../pages/settings/settings';
+import {TouchIdPage} from '../pages/touch-id/touch-id';
 
 @Component({
   templateUrl: 'app.html'

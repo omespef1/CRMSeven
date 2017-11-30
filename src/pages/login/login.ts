@@ -26,6 +26,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 export class LoginPage {
   login = { username: '', password: '' };
   submitted = false;
+  touchID:boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
@@ -33,9 +34,11 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
 
   ionViewDidLoad() {
     this.verifyConnections()
-    this.GetAccessTouchID();
+  //  this.GetAccessTouchID();
   }
-
+  ionViewWillEnter(){
+  this.GetAccessTouchID();
+  }
   onLogin(form: NgForm) {
 
       this.submitted = true;
@@ -50,6 +53,7 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
           this.showAlert('Usuario o contraseña incorrectos','Lo sentimos');
         return;
       }
+       this.VerifyTouchID();
         this._user.login(this.login.username,datos.ObjResult);
         }
     ).catch(err=>{
@@ -79,8 +83,9 @@ SetAccessTouchID(){
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
+  this.keychainTouchId.isAvailable().then(()=>{
+    this.touchID = true;
     this.keychainTouchId.has("passwordCodeAssistant").catch(err=>{
-      this.keychainTouchId.isAvailable().then(()=>{
           this.faio.show({
             clientId: 'TouchIDConfirmation',
             localizedReason: 'Autentícate para ingresar con tu huella'
