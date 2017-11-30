@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Platform } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import { NgForm } from '@angular/forms';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
+//plugins
+import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 /**
  * Generated class for the LoginPage page.
@@ -21,49 +24,76 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 export class LoginPage {
   login = { username: '', password: '' };
   submitted = false;
-  datos:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
-  private _user:UserDataProvider) {
+  private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
+private platform:Platform,private faio: FingerprintAIO) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.GetAccessTouchID();
   }
-  onLogin(form: NgForm) {
 
-try{
+  onLogin(form: NgForm) {
     if (form.valid) {
       this.submitted = true;
-      this._seven.GetValidationUser(this.login.username,this.login.password).then(data=>{
-          if(data)
-           this.datos=data;
-          if(!this.datos.State){
-            this.showAlert('Usuario o contraseña incorrectos','Lo sentimos');
-          return;
-          }
-          this._user.login(this.login.username,this.datos.Usu_Nomb)
-          this.navCtrl.push(TabsPage);
-          }
-      ).catch(err=>{
-            this.showAlert(err,"Lo sentimos!")
+      this.TryAccess()
+   }
+  }
+  TryAccess(){
+    this._seven.GetValidationUser(this.login.username,this.login.password).then(data=>{
+      let datos:any;
+          datos=data;
+        if(!datos.State){
+          this.showAlert('Usuario o contraseña incorrectos','Lo sentimos');
+        return;
+      }
+        this._user.login(this.login.username,datos.Usu_Nomb)
+        }
+    ).catch(err=>{
+          this.showAlert(err,"Lo sentimos!")
+    })
+  }
+
+
+GetAccessTouchID(){
+  if(this.platform.is("cordova")){
+    this.keychainTouchId.has("passwordCodeAssistant").then(()=>{
+      this.keychainTouchId.verify("passwordCodeAssistant","Ingrese su huella dactilar para ingresar").then(pass=>{
+        this._user.getSecureUser().then(user=>{
+          this.login.username = user;
+          this.login.password = pass;
+          this.TryAccess();
+        })
       })
+    })
   }
 }
-catch(err){
-  this.showAlert("Ups, se produjo un error inesperado,contacta al administrador para solucionarlo "+ err ,'Lo sentimos!')
+SetAccessTouchID(){
+   if (this.platform.is("cordova")){
+      this._user.setSecureUser(this.login.username);
+      this.keychainTouchId.save("passwordCodeAssistant",this.login.password);
+   }
 }
-
+VerifyTouchID(){
+  if(this.platform.is("cordova")){
+    this.keychainTouchId.has("passwordCodeAssistant").catch(err=>{
+      this.keychainTouchId.isAvailable().then(()=>{
+          this.faio.show({
+            clientId: 'TouchIDConfirmation',
+            localizedReason: 'Autentícate para ingresar con tu huella'
+          })
+            .then((result: any) =>this.SetAccessTouchID())
+            .catch((error: any) => console.log(error))
+          })
+    })
   }
-
-  onSignup() {
-    // this.navCtrl.push(SignupPage);
-  }
-  showAlert(mensaje:string, titulo:string) {
-  let alert = this.alertCtrl.create({
-    title: titulo,
-    subTitle: mensaje,
-    buttons: ['OK']
-  });
-  alert.present();
+}
+showAlert(mensaje:string, titulo:string) {
+let alert = this.alertCtrl.create({
+  title: titulo,
+  subTitle: mensaje,
+  buttons: ['OK']
+});
+alert.present();
 }
 }

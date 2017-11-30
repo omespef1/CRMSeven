@@ -14,5 +14,21 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-keychain-touch-id": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-keychain-touch-id"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-fingerprint-aio": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-fingerprint-aio"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

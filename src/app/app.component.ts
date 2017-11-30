@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
+import {SettingsPage} from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,6 +29,9 @@ export class MyApp {
     this.showMessage('Su sesión se ha cerrado!');
       this.nav.setRoot(LoginPage);
     });
+    this.events.subscribe('user:login',()=>{
+        this.nav.setRoot(TabsPage);
+    })
   }
   showMessage(msg:string){
       const toast = this.toast.create({

@@ -31,6 +31,9 @@ import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
 //Pipes
 import {FlowsPipe} from '../pipes/flows/flows';
+//Plugins
+import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 @NgModule({
   declarations: [
     MyApp,
@@ -83,7 +86,9 @@ import {FlowsPipe} from '../pipes/flows/flows';
     Calendar,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SevenProvider,
-    UserDataProvider
+    UserDataProvider,
+    KeychainTouchId,
+    FingerprintAIO
   ]
 })
 export class AppModule {}

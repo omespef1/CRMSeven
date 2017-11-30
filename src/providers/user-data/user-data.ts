@@ -36,11 +36,19 @@ export class UserDataProvider {
   setUsername(username: string): void {
     this.storage.set('username', username);
   };
+  setSecureUser(user: string): void {
+    this.storage.set('secureUser', user);
+  };
   setUserInfo(info: string): void {
     this.storage.set('userinfo', info);
   };
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {
+      return value;
+    });
+  };
+  getSecureUser(): Promise<string> {
+    return this.storage.get('secureUser').then((value) => {
       return value;
     });
   };
