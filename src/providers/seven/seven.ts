@@ -1,5 +1,7 @@
 import { HttpClient ,HttpHeaders,HttpRequest} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoadingController} from 'ionic-angular'
+import  {Globals} from '../../assets/global';
 /*
   Generated class for the SevenProvider provider.
 
@@ -8,8 +10,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class SevenProvider {
- apiUrl:string = 'http://localhost/SevenCRMApi/api/';
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private load:LoadingController) {
     console.log('Hello SevenProvider Provider');
   }
 
@@ -51,24 +52,57 @@ InvitedActivity(activity:any){
 GetUsers(usu_codi:string){
     return this.getData(`Actividades/ListarEmpleados?usu_codi=${usu_codi}`);
 }
+setConnection(connection:string){
+  console.log(connection);
+   Globals.ClientUrl = connection;
+}
+
   getData(apiAction:string) {
+    let load = this.load.create({
+      content:'cargando...'
+    })
+    load.present();
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + apiAction).subscribe(data => {
+      console.log(apiAction);
+      console.log(Globals.ClientUrl);
+      this.http.get(Globals.ClientUrl + apiAction).subscribe(data => {
         resolve(data);
+        load.dismiss();
       }, err => {
         console.log(err);
+          load.dismiss();
       });
     });
   }
   postData(data,apiAction:string) {
+    let loading =this.load.create({
+      content:'Cargando...'
+    })
+    loading.present();
   return new Promise((resolve, reject) => {
-    this.http.post(this.apiUrl+ apiAction, data)
+    this.http.post(Globals.ClientUrl+ apiAction, data)
       .subscribe(res => {
         resolve(res);
+        loading.dismiss();
       }, (err) => {
         reject(err);
+            loading.dismiss();
       });
   });
 }
-
+getDataConex() {
+  let load = this.load.create({
+    content:'cargando...'
+  })
+  load.present();
+  return new Promise(resolve => {
+    this.http.get(Globals.CentralizationUrl).subscribe(data => {
+      resolve(data);
+      load.dismiss();
+    }, err => {
+      console.log(err);
+        load.dismiss();
+    });
+  });
+}
 }

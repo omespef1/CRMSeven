@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import {LupaPage} from '../lupa/lupa';
 import {ActivitiesSearchPage} from '../activities-search/activities-search';
 import {StagesSearchPage} from '../stages-search/stages-search';
+import {InvitedPage} from '../invited/invited';
 
 //providers
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -25,11 +26,13 @@ import {SevenProvider} from '../../providers/seven/seven';
 export class NewEventPage {
 event ={ startTime:new Date().toISOString(),allDay:false};
 minDate = new Date().toISOString();
-client:any;
-activity:any;
+client:any={};
+activity:any={};
 user:any={};
 newActivity:any={};
-stage:any;
+stage:any={};
+usu_codi:string;
+invited:any;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
@@ -38,6 +41,9 @@ stage:any;
     this.newActivity.Age_Fech = preSelectedDate;
   }
   ionViewDidLoad() {
+    this._user.getUsername().then(data=>{
+      this.usu_codi = data;
+    })
     this.LoadInfo();
     console.log('ionViewDidLoad NewEventPage');
   }
@@ -79,6 +85,7 @@ openLupaStages(){
 }
 CreateActivity(){
 let response :any;
+if(this.validEvent()){
  this.newActivity.Usu_Codi = this.user.usu_codi;
  this.newActivity.Usu_Ejec = this.user.usu_codi;
  this.newActivity.Act_Codi = this.activity.ACT_CODI;
@@ -86,16 +93,28 @@ let response :any;
  this.newActivity.Eta_Codi = this.stage.ETA_CODI;
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.client.conpr.CON_CODI;
- this._seven.SaveActivity(this.newActivity).then(data=>{
-   response = data;
-   if(response.State){
-      this.showAlert('Actividad Guardada correctamente','Perfecto!')
-      this.viewCtrl.dismiss();
-      return;
-    }
-      this.showAlert('Ocurrió un error','Lo sentimos!')
- })
+ if(this.invited.Usu_Codi !=null){
+   this.newActivity.Inv_Codi = this.invited.Usu_Codi
+ }
+    this._seven.SaveActivity(this.newActivity).then(data=>{
+      response = data;
+      if(response.State){
+         this.showAlert('Actividad Guardada correctamente','Perfecto!')
+         this.viewCtrl.dismiss();
+         return;
+       }
+         this.showAlert('Error:' + response.Message,'Lo sentimos!')
+    })
+  }
 
+
+}
+openInvited(){
+   let modal = this.modal.create(InvitedPage,{usu_codi:this.usu_codi});
+   modal.present();
+   modal.onDidDismiss(data=>{
+     this.invited = data;
+   })
 }
 showAlert(mensaje:string, titulo:string) {
 let alert = this.alertCtrl.create({
@@ -104,5 +123,42 @@ let alert = this.alertCtrl.create({
   buttons: ['OK']
 });
 alert.present();
+}
+ validEvent() : boolean{
+   if( this.newActivity.Age_Asun =="" || this.newActivity.Age_Asun ==null){
+      this.showAlert('Debe especificar un asunto','Lo sentimos');
+      return false;
+    }
+    if(this.client.PRO_CONT==null){
+       this.showAlert('Debe seleccionar un cliente ','Lo sentimos');
+       return false;
+     }
+     if(this.client.cdpros.DPR_CODI==null){
+        this.showAlert('Debe seleccionar un detalle ','Lo sentimos');
+        return false;
+      }
+      if(this.client.conpr.CON_CODI==null){
+         this.showAlert('Debe seleccionar un contacto ','Lo sentimos');
+         return false;
+       }
+  if(this.activity.ACT_CODI==null){
+     this.showAlert('Debe seleccionar una actividad','Lo sentimos');
+     return false;
+   }
+
+      if(  this.stage.ETA_CODI==null){
+         this.showAlert('Debe seleccionar una etapa ','Lo sentimos');
+         return false;
+       }
+
+
+         if( this.newActivity.Age_Dura ==""){
+            this.showAlert('Debe seleccionar horas ','Lo sentimos');
+            return false;
+          }
+
+        return true;
+
+
 }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController ,LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController} from 'ionic-angular';
 import {SevenProvider} from '../../providers/seven/seven';
 /**
  * Generated class for the ActivitiesSearchPage page.
@@ -16,8 +16,7 @@ import {SevenProvider} from '../../providers/seven/seven';
 export class ActivitiesSearchPage {
 activities:any;
 activitiesList:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private viewCtrl:ViewController,
-  private loading:LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private viewCtrl:ViewController) {
   }
 
   ionViewDidLoad() {
@@ -26,17 +25,17 @@ activitiesList:any;
   }
 
   LoadActivities(){
-    let loading = this.loading.create({
-      content:'Cargando...'
-    });
-    loading.present();
+    // let loading = this.loading.create({
+    //   content:'Cargando...'
+    // });
+    // loading.present();
     this._seven.GetActivities().then(data=>{
       console.log(data);
       this.activities = data;
       this.initializeItems();
-      loading.dismiss();
+      // loading.dismiss();
     }).catch(err=>{
-        loading.dismiss();
+        // loading.dismiss();
     })
   }
 closeLupa(activity:any){

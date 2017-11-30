@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import {SevenProvider} from '../../providers/seven/seven';
 /**
  * Generated class for the LupaPage page.
@@ -17,8 +17,7 @@ export class LupaPage {
   bdData:any;
   clients:any;
   clientesList:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private viewCtrl:ViewController,
-  private load:LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private viewCtrl:ViewController) {
   }
 
   ionViewDidLoad() {
@@ -26,16 +25,16 @@ export class LupaPage {
     this.loadClients();
   }
   loadClients(){
-    let loading = this.load.create({
-    content:'Cargando...'
-    });
-  loading.present();
+  //   let loading = this.load.create({
+  //   content:'Cargando...'
+  //   });
+  // loading.present();
     this._seven.GetFaClien().then(data=>{
       this.clients = data;
         this.initializeItems();
-        loading.dismiss();
+        // loading.dismiss();
     }).catch(err=>{
-        loading.dismiss();
+        // loading.dismiss();
     })
   }
   closeLupa(client:any){

@@ -16,12 +16,15 @@ import {UserDataProvider}  from '../../providers/user-data/user-data';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
+ user:any={};
   constructor(public navCtrl: NavController, public navParams: NavParams, private _user:UserDataProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+   this._user.getUserInfo().then(data=>{
+     console.log(data);
+     this.user = data;
+   })
   }
 logOut(){
   this._user.logout();

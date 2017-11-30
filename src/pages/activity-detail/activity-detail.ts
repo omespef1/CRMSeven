@@ -57,7 +57,14 @@ AcitityInvited(){
   console.log("invitado");
   this.activity.Inv_Codi = this.invited.Usu_Codi;
   this.activity.Age_Fech=  this.activity.AGE_FREG
-  this._seven.InvitedActivity(this.activity);
+  this._seven.InvitedActivity(this.activity).then(data=>{
+    let datos:any = data;
+    if(datos.State){
+      this.showAlert('El usuario ha sido invitado a la actividad','Listo!')
+      return;
+    }
+    this.showAlert('Error:' + datos.Message,'Lo sentimos!');
+  })
 }
 showAlert(mensaje:string, titulo:string) {
 let alert = this.alertCtrl.create({
@@ -73,6 +80,5 @@ alert.present();
     modal.onDidDismiss(data=>{
       this.invited = data;
     })
-
  }
 }

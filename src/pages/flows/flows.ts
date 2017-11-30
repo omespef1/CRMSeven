@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Refresher ,ToastController,ModalController,LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Refresher ,ToastController,ModalController} from 'ionic-angular';
 import {FlowDetailPage} from '../flow-detail/flow-detail';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
@@ -24,7 +24,8 @@ export class FlowsPage {
   flowList:any;
   user:any;
   constructor(public navCtrl: NavController , private _seven:SevenProvider,private toast:ToastController,private _user:UserDataProvider,
-  private modal:ModalController,private loading:LoadingController) {
+  private modal:ModalController) {
+
   }
 
   ionViewDidLoad() {
@@ -40,21 +41,14 @@ export class FlowsPage {
   });
   }
   getFlows(){
-    let loading = this.loading.create({
-      content:'Cargando...'
-    });
-    loading.present();
     this._user.getUsername().then(data=>{
-        this.user = data;
-        console.log(data);
-        this._seven.getFlows(this.user).then(data=>{
-          console.log(data);
+        this._seven.getFlows(data).then(data=>{
           this.flows = data;
           this.initializeItems();
-          loading.dismiss();
+          // loading.dismiss();
         }).catch(err=>{
           console.log(err);
-          loading.dismiss();
+          // loading.dismiss();
           //Error
         })
     })

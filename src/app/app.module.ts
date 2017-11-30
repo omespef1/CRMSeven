@@ -26,6 +26,7 @@ import {ActivitiesSearchPage} from '../pages/activities-search/activities-search
 import {StagesSearchPage} from '../pages/stages-search/stages-search';
 import {ActivityDetailPage} from '../pages/activity-detail/activity-detail';
 import {InvitedPage} from '../pages/invited/invited';
+import {ConexPage} from '../pages/conex/conex';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -52,7 +53,8 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ActivitiesSearchPage,
     StagesSearchPage,
     ActivityDetailPage,
-    InvitedPage
+    InvitedPage,
+    ConexPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ActivitiesSearchPage,
     StagesSearchPage,
     ActivityDetailPage,
-    InvitedPage
+    InvitedPage,
+    ConexPage
   ],
   providers: [
     StatusBar,

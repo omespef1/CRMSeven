@@ -1,6 +1,9 @@
 // http://ionicframework.com/docs/theming/
 
-
+.item-ios.activated{
+background-color: transparent;
+opacity: 0.5 !important;
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

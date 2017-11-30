@@ -1,10 +1,39 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-		<ion-title>Login</ion-title>
-	</ion-navbar>
+	<ion-grid>
+<ion-row>
+	<ion-col class="loginCol">
+		<img class="logo" src="assets/imgs/logoseven.png"/>
+		<h1>CRM</h1>
+	</ion-col>
+</ion-row>
+	<form  #registerForm="ngForm" class="loginForm">
+		<ion-row>
+			<ion-col>
+					<ion-item>
+						<ion-label><ion-icon name="ios-person"></ion-icon></ion-label>
+						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>
+						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>
+					</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">Ingresar</button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col text-center>
+				<div  class="fingerprint" button tappable (tap)="getAccessTouchId()">
+				<img src="assets/imgs/fingerprint.svg">
+			</div>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-grid>
 </ion-header>
 
 <ion-content>
@@ -12,35 +41,6 @@
 		<img src="assets/img/appicon.svg" alt="Ionic logo">
 	</div> -->
 
-	<form #loginForm="ngForm" novalidate>
-		<ion-list no-lines>
-			<ion-item>
-				<ion-label floating color="primary">Usuario</ion-label>
-				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-					required>
-				</ion-input>
-			</ion-item>
-			<p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-				Usuario requerido
-			</p>
-			<ion-item>
-				<ion-label floating color="primary">Contraseña</ion-label>
-				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
-				</ion-input>
-			</ion-item>
-			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
-				Contraseña requerida
-			</p>
-		</ion-list>
 
-		<ion-row responsive-sm>
-			<ion-col>
-				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
-			</ion-col>
-			<ion-col>
-				<button ion-button (click)="onSignup()" color="light" block>Registro</button>
-			</ion-col>
-		</ion-row>
-	</form>
 
 </ion-content>

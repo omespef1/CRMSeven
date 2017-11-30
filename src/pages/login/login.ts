@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Platform,ModalController } from 'ionic-angular';
+//pages
 import {TabsPage} from '../tabs/tabs';
+import {ConexPage} from '../conex/conex';
 import { NgForm } from '@angular/forms';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
@@ -26,18 +28,19 @@ export class LoginPage {
   submitted = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
-private platform:Platform,private faio: FingerprintAIO) {
+private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
+    this.verifyConnections()
     this.GetAccessTouchID();
   }
 
   onLogin(form: NgForm) {
-    if (form.valid) {
+
       this.submitted = true;
       this.TryAccess()
-   }
+
   }
   TryAccess(){
     this._seven.GetValidationUser(this.login.username,this.login.password).then(data=>{
@@ -47,7 +50,7 @@ private platform:Platform,private faio: FingerprintAIO) {
           this.showAlert('Usuario o contraseña incorrectos','Lo sentimos');
         return;
       }
-        this._user.login(this.login.username,datos.Usu_Nomb)
+        this._user.login(this.login.username,datos.ObjResult);
         }
     ).catch(err=>{
           this.showAlert(err,"Lo sentimos!")
@@ -87,6 +90,27 @@ VerifyTouchID(){
           })
     })
   }
+}
+verifyConnections(){
+  this._user.getConnectionsPreference().then(data=>{
+    if(!data){
+     let modal=  this.modalCtrl.create(ConexPage);
+     modal.present();
+     modal.onDidDismiss(conex=>{
+       if(conex)
+       this._user.setConnectionsPreference(true);
+       this._user.setSavedConnections(conex.CNX_IPSR);
+       this._seven.setConnection(conex.CNX_IPSR);
+     })
+    }
+    else{
+           this._user.getSavedConnections().then(data=>{
+             this._seven.setConnection(data);
+           });
+    }
+
+
+  })
 }
 showAlert(mensaje:string, titulo:string) {
 let alert = this.alertCtrl.create({

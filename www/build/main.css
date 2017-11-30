@@ -25678,6 +25678,11 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.item-ios.activated {
+  background-color: transparent;
+  opacity: 0.5 !important;
+}
+
 page-flow-detail ion-card {
   border-left: 2px solid red;
 }
@@ -25699,4 +25704,81 @@ page-flows .FlowRed ion-label {
 page-flows .FlowBlue ion-label {
   border-left: 2px solid blue;
   padding-left: 10px;
+}
+
+page-login h1 {
+  color: #f4f4f4;
+}
+
+page-login .loginCol {
+  margin-top: 20%;
+}
+
+page-login .submit-btn {
+  background-color: #488aff;
+  border-radius: 10px !important;
+  color: #f4f4f4 !important;
+}
+
+page-login ion-icon {
+  display: inline-block;
+  font-size: 1.8em;
+}
+
+page-login ion-row {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-login ion-item {
+  border-radius: 10px !important;
+  padding-left: 10px !important;
+  font-size: 0.9em !important;
+  margin-bottom: 10px !important;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-login .logo {
+  width: 60%;
+  height: auto;
+}
+
+page-login .item-inner {
+  border-bottom-color: #ffffff !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-login button[disabled], page-login [ion-button][disabled] {
+  opacity: 0.8 !important;
+}
+
+page-login .fingerprint img {
+  width: 30%;
+  height: auto;
+}
+
+page-login .fingerprint p {
+  color: white;
+  font-weight: bold;
+}
+
+page-login ion-content {
+  background-color: #1C5699 !important;
+}
+
+page-settings ion-avatar {
+  min-width: 50px !important;
+  min-height: 50px !important;
+}
+
+page-settings ion-avatar img {
+  width: 50px !important;
+  height: 50px !important;
 }

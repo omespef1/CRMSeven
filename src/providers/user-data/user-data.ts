@@ -35,11 +35,13 @@ export class UserDataProvider {
   };
   setUsername(username: string): void {
     this.storage.set('username', username);
+    console.log('username guardado');
   };
   setSecureUser(user: string): void {
     this.storage.set('secureUser', user);
   };
-  setUserInfo(info: string): void {
+  setUserInfo(info: any): void {
+    console.log(info);
     this.storage.set('userinfo', info);
   };
   getUsername(): Promise<string> {
@@ -52,7 +54,7 @@ export class UserDataProvider {
       return value;
     });
   };
-  getUserInfo(): Promise<string> {
+  getUserInfo(): Promise<any> {
     return this.storage.get('userinfo').then((value) => {
       return value;
     });
@@ -63,5 +65,21 @@ export class UserDataProvider {
     });
   };
 
+  setConnectionsPreference(selected:boolean):void{
+    this.storage.set('SettedConnection',selected);
+  }
+  getConnectionsPreference():Promise<boolean>{
+    return this.storage.get('SettedConnection').then(value=>{
+      return value;
+    })
+  }
+  setSavedConnections(conex:string){
+      this.storage.set('SavedConnection',conex);
+  }
+  getSavedConnections():Promise<string>{
+    return this.storage.get('SavedConnection').then(value=>{
+      return value;
+    })
+  }
 
 }

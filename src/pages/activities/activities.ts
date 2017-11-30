@@ -85,7 +85,7 @@ modal.onDidDismiss(data=>{
 LoadActivities(){
   let fini= moment(this.selectedDay).format("YYYY-MM-DD HH:mm:ss");
   let finalDate = new Date();
-  finalDate.setDate(this.selectedDay.getDate()+3);
+  finalDate.setDate(this.selectedDay.getDate()+7);
   let fina = moment(finalDate).format("YYYY-MM-DD HH:mm:ss")
   this._user.getUsername().then(data=>{
     this._seven.GetUserActivities(data,fini,fina).then(data=>{

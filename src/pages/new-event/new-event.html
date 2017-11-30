@@ -24,7 +24,7 @@
     <ion-item>
       <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>
     </ion-item>
-    <ion-item button (click)="openLupa()">
+    <ion-item button (click)="openLupa()" text-wrap>
      <ion-label>Cliente</ion-label>
      <ion-note item-end *ngIf="client">
      {{client.PRO_NOMB}}
@@ -32,13 +32,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Detalle cliente</ion-label>
-      <ion-note item-end *ngIf="client">
+      <ion-note item-end *ngIf="client.cdpros">
        {{client.cdpros.DPR_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Contacto</ion-label>
-      <ion-note item-end *ngIf="client">
+      <ion-note item-end *ngIf="client.conpr">
       {{client.conpr.CON_NOMB}}
       </ion-note>
     </ion-item>
@@ -66,6 +66,12 @@
       <ion-label>Horas</ion-label>
       <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>
     </ion-item>
+    <ion-item (click)="openInvited()">
+      <ion-label>Invitar</ion-label>
+      <ion-note item-end *ngIf="invited">
+        {{invited.Usu_Nomb}}
+      </ion-note>
+     </ion-item>
     <ion-item>
       <ion-label>Todo el día?</ion-label>
     <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>
