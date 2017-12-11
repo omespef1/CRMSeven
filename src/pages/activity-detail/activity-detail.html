@@ -54,9 +54,9 @@
     {{activity.AGE_ASUN}}
        </ion-note>
       </ion-item>
-      <ion-item (click)="openInvited()">
+      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == usu_codi">
         <ion-label>Invitar</ion-label>
-        <ion-note item-end *ngIf="invited">
+        <ion-note item-end>
           {{invited.Usu_Nomb}}
         </ion-note>
        </ion-item>
@@ -65,12 +65,12 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()">
+      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled] ="activity.USU_PLAN != usu_codi">
         <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button block color="danger" (click)="ActivityReject()">
+      <button ion-button block color="danger" (click)="ActivityReject()"  [disabled] ="activity.USU_PLAN != usu_codi">
             <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar
       </button>
     </ion-col>

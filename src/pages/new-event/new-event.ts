@@ -42,7 +42,7 @@ invited:any;
     this.LoadInfo();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewEventPage');
+  
   }
   LoadInfo(){
     this._user.getUsername().then(data=>{
@@ -89,6 +89,7 @@ if(this.validEvent()){
  this.newActivity.Eta_Codi = this.stage.ETA_CODI;
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.client.conpr.CON_CODI;
+ //this.newActivity.Age_Fech = new Date();
  // if(this.invited.Usu_Codi !=null){
  //   this.newActivity.Inv_Codi = this.invited.Usu_Codi
  // }

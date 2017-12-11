@@ -24,11 +24,14 @@ usu_codi :any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private _seven:SevenProvider,
   private _user:UserDataProvider, private alertCtrl:AlertController,private modalCtrl:ModalController) {
     this.activity = this.navParams.get('activity');
+    console.log(this.activity);
   }
 
   ionViewDidLoad() {
   this._user.getUsername().then(data=>{
-    this.usu_codi = data;
+    this.usu_codi = data.toUpperCase();
+    console.log(this.usu_codi);
+    this.activity.USU_PLAN =  this.activity.USU_PLAN.toUpperCase();
   })
   }
 close(){
@@ -56,7 +59,8 @@ ActivityReject(){
 AcitityInvited(){
   console.log("invitado");
   this.activity.Inv_Codi = this.invited.Usu_Codi;
-  this.activity.Age_Fech=  this.activity.AGE_FREG
+  this.activity.Age_Fech=  this.activity.AGE_FREG;
+//  this.activity.AGE_FEJE = this.activity.AGE_FREG;
   this._seven.InvitedActivity(this.activity).then(data=>{
     let datos:any = data;
     if(datos.State){
