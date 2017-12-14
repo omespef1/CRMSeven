@@ -63,18 +63,20 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
 
 
 GetAccessTouchID(){
-
+console.log('entro a get');
   if(this.platform.is("cordova")){
-    this.keychainTouchId.isAvailable().then(datas=>{
+    this.keychainTouchId.isAvailable().then(data=>{
         this.touchID = true;
+        console.log('lector disponible');
     })
-
-
     this.keychainTouchId.has("passwordCodeAssistant").then(()=>{
+      console.log('clave disponible');
       this.keychainTouchId.verify("passwordCodeAssistant","Ingrese su huella dactilar para ingresar").then(pass=>{
+        console.log('password obtenido');
         this._user.getSecureUser().then(user=>{
           this.login.username = user;
           this.login.password = pass;
+          console.log('todo ok');
           this.TryAccess();
         })
       })
