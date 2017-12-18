@@ -9,14 +9,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-sqlite-storage.SQLitePlugin",
-    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-    "pluginId": "cordova-sqlite-storage",
-    "clobbers": [
-      "SQLitePlugin"
-    ]
-  },
-  {
     "id": "cordova-plugin-device.device",
     "file": "plugins/cordova-plugin-device/www/device.js",
     "pluginId": "cordova-plugin-device",
@@ -57,6 +49,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
+  },
+  {
     "id": "ionic-plugin-keyboard.keyboard",
     "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
     "pluginId": "ionic-plugin-keyboard",
@@ -69,15 +69,15 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "cordova-plugin-calendar": "4.6.0",
-  "cordova-sqlite-storage": "2.1.2",
-  "cordova-plugin-device": "1.1.7",
   "cordova-plugin-add-swift-support": "1.7.0",
+  "cordova-plugin-calendar": "4.6.0",
+  "cordova-plugin-device": "1.1.7",
   "cordova-plugin-fingerprint-aio": "1.3.3",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-keychain-touch-id": "3.2.1",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-whitelist": "1.3.3",
+  "cordova-sqlite-storage": "2.1.2",
   "ionic-plugin-keyboard": "2.2.1"
 };
 // BOTTOM OF METADATA

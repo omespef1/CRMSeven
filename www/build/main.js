@@ -1012,9 +1012,6 @@ var LoginPage = (function () {
     }
     LoginPage.prototype.ionViewDidLoad = function () {
         this.verifyConnections();
-        //  this.GetAccessTouchID();
-    };
-    LoginPage.prototype.ionViewWillEnter = function () {
         this.GetAccessTouchID();
     };
     LoginPage.prototype.onLogin = function (form) {

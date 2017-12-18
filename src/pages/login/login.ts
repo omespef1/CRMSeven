@@ -34,11 +34,9 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
 
   ionViewDidLoad() {
     this.verifyConnections()
-  //  this.GetAccessTouchID();
+   this.GetAccessTouchID();
   }
-  ionViewWillEnter(){
-  this.GetAccessTouchID();
-  }
+
   onLogin(form: NgForm) {
 
       this.submitted = true;
