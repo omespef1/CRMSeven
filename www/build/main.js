@@ -1803,7 +1803,7 @@ var AppModule = (function () {
 var Globals = (function () {
     function Globals() {
     }
-    Globals.CentralizationUrl = 'http://consultoria.digitalware.co/centralizacion/api/GnConex/GetConnections';
+    Globals.CentralizationUrl = 'http://consultoria.digitalware.co/seven_crm/centralizacion/api/GnConex/GetConnections';
     return Globals;
 }());
 
