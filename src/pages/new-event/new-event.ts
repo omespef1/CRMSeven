@@ -6,6 +6,8 @@ import {LupaPage} from '../lupa/lupa';
 import {ActivitiesSearchPage} from '../activities-search/activities-search';
 import {StagesSearchPage} from '../stages-search/stages-search';
 import {InvitedPage} from '../invited/invited';
+import {ContactDetailPage} from '../contact-detail/contact-detail';
+import {ClientDetailPage} from '../client-detail/client-detail';
 
 //providers
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -42,7 +44,7 @@ invited:any;
     this.LoadInfo();
   }
   ionViewDidLoad() {
-  
+
   }
   LoadInfo(){
     this._user.getUsername().then(data=>{
@@ -157,5 +159,16 @@ alert.present();
         return true;
 
 
+}
+showContact(contact:any){
+  let modal = this.modal.create(ContactDetailPage,{contact:contact});
+  modal.present();
+  // modal.onDidDismiss(data=>{
+  //   this.invited = data;
+  // })
+}
+showClient(client:any){
+  let modal = this.modal.create(ClientDetailPage,{contact:client});
+  modal.present();
 }
 }

@@ -21,13 +21,13 @@
     <ion-item>
       <ion-label>Inicio</ion-label>
       <ion-note item-end>
-      {{activity.AGE_FINI | date: 'h:mm:ss a'}}
+      {{activity.AGE_FINI | digitalDate}}
       </ion-note>
      </ion-item>
      <ion-item>
      <ion-label>Fin</ion-label>
      <ion-note item-end>
-       {{activity.AGE_FFIN | date: 'h:mm:ss a'}}
+       {{activity.AGE_FFIN | digitalDate}}
      </ion-note>
     </ion-item>
   <ion-item>
@@ -65,12 +65,12 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled] ="activity.USU_PLAN != usu_codi">
+      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()">
         <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button block color="danger" (click)="ActivityReject()"  [disabled] ="activity.USU_PLAN != usu_codi">
+      <button ion-button block color="danger" (click)="ActivityReject()">
             <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar
       </button>
     </ion-col>

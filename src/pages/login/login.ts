@@ -33,12 +33,15 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
   }
 
   ionViewDidLoad() {
-    this.verifyConnections()
-   this.GetAccessTouchID();
+
+
   }
+ ionViewDidEnter(){
 
+   this.verifyConnections()
+      this.GetAccessTouchID();
+ }
   onLogin(form: NgForm) {
-
       this.submitted = true;
       this.TryAccess()
 
@@ -67,9 +70,9 @@ console.log('entro a get');
         this.touchID = true;
         console.log('lector disponible');
     })
-    this.keychainTouchId.has("passwordCodeAssistant").then(()=>{
+    this.keychainTouchId.has("password").then(()=>{
       console.log('clave disponible');
-      this.keychainTouchId.verify("passwordCodeAssistant","Ingrese su huella dactilar para ingresar").then(pass=>{
+      this.keychainTouchId.verify("password","Ingrese su huella dactilar para ingresar").then(pass=>{
         console.log('password obtenido');
         this._user.getSecureUser().then(user=>{
           this.login.username = user;
@@ -84,14 +87,14 @@ console.log('entro a get');
 SetAccessTouchID(){
    if (this.platform.is("cordova")){
       this._user.setSecureUser(this.login.username);
-      this.keychainTouchId.save("passwordCodeAssistant",this.login.password);
+      this.keychainTouchId.save("password",this.login.password);
    }
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
   this.keychainTouchId.isAvailable().then(()=>{
     this.touchID = true;
-    this.keychainTouchId.has("passwordCodeAssistant").catch(err=>{
+    this.keychainTouchId.has("password").catch(err=>{
           this.faio.show({
             clientId: 'TouchIDConfirmation',
             localizedReason: 'Autentícate para ingresar con tu huella'

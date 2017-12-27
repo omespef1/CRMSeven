@@ -5,6 +5,8 @@ import {InvitedPage} from '../invited/invited';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
+//pipes
+import {DigitalDatePipe} from '../../pipes/digital-date/digital-date';
 /**
  * Generated class for the ActivityDetailPage page.
  *

@@ -8,6 +8,9 @@ import {LoginPage} from '../pages/login/login';
 import {SettingsPage} from '../pages/settings/settings';
 import {TouchIdPage} from '../pages/touch-id/touch-id';
 
+//Providers
+import {UserDataProvider} from '../providers/user-data/user-data';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,22 +18,42 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController,
+  private _userdata:UserDataProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.listenToLoginEvents();
+      this._userdata.hasLoggedIn().then((hasLoggedIn) => {
+      //  this.enableMenu(true);
+        this.listenToLoginEvents();
+        this.validLogin();
+      });
     });
 
   }
+  validLogin(){
+  this._userdata.hasLoggedIn().then(log=>{
+    if(log){
+      console.log('entro logueado');
+        this._userdata.getUsername().then(user=>{
+        this._userdata.getUserInfo().then(info=>{
+        this._userdata.login(user,info);
+        })
+      });
+    }
+
+
+  })
+}
   listenToLoginEvents() {
     this.events.subscribe('user:logout', () => {
     this.showMessage('Su sesión se ha cerrado!');
       this.nav.setRoot(LoginPage);
     });
     this.events.subscribe('user:login',()=>{
+      console.log('refirige');
         this.nav.setRoot(TabsPage);
     })
   }

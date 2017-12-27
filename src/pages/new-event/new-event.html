@@ -7,9 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detalle de actividad</ion-title>
+    <ion-title>Nueva actividad</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+      <button ion-button icon-only (click)="close()" class="BigButton">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -24,21 +24,21 @@
     <ion-item>
       <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>
     </ion-item>
-    <ion-item button (click)="openLupa()" text-wrap>
+    <ion-item text-wrap button (click)="openLupa()">
      <ion-label>Cliente</ion-label>
-     <ion-note item-end *ngIf="client">
+     <ion-note  item-end *ngIf="client">
      {{client.PRO_NOMB}}
      </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Detalle cliente</ion-label>
-      <ion-note item-end *ngIf="client.cdpros">
+      <ion-note item-end *ngIf="client && client.cdpros" (click)="showClient(client.cdpros)">
        {{client.cdpros.DPR_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Contacto</ion-label>
-      <ion-note item-end *ngIf="client.conpr">
+      <ion-note item-end *ngIf="client && client.conpr" (click)="showContact(client.conpr)">
       {{client.conpr.CON_NOMB}}
       </ion-note>
     </ion-item>

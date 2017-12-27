@@ -28,11 +28,14 @@ import {ActivityDetailPage} from '../pages/activity-detail/activity-detail';
 import {InvitedPage} from '../pages/invited/invited';
 import {ConexPage} from '../pages/conex/conex';
 import {TouchIdPage} from '../pages/touch-id/touch-id';
+import {ContactDetailPage} from '../pages/contact-detail/contact-detail';
+import {ClientDetailPage} from '../pages/client-detail/client-detail';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
 //Pipes
 import {FlowsPipe} from '../pipes/flows/flows';
+import {DigitalDatePipe} from '../pipes/digital-date/digital-date';
 //Plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
@@ -48,6 +51,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ActivitiesPage,
     FlowDetailPage,
     FlowsPipe,
+    DigitalDatePipe,
     NewEventPage,
     LoginPage,
     LupaPage,
@@ -56,7 +60,9 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ActivityDetailPage,
     InvitedPage,
     ConexPage,
-    TouchIdPage
+    TouchIdPage,
+    ContactDetailPage,
+    ClientDetailPage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,9 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ActivityDetailPage,
     InvitedPage,
     ConexPage,
-    TouchIdPage
+    TouchIdPage,
+    ContactDetailPage,
+    ClientDetailPage
   ],
   providers: [
     StatusBar,

@@ -2,6 +2,9 @@ import { HttpClient ,HttpHeaders,HttpRequest} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingController} from 'ionic-angular'
 import  {Globals} from '../../assets/global';
+//providers
+import { Storage } from '@ionic/storage';
+import {UserDataProvider} from '../../providers/user-data/user-data';
 /*
   Generated class for the SevenProvider provider.
 
@@ -10,7 +13,7 @@ import  {Globals} from '../../assets/global';
 */
 @Injectable()
 export class SevenProvider {
-  constructor(public http: HttpClient, private load:LoadingController) {
+  constructor(public http: HttpClient, private load:LoadingController,private _storage:Storage,private _userdata:UserDataProvider) {
     console.log('Hello SevenProvider Provider');
   }
 
@@ -23,8 +26,24 @@ GetValidationUser(user:string, pass:string){
 ApproveFlow(flujo:any){
   return this.postData(flujo,'Flujos/FlujosAdm')
 }
-GetFaClien(){
-  return this.getData('Actividades/cargarClientesCrm');
+GetFaClien(refresh:boolean=false){
+  return  this._storage.get("faClien").then(value=>{
+  console.log(value);
+  if(value!=undefined && !refresh){
+    console.log("speakers leídos de memoria");
+    return value;
+  }
+  return this.getData('Actividades/cargarClientesCrm')
+    .then(data => {
+      this._userdata.setFaClien(data);
+       console.log("clientes leídos de bd");
+        return data;
+    })
+    .catch(error =>{
+      return undefined;
+    })
+})
+  //
 }
 GetActivities(){
     return this.getData('Actividades/ListarActividades');

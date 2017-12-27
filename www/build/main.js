@@ -1,6 +1,6 @@
-webpackJsonp([13],{
+webpackJsonp([15],{
 
-/***/ 107:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84,19 +84,19 @@ var ActivitiesSearchPage = (function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivitiesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_event_new_event__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activity_detail_activity_detail__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_event_new_event__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activity_detail_activity_detail__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -205,7 +205,7 @@ var ActivitiesPage = (function () {
     };
     ActivitiesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <calendar [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n\n\n        <ion-list #scheduleList>\n          <ion-list-header>\n            <h2>Próximas</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda" (click)="openActivity(agend)">\n                <button ion-item>\n\n                 <h3><b>{{agend.AGE_ASUN}}</b></h3>\n                 <h4>{{agend.AGE_FINI | date: \'hh:mm:ss a\'}} - {{agend.AGE_FFIN | date: \'hh:mm:ss a\'}}</h4>\n                 <p text-wrap> {{agend.PRO_NOMB}} - {{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n        </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
+            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <calendar [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n\n\n        <ion-list #scheduleList>\n          <ion-list-header>\n            <h2>Próximas</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda" (click)="openActivity(agend)">\n                <button ion-item>\n\n                 <h3><b>{{agend.AGE_ASUN}}</b></h3>\n                 <h4>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</h4>\n                 <p text-wrap> {{agend.PRO_NOMB}} - {{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n        </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */]])
@@ -217,7 +217,7 @@ var ActivitiesPage = (function () {
 
 /***/ }),
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -226,12 +226,14 @@ var ActivitiesPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lupa_lupa__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__activities_search_activities_search__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stages_search_stages_search__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lupa_lupa__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__activities_search_activities_search__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stages_search_stages_search__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invited_invited__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_data_user_data__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_seven_seven__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contact_detail_contact_detail__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__client_detail_client_detail__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_data_user_data__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_seven_seven__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -245,6 +247,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //pages
+
+
 
 
 
@@ -393,12 +397,23 @@ var NewEventPage = (function () {
         }
         return true;
     };
+    NewEventPage.prototype.showContact = function (contact) {
+        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_7__contact_detail_contact_detail__["a" /* ContactDetailPage */], { contact: contact });
+        modal.present();
+        // modal.onDidDismiss(data=>{
+        //   this.invited = data;
+        // })
+    };
+    NewEventPage.prototype.showClient = function (client) {
+        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_8__client_detail_client_detail__["a" /* ClientDetailPage */], { contact: client });
+        modal.present();
+    };
     NewEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-new-event',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle de actividad</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n    </ion-item>\n    <ion-item button (click)="openLupa()" text-wrap>\n     <ion-label>Cliente</ion-label>\n     <ion-note item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Detalle cliente</ion-label>\n      <ion-note item-end *ngIf="client.cdpros">\n       {{client.cdpros.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Contacto</ion-label>\n      <ion-note item-end *ngIf="client.conpr">\n      {{client.conpr.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaActivities()">\n     <ion-label>Actividad</ion-label>\n     <ion-note item-end *ngIf="activity">\n     {{activity.ACT_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaStages()">\n     <ion-label>Etapa proceso</ion-label>\n     <ion-note item-end *ngIf="stage">\n     {{stage.ETA_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Inicio</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="DD/MM/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>Horas</ion-label>\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n    <ion-item>\n      <ion-label>Todo el día?</ion-label>\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n    </ion-item>\n  </ion-list>\n<button ion-button full icon-left (click) = "CreateActivity()">\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n</button>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/,
+            selector: 'page-new-event',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Nueva actividad</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n    </ion-item>\n    <ion-item text-wrap button (click)="openLupa()">\n     <ion-label>Cliente</ion-label>\n     <ion-note  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Detalle cliente</ion-label>\n      <ion-note item-end *ngIf="client && client.cdpros" (click)="showClient(client.cdpros)">\n       {{client.cdpros.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Contacto</ion-label>\n      <ion-note item-end *ngIf="client && client.conpr" (click)="showContact(client.conpr)">\n      {{client.conpr.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaActivities()">\n     <ion-label>Actividad</ion-label>\n     <ion-note item-end *ngIf="activity">\n     {{activity.ACT_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaStages()">\n     <ion-label>Etapa proceso</ion-label>\n     <ion-note item-end *ngIf="stage">\n     {{stage.ETA_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Inicio</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="DD/MM/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n    </ion-item>\n    <ion-item>\n      <ion-label>Horas</ion-label>\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n    <ion-item>\n      <ion-label>Todo el día?</ion-label>\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n    </ion-item>\n  </ion-list>\n<button ion-button full icon-left (click) = "CreateActivity()">\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n</button>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_8__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+            __WEBPACK_IMPORTED_MODULE_9__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_10__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], NewEventPage);
     return NewEventPage;
 }());
@@ -407,7 +422,7 @@ var NewEventPage = (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -434,26 +449,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var LupaPage = (function () {
-    function LupaPage(navCtrl, navParams, _seven, viewCtrl) {
+    function LupaPage(navCtrl, navParams, _seven, load, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._seven = _seven;
+        this.load = load;
         this.viewCtrl = viewCtrl;
     }
+    LupaPage.prototype.terminado = function () {
+        console.log('termino');
+    };
     LupaPage.prototype.ionViewDidLoad = function () {
+        console.log('cargando clientes');
+        var loading = this.load.create({
+            content: 'Cargando...'
+        });
+        loading.present();
         console.log('ionViewDidLoad LupaPage');
-        this.loadClients();
+        this.loadClients().then(function () {
+            loading.dismiss();
+        });
     };
     LupaPage.prototype.loadClients = function () {
         var _this = this;
-        //   let loading = this.load.create({
-        //   content:'Cargando...'
-        //   });
-        // loading.present();
-        this._seven.GetFaClien().then(function (data) {
+        return this._seven.GetFaClien().then(function (data) {
             _this.clients = data;
             _this.initializeItems();
-            // loading.dismiss();
+            console.log('cargado');
         }).catch(function (err) {
             // loading.dismiss();
         });
@@ -481,7 +503,7 @@ var LupaPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-lupa',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/lupa/lupa.html"*/'<!--\n  Generated template for the LupaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Clientes</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #clientsList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(client)" *ngFor="let client of clientesList">\n          <ion-label>\n          {{client.PRO_NOMB}}\n          </ion-label>\n          <ion-icon name=\'person\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n  </ion-list>\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/lupa/lupa.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
     ], LupaPage);
     return LupaPage;
 }());
@@ -490,7 +512,7 @@ var LupaPage = (function () {
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -573,7 +595,109 @@ var StagesSearchPage = (function () {
 
 /***/ }),
 
-/***/ 112:
+/***/ 113:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ContactDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ContactDetailPage = (function () {
+    function ContactDetailPage(navCtrl, navParams, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.contact = navParams.get('contact');
+        console.log(this.contact);
+    }
+    ContactDetailPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ContactDetailPage');
+    };
+    ContactDetailPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    ContactDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-contact-detail',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-detail/contact-detail.html"*/'<!--\n  Generated template for the ContactDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle Contacto</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>Nombre</ion-label>\n      <ion-note item-end>\n     {{contact.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Cargo</ion-label>\n      <ion-note item-end>\n       {{contact.CON_CARG}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Email</ion-label>\n      <ion-note item-end>\n       {{contact.CON_EMAI}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Email</ion-label>\n      <ion-note item-end>\n       {{contact.CON_EMAI}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Teléfono</ion-label>\n      <ion-note item-end>\n       {{contact.CON_TEL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Celular</ion-label>\n      <ion-note item-end>\n       {{contact.CON_CELU}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Dirección</ion-label>\n      <ion-note item-end>\n       {{contact.CON_DIRE}}\n      </ion-note>\n    </ion-item>\n\n\n\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-detail/contact-detail.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+    ], ContactDetailPage);
+    return ContactDetailPage;
+}());
+
+//# sourceMappingURL=contact-detail.js.map
+
+/***/ }),
+
+/***/ 114:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ClientDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ClientDetailPage = (function () {
+    function ClientDetailPage(navCtrl, navParams, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.client = navParams.get('contact');
+        console.log(this.client);
+    }
+    ClientDetailPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ClientDetailPage');
+    };
+    ClientDetailPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    ClientDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-client-detail',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/client-detail/client-detail.html"*/'<!--\n  Generated template for the ClientDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle Cliente</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>Nombre</ion-label>\n      <ion-note item-end>\n     {{client.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Teléfono</ion-label>\n      <ion-note item-end>\n       {{client.DPR_NTEL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Dirección</ion-label>\n      <ion-note item-end>\n       {{client.DPR_DIRE}}\n      </ion-note>\n    </ion-item>\n\n\n\n\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/client-detail/client-detail.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+    ], ClientDetailPage);
+    return ClientDetailPage;
+}());
+
+//# sourceMappingURL=client-detail.js.map
+
+/***/ }),
+
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -582,7 +706,7 @@ var StagesSearchPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invited_invited__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -679,7 +803,7 @@ var ActivityDetailPage = (function () {
     };
     ActivityDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-activity-detail',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/'<!--\n  Generated template for the ActivityDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{activity.AGE_ASUN}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>Inicio</ion-label>\n      <ion-note item-end>\n      {{activity.AGE_FINI | date: \'h:mm:ss a\'}}\n      </ion-note>\n     </ion-item>\n     <ion-item>\n     <ion-label>Fin</ion-label>\n     <ion-note item-end>\n       {{activity.AGE_FFIN | date: \'h:mm:ss a\'}}\n     </ion-note>\n    </ion-item>\n  <ion-item>\n    <ion-label>Cliente</ion-label>\n    <ion-note item-end>\n    {{activity.PRO_NOMB}}\n    </ion-note>\n   </ion-item>\n   <ion-item>\n     <ion-label>Contacto</ion-label>\n     <ion-note item-end>\n     {{activity.CON_NOMB}}  {{activity.CON_APEL}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Actividad</ion-label>\n      <ion-note item-end>\n    {{activity.ACT_NOMB}}\n      </ion-note>\n     </ion-item>\n     <ion-item>\n       <ion-label>Asunto</ion-label>\n       <ion-note item-end>\n    {{activity.AGE_ASUN}}\n       </ion-note>\n      </ion-item>\n      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == usu_codi">\n        <ion-label>Invitar</ion-label>\n        <ion-note item-end>\n          {{invited.Usu_Nomb}}\n        </ion-note>\n       </ion-item>\n\n</ion-list>\n<ion-grid>\n  <ion-row>\n    <ion-col>\n      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled] ="activity.USU_PLAN != usu_codi">\n        <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar\n      </button>\n    </ion-col>\n    <ion-col>\n      <button ion-button block color="danger" (click)="ActivityReject()"  [disabled] ="activity.USU_PLAN != usu_codi">\n            <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar\n      </button>\n    </ion-col>\n  </ion-row>\n</ion-grid>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/,
+            selector: 'page-activity-detail',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/'<!--\n  Generated template for the ActivityDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{activity.AGE_ASUN}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>Inicio</ion-label>\n      <ion-note item-end>\n      {{activity.AGE_FINI | digitalDate}}\n      </ion-note>\n     </ion-item>\n     <ion-item>\n     <ion-label>Fin</ion-label>\n     <ion-note item-end>\n       {{activity.AGE_FFIN | digitalDate}}\n     </ion-note>\n    </ion-item>\n  <ion-item>\n    <ion-label>Cliente</ion-label>\n    <ion-note item-end>\n    {{activity.PRO_NOMB}}\n    </ion-note>\n   </ion-item>\n   <ion-item>\n     <ion-label>Contacto</ion-label>\n     <ion-note item-end>\n     {{activity.CON_NOMB}}  {{activity.CON_APEL}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-label>Actividad</ion-label>\n      <ion-note item-end>\n    {{activity.ACT_NOMB}}\n      </ion-note>\n     </ion-item>\n     <ion-item>\n       <ion-label>Asunto</ion-label>\n       <ion-note item-end>\n    {{activity.AGE_ASUN}}\n       </ion-note>\n      </ion-item>\n      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == usu_codi">\n        <ion-label>Invitar</ion-label>\n        <ion-note item-end>\n          {{invited.Usu_Nomb}}\n        </ion-note>\n       </ion-item>\n\n</ion-list>\n<ion-grid>\n  <ion-row>\n    <ion-col>\n      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()">\n        <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar\n      </button>\n    </ion-col>\n    <ion-col>\n      <button ion-button block color="danger" (click)="ActivityReject()">\n            <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar\n      </button>\n    </ion-col>\n  </ion-row>\n</ion-grid>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
@@ -691,7 +815,7 @@ var ActivityDetailPage = (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -758,7 +882,7 @@ var ConexPage = (function () {
 
 /***/ }),
 
-/***/ 114:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -846,16 +970,16 @@ var FlowDetailPage = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlowsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flow_detail_flow_detail__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flow_detail_flow_detail__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -888,6 +1012,7 @@ var FlowsPage = (function () {
     }
     FlowsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad FlowsPage');
+        this._seven.GetFaClien();
         this.getFlows();
     };
     FlowsPage.prototype.goDetailsFlow = function (flow) {
@@ -960,18 +1085,18 @@ var FlowsPage = (function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__conex_conex__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__conex_conex__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__ = __webpack_require__(295);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1011,6 +1136,8 @@ var LoginPage = (function () {
         this.submitted = false;
     }
     LoginPage.prototype.ionViewDidLoad = function () {
+    };
+    LoginPage.prototype.ionViewDidEnter = function () {
         this.verifyConnections();
         this.GetAccessTouchID();
     };
@@ -1041,9 +1168,9 @@ var LoginPage = (function () {
                 _this.touchID = true;
                 console.log('lector disponible');
             });
-            this.keychainTouchId.has("passwordCodeAssistant").then(function () {
+            this.keychainTouchId.has("password").then(function () {
                 console.log('clave disponible');
-                _this.keychainTouchId.verify("passwordCodeAssistant", "Ingrese su huella dactilar para ingresar").then(function (pass) {
+                _this.keychainTouchId.verify("password", "Ingrese su huella dactilar para ingresar").then(function (pass) {
                     console.log('password obtenido');
                     _this._user.getSecureUser().then(function (user) {
                         _this.login.username = user;
@@ -1058,7 +1185,7 @@ var LoginPage = (function () {
     LoginPage.prototype.SetAccessTouchID = function () {
         if (this.platform.is("cordova")) {
             this._user.setSecureUser(this.login.username);
-            this.keychainTouchId.save("passwordCodeAssistant", this.login.password);
+            this.keychainTouchId.save("password", this.login.password);
         }
     };
     LoginPage.prototype.VerifyTouchID = function () {
@@ -1066,7 +1193,7 @@ var LoginPage = (function () {
         if (this.platform.is("cordova")) {
             this.keychainTouchId.isAvailable().then(function () {
                 _this.touchID = true;
-                _this.keychainTouchId.has("passwordCodeAssistant").catch(function (err) {
+                _this.keychainTouchId.has("password").catch(function (err) {
                     _this.faio.show({
                         clientId: 'TouchIDConfirmation',
                         localizedReason: 'Autentícate para ingresar con tu huella'
@@ -1107,7 +1234,7 @@ var LoginPage = (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-header>\n	<ion-grid>\n<ion-row>\n	<ion-col class="loginCol">\n		<img class="logo" src="assets/imgs/logoseven.png"/>\n		<h1>CRM</h1>\n	</ion-col>\n</ion-row>\n	<form  #registerForm="ngForm" class="loginForm">\n		<ion-row>\n			<ion-col>\n					<ion-item>\n						<ion-label><ion-icon name="ios-person"></ion-icon></ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n\n					<ion-item>\n						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>\n						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n					</ion-item>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">Ingresar</button>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col text-center>\n				<div  class="fingerprint" button tappable (tap)="getAccessTouchId()" *ngIf="touchID">\n				<img src="assets/imgs/fingerprint.svg">\n			</div>\n			</ion-col>\n		</ion-row>\n	</form>\n</ion-grid>\n</ion-header>\n\n<ion-content>\n	<!-- <div class="logo">\n		<img src="assets/img/appicon.svg" alt="Ionic logo">\n	</div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-header>\n	<ion-grid>\n<ion-row>\n	<ion-col class="loginCol">\n		<img class="logo" src="assets/imgs/logoseven.png"/>\n		<h1>CRM</h1>\n	</ion-col>\n</ion-row>\n	<form  #registerForm="ngForm" class="loginForm">\n		<ion-row>\n			<ion-col>\n					<ion-item>\n						<ion-label><ion-icon name="ios-person"></ion-icon></ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n\n					<ion-item>\n						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>\n						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n					</ion-item>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">Ingresar</button>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col text-center>\n				<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID">\n				<img src="assets/imgs/fingerprint.svg">\n			</div>\n			</ion-col>\n		</ion-row>\n	</form>\n</ion-grid>\n</ion-header>\n\n<ion-content>\n	<!-- <div class="logo">\n		<img src="assets/img/appicon.svg" alt="Ionic logo">\n	</div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
@@ -1120,14 +1247,14 @@ var LoginPage = (function () {
 
 /***/ }),
 
-/***/ 117:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1166,7 +1293,7 @@ var SettingsPage = (function () {
     };
     SettingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-settings',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>Ajustes</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-list no-border>\n    <ion-list-header>\n      Perfil\n    </ion-list-header>\n    <ion-item>\n      <ion-avatar item-start *ngIf="user.Usu_Foto">\n      <img [src]="\'data:image/jpg;base64,\'+user.Usu_Foto" />\n    </ion-avatar>\n    <ion-label>Usuario</ion-label>\n    <ion-note item-end>\n     {{user.Usu_Nomb}}\n    </ion-note>\n    </ion-item>\n    <ion-list-header>\n      Cuenta\n    </ion-list-header>\n    <ion-item>\n      <ion-toggle checked="false"></ion-toggle>\n      <ion-label>\n        Notificaciones\n      </ion-label>\n      <ion-icon name=\'notifications\' item-start></ion-icon>\n    </ion-item>\n    <ion-item (click)="logOut()">\n      <ion-icon name=\'log-out\' item-start></ion-icon>\n      Salir\n      <ion-note item-end>\n      Cerrar sesión\n      </ion-note>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/,
+            selector: 'page-settings',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>Ajustes</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-list no-border>\n    <ion-list-header>\n      Perfil\n    </ion-list-header>\n    <ion-item>\n      <ion-avatar item-start *ngIf="user.Usu_Foto">\n      <img [src]="\'data:image/jpg;base64,\'+user.Usu_Foto" />\n    </ion-avatar>\n    <ion-note item-end>\n     {{user.Usu_Nomb}}\n    </ion-note>\n    </ion-item>\n    <ion-list-header>\n      Cuenta\n    </ion-list-header>\n    <ion-item>\n      <ion-toggle checked="false"></ion-toggle>\n      <ion-label>\n        Notificaciones\n      </ion-label>\n      <ion-icon name=\'notifications\' item-start></ion-icon>\n    </ion-item>\n    <ion-item (click)="logOut()">\n      <ion-icon name=\'log-out\' item-start></ion-icon>\n      Salir\n      <ion-note item-end>\n      Cerrar sesión\n      </ion-note>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], SettingsPage);
@@ -1177,7 +1304,7 @@ var SettingsPage = (function () {
 
 /***/ }),
 
-/***/ 129:
+/***/ 132:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -1190,7 +1317,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 129;
+webpackEmptyAsyncContext.id = 132;
 
 /***/ }),
 
@@ -1202,7 +1329,9 @@ webpackEmptyAsyncContext.id = 129;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_global__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_global__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1216,6 +1345,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//providers
+
+
 /*
   Generated class for the SevenProvider provider.
 
@@ -1223,9 +1355,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   and Angular DI.
 */
 var SevenProvider = (function () {
-    function SevenProvider(http, load) {
+    function SevenProvider(http, load, _storage, _userdata) {
         this.http = http;
         this.load = load;
+        this._storage = _storage;
+        this._userdata = _userdata;
         console.log('Hello SevenProvider Provider');
     }
     SevenProvider.prototype.getFlows = function (usu_codi) {
@@ -1237,8 +1371,26 @@ var SevenProvider = (function () {
     SevenProvider.prototype.ApproveFlow = function (flujo) {
         return this.postData(flujo, 'Flujos/FlujosAdm');
     };
-    SevenProvider.prototype.GetFaClien = function () {
-        return this.getData('Actividades/cargarClientesCrm');
+    SevenProvider.prototype.GetFaClien = function (refresh) {
+        var _this = this;
+        if (refresh === void 0) { refresh = false; }
+        return this._storage.get("faClien").then(function (value) {
+            console.log(value);
+            if (value != undefined && !refresh) {
+                console.log("speakers leídos de memoria");
+                return value;
+            }
+            return _this.getData('Actividades/cargarClientesCrm')
+                .then(function (data) {
+                _this._userdata.setFaClien(data);
+                console.log("clientes leídos de bd");
+                return data;
+            })
+                .catch(function (error) {
+                return undefined;
+            });
+        });
+        //
     };
     SevenProvider.prototype.GetActivities = function () {
         return this.getData('Actividades/ListarActividades');
@@ -1323,7 +1475,7 @@ var SevenProvider = (function () {
     };
     SevenProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], SevenProvider);
     return SevenProvider;
 }());
@@ -1332,60 +1484,68 @@ var SevenProvider = (function () {
 
 /***/ }),
 
-/***/ 171:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/activities-search/activities-search.module": [
-		437,
-		12
+		440,
+		14
 	],
 	"../pages/activities/activities.module": [
-		438,
-		11
+		441,
+		13
 	],
 	"../pages/activity-detail/activity-detail.module": [
-		439,
-		10
+		442,
+		12
+	],
+	"../pages/client-detail/client-detail.module": [
+		443,
+		11
 	],
 	"../pages/conex/conex.module": [
-		440,
+		444,
+		10
+	],
+	"../pages/contact-detail/contact-detail.module": [
+		445,
 		9
 	],
 	"../pages/flow-detail/flow-detail.module": [
-		441,
+		446,
 		8
 	],
 	"../pages/flows/flows.module": [
-		442,
+		447,
 		7
 	],
 	"../pages/invited/invited.module": [
-		443,
+		448,
 		6
 	],
 	"../pages/login/login.module": [
-		444,
+		449,
 		5
 	],
 	"../pages/lupa/lupa.module": [
-		445,
+		450,
 		4
 	],
 	"../pages/new-event/new-event.module": [
-		446,
+		451,
 		3
 	],
 	"../pages/settings/settings.module": [
-		447,
+		452,
 		2
 	],
 	"../pages/stages-search/stages-search.module": [
-		448,
+		453,
 		1
 	],
 	"../pages/touch-id/touch-id.module": [
-		449,
+		454,
 		0
 	]
 };
@@ -1400,19 +1560,19 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 171;
+webpackAsyncContext.id = 174;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 32:
+/***/ 23:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1516,6 +1676,10 @@ var UserDataProvider = (function () {
             return value;
         });
     };
+    UserDataProvider.prototype.setFaClien = function (data) {
+        console.log("faclien almacenados en memoria");
+        this.storage.set("faClien", data);
+    };
     UserDataProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */]])
@@ -1527,15 +1691,15 @@ var UserDataProvider = (function () {
 
 /***/ }),
 
-/***/ 335:
+/***/ 337:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings_settings__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flows_flows__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activities_activities__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings_settings__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flows_flows__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activities_activities__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1567,7 +1731,7 @@ var TabsPage = (function () {
 
 /***/ }),
 
-/***/ 336:
+/***/ 338:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1612,13 +1776,13 @@ var TouchIdPage = (function () {
 
 /***/ }),
 
-/***/ 337:
+/***/ 339:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(361);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1626,7 +1790,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 359:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1634,35 +1798,38 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(333);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(334);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(423);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(434);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_login_login__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_stages_search_stages_search__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_login_login__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_stages_search_stages_search__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_user_data_user_data__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipes_flows_flows__ = __webpack_require__(436);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ionic_native_keychain_touch_id__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ionic_native_fingerprint_aio__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(338);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_contact_detail_contact_detail__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_client_detail_client_detail__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_seven_seven__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_user_data_user_data__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipes_flows_flows__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pipes_digital_date_digital_date__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__ionic_native_keychain_touch_id__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ionic_native_fingerprint_aio__ = __webpack_require__(295);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1698,10 +1865,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 //providers
 
 
 //Pipes
+
 
 //Plugins
 
@@ -1721,7 +1891,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__["a" /* FlowsPage */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__["a" /* ActivitiesPage */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__["a" /* FlowDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_29__pipes_flows_flows__["a" /* FlowsPipe */],
+                __WEBPACK_IMPORTED_MODULE_31__pipes_flows_flows__["a" /* FlowsPipe */],
+                __WEBPACK_IMPORTED_MODULE_32__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */],
                 __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__["a" /* NewEventPage */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_login_login__["a" /* LoginPage */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__["a" /* LupaPage */],
@@ -1730,7 +1901,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__["a" /* ActivityDetailPage */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__["a" /* InvitedPage */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__["a" /* ConexPage */],
-                __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__["a" /* TouchIdPage */]
+                __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__["a" /* TouchIdPage */],
+                __WEBPACK_IMPORTED_MODULE_27__pages_contact_detail_contact_detail__["a" /* ContactDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_28__pages_client_detail_client_detail__["a" /* ClientDetailPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -1739,7 +1912,9 @@ var AppModule = (function () {
                         { loadChildren: '../pages/activities-search/activities-search.module#ActivitiesSearchPageModule', name: 'ActivitiesSearchPage', segment: 'activities-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/activities/activities.module#ActivitiesPageModule', name: 'ActivitiesPage', segment: 'activities', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/activity-detail/activity-detail.module#ActivityDetailPageModule', name: 'ActivityDetailPage', segment: 'activity-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/client-detail/client-detail.module#ClientDetailPageModule', name: 'ClientDetailPage', segment: 'client-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/conex/conex.module#ConexPageModule', name: 'ConexPage', segment: 'conex', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
@@ -1774,17 +1949,19 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__["a" /* ActivityDetailPage */],
                 __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__["a" /* InvitedPage */],
                 __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__["a" /* ConexPage */],
-                __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__["a" /* TouchIdPage */]
+                __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__["a" /* TouchIdPage */],
+                __WEBPACK_IMPORTED_MODULE_27__pages_contact_detail_contact_detail__["a" /* ContactDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_28__pages_client_detail_client_detail__["a" /* ClientDetailPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__["a" /* Calendar */],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_27__providers_seven_seven__["a" /* SevenProvider */],
-                __WEBPACK_IMPORTED_MODULE_28__providers_user_data_user_data__["a" /* UserDataProvider */],
-                __WEBPACK_IMPORTED_MODULE_30__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
-                __WEBPACK_IMPORTED_MODULE_31__ionic_native_fingerprint_aio__["a" /* FingerprintAIO */]
+                __WEBPACK_IMPORTED_MODULE_29__providers_seven_seven__["a" /* SevenProvider */],
+                __WEBPACK_IMPORTED_MODULE_30__providers_user_data_user_data__["a" /* UserDataProvider */],
+                __WEBPACK_IMPORTED_MODULE_33__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
+                __WEBPACK_IMPORTED_MODULE_34__ionic_native_fingerprint_aio__["a" /* FingerprintAIO */]
             ]
         })
     ], AppModule);
@@ -1795,7 +1972,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 389:
+/***/ 391:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1812,246 +1989,246 @@ var Globals = (function () {
 
 /***/ }),
 
-/***/ 391:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 172,
-	"./af.js": 172,
-	"./ar": 173,
-	"./ar-dz": 174,
-	"./ar-dz.js": 174,
-	"./ar-kw": 175,
-	"./ar-kw.js": 175,
-	"./ar-ly": 176,
-	"./ar-ly.js": 176,
-	"./ar-ma": 177,
-	"./ar-ma.js": 177,
-	"./ar-sa": 178,
-	"./ar-sa.js": 178,
-	"./ar-tn": 179,
-	"./ar-tn.js": 179,
-	"./ar.js": 173,
-	"./az": 180,
-	"./az.js": 180,
-	"./be": 181,
-	"./be.js": 181,
-	"./bg": 182,
-	"./bg.js": 182,
-	"./bm": 183,
-	"./bm.js": 183,
-	"./bn": 184,
-	"./bn.js": 184,
-	"./bo": 185,
-	"./bo.js": 185,
-	"./br": 186,
-	"./br.js": 186,
-	"./bs": 187,
-	"./bs.js": 187,
-	"./ca": 188,
-	"./ca.js": 188,
-	"./cs": 189,
-	"./cs.js": 189,
-	"./cv": 190,
-	"./cv.js": 190,
-	"./cy": 191,
-	"./cy.js": 191,
-	"./da": 192,
-	"./da.js": 192,
-	"./de": 193,
-	"./de-at": 194,
-	"./de-at.js": 194,
-	"./de-ch": 195,
-	"./de-ch.js": 195,
-	"./de.js": 193,
-	"./dv": 196,
-	"./dv.js": 196,
-	"./el": 197,
-	"./el.js": 197,
-	"./en-au": 198,
-	"./en-au.js": 198,
-	"./en-ca": 199,
-	"./en-ca.js": 199,
-	"./en-gb": 200,
-	"./en-gb.js": 200,
-	"./en-ie": 201,
-	"./en-ie.js": 201,
-	"./en-nz": 202,
-	"./en-nz.js": 202,
-	"./eo": 203,
-	"./eo.js": 203,
-	"./es": 204,
-	"./es-do": 205,
-	"./es-do.js": 205,
-	"./es-us": 206,
-	"./es-us.js": 206,
-	"./es.js": 204,
-	"./et": 207,
-	"./et.js": 207,
-	"./eu": 208,
-	"./eu.js": 208,
-	"./fa": 209,
-	"./fa.js": 209,
-	"./fi": 210,
-	"./fi.js": 210,
-	"./fo": 211,
-	"./fo.js": 211,
-	"./fr": 212,
-	"./fr-ca": 213,
-	"./fr-ca.js": 213,
-	"./fr-ch": 214,
-	"./fr-ch.js": 214,
-	"./fr.js": 212,
-	"./fy": 215,
-	"./fy.js": 215,
-	"./gd": 216,
-	"./gd.js": 216,
-	"./gl": 217,
-	"./gl.js": 217,
-	"./gom-latn": 218,
-	"./gom-latn.js": 218,
-	"./gu": 219,
-	"./gu.js": 219,
-	"./he": 220,
-	"./he.js": 220,
-	"./hi": 221,
-	"./hi.js": 221,
-	"./hr": 222,
-	"./hr.js": 222,
-	"./hu": 223,
-	"./hu.js": 223,
-	"./hy-am": 224,
-	"./hy-am.js": 224,
-	"./id": 225,
-	"./id.js": 225,
-	"./is": 226,
-	"./is.js": 226,
-	"./it": 227,
-	"./it.js": 227,
-	"./ja": 228,
-	"./ja.js": 228,
-	"./jv": 229,
-	"./jv.js": 229,
-	"./ka": 230,
-	"./ka.js": 230,
-	"./kk": 231,
-	"./kk.js": 231,
-	"./km": 232,
-	"./km.js": 232,
-	"./kn": 233,
-	"./kn.js": 233,
-	"./ko": 234,
-	"./ko.js": 234,
-	"./ky": 235,
-	"./ky.js": 235,
-	"./lb": 236,
-	"./lb.js": 236,
-	"./lo": 237,
-	"./lo.js": 237,
-	"./lt": 238,
-	"./lt.js": 238,
-	"./lv": 239,
-	"./lv.js": 239,
-	"./me": 240,
-	"./me.js": 240,
-	"./mi": 241,
-	"./mi.js": 241,
-	"./mk": 242,
-	"./mk.js": 242,
-	"./ml": 243,
-	"./ml.js": 243,
-	"./mr": 244,
-	"./mr.js": 244,
-	"./ms": 245,
-	"./ms-my": 246,
-	"./ms-my.js": 246,
-	"./ms.js": 245,
-	"./my": 247,
-	"./my.js": 247,
-	"./nb": 248,
-	"./nb.js": 248,
-	"./ne": 249,
-	"./ne.js": 249,
-	"./nl": 250,
-	"./nl-be": 251,
-	"./nl-be.js": 251,
-	"./nl.js": 250,
-	"./nn": 252,
-	"./nn.js": 252,
-	"./pa-in": 253,
-	"./pa-in.js": 253,
-	"./pl": 254,
-	"./pl.js": 254,
-	"./pt": 255,
-	"./pt-br": 256,
-	"./pt-br.js": 256,
-	"./pt.js": 255,
-	"./ro": 257,
-	"./ro.js": 257,
-	"./ru": 258,
-	"./ru.js": 258,
-	"./sd": 259,
-	"./sd.js": 259,
-	"./se": 260,
-	"./se.js": 260,
-	"./si": 261,
-	"./si.js": 261,
-	"./sk": 262,
-	"./sk.js": 262,
-	"./sl": 263,
-	"./sl.js": 263,
-	"./sq": 264,
-	"./sq.js": 264,
-	"./sr": 265,
-	"./sr-cyrl": 266,
-	"./sr-cyrl.js": 266,
-	"./sr.js": 265,
-	"./ss": 267,
-	"./ss.js": 267,
-	"./sv": 268,
-	"./sv.js": 268,
-	"./sw": 269,
-	"./sw.js": 269,
-	"./ta": 270,
-	"./ta.js": 270,
-	"./te": 271,
-	"./te.js": 271,
-	"./tet": 272,
-	"./tet.js": 272,
-	"./th": 273,
-	"./th.js": 273,
-	"./tl-ph": 274,
-	"./tl-ph.js": 274,
-	"./tlh": 275,
-	"./tlh.js": 275,
-	"./tr": 276,
-	"./tr.js": 276,
-	"./tzl": 277,
-	"./tzl.js": 277,
-	"./tzm": 278,
-	"./tzm-latn": 279,
-	"./tzm-latn.js": 279,
-	"./tzm.js": 278,
-	"./uk": 280,
-	"./uk.js": 280,
-	"./ur": 281,
-	"./ur.js": 281,
-	"./uz": 282,
-	"./uz-latn": 283,
-	"./uz-latn.js": 283,
-	"./uz.js": 282,
-	"./vi": 284,
-	"./vi.js": 284,
-	"./x-pseudo": 285,
-	"./x-pseudo.js": 285,
-	"./yo": 286,
-	"./yo.js": 286,
-	"./zh-cn": 287,
-	"./zh-cn.js": 287,
-	"./zh-hk": 288,
-	"./zh-hk.js": 288,
-	"./zh-tw": 289,
-	"./zh-tw.js": 289
+	"./af": 175,
+	"./af.js": 175,
+	"./ar": 176,
+	"./ar-dz": 177,
+	"./ar-dz.js": 177,
+	"./ar-kw": 178,
+	"./ar-kw.js": 178,
+	"./ar-ly": 179,
+	"./ar-ly.js": 179,
+	"./ar-ma": 180,
+	"./ar-ma.js": 180,
+	"./ar-sa": 181,
+	"./ar-sa.js": 181,
+	"./ar-tn": 182,
+	"./ar-tn.js": 182,
+	"./ar.js": 176,
+	"./az": 183,
+	"./az.js": 183,
+	"./be": 184,
+	"./be.js": 184,
+	"./bg": 185,
+	"./bg.js": 185,
+	"./bm": 186,
+	"./bm.js": 186,
+	"./bn": 187,
+	"./bn.js": 187,
+	"./bo": 188,
+	"./bo.js": 188,
+	"./br": 189,
+	"./br.js": 189,
+	"./bs": 190,
+	"./bs.js": 190,
+	"./ca": 191,
+	"./ca.js": 191,
+	"./cs": 192,
+	"./cs.js": 192,
+	"./cv": 193,
+	"./cv.js": 193,
+	"./cy": 194,
+	"./cy.js": 194,
+	"./da": 195,
+	"./da.js": 195,
+	"./de": 196,
+	"./de-at": 197,
+	"./de-at.js": 197,
+	"./de-ch": 198,
+	"./de-ch.js": 198,
+	"./de.js": 196,
+	"./dv": 199,
+	"./dv.js": 199,
+	"./el": 200,
+	"./el.js": 200,
+	"./en-au": 201,
+	"./en-au.js": 201,
+	"./en-ca": 202,
+	"./en-ca.js": 202,
+	"./en-gb": 203,
+	"./en-gb.js": 203,
+	"./en-ie": 204,
+	"./en-ie.js": 204,
+	"./en-nz": 205,
+	"./en-nz.js": 205,
+	"./eo": 206,
+	"./eo.js": 206,
+	"./es": 207,
+	"./es-do": 208,
+	"./es-do.js": 208,
+	"./es-us": 209,
+	"./es-us.js": 209,
+	"./es.js": 207,
+	"./et": 210,
+	"./et.js": 210,
+	"./eu": 211,
+	"./eu.js": 211,
+	"./fa": 212,
+	"./fa.js": 212,
+	"./fi": 213,
+	"./fi.js": 213,
+	"./fo": 214,
+	"./fo.js": 214,
+	"./fr": 215,
+	"./fr-ca": 216,
+	"./fr-ca.js": 216,
+	"./fr-ch": 217,
+	"./fr-ch.js": 217,
+	"./fr.js": 215,
+	"./fy": 218,
+	"./fy.js": 218,
+	"./gd": 219,
+	"./gd.js": 219,
+	"./gl": 220,
+	"./gl.js": 220,
+	"./gom-latn": 221,
+	"./gom-latn.js": 221,
+	"./gu": 222,
+	"./gu.js": 222,
+	"./he": 223,
+	"./he.js": 223,
+	"./hi": 224,
+	"./hi.js": 224,
+	"./hr": 225,
+	"./hr.js": 225,
+	"./hu": 226,
+	"./hu.js": 226,
+	"./hy-am": 227,
+	"./hy-am.js": 227,
+	"./id": 228,
+	"./id.js": 228,
+	"./is": 229,
+	"./is.js": 229,
+	"./it": 230,
+	"./it.js": 230,
+	"./ja": 231,
+	"./ja.js": 231,
+	"./jv": 232,
+	"./jv.js": 232,
+	"./ka": 233,
+	"./ka.js": 233,
+	"./kk": 234,
+	"./kk.js": 234,
+	"./km": 235,
+	"./km.js": 235,
+	"./kn": 236,
+	"./kn.js": 236,
+	"./ko": 237,
+	"./ko.js": 237,
+	"./ky": 238,
+	"./ky.js": 238,
+	"./lb": 239,
+	"./lb.js": 239,
+	"./lo": 240,
+	"./lo.js": 240,
+	"./lt": 241,
+	"./lt.js": 241,
+	"./lv": 242,
+	"./lv.js": 242,
+	"./me": 243,
+	"./me.js": 243,
+	"./mi": 244,
+	"./mi.js": 244,
+	"./mk": 245,
+	"./mk.js": 245,
+	"./ml": 246,
+	"./ml.js": 246,
+	"./mr": 247,
+	"./mr.js": 247,
+	"./ms": 248,
+	"./ms-my": 249,
+	"./ms-my.js": 249,
+	"./ms.js": 248,
+	"./my": 250,
+	"./my.js": 250,
+	"./nb": 251,
+	"./nb.js": 251,
+	"./ne": 252,
+	"./ne.js": 252,
+	"./nl": 253,
+	"./nl-be": 254,
+	"./nl-be.js": 254,
+	"./nl.js": 253,
+	"./nn": 255,
+	"./nn.js": 255,
+	"./pa-in": 256,
+	"./pa-in.js": 256,
+	"./pl": 257,
+	"./pl.js": 257,
+	"./pt": 258,
+	"./pt-br": 259,
+	"./pt-br.js": 259,
+	"./pt.js": 258,
+	"./ro": 260,
+	"./ro.js": 260,
+	"./ru": 261,
+	"./ru.js": 261,
+	"./sd": 262,
+	"./sd.js": 262,
+	"./se": 263,
+	"./se.js": 263,
+	"./si": 264,
+	"./si.js": 264,
+	"./sk": 265,
+	"./sk.js": 265,
+	"./sl": 266,
+	"./sl.js": 266,
+	"./sq": 267,
+	"./sq.js": 267,
+	"./sr": 268,
+	"./sr-cyrl": 269,
+	"./sr-cyrl.js": 269,
+	"./sr.js": 268,
+	"./ss": 270,
+	"./ss.js": 270,
+	"./sv": 271,
+	"./sv.js": 271,
+	"./sw": 272,
+	"./sw.js": 272,
+	"./ta": 273,
+	"./ta.js": 273,
+	"./te": 274,
+	"./te.js": 274,
+	"./tet": 275,
+	"./tet.js": 275,
+	"./th": 276,
+	"./th.js": 276,
+	"./tl-ph": 277,
+	"./tl-ph.js": 277,
+	"./tlh": 278,
+	"./tlh.js": 278,
+	"./tr": 279,
+	"./tr.js": 279,
+	"./tzl": 280,
+	"./tzl.js": 280,
+	"./tzm": 281,
+	"./tzm-latn": 282,
+	"./tzm-latn.js": 282,
+	"./tzm.js": 281,
+	"./uk": 283,
+	"./uk.js": 283,
+	"./ur": 284,
+	"./ur.js": 284,
+	"./uz": 285,
+	"./uz-latn": 286,
+	"./uz-latn.js": 286,
+	"./uz.js": 285,
+	"./vi": 287,
+	"./vi.js": 287,
+	"./x-pseudo": 288,
+	"./x-pseudo.js": 288,
+	"./yo": 289,
+	"./yo.js": 289,
+	"./zh-cn": 290,
+	"./zh-cn.js": 290,
+	"./zh-hk": 291,
+	"./zh-hk.js": 291,
+	"./zh-tw": 292,
+	"./zh-tw.js": 292
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2067,21 +2244,22 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 391;
+webpackContext.id = 396;
 
 /***/ }),
 
-/***/ 420:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(333);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(334);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2097,20 +2275,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//Providers
+
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, events, toast) {
+    function MyApp(platform, statusBar, splashScreen, events, toast, _userdata) {
         var _this = this;
         this.events = events;
         this.toast = toast;
+        this._userdata = _userdata;
         this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
-            _this.listenToLoginEvents();
+            _this._userdata.hasLoggedIn().then(function (hasLoggedIn) {
+                //  this.enableMenu(true);
+                _this.listenToLoginEvents();
+                _this.validLogin();
+            });
         });
     }
+    MyApp.prototype.validLogin = function () {
+        var _this = this;
+        this._userdata.hasLoggedIn().then(function (log) {
+            if (log) {
+                console.log('entro logueado');
+                _this._userdata.getUsername().then(function (user) {
+                    _this._userdata.getUserInfo().then(function (info) {
+                        _this._userdata.login(user, info);
+                    });
+                });
+            }
+        });
+    };
     MyApp.prototype.listenToLoginEvents = function () {
         var _this = this;
         this.events.subscribe('user:logout', function () {
@@ -2118,6 +2316,7 @@ var MyApp = (function () {
             _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_5__pages_login_login__["a" /* LoginPage */]);
         });
         this.events.subscribe('user:login', function () {
+            console.log('refirige');
             _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */]);
         });
     };
@@ -2134,7 +2333,8 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], MyApp);
     return MyApp;
 }());
@@ -2143,14 +2343,14 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 426:
+/***/ 428:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 433:
+/***/ 435:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2185,7 +2385,7 @@ var AboutPage = (function () {
 
 /***/ }),
 
-/***/ 434:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2220,7 +2420,7 @@ var ContactPage = (function () {
 
 /***/ }),
 
-/***/ 435:
+/***/ 437:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2255,7 +2455,7 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 436:
+/***/ 438:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2304,6 +2504,54 @@ var FlowsPipe = (function () {
 }());
 
 //# sourceMappingURL=flows.js.map
+
+/***/ }),
+
+/***/ 439:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DigitalDatePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+/**
+ * Generated class for the DigitalDatePipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var DigitalDatePipe = (function () {
+    function DigitalDatePipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    DigitalDatePipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        value = __WEBPACK_IMPORTED_MODULE_1_moment__(value).format("HH:mm:ss a");
+        console.log(value);
+        return value;
+    };
+    DigitalDatePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
+            name: 'digitalDate',
+        })
+    ], DigitalDatePipe);
+    return DigitalDatePipe;
+}());
+
+//# sourceMappingURL=digital-date.js.map
 
 /***/ }),
 
@@ -2391,5 +2639,5 @@ var InvitedPage = (function () {
 
 /***/ })
 
-},[337]);
+},[339]);
 //# sourceMappingURL=main.js.map

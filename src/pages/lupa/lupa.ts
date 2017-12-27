@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController ,LoadingController} from 'ionic-angular';
 import {SevenProvider} from '../../providers/seven/seven';
 /**
  * Generated class for the LupaPage page.
@@ -17,22 +17,31 @@ export class LupaPage {
   bdData:any;
   clients:any;
   clientesList:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private load:LoadingController, private viewCtrl:ViewController) {
+  }
+terminado(){
+  console.log('termino');
+}
+  ionViewDidLoad() {
+     console.log('cargando clientes');
+    let loading = this.load.create({
+    content:'Cargando...'
+    });
+    loading.present();
+    console.log('ionViewDidLoad LupaPage');
+    this.loadClients().then(()=>{
+
+      loading.dismiss();
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LupaPage');
-    this.loadClients();
-  }
   loadClients(){
-  //   let loading = this.load.create({
-  //   content:'Cargando...'
-  //   });
-  // loading.present();
-    this._seven.GetFaClien().then(data=>{
+
+  return  this._seven.GetFaClien().then(data=>{
       this.clients = data;
         this.initializeItems();
-        // loading.dismiss();
+          console.log('cargado');
+
     }).catch(err=>{
         // loading.dismiss();
     })

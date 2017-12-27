@@ -81,5 +81,9 @@ export class UserDataProvider {
       return value;
     })
   }
+  setFaClien(data:any):void{
+    console.log("faclien almacenados en memoria");
+    this.storage.set("faClien",data)
+  }
 
 }

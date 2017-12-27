@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 439:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActivityDetailPageModule", function() { return ActivityDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConexPageModule", function() { return ConexPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__activity_detail__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__conex__ = __webpack_require__(116);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ActivityDetailPageModule = (function () {
-    function ActivityDetailPageModule() {
+var ConexPageModule = (function () {
+    function ConexPageModule() {
     }
-    ActivityDetailPageModule = __decorate([
+    ConexPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__activity_detail__["a" /* ActivityDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__conex__["a" /* ConexPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__activity_detail__["a" /* ActivityDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__conex__["a" /* ConexPage */]),
             ],
         })
-    ], ActivityDetailPageModule);
-    return ActivityDetailPageModule;
+    ], ConexPageModule);
+    return ConexPageModule;
 }());
 
-//# sourceMappingURL=activity-detail.module.js.map
+//# sourceMappingURL=conex.module.js.map
 
 /***/ })
 

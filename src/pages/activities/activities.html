@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>{{viewTitle}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addEvent()">
+      <button ion-button icon-only  class="BigButton"(click)="addEvent()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -42,7 +42,7 @@
                 <button ion-item>
 
                  <h3><b>{{agend.AGE_ASUN}}</b></h3>
-                 <h4>{{agend.AGE_FINI | date: 'hh:mm:ss a'}} - {{agend.AGE_FFIN | date: 'hh:mm:ss a'}}</h4>
+                 <h4>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</h4>
                  <p text-wrap> {{agend.PRO_NOMB}} - {{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.ACT_NOMB}}</p>
                   <ion-icon name="clock" item-start></ion-icon>
                  </button>
