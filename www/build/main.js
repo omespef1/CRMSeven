@@ -818,6 +818,9 @@ var ContactDetailPage = (function () {
                 modal.present();
                 //Now we know we can send
             }
+            else {
+                console.log('cordova no disponble');
+            }
         });
     };
     ContactDetailPage = __decorate([
@@ -1575,43 +1578,43 @@ var map = {
 		10
 	],
 	"../pages/email/email.module": [
-		450,
+		459,
 		9
 	],
 	"../pages/flow-detail/flow-detail.module": [
-		451,
+		450,
 		8
 	],
 	"../pages/flows/flows.module": [
-		452,
+		451,
 		7
 	],
 	"../pages/invited/invited.module": [
-		453,
+		452,
 		6
 	],
 	"../pages/login/login.module": [
-		454,
+		453,
 		5
 	],
 	"../pages/lupa/lupa.module": [
-		455,
+		454,
 		4
 	],
 	"../pages/new-event/new-event.module": [
-		456,
+		455,
 		3
 	],
 	"../pages/settings/settings.module": [
-		457,
+		456,
 		2
 	],
 	"../pages/stages-search/stages-search.module": [
-		458,
+		457,
 		1
 	],
 	"../pages/touch-id/touch-id.module": [
-		459,
+		458,
 		0
 	]
 };
@@ -1991,7 +1994,6 @@ var AppModule = (function () {
                         { loadChildren: '../pages/client-detail/client-detail.module#ClientDetailPageModule', name: 'ClientDetailPage', segment: 'client-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/conex/conex.module#ConexPageModule', name: 'ConexPage', segment: 'conex', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/email/email.module#EmailPageModule', name: 'EmailPage', segment: 'email', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
@@ -2000,7 +2002,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/email/email.module#EmailPageModule', name: 'EmailPage', segment: 'email', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */],

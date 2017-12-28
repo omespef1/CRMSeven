@@ -6,6 +6,8 @@ import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
 //PipesModule
 import{FlowsPipe} from '../../pipes/flows/flows';
+//pages
+import {FlowsFilterPage} from '../flows-filter/flows-filter';
 /**
  * Generated class for the FlowsPage page.
  *
@@ -89,4 +91,15 @@ export class FlowsPage {
      duration: 3000
    }).present();
   }
+  presentFilter() {
+  let modal = this.modal.create(FlowsFilterPage, this.flowList);
+  modal.present();
+
+  modal.onWillDismiss((data: any[]) => {
+    if (data) {
+      this.flowList = data;
+    }
+  });
+
+}
 }

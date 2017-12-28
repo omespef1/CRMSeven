@@ -42,7 +42,9 @@ contact:any;
   let modal = this.modalCtrl.create(EmailPage,{'email':email});
   modal.present();
    //Now we know we can send
- }
+ }else{
+ console.log('cordova no disponble');
+}
 });
   }
 
