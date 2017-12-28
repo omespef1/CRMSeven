@@ -30,15 +30,19 @@ import {ConexPage} from '../pages/conex/conex';
 import {TouchIdPage} from '../pages/touch-id/touch-id';
 import {ContactDetailPage} from '../pages/contact-detail/contact-detail';
 import {ClientDetailPage} from '../pages/client-detail/client-detail';
+import {EmailPage} from '../pages/email/email';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
+
 //Pipes
 import {FlowsPipe} from '../pipes/flows/flows';
 import {DigitalDatePipe} from '../pipes/digital-date/digital-date';
 //Plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 @NgModule({
   declarations: [
     MyApp,
@@ -62,7 +66,8 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ConexPage,
     TouchIdPage,
     ContactDetailPage,
-    ClientDetailPage
+    ClientDetailPage,
+    EmailPage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +97,8 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     ConexPage,
     TouchIdPage,
     ContactDetailPage,
-    ClientDetailPage
+    ClientDetailPage,
+    EmailPage
   ],
   providers: [
     StatusBar,
@@ -102,7 +108,9 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
     SevenProvider,
     UserDataProvider,
     KeychainTouchId,
-    FingerprintAIO
+    FingerprintAIO,
+    CallNumber,
+    EmailComposer
   ]
 })
 export class AppModule {}

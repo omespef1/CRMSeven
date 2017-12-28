@@ -35,7 +35,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-note item-end>
+      <ion-note item-end (click)="openMail(contact.CON_EMAI)">
        {{contact.CON_EMAI}}
       </ion-note>
     </ion-item>
@@ -47,7 +47,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Celular</ion-label>
-      <ion-note item-end>
+      <ion-note item-end *ngIf="contact.CON_CELU" (clikc)="callContact(contact.CON_CELU)">
        {{contact.CON_CELU}}
       </ion-note>
     </ion-item>

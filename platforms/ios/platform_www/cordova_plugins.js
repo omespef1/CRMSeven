@@ -64,6 +64,23 @@ module.exports = [
       "cordova.plugins.Keyboard"
     ],
     "runs": true
+  },
+  {
+    "id": "mx.ferreyra.callnumber.CallNumber",
+    "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
+    "pluginId": "mx.ferreyra.callnumber",
+    "clobbers": [
+      "call"
+    ]
+  },
+  {
+    "id": "cordova-plugin-email-composer.EmailComposer",
+    "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+    "pluginId": "cordova-plugin-email-composer",
+    "clobbers": [
+      "cordova.plugins.email",
+      "plugin.email"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -79,7 +96,9 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.1.2",
   "ionic-plugin-keyboard": "2.2.1",
-  "cordova-plugin-compat": "1.2.0"
+  "cordova-plugin-compat": "1.2.0",
+  "mx.ferreyra.callnumber": "0.0.2",
+  "cordova-plugin-email-composer": "0.8.11"
 };
 // BOTTOM OF METADATA
 });

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -48,6 +47,10 @@
 		F7DDCBC333C84B5EB58E5B88 /* GCDWebServerErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65BC48EEA84895B6890E30 /* GCDWebServerErrorResponse.m */; };
 		FB8CC726FE484A05BAA0971E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D90115A59A14749A53DECCE /* LocalAuthentication.framework */; };
 		FC93BC27E1CA4CF2AE82E4C1 /* PSPDFThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 860D8847C1B94295AC61E284 /* PSPDFThreadSafeMutableDictionary.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		647F00CEDBFA4E1594497D17 /* CFCallNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 87B940FC217C445597E2F022 /* CFCallNumber.m */; };
+		AD469E1C63304B6591A8FD44 /* APPEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = A65C7665CF8241A3A7BC9FDA /* APPEmailComposer.m */; };
+		5E3C190DD13E4242A02C14E9 /* APPEmailComposerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = F65A753EA12F46F2B89B9BAB /* APPEmailComposerImpl.m */; };
+		8EC5FF2547CB41078AF7655A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391C21FC8E6F450DA14FB045 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +160,13 @@
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F0FA9022AE77448189FBF728 /* GCDWebServerStreamedResponse.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GCDWebServerStreamedResponse.h; path = "cordova-plugin-ionic-webview/GCDWebServerStreamedResponse.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = SevenCRM/config.xml; sourceTree = "<group>"; };
+		87B940FC217C445597E2F022 /* CFCallNumber.m */ = {isa = PBXFileReference; name = "CFCallNumber.m"; path = "mx.ferreyra.callnumber/CFCallNumber.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		534F8894DD9B44D788E9725C /* CFCallNumber.h */ = {isa = PBXFileReference; name = "CFCallNumber.h"; path = "mx.ferreyra.callnumber/CFCallNumber.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		A65C7665CF8241A3A7BC9FDA /* APPEmailComposer.m */ = {isa = PBXFileReference; name = "APPEmailComposer.m"; path = "cordova-plugin-email-composer/APPEmailComposer.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		F65A753EA12F46F2B89B9BAB /* APPEmailComposerImpl.m */ = {isa = PBXFileReference; name = "APPEmailComposerImpl.m"; path = "cordova-plugin-email-composer/APPEmailComposerImpl.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		14761690BDD6421E8DC96C57 /* APPEmailComposer.h */ = {isa = PBXFileReference; name = "APPEmailComposer.h"; path = "cordova-plugin-email-composer/APPEmailComposer.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		FC6175C674B5489FACB620E8 /* APPEmailComposerImpl.h */ = {isa = PBXFileReference; name = "APPEmailComposerImpl.h"; path = "cordova-plugin-email-composer/APPEmailComposerImpl.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		391C21FC8E6F450DA14FB045 /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +182,7 @@
 				6F3E6DB0F31D454CA85A4BDF /* Security.framework in Frameworks */,
 				B2B9CC7EA92B4536A8EDCB91 /* Foundation.framework in Frameworks */,
 				FB8CC726FE484A05BAA0971E /* LocalAuthentication.framework in Frameworks */,
+				8EC5FF2547CB41078AF7655A /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +260,7 @@
 				2EEDBC5DD350430DB5949072 /* Security.framework */,
 				1E292C3EF5F14D4B9CDD2A50 /* Foundation.framework */,
 				1D90115A59A14749A53DECCE /* LocalAuthentication.framework */,
+				391C21FC8E6F450DA14FB045 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -330,6 +342,12 @@
 				C03DE4C184C0473EB6A04207 /* sqlite3.h */,
 				E681A6D0DD7841778DE00E62 /* IonicKeyboard.m */,
 				9953C3C069DE4EEFBBA83DA6 /* IonicKeyboard.h */,
+				87B940FC217C445597E2F022 /* CFCallNumber.m */,
+				534F8894DD9B44D788E9725C /* CFCallNumber.h */,
+				A65C7665CF8241A3A7BC9FDA /* APPEmailComposer.m */,
+				F65A753EA12F46F2B89B9BAB /* APPEmailComposerImpl.m */,
+				14761690BDD6421E8DC96C57 /* APPEmailComposer.h */,
+				FC6175C674B5489FACB620E8 /* APPEmailComposerImpl.h */,
 			);
 			name = Plugins;
 			path = SevenCRM/Plugins;
@@ -485,6 +503,9 @@
 				FC93BC27E1CA4CF2AE82E4C1 /* PSPDFThreadSafeMutableDictionary.m in Sources */,
 				7FD7F3926101445BBB2DDDCE /* sqlite3.c in Sources */,
 				3C7F6270440E4BE2A5E62C58 /* IonicKeyboard.m in Sources */,
+				647F00CEDBFA4E1594497D17 /* CFCallNumber.m in Sources */,
+				AD469E1C63304B6591A8FD44 /* APPEmailComposer.m in Sources */,
+				5E3C190DD13E4242A02C14E9 /* APPEmailComposerImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
