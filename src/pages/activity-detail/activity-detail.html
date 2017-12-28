@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>{{activity.AGE_ASUN}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+      <button class="BigButton" ion-button icon-only (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -32,14 +32,14 @@
     </ion-item>
   <ion-item>
     <ion-label>Cliente</ion-label>
-    <ion-note item-end>
+    <ion-note item-end (click)="showClient(activity)">
     {{activity.PRO_NOMB}}
     </ion-note>
    </ion-item>
    <ion-item>
      <ion-label>Contacto</ion-label>
-     <ion-note item-end>
-     {{activity.CON_NOMB}}  {{activity.CON_APEL}}
+     <ion-note   item-end class="wrap-text"  (click)="showContact(activity)">
+     {{activity.CON_NOMB}}
      </ion-note>
     </ion-item>
     <ion-item>
@@ -54,7 +54,7 @@
     {{activity.AGE_ASUN}}
        </ion-note>
       </ion-item>
-      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == usu_codi">
+      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
         <ion-label>Invitar</ion-label>
         <ion-note item-end>
           {{invited.Usu_Nomb}}
@@ -65,7 +65,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()">
+      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled]="activity.USU_PLAN != activity.USU_EJEC">
         <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>

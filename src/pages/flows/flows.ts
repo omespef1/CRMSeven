@@ -30,7 +30,6 @@ export class FlowsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlowsPage');
-    this._seven.GetFaClien();
     this.getFlows();
 
   }

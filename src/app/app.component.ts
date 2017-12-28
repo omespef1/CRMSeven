@@ -53,7 +53,6 @@ export class MyApp {
       this.nav.setRoot(LoginPage);
     });
     this.events.subscribe('user:login',()=>{
-      console.log('refirige');
         this.nav.setRoot(TabsPage);
     })
   }

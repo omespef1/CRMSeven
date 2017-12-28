@@ -160,15 +160,15 @@ alert.present();
 
 
 }
-showContact(contact:any){
-  let modal = this.modal.create(ContactDetailPage,{contact:contact});
-  modal.present();
-  // modal.onDidDismiss(data=>{
-  //   this.invited = data;
-  // })
-}
-showClient(client:any){
-  let modal = this.modal.create(ClientDetailPage,{contact:client});
-  modal.present();
-}
+// showContact(contact:any){
+//   let modal = this.modal.create(ContactDetailPage,{contact:contact});
+//   modal.present();
+//   // modal.onDidDismiss(data=>{
+//   //   this.invited = data;
+//   // })
+// }
+// showClient(client:any){
+//   let modal = this.modal.create(ClientDetailPage,{contact:client});
+//   modal.present();
+// }
 }

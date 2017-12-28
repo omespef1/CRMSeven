@@ -26,14 +26,14 @@ GetValidationUser(user:string, pass:string){
 ApproveFlow(flujo:any){
   return this.postData(flujo,'Flujos/FlujosAdm')
 }
-GetFaClien(refresh:boolean=false){
-  return  this._storage.get("faClien").then(value=>{
-  console.log(value);
-  if(value!=undefined && !refresh){
-    console.log("speakers leídos de memoria");
-    return value;
-  }
-  return this.getData('Actividades/cargarClientesCrm')
+GetFaClien(value:string){
+  // return  this._storage.get("faClien").then(value=>{
+  // console.log(value);
+  // if(value!=undefined && !refresh){
+  //   console.log("speakers leídos de memoria");
+  //   return value;
+  // }
+  return this.getData('Actividades/cargarClientescrm?filter=' + value)
     .then(data => {
       this._userdata.setFaClien(data);
        console.log("clientes leídos de bd");
@@ -42,7 +42,7 @@ GetFaClien(refresh:boolean=false){
     .catch(error =>{
       return undefined;
     })
-})
+
   //
 }
 GetActivities(){

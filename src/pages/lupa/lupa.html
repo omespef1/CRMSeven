@@ -17,8 +17,9 @@
   <ion-toolbar no-border-top>
     <ion-searchbar
     [(ngModel)]="value"
-    (ionChange)="getItems($event.value)"
-    [showCancelButton]="shouldShowCancel"
+    [debounce]="500"
+    (ionChange)="loadClients($event.value)"
+    [showCancelButton]="true"
     placeholder="Buscar">
   </ion-searchbar>
   </ion-toolbar>

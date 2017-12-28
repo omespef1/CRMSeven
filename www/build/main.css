@@ -25687,6 +25687,15 @@ ion-navbar.toolbar {
   font-size: 2.5rem;
 }
 
+.wrap-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-detail {
+  display: none;
+}
+
 page-flow-detail ion-card {
   border-left: 2px solid red;
 }

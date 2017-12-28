@@ -24,19 +24,13 @@
     <ion-item>
       <ion-label>Nombre</ion-label>
       <ion-note item-end>
-     {{contact.CON_NOMB}}
+     {{contact.CON_NOMB}} {{contact.CON_APEL}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Cargo</ion-label>
       <ion-note item-end>
        {{contact.CON_CARG}}
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Email</ion-label>
-      <ion-note item-end>
-       {{contact.CON_EMAI}}
       </ion-note>
     </ion-item>
     <ion-item>
@@ -63,9 +57,6 @@
        {{contact.CON_DIRE}}
       </ion-note>
     </ion-item>
-
-
-
     <!-- <ion-item (click)="openInvited()">
       <ion-label>Invitar</ion-label>
       <ion-note item-end *ngIf="invited">

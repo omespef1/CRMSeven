@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController,AlertController,ModalController } from 'ionic-angular';
 //pages
 import {InvitedPage} from '../invited/invited';
+import {ClientDetailPage} from '../client-detail/client-detail';
+import {ContactDetailPage} from '../contact-detail/contact-detail';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -86,5 +88,16 @@ alert.present();
     modal.onDidDismiss(data=>{
       this.invited = data;
     })
+ }
+ showContact(contact:any){
+   let modal = this.modalCtrl.create(ContactDetailPage,{contact:contact});
+   modal.present();
+   // modal.onDidDismiss(data=>{
+   //   this.invited = data;
+   // })
+ }
+ showClient(client:any){
+   let modal = this.modalCtrl.create(ClientDetailPage,{contact:client});
+   modal.present();
  }
 }

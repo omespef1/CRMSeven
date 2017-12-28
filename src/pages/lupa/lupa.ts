@@ -17,27 +17,19 @@ export class LupaPage {
   bdData:any;
   clients:any;
   clientesList:any;
+  value:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private load:LoadingController, private viewCtrl:ViewController) {
   }
 terminado(){
   console.log('termino');
 }
   ionViewDidLoad() {
-     console.log('cargando clientes');
-    let loading = this.load.create({
-    content:'Cargando...'
-    });
-    loading.present();
-    console.log('ionViewDidLoad LupaPage');
-    this.loadClients().then(()=>{
 
-      loading.dismiss();
-    });
   }
 
-  loadClients(){
-
-  return  this._seven.GetFaClien().then(data=>{
+  loadClients(value:any){
+if(value!=""){
+  return  this._seven.GetFaClien(this.value).then(data=>{
       this.clients = data;
         this.initializeItems();
           console.log('cargado');
@@ -46,6 +38,7 @@ terminado(){
         // loading.dismiss();
     })
   }
+}
   closeLupa(client:any){
    this.viewCtrl.dismiss(client);
   }

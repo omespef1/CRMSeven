@@ -9,6 +9,9 @@ import * as moment from 'moment';
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
 
+//Pipes
+import {DigitalDatePipe} from '../../pipes/digital-date/digital-date';
+
 
 /**
  * Generated class for the ActivitiesPage page.

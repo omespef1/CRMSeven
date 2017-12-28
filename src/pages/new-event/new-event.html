@@ -32,13 +32,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Detalle cliente</ion-label>
-      <ion-note item-end *ngIf="client && client.cdpros" (click)="showClient(client.cdpros)">
+      <ion-note item-end *ngIf="client && client.cdpros">
        {{client.cdpros.DPR_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Contacto</ion-label>
-      <ion-note item-end *ngIf="client && client.conpr" (click)="showContact(client.conpr)">
+      <ion-note item-end *ngIf="client && client.conpr">
       {{client.conpr.CON_NOMB}}
       </ion-note>
     </ion-item>
