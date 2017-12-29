@@ -41,10 +41,10 @@
             <ion-item-group>
               <ion-item-sliding  *ngFor="let agend of activity.Agenda" (click)="openActivity(agend)">
                 <button ion-item>
+                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>
+                  <h4>{{agend.PRO_NOMB}}</h4>
 
-                 <h3><b>{{agend.AGE_ASUN}}</b></h3>
-                 <h4>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</h4>
-                 <p text-wrap> {{agend.PRO_NOMB}} - {{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.ACT_NOMB}}</p>
+                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>
                   <ion-icon name="clock" item-start></ion-icon>
                  </button>
               </ion-item-sliding>

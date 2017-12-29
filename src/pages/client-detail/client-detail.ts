@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+//providers
+import {UserDataProvider} from '../../providers/user-data/user-data';
+//pages
 
 /**
  * Generated class for the ClientDetailPage page.
@@ -15,7 +18,8 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
 })
 export class ClientDetailPage {
 client:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,
+  private _user:UserDataProvider) {
     this.client = navParams.get('contact');
     console.log(this.client);
   }
@@ -25,5 +29,14 @@ client:any;
   }
   close(){
       this.viewCtrl.dismiss();
+  }
+  callContact(number:string){
+    this._user.callContact(number);
+  }
+  openMail(email:string){
+    this._user.sendEmail(email);
+    // let modal = this.modalCtrl.create(EmailPage,{'email':email});
+    // modal.present();
+     // window.open(`mailto:${email}`, '_system');
   }
 }

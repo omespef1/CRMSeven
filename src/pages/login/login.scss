@@ -2,8 +2,11 @@ page-login {
   h1{
     color: color($colors,light);
   }
-  .loginCol{
+  .loginColM{
     margin-top: 20%;
+  }
+  .loginCol{
+    margin-top: 5%;
   }
   // .loginForm{
   // //  margin-top: 10%;
@@ -37,7 +40,11 @@ page-login {
       height: auto;
      //  margin-top: -30px;
      }
-
+     .logoM{
+       width: 90%;
+      height: auto;
+     //  margin-top: -30px;
+     }
      .item-inner {
        border-bottom-color: #ffffff !important;
        box-shadow: none !important;
@@ -58,7 +65,7 @@ page-login {
 
   }
   ion-content{
-    background-color: #1C5699 !important;
+    background-color: #814D9C !important;
   }
 
 }

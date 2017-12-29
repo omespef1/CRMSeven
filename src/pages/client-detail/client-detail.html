@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Detalle Cliente</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+      <button class="BigButton" ion-button icon-only (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -25,13 +25,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Teléfono</ion-label>
-      <ion-note item-end>
+      <ion-note item-end *ngIf="client.PRO_TELE" (click)="callContact(client.PRO_TELE)">
        {{client.PRO_TELE}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-note item-end>
+      <ion-note item-end *ngIf="client.PRO_MAIL" (click)="openMail(client.PRO_MAIL)">
        {{client.PRO_MAIL}}
       </ion-note>
     </ion-item>

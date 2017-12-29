@@ -31,6 +31,7 @@ import {TouchIdPage} from '../pages/touch-id/touch-id';
 import {ContactDetailPage} from '../pages/contact-detail/contact-detail';
 import {ClientDetailPage} from '../pages/client-detail/client-detail';
 import {EmailPage} from '../pages/email/email';
+import {FlowsFilterPage} from '../pages/flows-filter/flows-filter';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -67,7 +68,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     TouchIdPage,
     ContactDetailPage,
     ClientDetailPage,
-    EmailPage
+    EmailPage,
+    FlowsFilterPage
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     TouchIdPage,
     ContactDetailPage,
     ClientDetailPage,
-    EmailPage
+    EmailPage,
+    FlowsFilterPage
   ],
   providers: [
     StatusBar,

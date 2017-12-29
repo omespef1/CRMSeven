@@ -54,7 +54,7 @@
             },
             {
               "xml": "<feature name=\"EmailComposer\"><param name=\"ios-package\" value=\"APPEmailComposer\" /></feature>",
-              "count": 1
+              "count": 2
             }
           ]
         }
@@ -76,7 +76,7 @@
           "LSApplicationQueriesSchemes": [
             {
               "xml": "<array><string>mailto</string></array>",
-              "count": 1
+              "count": 2
             }
           ]
         }

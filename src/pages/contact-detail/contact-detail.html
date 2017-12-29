@@ -9,8 +9,8 @@
   <ion-navbar>
     <ion-title>Detalle Contacto</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
-        <ion-icon name="close"></ion-icon>
+      <button class="BigButton" ion-button icon-only (click)="close()">
+        <ion-icon name="close" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -21,6 +21,12 @@
 
 <ion-content>
   <ion-list>
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-note item-end>
+       {{contact.ITE_TITU}}
+      </ion-note>
+    </ion-item>
     <ion-item>
       <ion-label>Nombre</ion-label>
       <ion-note item-end>
@@ -33,6 +39,7 @@
        {{contact.CON_CARG}}
       </ion-note>
     </ion-item>
+
     <ion-item>
       <ion-label>Email</ion-label>
       <ion-note item-end (click)="openMail(contact.CON_EMAI)">
@@ -41,13 +48,13 @@
     </ion-item>
     <ion-item>
       <ion-label>Teléfono</ion-label>
-      <ion-note item-end>
+      <ion-note item-end *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">
        {{contact.CON_TEL}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Celular</ion-label>
-      <ion-note item-end *ngIf="contact.CON_CELU" (clikc)="callContact(contact.CON_CELU)">
+      <ion-note item-end *ngIf="contact.CON_CELU" (click)="callContact(contact.CON_CELU)">
        {{contact.CON_CELU}}
       </ion-note>
     </ion-item>

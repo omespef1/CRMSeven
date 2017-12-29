@@ -1,10 +1,11 @@
 <ion-header>
 	<ion-grid>
 <ion-row>
-	<ion-col class="loginCol">
-		<img class="logo" src="assets/imgs/logoseven.png"/>
+	<ion-col class="loginColM">
+		<img class="logoM" src="assets/imgs/mintic.png"/>
 		<h1>CRM</h1>
 	</ion-col>
+
 </ion-row>
 	<form  #registerForm="ngForm" class="loginForm">
 		<ion-row>
@@ -26,6 +27,12 @@
 			</ion-col>
 		</ion-row>
 		<ion-row>
+			<ion-col class="loginCol">
+				<img class="logo" src="assets/imgs/logoseven.png"/>
+
+			</ion-col>
+		</ion-row>
+		<ion-row>
 			<ion-col text-center>
 				<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID">
 				<img src="assets/imgs/fingerprint.svg">
@@ -33,6 +40,7 @@
 			</ion-col>
 		</ion-row>
 	</form>
+
 </ion-grid>
 </ion-header>
 

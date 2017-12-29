@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
-import { EmailComposer } from '@ionic-native/email-composer';
+
 
 /**
  * Generated class for the EmailPage page.
@@ -20,7 +20,7 @@ export class EmailPage {
   cc:string;
   body:string;
   subject:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl :ViewController,private emailComposer: EmailComposer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl :ViewController) {
     this.email = navParams.get('email');
   }
 
@@ -31,14 +31,5 @@ export class EmailPage {
 close(){
     this.viewCtrl.dismiss();
 }
-sendEmail(){
-  let email = {
-  to: this.to,
-  cc: this.cc,
-  subject: this.subject,
-  body: this.body,
-  isHtml: false
-};
-this.emailComposer.open(email);
-}
+
 }

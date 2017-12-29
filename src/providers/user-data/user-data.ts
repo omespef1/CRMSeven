@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
+//providers
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 /*
   Generated class for the UserDataProvider provider.
@@ -12,7 +15,8 @@ import { Events } from 'ionic-angular';
 @Injectable()
 export class UserDataProvider {
   HAS_LOGGED_IN = 'hasLoggedIn';
-  constructor(public http: HttpClient,private storage: Storage,public events: Events) {
+  constructor(public http: HttpClient,private storage: Storage,public events: Events,private callNumber: CallNumber,
+  private emailComposer: EmailComposer) {
     console.log('Hello UserDataProvider Provider');
   }
   login(username: string,info:string): void {
@@ -85,5 +89,21 @@ export class UserDataProvider {
     console.log("faclien almacenados en memoria");
     this.storage.set("faClien",data)
   }
-
+  callContact(number:string){
+    this.callNumber.callNumber(number, true)
+  .then(() => console.log('Launched dialer!'))
+  .catch(() => console.log('Error launching dialer'));
+  }
+  sendEmail(to:string){
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+     if(available) {
+       //Now we know we can send
+     }
+    });
+    let email = {
+    to: to,
+  };
+    // Send a text message using default options
+    this.emailComposer.open(email);
+  }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController,ModalController} from 'ionic-angular';
-import { CallNumber } from '@ionic-native/call-number';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
+
 //pages
 import {EmailPage} from '../../pages/email/email';
-
+//providers
+import {UserDataProvider} from '../../providers/user-data/user-data';
 /**
  * Generated class for the ContactDetailPage page.
  *
@@ -19,8 +19,8 @@ import {EmailPage} from '../../pages/email/email';
 })
 export class ContactDetailPage {
 contact:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private callNumber: CallNumber,
-    private emailComposer: EmailComposer,private modalCtrl:ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,
+  private _user:UserDataProvider) {
     this.contact = navParams.get('contact');
     console.log(this.contact);
   }
@@ -32,20 +32,12 @@ contact:any;
       this.viewCtrl.dismiss();
   }
   callContact(number:string){
-    this.callNumber.callNumber(number, true)
-  .then(() => console.log('Launched dialer!'))
-  .catch(() => console.log('Error launching dialer'));
+    this._user.callContact(number);
   }
+
   openMail(email:string){
-    this.emailComposer.isAvailable().then((available: boolean) =>{
- if(available) {
-  let modal = this.modalCtrl.create(EmailPage,{'email':email});
-  modal.present();
-   //Now we know we can send
- }else{
- console.log('cordova no disponble');
-}
-});
+  this._user.sendEmail(email);
+     // window.open(`mailto:${email}`, '_system');
   }
 
 

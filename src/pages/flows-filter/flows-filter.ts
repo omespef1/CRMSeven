@@ -14,16 +14,11 @@ import  {Globals} from '../../assets/global';
   templateUrl: 'flows-filter.html',
 })
 export class FlowsFilterPage {
- tracks: Array<{name: string, isChecked: boolean,value:string}> = [];
+ tracks: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     let excludedTrackNames = this.navParams.data;
-    let trackNames:any[] = Globals.tracks;
-    trackNames.forEach(trackName => {
-      this.tracks.push({
-        name: trackName,
-        isChecked: (excludedTrackNames.indexOf(trackName) === -1)
-      });
-});
+    this.tracks = Globals.tracks;
+
   }
 
   ionViewDidLoad() {
@@ -35,10 +30,13 @@ export class FlowsFilterPage {
       track.isChecked = true;
     });
   }
-
+dismiss(){
+    this.viewCtrl.dismiss();
+}
   applyFilters() {
+    this.viewCtrl.dismiss();
     // Pass back a new array of track names to exclude
-    let excludedTrackNames = this.tracks.filter(c => !c.isChecked).map(c => c.name);
-    this.dismiss(excludedTrackNames);
+  //  let excludedTrackNames = this.tracks.filter(c => !c.isChecked).map(c => c.name);
+    //this.dismiss(excludedTrackNames);
 }
 }
