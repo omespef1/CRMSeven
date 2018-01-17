@@ -27,7 +27,7 @@ var EmailPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__email__["a" /* EmailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__email__["a" /* EmailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__email__["a" /* EmailPage */]),
             ],
         })
     ], EmailPageModule);

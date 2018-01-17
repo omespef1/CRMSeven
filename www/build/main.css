@@ -33370,6 +33370,10 @@ ion-navbar.toolbar {
   display: none;
 }
 
+page-activities .event-detail-container[_ngcontent-c0] {
+  display: none;
+}
+
 page-flow-detail ion-card {
   border-left: 2px solid red;
 }
@@ -33463,10 +33467,6 @@ page-login .fingerprint img {
 page-login .fingerprint p {
   color: white;
   font-weight: bold;
-}
-
-page-login ion-content {
-  background-color: #814D9C !important;
 }
 
 page-settings ion-avatar {

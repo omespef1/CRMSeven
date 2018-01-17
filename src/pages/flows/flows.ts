@@ -102,4 +102,28 @@ export class FlowsPage {
   });
 
 }
+flowAprobment(flow:any){
+
+ this._seven.ApproveFlow(flow).then(data=>{
+   let response:any = data;
+   if(response.State){
+    this._user.showToast('El flujo ha sido aprobado!')
+       this.ionViewDidLoad();
+    return;
+  }
+    this._user.showToast(response.Message)
+ })
+
+}
+flowReject(flow:any){
+  this._seven.RejectFlow(flow).then(data=>{
+    let response:any = data;
+    if(response.State){
+      this._user.showToast('El flujo ha sido rechazado!')
+       this.ionViewDidLoad();
+       return;
+    }
+    this._user.showToast(response.Message)
+  })
+}
 }

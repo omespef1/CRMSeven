@@ -18,6 +18,9 @@
 </ion-header>
 <ion-content>
   <ion-list>
+    <ion-list-header>
+      Detalles
+    </ion-list-header>
     <ion-item>
       <ion-label>Inicio</ion-label>
       <ion-note item-end>
@@ -54,6 +57,25 @@
     {{activity.AGE_ASUN}}
        </ion-note>
       </ion-item>
+      <ion-list-header>
+        Definir
+      </ion-list-header>
+      <ion-item (click)="showStates()">
+        <ion-label>
+          Estado
+        </ion-label>
+        <ion-note item-end>
+          {{activity.AGE_ESTA}}
+        </ion-note>
+      </ion-item>
+      <ion-item (click)="showResults()">
+        <ion-label>
+              Resultado
+        </ion-label>
+        <ion-note item-end>
+          {{activity.AGE_RESU}}
+        </ion-note>
+      </ion-item>
       <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
         <ion-label>Invitar</ion-label>
         <ion-note item-end>
@@ -72,6 +94,15 @@
     <ion-col>
       <button ion-button block color="danger" (click)="ActivityReject()">
             <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-button block color="primary" (click)="UpdateAgend()">
+      <ion-icon name="checkmark-circle" icon-left>
+      </ion-icon>&nbsp;Hecho
+
       </button>
     </ion-col>
   </ion-row>

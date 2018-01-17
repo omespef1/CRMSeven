@@ -29,4 +29,7 @@ export class SettingsPage {
 logOut(){
   this._user.logout();
 }
+sendMail(email:string){
+  this._user.sendEmail(email);
+}
 }

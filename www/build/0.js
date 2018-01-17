@@ -27,7 +27,7 @@ var TouchIdPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__touch_id__["a" /* TouchIdPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__touch_id__["a" /* TouchIdPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__touch_id__["a" /* TouchIdPage */]),
             ],
         })
     ], TouchIdPageModule);

@@ -27,6 +27,7 @@ export class LoginPage {
   login = { username: '', password: '' };
   submitted = false;
   touchID:boolean;
+  background:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
@@ -35,6 +36,9 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
   ionViewDidLoad() {
 
 
+  }
+  loadBackground(){
+    this.background = '#814D9C';
   }
  ionViewDidEnter(){
 
@@ -112,11 +116,21 @@ verifyConnections(){
        this._user.setConnectionsPreference(true);
        this._user.setSavedConnections(conex.CNX_IPSR);
        this._seven.setConnection(conex.CNX_IPSR);
+       this._user.setBackGround('#814D9C');
+       this.background='#814D9C';
+        console.log('bk from bd')
      })
     }
     else{
            this._user.getSavedConnections().then(data=>{
              this._seven.setConnection(data);
+             this._user.getBackground().then(data=>{
+               if(data){
+                 console.log('bk from memory')
+                  this.background = data;
+               }
+
+             })
            });
     }
 

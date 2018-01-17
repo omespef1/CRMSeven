@@ -8,8 +8,8 @@ import {ActivitiesPage} from '../activities/activities';
 })
 export class TabsPage {
 
-  tab1Root = FlowsPage;
-  tab2Root = ActivitiesPage;
+  tab1Root = ActivitiesPage;
+  tab2Root = FlowsPage;
   tab3Root = SettingsPage;
 
   constructor() {

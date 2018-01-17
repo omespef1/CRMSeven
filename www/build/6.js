@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 455:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,7 +27,7 @@ var InvitedPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__invited__["a" /* InvitedPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__invited__["a" /* InvitedPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__invited__["a" /* InvitedPage */]),
             ],
         })
     ], InvitedPageModule);

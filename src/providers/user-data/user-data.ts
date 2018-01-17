@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Events } from 'ionic-angular';
+import { Events ,AlertController,ToastController} from 'ionic-angular';
 //providers
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -16,7 +16,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class UserDataProvider {
   HAS_LOGGED_IN = 'hasLoggedIn';
   constructor(public http: HttpClient,private storage: Storage,public events: Events,private callNumber: CallNumber,
-  private emailComposer: EmailComposer) {
+  private emailComposer: EmailComposer,private alertCtrl:AlertController,private toastCtrl:ToastController) {
     console.log('Hello UserDataProvider Provider');
   }
   login(username: string,info:string): void {
@@ -105,5 +105,29 @@ export class UserDataProvider {
   };
     // Send a text message using default options
     this.emailComposer.open(email);
+  }
+  showAlert(mensaje:string, titulo:string) {
+  let alert = this.alertCtrl.create({
+    title: titulo,
+    subTitle: mensaje,
+    buttons: ['OK']
+  });
+  alert.present();
+  }
+  showToast(mensaje:string){
+  let toast=  this.toastCtrl.create({
+      message:mensaje,
+      duration:2000,
+      position:'top'
+    })
+    toast.present();
+  }
+  setBackGround(color:string){
+      this.storage.set('background',color);
+  }
+  getBackground(){
+    return this.storage.get('background').then(value=>{
+      return value;
+    })
   }
 }

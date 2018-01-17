@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController,AlertController,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,AlertController,ModalController,ActionSheetController } from 'ionic-angular';
 //pages
 import {InvitedPage} from '../invited/invited';
 import {ClientDetailPage} from '../client-detail/client-detail';
@@ -26,7 +26,7 @@ activity:any;
 invited:any ={};
 usu_codi :any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private _seven:SevenProvider,
-  private _user:UserDataProvider, private alertCtrl:AlertController,private modalCtrl:ModalController) {
+  private _user:UserDataProvider, private alertCtrl:AlertController,private modalCtrl:ModalController,private actionSheetCtrl:ActionSheetController) {
     this.activity = this.navParams.get('activity');
     console.log(this.activity);
   }
@@ -99,5 +99,88 @@ alert.present();
  showClient(client:any){
    let modal = this.modalCtrl.create(ClientDetailPage,{contact:client});
    modal.present();
+ }
+ showStates(){
+  let actionSheet= this.actionSheetCtrl.create({
+     title:'Estado',
+     buttons:
+     [
+       {
+         text:'Ejecutada',
+         icon:'checkmark-circle',
+         handler:()=>{
+           this.setState('Ejecutada')
+         }
+       },
+       {
+         text:'Programada',
+         icon:'clock',
+         handler:()=>{
+           this.setState('Programada')
+         }
+       },
+       {
+         text:'Cancelada',
+         icon:'close-circle',
+         handler:()=>{
+           this.setState('Cancelada')
+         }
+       }
+     ]
+   })
+   actionSheet.present();
+ }
+ setState(state:string){
+    this.activity.AGE_ESTA = state;
+ }
+ setResult(result:string){
+this.activity.AGE_RESU = result;
+ }
+ showResults(){
+   let actionSheet= this.actionSheetCtrl.create({
+      title:'Resultado',
+      buttons:
+      [
+        {
+          text:'Satisfactoria',
+          icon:'checkmark-circle',
+          handler:()=>{
+            this.setResult('Satisfactoria')
+          }
+        },
+        {
+          text:'Insatisfactoria',
+          icon:'close-circle',
+          handler:()=>{
+            this.setResult('Insatisfactoria')
+          }
+        },
+        {
+          text:'Resolver',
+          icon:'key',
+          handler:()=>{
+            this.setResult('Resolver')
+          },
+
+        },
+        {
+          text:'Incompleta',
+          icon:'information-circle',
+          handler:()=>{
+            this.setResult('Incompleta')
+          }
+        }
+      ]
+    })
+    actionSheet.present();
+ }
+ UpdateAgend(){
+    this._seven.UpdateActivity(this.activity).then((result:any)=>{
+      if(!result.State){
+        this._user.showAlert(result.Message,"Lo sentimos!");
+        return;
+      }
+        this._user.showAlert("La agenda ha sido actualzada","Listo!")
+    })
  }
 }
