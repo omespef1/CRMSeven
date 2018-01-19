@@ -111,4 +111,24 @@ openActivity(activity:any){
     this.LoadActivities();
   })
 }
+RejectActivity(activity:any){
+  this._user.getUsername().then(data=>{
+    activity.USU_CODI = data;
+    this._seven.RejectActivity(activity).then(response=>{
+      let data :any = response;
+      if(!data.State){
+       this._user.showToast('Error cancelando actividad:' + data.Message);
+       return;
+      }
+          this._user.showToast('Actividad Cancelada!');
+            this.LoadActivities();
+
+    }).catch(err=>{
+      console.log(err);
+       this._user.showToast('Error cancelando actividad');
+    })
+  })
+
+}
+
 }

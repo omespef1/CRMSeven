@@ -5,6 +5,9 @@ import { Events ,AlertController,ToastController} from 'ionic-angular';
 //providers
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+//import {SevenProvider} from '../seven/seven';
+import  {Globals} from '../../assets/global';
 
 /*
   Generated class for the UserDataProvider provider.
@@ -16,7 +19,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class UserDataProvider {
   HAS_LOGGED_IN = 'hasLoggedIn';
   constructor(public http: HttpClient,private storage: Storage,public events: Events,private callNumber: CallNumber,
-  private emailComposer: EmailComposer,private alertCtrl:AlertController,private toastCtrl:ToastController) {
+  private emailComposer: EmailComposer,private alertCtrl:AlertController,private toastCtrl:ToastController,private keychain:KeychainTouchId) {
     console.log('Hello UserDataProvider Provider');
   }
   login(username: string,info:string): void {
@@ -78,6 +81,7 @@ export class UserDataProvider {
     })
   }
   setSavedConnections(conex:string){
+      Globals.ClientUrl = conex;
       this.storage.set('SavedConnection',conex);
   }
   getSavedConnections():Promise<string>{
@@ -125,9 +129,28 @@ export class UserDataProvider {
   setBackGround(color:string){
       this.storage.set('background',color);
   }
+  setLogo(logo:string){
+    this.storage.set('logo',logo);
+  }
   getBackground(){
     return this.storage.get('background').then(value=>{
       return value;
     })
   }
+  getLogo(){
+    return this.storage.get('logo').then(value=>{
+      return value;
+    })
+  }
+  removeData(){
+    this.storage.remove('background');
+    this.storage.remove('logo');
+    this.storage.remove('SavedConnection');
+    this.storage.remove('userinfo');
+    this.storage.remove('username');
+    this.storage.remove('secureUser');
+    this.keychain.delete('password');
+    this.logout();
+  }
+
 }

@@ -76,7 +76,7 @@ export class FlowsPage {
         this.flows = data;
         this.initializeItems();
         refresher.complete();
-        this.showMessage('Flujos actualizados!')
+        this._user.showToast('Flujos actualizados!')
       }).catch(err=>{
         console.log(err);
         //Error

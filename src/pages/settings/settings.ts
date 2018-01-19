@@ -32,4 +32,7 @@ logOut(){
 sendMail(email:string){
   this._user.sendEmail(email);
 }
+remove(){
+  this._user.removeData();
+}
 }

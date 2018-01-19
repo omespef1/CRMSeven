@@ -39,6 +39,7 @@ import { UserDataProvider } from '../providers/user-data/user-data';
 //Pipes
 import {FlowsPipe} from '../pipes/flows/flows';
 import {DigitalDatePipe} from '../pipes/digital-date/digital-date';
+import {ImagePipe} from '../pipes/image/image';
 //Plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
@@ -57,6 +58,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
     FlowDetailPage,
     FlowsPipe,
     DigitalDatePipe,
+    ImagePipe,
     NewEventPage,
     LoginPage,
     LupaPage,

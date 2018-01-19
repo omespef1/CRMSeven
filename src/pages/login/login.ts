@@ -10,6 +10,8 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 //plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+//Pipes
+import {ImagePipe} from '../../pipes/image/image';
 
 /**
  * Generated class for the LoginPage page.
@@ -28,6 +30,7 @@ export class LoginPage {
   submitted = false;
   touchID:boolean;
   background:string;
+  logo:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
@@ -40,7 +43,7 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
   loadBackground(){
     this.background = '#814D9C';
   }
- ionViewDidEnter(){
+ ionViewWillEnter(){
 
    this.verifyConnections()
       this.GetAccessTouchID();
@@ -107,34 +110,34 @@ VerifyTouchID(){
   }
 }
 verifyConnections(){
-  this._user.getConnectionsPreference().then(data=>{
+  this._user.getSavedConnections().then(data=>{
     if(!data){
      let modal=  this.modalCtrl.create(ConexPage);
      modal.present();
      modal.onDidDismiss(conex=>{
        if(conex)
-       this._user.setConnectionsPreference(true);
+      // this._user.setConnectionsPreference(true);
        this._user.setSavedConnections(conex.CNX_IPSR);
-       this._seven.setConnection(conex.CNX_IPSR);
-       this._user.setBackGround('#814D9C');
-       this.background='#814D9C';
-        console.log('bk from bd')
+      // this._seven.setConnection(conex.CNX_IPSR);
+       this._user.setBackGround(conex.CNX_BACK);
+       this._user.setLogo(conex.CNX_LOGO);
+       this.background= conex.CNX_BACK;
+       this.logo = conex.CNX_LOGO;
+
      })
     }
     else{
+      this._user.getBackground().then(data=>{
+          console.log('bk from memory')
+           this.background = data;
+      })
+      this._user.getLogo().then(data=>{
+        this.logo = data;
+      })
            this._user.getSavedConnections().then(data=>{
-             this._seven.setConnection(data);
-             this._user.getBackground().then(data=>{
-               if(data){
-                 console.log('bk from memory')
-                  this.background = data;
-               }
-
-             })
-           });
+               this._user.setSavedConnections(data);
+            });
     }
-
-
   })
 }
 showAlert(mensaje:string, titulo:string) {

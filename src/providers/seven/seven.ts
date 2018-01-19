@@ -74,13 +74,13 @@ UpdateActivity(agend:any){
 GetUsers(usu_codi:string){
     return this.getData(`Actividades/ListarEmpleados?usu_codi=${usu_codi}`);
 }
-setConnection(connection:string){
-  console.log(connection);
-   Globals.ClientUrl = connection;
-}
+// setConnection(connection:string){
+//   console.log(connection);
+//    Globals.ClientUrl = connection;
+// }
 
   getData(apiAction:string) {
-    //  Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let load = this.load.create({
       content:'cargando...'
     })
@@ -99,7 +99,7 @@ setConnection(connection:string){
   }
   postData(data,apiAction:string) {
     //Comentarear para produccion
-  //  Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })
@@ -121,7 +121,8 @@ getDataConex() {
   })
   load.present();
   return new Promise(resolve => {
-    this.http.get(Globals.CentralizationUrl).subscribe(data => {
+  this.http.get(Globals.CentralizationUrl).subscribe(data => {
+        // this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
       resolve(data);
       load.dismiss();
     }, err => {

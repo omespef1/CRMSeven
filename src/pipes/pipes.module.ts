@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { FlowsPipe } from './flows/flows';
 import { DigitalDatePipe } from './digital-date/digital-date';
+import { ImagePipe } from './image/image';
 @NgModule({
 	declarations: [FlowsPipe,
-    DigitalDatePipe],
+    DigitalDatePipe,
+    ImagePipe],
 	imports: [],
 	exports: [FlowsPipe,
-    DigitalDatePipe]
+    DigitalDatePipe,
+    ImagePipe]
 })
 export class PipesModule {}

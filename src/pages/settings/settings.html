@@ -41,6 +41,15 @@
       </ion-label>
       <ion-icon name='notifications' item-start></ion-icon>
     </ion-item>
+    <ion-item>
+      <ion-label>
+      Almacenamiento
+      </ion-label>
+      <ion-icon name='trash' item-start></ion-icon>
+      <ion-note item-end (click)="remove()"> 
+      Borrar datos de usuario
+      </ion-note>
+    </ion-item>
     <ion-item (click)="logOut()">
       <ion-icon name='log-out' item-start></ion-icon>
       Salir
