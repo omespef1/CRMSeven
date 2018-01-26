@@ -53,15 +53,22 @@
     <ion-item>
        <ion-icon name="call" item-start></ion-icon>
       <ion-label>Teléfono</ion-label>
-      <ion-note item-end *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">
+      <ion-note item-end  *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">
        {{contact.CON_TEL}}
       </ion-note>
     </ion-item>
     <ion-item>
        <ion-icon name="phone-portrait" item-start></ion-icon>
-      <ion-label>Celular</ion-label>
+      <ion-label>Trabajo</ion-label>
       <ion-note item-end *ngIf="contact.CON_CELU" (click)="callContact(contact.CON_CELU)">
        {{contact.CON_CELU}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+       <ion-icon name="phone-portrait" item-start></ion-icon>
+      <ion-label>Personal</ion-label>
+      <ion-note item-end *ngIf="contact.CON_TELT"  (click)="callContact(contact.CON_TELT)">
+       {{contact.CON_TELT}}
       </ion-note>
     </ion-item>
     <ion-item>

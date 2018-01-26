@@ -54,6 +54,9 @@ GetStages(){
 GetUserActivities(usu_codi:string,fini:string,fina:string){
   return this.getData(`CrAgend/ListaActividades?usu_codi=${usu_codi}&fini=${fini}&fina=${fina}`)
 }
+GetActivitiesForProspect(usu_codi:string,pro_cont:number){
+  return this.getData(`CrAgend/ListaActividadesProsp?usu_codi=${usu_codi}&pro_cont=${pro_cont}`)
+}
 RejectFlow(flujo:any){
   let param : any = {objResult:null}  ;
   param.objResult = flujo;
@@ -80,7 +83,7 @@ GetUsers(usu_codi:string){
 // }
 
   getData(apiAction:string) {
-// Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let load = this.load.create({
       content:'cargando...'
     })
@@ -122,7 +125,7 @@ getDataConex() {
   load.present();
   return new Promise(resolve => {
   this.http.get(Globals.CentralizationUrl).subscribe(data => {
-      // this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
+      //this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
       resolve(data);
       load.dismiss();
     }, err => {

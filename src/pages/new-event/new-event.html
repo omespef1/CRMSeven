@@ -21,12 +21,6 @@
 
 <ion-content>
   <ion-list>
-    <ion-item button (click)="openLupaActivities()">
-     <ion-label>Actividad</ion-label>
-     <ion-note item-end *ngIf="activity">
-     {{activity.ACT_NOMB}}
-     </ion-note>
-    </ion-item>
     <ion-item text-wrap button (click)="openLupa()">
      <ion-label>Cliente</ion-label>
      <ion-note  item-end *ngIf="client">
@@ -39,13 +33,18 @@
        {{client.cdpros.DPR_NOMB}}
       </ion-note>
     </ion-item>
+    <ion-item button (click)="openLupaActivities()">
+     <ion-label>Actividad</ion-label>
+     <ion-note item-end *ngIf="activity">
+     {{activity.ACT_NOMB}}
+     </ion-note>
+    </ion-item>
     <ion-item (click)="openContacts(client.conpr)">
       <ion-label>Contacto</ion-label>
       <ion-note item-end *ngIf="contact">
-{{contact.CON_NOMB}}
+      {{contact.CON_NOMB}}
       </ion-note>
     </ion-item>
-
     <ion-item button (click)="openLupaStages()">
      <ion-label>Etapa proceso</ion-label>
      <ion-note item-end *ngIf="stage">

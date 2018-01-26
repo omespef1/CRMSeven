@@ -48,15 +48,30 @@
     <ion-item>
       <ion-icon name="globe" item-start></ion-icon>
       <ion-label>Página Web</ion-label>
-      <ion-note *ngIf="client.CR_DPROS.DRP_WEB" item-end (click)="openUrl(client.CR_DPROS.DRP_WEB)">
-       {{client.CR_DPROS.DRP_WEB}}
+      <ion-note *ngIf="client.PRO_SWEB" item-end (click)="openUrl(client.PRO_SWEB)">
+       {{client.PRO_SWEB}}
       </ion-note>
     </ion-item>
-
-
-
-
-
+  </ion-list>
+  <ion-list #scheduleList>
+    <ion-list-header>
+      <h2>Anteriores</h2>
+    </ion-list-header>
+    <div *ngFor="let activity of LastActivities">
+    <ion-item-divider>
+      <h3>{{activity.GrupoHora}}</h3>
+    </ion-item-divider>
+      <ion-item-group>
+        <ion-item *ngFor="let agend of activity.Agenda">
+          <button ion-item detail-none>
+            <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>
+            <h4>{{agend.PRO_NOMB}}</h4>
+           <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>
+            <ion-icon name="clock" item-start></ion-icon>
+           </button>
+        </ion-item>
+      </ion-item-group>
+    </div>
   </ion-list>
 
 </ion-content>
