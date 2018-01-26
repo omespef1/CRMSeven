@@ -18,27 +18,38 @@
 <ion-content>
   <ion-list>
     <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
       <ion-label>Nombre</ion-label>
       <ion-note item-end>
-     {{client.DPR_NOMB}}
+     {{client.CR_DPROS.DPR_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
       <ion-label>Teléfono</ion-label>
-      <ion-note item-end *ngIf="client.PRO_TELE" (click)="callContact(client.PRO_TELE)">
-       {{client.PRO_TELE}}
+      <ion-note item-end *ngIf="client.CR_DPROS.DPR_NTEL" (click)="callContact(client.CR_DPROS.DPR_NTEL)">
+       {{client.CR_DPROS.DPR_NTEL}}
       </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name="mail" item-start></ion-icon>
       <ion-label>Email</ion-label>
-      <ion-note item-end *ngIf="client.PRO_MAIL" (click)="openMail(client.PRO_MAIL)">
-       {{client.PRO_MAIL}}
+      <ion-note item-end *ngIf="client.CR_DPROS.DPR_MAIL" (click)="openMail(client.CR_DPROS.DPR_MAIL)">
+       {{client.CR_DPROS.DPR_MAIL}}
       </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name="locate" item-start></ion-icon>
       <ion-label>Direccion</ion-label>
       <ion-note item-end>
-       {{client.PRO_DIRE}}
+       {{client.CR_DPROS.DPR_DIRE}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="globe" item-start></ion-icon>
+      <ion-label>Página Web</ion-label>
+      <ion-note *ngIf="client.CR_DPROS.DRP_WEB" item-end (click)="openUrl(client.CR_DPROS.DRP_WEB)">
+       {{client.CR_DPROS.DRP_WEB}}
       </ion-note>
     </ion-item>
 

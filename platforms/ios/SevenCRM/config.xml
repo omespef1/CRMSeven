@@ -51,6 +51,9 @@
     <feature name="EmailComposer">
         <param name="ios-package" value="APPEmailComposer" />
     </feature>
+    <feature name="BrowserTab">
+        <param name="ios-package" value="CBTBrowserTab" />
+    </feature>
     <name>SevenCRM</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>

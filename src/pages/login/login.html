@@ -2,7 +2,7 @@
 	<ion-grid>
 <ion-row>
 	<ion-col class="loginColM">
-		  <img class="logoM" [src]="logo" />
+		  <img class="logoM" [src]="logo" (click)="openUrl()" />
 		<h1>CRM</h1>
 	</ion-col>
 
@@ -23,7 +23,9 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">Ingresar</button>
+				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">
+				<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar
+				</button>
 			</ion-col>
 		</ion-row>
 		<ion-row>

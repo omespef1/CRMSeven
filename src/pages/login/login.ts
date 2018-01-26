@@ -10,6 +10,8 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 //plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+
+
 //Pipes
 import {ImagePipe} from '../../pipes/image/image';
 
@@ -31,6 +33,7 @@ export class LoginPage {
   touchID:boolean;
   background:string;
   logo:any;
+  url:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
@@ -39,9 +42,6 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
   ionViewDidLoad() {
 
 
-  }
-  loadBackground(){
-    this.background = '#814D9C';
   }
  ionViewWillEnter(){
 
@@ -121,8 +121,10 @@ verifyConnections(){
       // this._seven.setConnection(conex.CNX_IPSR);
        this._user.setBackGround(conex.CNX_BACK);
        this._user.setLogo(conex.CNX_LOGO);
+       this._user.setLink(conex.CNX_LINK);
        this.background= conex.CNX_BACK;
        this.logo = conex.CNX_LOGO;
+       this.url = conex.CNX_LINK;
 
      })
     }
@@ -133,6 +135,9 @@ verifyConnections(){
       })
       this._user.getLogo().then(data=>{
         this.logo = data;
+      })
+      this._user.getLink().then(data=>{
+        this.url = data;
       })
            this._user.getSavedConnections().then(data=>{
                this._user.setSavedConnections(data);
@@ -147,5 +152,8 @@ let alert = this.alertCtrl.create({
   buttons: ['OK']
 });
 alert.present();
+}
+openUrl(){
+this._user.openBrowser(this.url);
 }
 }

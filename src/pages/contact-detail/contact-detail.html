@@ -22,18 +22,21 @@
 <ion-content>
   <ion-list>
     <ion-item>
+       <ion-icon name="school" item-start></ion-icon>
       <ion-label>Título</ion-label>
       <ion-note item-end>
        {{contact.ITE_TITU}}
       </ion-note>
     </ion-item>
     <ion-item>
+       <ion-icon name="person" item-start></ion-icon>
       <ion-label>Nombre</ion-label>
       <ion-note item-end>
      {{contact.CON_NOMB}} {{contact.CON_APEL}}
       </ion-note>
     </ion-item>
     <ion-item>
+       <ion-icon name="ribbon" item-start></ion-icon>
       <ion-label>Cargo</ion-label>
       <ion-note item-end>
        {{contact.CON_CARG}}
@@ -41,24 +44,28 @@
     </ion-item>
 
     <ion-item>
+       <ion-icon name="mail" item-start></ion-icon>
       <ion-label>Email</ion-label>
       <ion-note item-end (click)="openMail(contact.CON_EMAI)">
        {{contact.CON_EMAI}}
       </ion-note>
     </ion-item>
     <ion-item>
+       <ion-icon name="call" item-start></ion-icon>
       <ion-label>Teléfono</ion-label>
       <ion-note item-end *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">
        {{contact.CON_TEL}}
       </ion-note>
     </ion-item>
     <ion-item>
+       <ion-icon name="phone-portrait" item-start></ion-icon>
       <ion-label>Celular</ion-label>
       <ion-note item-end *ngIf="contact.CON_CELU" (click)="callContact(contact.CON_CELU)">
        {{contact.CON_CELU}}
       </ion-note>
     </ion-item>
     <ion-item>
+       <ion-icon name="pin" item-start></ion-icon>
       <ion-label>Dirección</ion-label>
       <ion-note item-end>
        {{contact.CON_DIRE}}

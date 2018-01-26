@@ -6,6 +6,7 @@ import { Events ,AlertController,ToastController} from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+import { BrowserTab } from '@ionic-native/browser-tab';
 //import {SevenProvider} from '../seven/seven';
 import  {Globals} from '../../assets/global';
 
@@ -19,7 +20,8 @@ import  {Globals} from '../../assets/global';
 export class UserDataProvider {
   HAS_LOGGED_IN = 'hasLoggedIn';
   constructor(public http: HttpClient,private storage: Storage,public events: Events,private callNumber: CallNumber,
-  private emailComposer: EmailComposer,private alertCtrl:AlertController,private toastCtrl:ToastController,private keychain:KeychainTouchId) {
+  private emailComposer: EmailComposer,private alertCtrl:AlertController,private toastCtrl:ToastController,private keychain:KeychainTouchId,
+private browserTab: BrowserTab) {
     console.log('Hello UserDataProvider Provider');
   }
   login(username: string,info:string): void {
@@ -132,6 +134,9 @@ export class UserDataProvider {
   setLogo(logo:string){
     this.storage.set('logo',logo);
   }
+  setLink(link:string){
+    this.storage.set('link',link);
+  }
   getBackground(){
     return this.storage.get('background').then(value=>{
       return value;
@@ -139,6 +144,11 @@ export class UserDataProvider {
   }
   getLogo(){
     return this.storage.get('logo').then(value=>{
+      return value;
+    })
+  }
+  getLink(){
+    return this.storage.get('link').then(value=>{
       return value;
     })
   }
@@ -151,6 +161,17 @@ export class UserDataProvider {
     this.storage.remove('secureUser');
     this.keychain.delete('password');
     this.logout();
+  }
+  openBrowser(url:string){
+    this.browserTab.isAvailable()
+     .then((isAvailable: boolean) => {
+       if (isAvailable) {
+         this.browserTab.openUrl(url);
+       } else {
+  console.log('navegador no disponible')
+       }
+
+  })
   }
 
 }

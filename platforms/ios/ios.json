@@ -55,6 +55,10 @@
             {
               "xml": "<feature name=\"EmailComposer\"><param name=\"ios-package\" value=\"APPEmailComposer\" /></feature>",
               "count": 2
+            },
+            {
+              "xml": "<feature name=\"BrowserTab\"><param name=\"ios-package\" value=\"CBTBrowserTab\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -122,6 +126,9 @@
       "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
     },
     "cordova-plugin-email-composer": {
+      "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
+    },
+    "cordova-plugin-browsertab": {
       "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
     }
   },
@@ -208,6 +215,14 @@
         "cordova.plugins.email",
         "plugin.email"
       ]
+    },
+    {
+      "id": "cordova-plugin-browsertab.BrowserTab",
+      "file": "plugins/cordova-plugin-browsertab/www/browsertab.js",
+      "pluginId": "cordova-plugin-browsertab",
+      "clobbers": [
+        "cordova.plugins.browsertab"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -223,6 +238,7 @@
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.2.0",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-email-composer": "0.8.11"
+    "cordova-plugin-email-composer": "0.8.11",
+    "cordova-plugin-browsertab": "0.2.0"
   }
 }

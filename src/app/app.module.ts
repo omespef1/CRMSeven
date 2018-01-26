@@ -32,6 +32,7 @@ import {ContactDetailPage} from '../pages/contact-detail/contact-detail';
 import {ClientDetailPage} from '../pages/client-detail/client-detail';
 import {EmailPage} from '../pages/email/email';
 import {FlowsFilterPage} from '../pages/flows-filter/flows-filter';
+import {ContactSearchPage} from '../pages/contact-search/contact-search';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -45,6 +46,8 @@ import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { BrowserTab } from '@ionic-native/browser-tab';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -71,7 +74,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     ContactDetailPage,
     ClientDetailPage,
     EmailPage,
-    FlowsFilterPage
+    FlowsFilterPage,
+    ContactSearchPage
   ],
   imports: [
     BrowserModule,
@@ -103,7 +107,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     ContactDetailPage,
     ClientDetailPage,
     EmailPage,
-    FlowsFilterPage
+    FlowsFilterPage,
+    ContactSearchPage
   ],
   providers: [
     StatusBar,
@@ -115,7 +120,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     KeychainTouchId,
     FingerprintAIO,
     CallNumber,
-    EmailComposer
+    EmailComposer,
+    BrowserTab
   ]
 })
 export class AppModule {}

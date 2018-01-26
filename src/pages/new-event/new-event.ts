@@ -8,6 +8,7 @@ import {StagesSearchPage} from '../stages-search/stages-search';
 import {InvitedPage} from '../invited/invited';
 import {ContactDetailPage} from '../contact-detail/contact-detail';
 import {ClientDetailPage} from '../client-detail/client-detail';
+import {ContactSearchPage} from '../contact-search/contact-search';
 
 //providers
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -35,6 +36,8 @@ newActivity:any={};
 stage:any={};
 usu_codi:string;
 invited:any;
+contact:any;
+observations:any;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
@@ -44,7 +47,7 @@ invited:any;
     this.LoadInfo();
   }
   ionViewDidLoad() {
-
+   this.newActivity.Age_Dura= "0.5";
   }
   LoadInfo(){
     this._user.getUsername().then(data=>{
@@ -73,6 +76,13 @@ openLupaActivities(){
     this.activity = data;
   })
 }
+openContacts(contacts:any){
+  let modal = this.modal.create(ContactSearchPage,{contacts:contacts});
+  modal.present();
+  modal.onDidDismiss(data=>{
+    this.contact = data;
+  })
+}
 openLupaStages(){
   let modal = this.modal.create(StagesSearchPage);
   modal.present();
@@ -90,11 +100,13 @@ if(this.validEvent()){
  this.newActivity.Pro_Cont = this.client.PRO_CONT;
  this.newActivity.Eta_Codi = this.stage.ETA_CODI;
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
- this.newActivity.Con_Codi = this.client.conpr.CON_CODI;
+ this.newActivity.Con_Codi = this.contact.CON_CODI;
+ this.newActivity.age_obse = this.observations;
  //this.newActivity.Age_Fech = new Date();
  // if(this.invited.Usu_Codi !=null){
  //   this.newActivity.Inv_Codi = this.invited.Usu_Codi
  // }
+ console.log(this.newActivity);
     this._seven.SaveActivity(this.newActivity).then(data=>{
       response = data;
       if(response.State){
@@ -136,7 +148,7 @@ alert.present();
         this.showAlert('Debe seleccionar un detalle ','Lo sentimos');
         return false;
       }
-      if(this.client.conpr.CON_CODI==null){
+      if(this.contact.CON_CODI==null){
          this.showAlert('Debe seleccionar un contacto ','Lo sentimos');
          return false;
        }

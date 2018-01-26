@@ -80,7 +80,7 @@ GetUsers(usu_codi:string){
 // }
 
   getData(apiAction:string) {
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+// Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let load = this.load.create({
       content:'cargando...'
     })
@@ -122,7 +122,7 @@ getDataConex() {
   load.present();
   return new Promise(resolve => {
   this.http.get(Globals.CentralizationUrl).subscribe(data => {
-        // this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
+      // this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
       resolve(data);
       load.dismiss();
     }, err => {

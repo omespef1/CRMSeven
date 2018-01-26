@@ -6,5 +6,6 @@
     "Security.framework": 1,
     "Foundation.framework": 1,
     "LocalAuthentication.framework": 1,
-    "MessageUI.framework": 2
+    "MessageUI.framework": 2,
+    "SafariServices.framework": 1
 }

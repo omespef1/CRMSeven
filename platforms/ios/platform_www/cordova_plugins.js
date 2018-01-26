@@ -81,6 +81,14 @@ module.exports = [
       "cordova.plugins.email",
       "plugin.email"
     ]
+  },
+  {
+    "id": "cordova-plugin-browsertab.BrowserTab",
+    "file": "plugins/cordova-plugin-browsertab/www/browsertab.js",
+    "pluginId": "cordova-plugin-browsertab",
+    "clobbers": [
+      "cordova.plugins.browsertab"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -98,7 +106,8 @@ module.exports.metadata =
   "ionic-plugin-keyboard": "2.2.1",
   "cordova-plugin-compat": "1.2.0",
   "mx.ferreyra.callnumber": "0.0.2",
-  "cordova-plugin-email-composer": "0.8.11"
+  "cordova-plugin-email-composer": "0.8.11",
+  "cordova-plugin-browsertab": "0.2.0"
 };
 // BOTTOM OF METADATA
 });

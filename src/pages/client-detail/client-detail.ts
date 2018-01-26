@@ -39,4 +39,7 @@ client:any;
     // modal.present();
      // window.open(`mailto:${email}`, '_system');
   }
+  openUrl(url:string){
+    this._user.openBrowser(url);
+  }
 }
