@@ -96,7 +96,8 @@ SetAccessTouchID(){
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
-  this.keychainTouchId.isAvailable().then(()=>{
+  this.keychainTouchId.isAvailable().then(resp=>{
+    console.log(resp);
     this.touchID = true;
     this.keychainTouchId.has("password").catch(err=>{
           this.faio.show({

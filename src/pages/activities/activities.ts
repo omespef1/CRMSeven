@@ -8,6 +8,7 @@ import * as moment from 'moment';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
+import { Calendar } from '@ionic-native/calendar';
 
 //Pipes
 import {DigitalDatePipe} from '../../pipes/digital-date/digital-date';
@@ -36,7 +37,7 @@ calendar = {
 };
 nextActivities:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,private modal:ModalController,
-  private _seven:SevenProvider,private _user:UserDataProvider) {
+  private _seven:SevenProvider,private _user:UserDataProvider,private calendare: Calendar,private digital:DigitalDatePipe) {
 
   }
 
@@ -129,6 +130,16 @@ RejectActivity(activity:any){
     })
   })
 
+}
+addCalendar(agend:any){
+let init:any= new Date(agend.AGE_FINI);
+let fin :any =new Date(agend.AGE_FFIN);
+let notes = `Actividad:${agend.ACT_NOMB} Asunto:${agend.AGE_ASUN} Contacto:${agend.CON_NOMB}`;
+this.calendare.createEvent(agend.ACT_NOMB,'',notes,init,fin).then(resp=>{
+  this._user.showAlert('Item agregado al calendario del dispostivo!','Listo!');
+}).catch(err=>{
+  console.log(err);
+})
 }
 
 }

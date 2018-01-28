@@ -2,12 +2,10 @@
   "cordova-plugin-calendar": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-calendar"
+      "id": "cordova-plugin-calendar@^4.6.0"
     },
     "is_top_level": true,
-    "variables": {
-      "CALENDAR_USAGE_DESCRIPTION": " "
-    }
+    "variables": {}
   },
   "cordova-sqlite-storage": {
     "source": {

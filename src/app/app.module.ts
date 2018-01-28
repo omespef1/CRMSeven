@@ -121,7 +121,9 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     FingerprintAIO,
     CallNumber,
     EmailComposer,
-    BrowserTab
+    BrowserTab,
+    Calendar,
+    DigitalDatePipe
   ]
 })
 export class AppModule {}
