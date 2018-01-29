@@ -17,6 +17,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"Fingerprint\"><param name=\"ios-package\" value=\"Fingerprint\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<allow-navigation href=\"http://localhost:8080/*\" />",
               "count": 1
             },
@@ -55,10 +59,6 @@
             {
               "xml": "<feature name=\"BrowserTab\"><param name=\"ios-package\" value=\"CBTBrowserTab\" /></feature>",
               "count": 1
-            },
-            {
-              "xml": "<feature name=\"Fingerprint\"><param name=\"ios-package\" value=\"Fingerprint\" /></feature>",
-              "count": 1
             }
           ]
         }
@@ -82,18 +82,23 @@
               "xml": "<array><string>mailto</string></array>",
               "count": 2
             }
-          ],
-          "NSFaceIDUsageDescription": []
+          ]
         }
       }
     }
   },
   "installed_plugins": {
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
     "cordova-plugin-calendar": {
       "CALENDAR_USAGE_DESCRIPTION": " ",
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-fingerprint-aio": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-ionic-webview": {
@@ -125,12 +130,6 @@
     },
     "cordova-plugin-browsertab": {
       "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
-    },
-    "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
-    },
-    "cordova-plugin-fingerprint-aio": {
-      "PACKAGE_NAME": "com.digitalware.com.co.seven.crm"
     }
   },
   "dependent_plugins": {},
@@ -149,6 +148,14 @@
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-fingerprint-aio.Fingerprint",
+      "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
+      "pluginId": "cordova-plugin-fingerprint-aio",
+      "clobbers": [
+        "Fingerprint"
       ]
     },
     {
@@ -216,19 +223,13 @@
       "clobbers": [
         "cordova.plugins.browsertab"
       ]
-    },
-    {
-      "id": "cordova-plugin-fingerprint-aio.Fingerprint",
-      "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
-      "pluginId": "cordova-plugin-fingerprint-aio",
-      "clobbers": [
-        "Fingerprint"
-      ]
     }
   ],
   "plugin_metadata": {
+    "cordova-plugin-add-swift-support": "1.7.0",
     "cordova-plugin-calendar": "4.6.0",
     "cordova-plugin-device": "1.1.7",
+    "cordova-plugin-fingerprint-aio": "1.3.3",
     "cordova-plugin-ionic-webview": "1.1.16",
     "cordova-plugin-keychain-touch-id": "3.2.1",
     "cordova-plugin-splashscreen": "4.1.0",
@@ -238,8 +239,6 @@
     "cordova-plugin-compat": "1.2.0",
     "mx.ferreyra.callnumber": "0.0.2",
     "cordova-plugin-email-composer": "0.8.11",
-    "cordova-plugin-browsertab": "0.2.0",
-    "cordova-plugin-add-swift-support": "1.7.0",
-    "cordova-plugin-fingerprint-aio": "1.3.4"
+    "cordova-plugin-browsertab": "0.2.0"
   }
 }

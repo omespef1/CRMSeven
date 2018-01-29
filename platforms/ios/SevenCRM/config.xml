@@ -25,6 +25,9 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="Fingerprint">
+        <param name="ios-package" value="Fingerprint" />
+    </feature>
     <allow-navigation href="http://localhost:8080/*" />
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
@@ -50,9 +53,6 @@
     </feature>
     <feature name="BrowserTab">
         <param name="ios-package" value="CBTBrowserTab" />
-    </feature>
-    <feature name="Fingerprint">
-        <param name="ios-package" value="Fingerprint" />
     </feature>
     <name>SevenCRM</name>
     <description>An awesome Ionic/Cordova app.</description>

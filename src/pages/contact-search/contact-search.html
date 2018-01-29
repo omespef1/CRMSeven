@@ -30,13 +30,9 @@
       <ion-item-group>
         <ion-item (click)="closeLupa(contact)" *ngFor="let contact of contacts">
           <ion-label>
-              {{contact.CON_NOMB}}
+        {{contact.CON_NOMB}}
           </ion-label>
             <ion-icon name='person' item-start></ion-icon>
-
-            <ion-note class="detalle" item-end>
-            <ion-label> {{contact.CON_CARG}}</ion-label>
-            </ion-note>
         </ion-item>
       </ion-item-group>
     </ion-list>

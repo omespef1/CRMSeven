@@ -33374,10 +33374,6 @@ page-activities .event-detail-container[_ngcontent-c0] {
   display: none;
 }
 
-page-contact-search .detalle {
-  font-size: 1.1rem !important;
-}
-
 page-flow-detail ion-card {
   border-left: 2px solid red;
 }
@@ -33399,10 +33395,6 @@ page-flows .FlowRed ion-label {
 page-flows .FlowBlue ion-label {
   border-left: 2px solid blue;
   padding-left: 10px;
-}
-
-page-login ion-footer p {
-  color: white !important;
 }
 
 page-login h1 {

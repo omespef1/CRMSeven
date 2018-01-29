@@ -11,6 +11,7 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
+
 //Pipes
 import {ImagePipe} from '../../pipes/image/image';
 
@@ -39,12 +40,8 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
   }
 
   ionViewDidLoad() {
-    // this.faio.show({
-    //   clientId: 'TouchIDConfirmation',
-    //   localizedReason: 'Autentícate para ingresar con tu huella'
-    // })
-    //   .then((result: any) =>console.log('yes'))
-    //   .catch((error: any) => console.log(error))
+
+
   }
  ionViewWillEnter(){
 
@@ -77,7 +74,7 @@ GetAccessTouchID(){
 console.log('entro a get');
   if(this.platform.is("cordova")){
     this.keychainTouchId.has("password").then(()=>{
-    this.touchID=true;
+        this.touchID=true;
       console.log('clave disponible');
       this.keychainTouchId.verify("password","Ingrese su huella dactilar para ingresar").then(pass=>{
         console.log('password obtenido');
@@ -99,7 +96,8 @@ SetAccessTouchID(){
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
-   this.keychainTouchId.isAvailable().then(()=>{
+  this.keychainTouchId.isAvailable().then(resp=>{
+    console.log(resp);
     this.touchID = true;
     this.keychainTouchId.has("password").catch(err=>{
           this.faio.show({
