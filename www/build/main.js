@@ -97,8 +97,8 @@ var ActivitiesSearchPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_calendar__ = __webpack_require__(429);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipes_digital_date_digital_date__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_calendar__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pipes_digital_date_digital_date__ = __webpack_require__(302);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -202,6 +202,13 @@ var ActivitiesPage = (function () {
             });
         });
     };
+    ActivitiesPage.prototype.convertUTCDateToLocalDate = function (date) {
+        var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+        var offset = date.getTimezoneOffset() / 60;
+        var hours = date.getHours();
+        newDate.setHours(hours - offset);
+        return newDate;
+    };
     ActivitiesPage.prototype.openActivity = function (activity) {
         var _this = this;
         var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_3__activity_detail_activity_detail__["a" /* ActivityDetailPage */], { 'activity': activity });
@@ -230,10 +237,32 @@ var ActivitiesPage = (function () {
     };
     ActivitiesPage.prototype.addCalendar = function (agend) {
         var _this = this;
-        var init = new Date(agend.AGE_FINI);
-        var fin = new Date(agend.AGE_FFIN);
+        // let init:Date= new Date(agend.AGE_FINI).to;
+        // let fin :Date = agend.AGE_FFIN;
+        // console.log(init
+        // console.log(fin);
+        //console.log(agend.AGE_FINI);
+        var init = this.convertUTCDateToLocalDate(new Date(agend.AGE_FINI));
+        console.log(init);
+        // console.log(init);
+        //  var startDate = new Date(init);
+        //  console.log(startDate);
+        //
+        //  let d = new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDay(),startDate.getHours(),startDate.getMinutes(),0,0);
+        //  console.log(d);
+        //  let v = moment(agend.AGE_FINI).locale('es').toDate();
+        //  console.log(v);
+        //   var futureStartAtDate = new Date(moment(agend.AGE_FINI).locale("es").add(1, 'd').format("MMM DD, YYYY HH:MM"))
+        //   console.log(futureStartAtDate);
+        //let d = new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDay(),startDate.getHours(),startDate.getMinutes(),0,0);
+        // var startDate  = new Date(init.getFullYear(),init.getMonth(),init.getDay(),init.getHours(),init.getMinutes(),0,0);
+        //  let fin= new Date(agend.AGE_FFIN);
+        //  var endDate = new Date(fin.getFullYear(),fin.getMonth(),fin.getDay(),fin.getHours(),fin.getMinutes(),0,0);
+        //
+        var startDate = new Date(agend.AGE_FINI); // beware: month 0 = january, 11 = december
+        var endDate = new Date(agend.AGE_FFIN);
         var notes = "Actividad:" + agend.ACT_NOMB + " Asunto:" + agend.AGE_ASUN + " Contacto:" + agend.CON_NOMB;
-        this.calendare.createEvent(agend.ACT_NOMB, '', notes, init, fin).then(function (resp) {
+        this.calendare.createEvent(agend.ACT_NOMB, '', notes, startDate, startDate).then(function (resp) {
             _this._user.showAlert('Item agregado al calendario del dispostivo!', 'Listo!');
         }).catch(function (err) {
             console.log(err);
@@ -241,12 +270,12 @@ var ActivitiesPage = (function () {
     };
     ActivitiesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <calendar [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          [noEventsLabel]="Agenda"\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n\n\n        <ion-list #scheduleList>\n          <ion-list-header>\n            <h2>Próximas</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n                <button ion-item (click)="openActivity(agend)">\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n                  <h4>{{agend.PRO_NOMB}}</h4>\n\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n                 <ion-item-options side="right">\n                <button ion-button color="danger" (click)="RejectActivity(agend)">Cancelar</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n            <button ion-button color="primary" (click)="addCalendar(agend)" icon-start>\n            <ion-icon name="calendar">\n            </ion-icon> Agregar\n          </button>\n       </ion-item-options>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n        </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
+            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <calendar [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          [noEventsLabel]="Agenda"\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n\n\n        <ion-list #scheduleList>\n          <ion-list-header>\n            <h2>Próximas</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n                <button ion-item (click)="openActivity(agend)">\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n                  <h4>{{agend.PRO_NOMB}}</h4>\n\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n                 <ion-item-options side="right">\n                <button ion-button color="danger" (click)="RejectActivity(agend)">Cancelar</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n            <button ion-button color="primary" (click)="addCalendar(agend)" icon-start>\n            <ion-icon name="calendar">\n            </ion-icon> Añadir al calendario\n          </button>\n       </ion-item-options>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n        </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_calendar__["a" /* Calendar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_calendar__["a" /* Calendar */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_calendar__["a" /* Calendar */], __WEBPACK_IMPORTED_MODULE_8__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */]])
     ], ActivitiesPage);
     return ActivitiesPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=activities.js.map
@@ -677,7 +706,7 @@ var ContactSearchPage = (function () {
     };
     ContactSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/'<!--\n  Generated template for the Contact-search page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Contactos</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #contactList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(contact)" *ngFor="let contact of contacts">\n          <ion-label>\n        {{contact.CON_NOMB}}\n          </ion-label>\n            <ion-icon name=\'person\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/,
+            selector: 'page-contact-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/'<!--\n  Generated template for the Contact-search page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Contactos</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #contactList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(contact)" *ngFor="let contact of contacts">\n          <ion-label>\n              {{contact.CON_NOMB}}\n          </ion-label>\n            <ion-icon name=\'person\' item-start></ion-icon>\n\n            <ion-note class="detalle" item-end>\n            <ion-label> {{contact.CON_CARG}}</ion-label>\n            </ion-note>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], ContactSearchPage);
@@ -1433,7 +1462,7 @@ var FlowsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__ = __webpack_require__(303);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1473,6 +1502,12 @@ var LoginPage = (function () {
         this.submitted = false;
     }
     LoginPage.prototype.ionViewDidLoad = function () {
+        // this.faio.show({
+        //   clientId: 'TouchIDConfirmation',
+        //   localizedReason: 'Autentícate para ingresar con tu huella'
+        // })
+        //   .then((result: any) =>console.log('yes'))
+        //   .catch((error: any) => console.log(error))
     };
     LoginPage.prototype.ionViewWillEnter = function () {
         this.verifyConnections();
@@ -1525,8 +1560,7 @@ var LoginPage = (function () {
     LoginPage.prototype.VerifyTouchID = function () {
         var _this = this;
         if (this.platform.is("cordova")) {
-            this.keychainTouchId.isAvailable().then(function (resp) {
-                console.log(resp);
+            this.keychainTouchId.isAvailable().then(function () {
                 _this.touchID = true;
                 _this.keychainTouchId.has("password").catch(function (err) {
                     _this.faio.show({
@@ -1588,12 +1622,13 @@ var LoginPage = (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-header>\n	<ion-grid>\n<ion-row>\n	<ion-col class="loginColM">\n		  <img class="logoM" [src]="logo" (click)="openUrl()" />\n		<h1>CRM</h1>\n	</ion-col>\n\n</ion-row>\n	<form  #registerForm="ngForm" class="loginForm">\n		<ion-row>\n			<ion-col>\n					<ion-item>\n						<ion-label><ion-icon name="ios-person"></ion-icon></ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n\n					<ion-item>\n						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>\n						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n					</ion-item>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n				<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n				</button>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col class="loginCol">\n				<img class="logo" src="assets/imgs/logoseven.png"/>\n\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col text-center>\n				<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID">\n				<img src="assets/imgs/fingerprint.svg">\n			</div>\n			</ion-col>\n		</ion-row>\n	</form>\n\n</ion-grid>\n</ion-header>\n\n<ion-content [style.background-color] ="background">\n	<!-- <div class="logo">\n		<img src="assets/img/appicon.svg" alt="Ionic logo">\n	</div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-header>\n	<ion-grid>\n<ion-row>\n	<ion-col class="loginColM">\n		  <img class="logoM" [src]="logo" (click)="openUrl()" />\n		<h1>CRM</h1>\n	</ion-col>\n\n</ion-row>\n	<form  #registerForm="ngForm" class="loginForm">\n		<ion-row>\n			<ion-col>\n					<ion-item>\n						<ion-label><ion-icon name="ios-person"></ion-icon></ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n\n					<ion-item>\n						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>\n						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n					</ion-item>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n				<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n				</button>\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col class="loginCol">\n				<img class="logo" src="assets/imgs/logoseven.png"/>\n\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col text-center>\n				<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID">\n				<img src="assets/imgs/fingerprint.svg">\n			</div>\n			</ion-col>\n		</ion-row>\n	</form>\n\n</ion-grid>\n</ion-header>\n\n<ion-content [style.background-color] ="background">\n	<!-- <div class="logo">\n		<img src="assets/img/appicon.svg" alt="Ionic logo">\n	</div> -->\n\n\n\n</ion-content>\n<ion-footer text-center>\n	<p>SEVEN ERP©1992-2018 Digital Ware</p>\n    <p>Versión 18.1.5.0</p>\n</ion-footer>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__["a" /* FingerprintAIO */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__["a" /* FingerprintAIO */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fingerprint_aio__["a" /* FingerprintAIO */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], LoginPage);
     return LoginPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=login.js.map
@@ -1787,7 +1822,7 @@ var SevenProvider = (function () {
     // }
     SevenProvider.prototype.getData = function (apiAction) {
         var _this = this;
-        // Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
         var load = this.load.create({
             content: 'cargando...'
         });
@@ -2170,7 +2205,55 @@ var UserDataProvider = (function () {
 
 /***/ }),
 
-/***/ 343:
+/***/ 302:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DigitalDatePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+/**
+ * Generated class for the DigitalDatePipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var DigitalDatePipe = (function () {
+    function DigitalDatePipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    DigitalDatePipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        value = __WEBPACK_IMPORTED_MODULE_1_moment__(value).format("HH:mm:ss a");
+        console.log(value);
+        return value;
+    };
+    DigitalDatePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
+            name: 'digitalDate',
+        })
+    ], DigitalDatePipe);
+    return DigitalDatePipe;
+}());
+
+//# sourceMappingURL=digital-date.js.map
+
+/***/ }),
+
+/***/ 345:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2210,7 +2293,7 @@ var TabsPage = (function () {
 
 /***/ }),
 
-/***/ 344:
+/***/ 346:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2260,7 +2343,7 @@ var EmailPage = (function () {
 
 /***/ }),
 
-/***/ 345:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2305,13 +2388,13 @@ var TouchIdPage = (function () {
 
 /***/ }),
 
-/***/ 346:
+/***/ 348:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 
 
@@ -2322,7 +2405,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 368:
+/***/ 370:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2330,22 +2413,22 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(428);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(429);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(431);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_login_login__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(110);
@@ -2353,19 +2436,19 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_contact_detail_contact_detail__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_client_detail_client_detail__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_email_email__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_email_email__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_flows_filter_flows_filter__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_contact_search_contact_search__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_seven_seven__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_user_data_user_data__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipes_flows_flows__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipes_digital_date_digital_date__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipes_flows_flows__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipes_digital_date_digital_date__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pipes_image_image__ = __webpack_require__(446);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ionic_native_keychain_touch_id__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ionic_native_fingerprint_aio__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ionic_native_fingerprint_aio__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ionic_native_call_number__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ionic_native_email_composer__ = __webpack_require__(181);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__ionic_native_browser_tab__ = __webpack_require__(182);
@@ -2533,7 +2616,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 410:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -2788,20 +2871,20 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 410;
+webpackContext.id = 412;
 
 /***/ }),
 
-/***/ 428:
+/***/ 430:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2886,14 +2969,14 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 434:
+/***/ 435:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 441:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2928,7 +3011,7 @@ var AboutPage = (function () {
 
 /***/ }),
 
-/***/ 442:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2963,7 +3046,7 @@ var ContactPage = (function () {
 
 /***/ }),
 
-/***/ 443:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2998,7 +3081,7 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 444:
+/***/ 445:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3047,54 +3130,6 @@ var FlowsPipe = (function () {
 }());
 
 //# sourceMappingURL=flows.js.map
-
-/***/ }),
-
-/***/ 445:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DigitalDatePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-/**
- * Generated class for the DigitalDatePipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
-var DigitalDatePipe = (function () {
-    function DigitalDatePipe() {
-    }
-    /**
-     * Takes a value and makes it lowercase.
-     */
-    DigitalDatePipe.prototype.transform = function (value) {
-        var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
-        }
-        value = __WEBPACK_IMPORTED_MODULE_1_moment__(value).format("HH:mm:ss a");
-        console.log(value);
-        return value;
-    };
-    DigitalDatePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
-            name: 'digitalDate',
-        })
-    ], DigitalDatePipe);
-    return DigitalDatePipe;
-}());
-
-//# sourceMappingURL=digital-date.js.map
 
 /***/ }),
 
@@ -3236,5 +3271,5 @@ var Globals = (function () {
 
 /***/ })
 
-},[346]);
+},[348]);
 //# sourceMappingURL=main.js.map
