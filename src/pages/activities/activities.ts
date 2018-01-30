@@ -104,7 +104,16 @@ LoadActivities(){
 })
 
 }
+ convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
 
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;
+}
 openActivity(activity:any){
   let modal = this.modal.create(ActivityDetailPage,{'activity':activity});
   modal.present();
@@ -129,17 +138,38 @@ RejectActivity(activity:any){
        this._user.showToast('Error cancelando actividad');
     })
   })
-
 }
 addCalendar(agend:any){
-let init:any= new Date(agend.AGE_FINI);
-let fin :any =new Date(agend.AGE_FFIN);
+// let init:Date= new Date(agend.AGE_FINI).to;
+// let fin :Date = agend.AGE_FFIN;
+// console.log(init
+// console.log(fin);
+//console.log(agend.AGE_FINI);
+let init = this.convertUTCDateToLocalDate(new Date(agend.AGE_FINI));
+console.log(init);
+// console.log(init);
+//  var startDate = new Date(init);
+//  console.log(startDate);
+//
+//  let d = new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDay(),startDate.getHours(),startDate.getMinutes(),0,0);
+//  console.log(d);
+//  let v = moment(agend.AGE_FINI).locale('es').toDate();
+//  console.log(v);
+//   var futureStartAtDate = new Date(moment(agend.AGE_FINI).locale("es").add(1, 'd').format("MMM DD, YYYY HH:MM"))
+//   console.log(futureStartAtDate);
+  //let d = new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDay(),startDate.getHours(),startDate.getMinutes(),0,0);
+// var startDate  = new Date(init.getFullYear(),init.getMonth(),init.getDay(),init.getHours(),init.getMinutes(),0,0);
+//  let fin= new Date(agend.AGE_FFIN);
+//  var endDate = new Date(fin.getFullYear(),fin.getMonth(),fin.getDay(),fin.getHours(),fin.getMinutes(),0,0);
+//
+
+var startDate = new Date(agend.AGE_FINI); // beware: month 0 = january, 11 = december
+ var endDate = new Date(agend.AGE_FFIN);
 let notes = `Actividad:${agend.ACT_NOMB} Asunto:${agend.AGE_ASUN} Contacto:${agend.CON_NOMB}`;
-this.calendare.createEvent(agend.ACT_NOMB,'',notes,init,fin).then(resp=>{
-  this._user.showAlert('Item agregado al calendario del dispostivo!','Listo!');
+this.calendare.createEvent(agend.ACT_NOMB,'',notes,startDate,startDate).then(resp=>{
+this._user.showAlert('Item agregado al calendario del dispostivo!','Listo!');
 }).catch(err=>{
   console.log(err);
 })
 }
-
 }

@@ -17,14 +17,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-fingerprint-aio.Fingerprint",
-    "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
-    "pluginId": "cordova-plugin-fingerprint-aio",
-    "clobbers": [
-      "Fingerprint"
-    ]
-  },
-  {
     "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
     "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
     "pluginId": "cordova-plugin-ionic-webview",
@@ -89,15 +81,21 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.browsertab"
     ]
+  },
+  {
+    "id": "cordova-plugin-fingerprint-aio.Fingerprint",
+    "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
+    "pluginId": "cordova-plugin-fingerprint-aio",
+    "clobbers": [
+      "Fingerprint"
+    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "cordova-plugin-add-swift-support": "1.7.0",
   "cordova-plugin-calendar": "4.6.0",
   "cordova-plugin-device": "1.1.7",
-  "cordova-plugin-fingerprint-aio": "1.3.3",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-keychain-touch-id": "3.2.1",
   "cordova-plugin-splashscreen": "4.1.0",
@@ -107,7 +105,9 @@ module.exports.metadata =
   "cordova-plugin-compat": "1.2.0",
   "mx.ferreyra.callnumber": "0.0.2",
   "cordova-plugin-email-composer": "0.8.11",
-  "cordova-plugin-browsertab": "0.2.0"
+  "cordova-plugin-browsertab": "0.2.0",
+  "cordova-plugin-add-swift-support": "1.7.0",
+  "cordova-plugin-fingerprint-aio": "1.3.4"
 };
 // BOTTOM OF METADATA
 });
