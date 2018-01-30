@@ -30,7 +30,7 @@ activitiesList:any;
     // });
     // loading.present();
     this._seven.GetActivities().then(data=>{
-      console.log(data);
+    //  console.log(data);
       this.activities = data;
       this.initializeItems();
       // loading.dismiss();

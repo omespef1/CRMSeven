@@ -99,9 +99,12 @@ SetAccessTouchID(){
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
+    console.log('va preguntar si esta dispnuble');
    this.keychainTouchId.isAvailable().then(()=>{
     this.touchID = true;
+    console.log('touch disponible');
     this.keychainTouchId.has("password").catch(err=>{
+      console.log('se va a preguntar por huella');
           this.faio.show({
             clientId: 'TouchIDConfirmation',
             localizedReason: 'Autentícate para ingresar con tu huella'

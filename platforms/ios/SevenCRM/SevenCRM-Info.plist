@@ -59,8 +59,6 @@
     <string/>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>This is used to select location from item caledar</string>
-    <key>FACEID_USAGE_DESCRIPTION</key>
-    <string>login with face id</string>
     <key>NSMainNibFile</key>
     <string/>
     <key>NSMainNibFile~ipad</key>
