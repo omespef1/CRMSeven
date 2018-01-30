@@ -33370,12 +33370,19 @@ ion-navbar.toolbar {
   display: none;
 }
 
+.note {
+  max-width: 50%;
+  overflow: hidden;
+}
+
 page-activities .event-detail-container[_ngcontent-c0] {
   display: none;
 }
 
 page-contact-search .detalle {
-  font-size: 1.1rem !important;
+  font-size: 1.0rem !important;
+  max-width: 30%;
+  overflow: hidden;
 }
 
 page-flow-detail ion-card {
@@ -33403,6 +33410,9 @@ page-flows .FlowBlue ion-label {
 
 page-login ion-footer p {
   color: white !important;
+  margin-bottom: 0px;
+  font-size: 1rem;
+  margin-top: 2px;
 }
 
 page-login h1 {

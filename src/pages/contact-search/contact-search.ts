@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+//providers
+import {UserDataProvider} from '../../providers/user-data/user-data';
 
 /**
  * Generated class for the ContactSearchPage page.
@@ -16,7 +18,8 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
 export class ContactSearchPage {
  contacts:any;
  contactsList:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController) {
+ value:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private _user:UserDataProvider) {
   this.contacts = navParams.get('contacts');
     this.initializeItems();
   }
@@ -41,7 +44,9 @@ if (!q || q.trim() === '') {
 return;
 }
 //Realiza el filtrado
-this.contactsList = this.contactsList.filter((v) =>  v.CON_NOMB.toLowerCase().indexOf(q.toLowerCase()) > -1);
+this.contactsList = this.contactsList.filter((v) =>  v.CON_NOMB.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.CON_CARG.toLowerCase().indexOf(q.toLowerCase()) > -1 );
 }
-
+seeDetail(contact:any){
+  this._user.showAlert(contact.CON_CARG,contact.CON_NOMB);
+}
 }

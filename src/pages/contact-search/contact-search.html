@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Contactos</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+      <button ion-button icon-only (click)="close()" class="BigButton">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -28,16 +28,20 @@
 <ion-content>
   <ion-list #contactList>
       <ion-item-group>
-        <ion-item (click)="closeLupa(contact)" *ngFor="let contact of contacts">
-          <ion-label>
-              {{contact.CON_NOMB}}
-          </ion-label>
-            <ion-icon name='person' item-start></ion-icon>
-
-            <ion-note class="detalle" item-end>
-            <ion-label> {{contact.CON_CARG}}</ion-label>
-            </ion-note>
-        </ion-item>
+        <ion-item-sliding  *ngFor="let contact of contactsList">
+          <button ion-item (click)="closeLupa(contact)">
+            <ion-label>
+                {{contact.CON_NOMB}}
+            </ion-label>
+              <ion-icon name='person' item-start></ion-icon>
+              <ion-note class="detalle" item-end>
+              <ion-label> {{contact.CON_CARG}}</ion-label>
+              </ion-note>
+          </button>
+        <ion-item-options side="right">
+           <button ion-button color="primary" (click)="seeDetail(contact)">Detalles</button>
+       </ion-item-options>
+     </ion-item-sliding>
       </ion-item-group>
     </ion-list>
 
