@@ -16,14 +16,6 @@
     <string>com.digitalware.com.co.seven.crm</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
-    <key>CFBundleLocalizations</key>
-    <array>
-      <string>en</string>
-      <string>de</string>
-      <string>nl</string>
-      <string>fr</string>
-      <string>it</string>
-    </array>
     <key>CFBundleName</key>
     <string>${PRODUCT_NAME}</string>
     <key>CFBundlePackageType</key>
@@ -34,13 +26,26 @@
     <string>????</string>
     <key>CFBundleVersion</key>
     <string>0.0.6</string>
-    <key>LSApplicationCategoryType</key>
-    <string/>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>mailto</string>
-    </array>
     <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>NSMainNibFile</key>
+    <string/>
+    <key>NSMainNibFile~ipad</key>
+    <string/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UIRequiresFullScreen</key>
     <true/>
     <key>NSAppTransportSecurity</key>
     <dict>
@@ -55,32 +60,21 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
-    <key>NSCalendarsUsageDescription</key>
-    <string/>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This is used to select location from item caledar</string>
-    <key>NSMainNibFile</key>
-    <string/>
-    <key>NSMainNibFile~ipad</key>
-    <string/>
     <key>UILaunchStoryboardName</key>
     <string>CDVLaunchScreen</string>
-    <key>UIRequiresFullScreen</key>
-    <true/>
-    <key>UISupportedInterfaceOrientations</key>
+    <key>CFBundleLocalizations</key>
     <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
+      <string>en</string>
+      <string>de</string>
+      <string>nl</string>
+      <string>fr</string>
+      <string>it</string>
     </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>NSFaceIDUsageDescription</key>
+    <key>NSCalendarsUsageDescription</key>
     <string/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>mailto</string>
+    </array>
   </dict>
 </plist>

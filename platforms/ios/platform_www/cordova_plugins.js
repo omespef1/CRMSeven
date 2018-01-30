@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
+    "id": "cordova-plugin-browsertab.BrowserTab",
+    "file": "plugins/cordova-plugin-browsertab/www/browsertab.js",
+    "pluginId": "cordova-plugin-browsertab",
+    "clobbers": [
+      "cordova.plugins.browsertab"
+    ]
+  },
+  {
     "id": "cordova-plugin-calendar.Calendar",
     "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
     "pluginId": "cordova-plugin-calendar",
@@ -14,6 +22,23 @@ module.exports = [
     "pluginId": "cordova-plugin-device",
     "clobbers": [
       "device"
+    ]
+  },
+  {
+    "id": "cordova-plugin-email-composer.EmailComposer",
+    "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
+    "pluginId": "cordova-plugin-email-composer",
+    "clobbers": [
+      "cordova.plugins.email",
+      "plugin.email"
+    ]
+  },
+  {
+    "id": "cordova-plugin-fingerprint-aio.Fingerprint",
+    "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
+    "pluginId": "cordova-plugin-fingerprint-aio",
+    "clobbers": [
+      "Fingerprint"
     ]
   },
   {
@@ -64,50 +89,25 @@ module.exports = [
     "clobbers": [
       "call"
     ]
-  },
-  {
-    "id": "cordova-plugin-email-composer.EmailComposer",
-    "file": "plugins/cordova-plugin-email-composer/www/email_composer.js",
-    "pluginId": "cordova-plugin-email-composer",
-    "clobbers": [
-      "cordova.plugins.email",
-      "plugin.email"
-    ]
-  },
-  {
-    "id": "cordova-plugin-browsertab.BrowserTab",
-    "file": "plugins/cordova-plugin-browsertab/www/browsertab.js",
-    "pluginId": "cordova-plugin-browsertab",
-    "clobbers": [
-      "cordova.plugins.browsertab"
-    ]
-  },
-  {
-    "id": "cordova-plugin-fingerprint-aio.Fingerprint",
-    "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
-    "pluginId": "cordova-plugin-fingerprint-aio",
-    "clobbers": [
-      "Fingerprint"
-    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
+  "cordova-plugin-add-swift-support": "1.7.0",
+  "cordova-plugin-compat": "1.2.0",
+  "cordova-plugin-browsertab": "0.2.0",
   "cordova-plugin-calendar": "4.6.0",
   "cordova-plugin-device": "1.1.7",
+  "cordova-plugin-email-composer": "0.8.11",
+  "cordova-plugin-fingerprint-aio": "1.3.4",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-keychain-touch-id": "3.2.1",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.1.2",
   "ionic-plugin-keyboard": "2.2.1",
-  "cordova-plugin-compat": "1.2.0",
-  "mx.ferreyra.callnumber": "0.0.2",
-  "cordova-plugin-email-composer": "0.8.11",
-  "cordova-plugin-browsertab": "0.2.0",
-  "cordova-plugin-add-swift-support": "1.7.0",
-  "cordova-plugin-fingerprint-aio": "1.3.4"
+  "mx.ferreyra.callnumber": "0.0.2"
 };
 // BOTTOM OF METADATA
 });
