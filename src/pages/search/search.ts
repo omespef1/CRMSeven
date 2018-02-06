@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+//pages
+import {LupaPage} from '../lupa/lupa';
+import {ClientPointsPage} from '../client-points/client-points';
 /**
  * Generated class for the SearchPage page.
  *
@@ -14,12 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ client:any;
+ details:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
+OpenSearchClient(){
+  let modal = this.modalCtrl.create(LupaPage,{all:true});
+  modal.present();
+  modal.onDidDismiss(data=>{
+     this.client = data;
+  })
+}
+OpenSearchDetail(){
+  let modal = this.modalCtrl.create(ClientPointsPage,{details:this.client.dprosList});
+  modal.present();
+  modal.onDidDismiss((data:any)=>{
+    this.client.conpr = data.
+  })
+}
 
 }

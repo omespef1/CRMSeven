@@ -13,6 +13,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item (click)="OpenSearchClient()">
+      <ion-icon name ="man" item-start>
+      </ion-icon>
+     <ion-label>Cliente</ion-label>
+     <ion-note class="note"  item-end *ngIf="client">
+     {{client.PRO_NOMB}}
+     </ion-note>
+    </ion-item>
+    <ion-item (click)="OpenSearchDetail()" *ngIf="client.dprosList">
+      <ion-icon name ="home" item-start>
+      </ion-icon>
+     <ion-label>Detalle</ion-label>
+     <ion-note class="note"  item-end *ngIf="client.cdpros">
 
+     </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

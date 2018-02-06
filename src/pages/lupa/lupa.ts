@@ -18,7 +18,9 @@ export class LupaPage {
   clients:any;
   clientesList:any;
   value:string;
+  all:boolean= false;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private load:LoadingController, private viewCtrl:ViewController) {
+  this.all = navParams.get('all');
   }
 terminado(){
   console.log('termino');
