@@ -33,6 +33,7 @@ viewTitle:string;
 selectedDay= new Date();
 selectedDayFormat:string;
 replicated:string;
+isReplicated:boolean;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
@@ -49,7 +50,14 @@ nextActivities:any;
     console.log('ionViewDidLoad ActivitiesPage');
   }
   ionViewWillEnter(){
-
+  this._user.getReplicated().then(data=>{
+    if(data){
+      this.isReplicated=true;
+    }
+    else{
+        this.isReplicated=false;
+    }
+  })
   }
 
   onViewTitleChanged(title:string){

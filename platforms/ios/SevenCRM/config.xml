@@ -19,6 +19,9 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CallNumber">
+        <param name="ios-package" value="CFCallNumber" />
+    </feature>
     <feature name="BrowserTab">
         <param name="ios-package" value="CBTBrowserTab" />
     </feature>
@@ -50,9 +53,6 @@
     </feature>
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="IonicKeyboard" />
-    </feature>
-    <feature name="CallNumber">
-        <param name="ios-package" value="CFCallNumber" />
     </feature>
     <name>SevenCRM</name>
     <description>An awesome Ionic/Cordova app.</description>
