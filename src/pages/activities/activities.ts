@@ -147,8 +147,17 @@ showUsers(){
   let modal = this.modal.create(EmployeesPage);
   modal.present();
   modal.onDidDismiss(data=>{
+    if(data){
     this.replicated= data;
+    this._user.SetReplicated(data);
+     this.LoadActivities();
+   }
   })
 
+}
+removeReplicated(){
+  this.replicated = null;
+  this._user.removeReplicated();
+   this.LoadActivities();
 }
 }

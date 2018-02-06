@@ -68,6 +68,14 @@ private browserTab: BrowserTab) {
       return value;
     });
   };
+  SetReplicated(replicated:string):void{
+      this.storage.set('replicated', replicated);
+  }
+  getReplicated(): Promise<any> {
+    return this.storage.get('replicated').then((value) => {
+      return value;
+    });
+  };
   hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
       return value === true;
@@ -161,6 +169,9 @@ private browserTab: BrowserTab) {
     this.storage.remove('secureUser');
     this.keychain.delete('password');
     this.logout();
+  }
+  removeReplicated(){
+      this.storage.remove('replicated');
   }
   openBrowser(url:string){
     this.browserTab.isAvailable()

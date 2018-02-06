@@ -18,7 +18,15 @@ export class SevenProvider {
   }
 
 getFlows(usu_codi:string){
-   return    this.getData(`Flujos/FlujosAdm?usu_codi=${usu_codi}`);
+return  this._userdata.getReplicated().then(data=>{
+  console.log(data);
+    if(data){
+       return    this.getData(`Flujos/FlujosAdm?usu_codi=${data.Usu_Codi}`);
+    }
+    else{
+         return    this.getData(`Flujos/FlujosAdm?usu_codi=${usu_codi}`);
+    }
+  })
 }
 GetValidationUser(user:string, pass:string){
   return this.getData(`GnUsuar/ValidateUser?user=${user}&pass=${pass}`);
@@ -26,7 +34,9 @@ GetValidationUser(user:string, pass:string){
 ApproveFlow(flujo:any){
   return this.postData(flujo,'Flujos/FlujosAdm')
 }
+
 GetFaClien(value:string,all:boolean =false){
+  console.log(all);
  let url : string = 'Actividades/cargarClientescrm?filter=' + value;
  if(all)
  url +='&all=true';
@@ -40,7 +50,6 @@ GetFaClien(value:string,all:boolean =false){
       return undefined;
     })
 
-  //
 }
 GetActivities(){
     return this.getData('Actividades/ListarActividades');
@@ -49,7 +58,14 @@ GetStages(){
   return this.getData('Actividades/ListarEtapas');
 }
 GetUserActivities(usu_codi:string,fini:string,fina:string){
-  return this.getData(`CrAgend/ListaActividades?usu_codi=${usu_codi}&fini=${fini}&fina=${fina}`)
+  return this._userdata.getReplicated().then(data=>{
+    if(data){
+    return this.getData(`CrAgend/ListaActividades?usu_codi=${data.Usu_Codi}&fini=${fini}&fina=${fina}`)
+  }else {
+      return this.getData(`CrAgend/ListaActividades?usu_codi=${usu_codi}&fini=${fini}&fina=${fina}`)
+  }
+  })
+
 }
 GetActivitiesForProspect(usu_codi:string,pro_cont:number){
   return this.getData(`CrAgend/ListaActividadesProsp?usu_codi=${usu_codi}&pro_cont=${pro_cont}`)
@@ -84,7 +100,7 @@ GetUsers(usu_codi:string){
 // }
 
   getData(apiAction:string) {
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
     let load = this.load.create({
       content:'cargando...'
     })
@@ -103,7 +119,7 @@ GetUsers(usu_codi:string){
   }
   postData(data,apiAction:string) {
     //Comentarear para produccion
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })
@@ -125,8 +141,8 @@ getDataConex() {
   })
   load.present();
   return new Promise(resolve => {
-  this.http.get(Globals.CentralizationUrl).subscribe(data => {
-    //  this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
+  //this.http.get(Globals.CentralizationUrl).subscribe(data => {
+    this.http.get('http://localhost/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
       resolve(data);
       load.dismiss();
     }, err => {

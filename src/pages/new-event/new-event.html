@@ -22,30 +22,35 @@
 <ion-content>
   <ion-list>
     <ion-item text-wrap button (click)="openLupa()">
+      <ion-icon name="person" item-start></ion-icon>
      <ion-label>Cliente</ion-label>
      <ion-note class="note"  item-end *ngIf="client">
      {{client.PRO_NOMB}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name="home" item-start></ion-icon>
       <ion-label>Detalle cliente</ion-label>
       <ion-note class="note" item-end *ngIf="client && client.cdpros">
        {{client.cdpros.DPR_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item button (click)="openLupaActivities()">
+        <ion-icon name="link" item-start></ion-icon>
      <ion-label>Actividad</ion-label>
      <ion-note class="note" item-end *ngIf="activity">
      {{activity.ACT_NOMB}}
      </ion-note>
     </ion-item>
     <ion-item (click)="openContacts(client.conpr)">
+        <ion-icon name="contact" item-start></ion-icon>
       <ion-label>Contacto</ion-label>
       <ion-note class="note" item-end *ngIf="contact">
       {{contact.CON_NOMB}}
       </ion-note>
     </ion-item>
     <ion-item button (click)="openLupaStages()">
+        <ion-icon name="git-network" item-start></ion-icon>
      <ion-label>Etapa proceso</ion-label>
      <ion-note class="note" item-end *ngIf="stage">
      {{stage.ETA_NOMB}}
@@ -55,14 +60,17 @@
       <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-icon name="alarm" item-start></ion-icon>
       <ion-label>Inicio</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="DD/MM/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>
     </ion-item>
     <ion-item>
+        <ion-icon name="alarm" item-start></ion-icon>
       <ion-label>Horas</ion-label>
       <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>
     </ion-item>
     <ion-item>
+        <ion-icon name="paper" item-start></ion-icon>
       <ion-label>
             Notas
       </ion-label>

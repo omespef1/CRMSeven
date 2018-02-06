@@ -18,7 +18,7 @@ import {ContactDetailPage} from '../contact-detail/contact-detail';
 })
 export class SearchPage {
  client:any;
- details:any;
+ detail:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private modalCtrl:ModalController) {
   }
 
@@ -26,16 +26,19 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
 OpenSearchClient(){
-  let modal = this.modalCtrl.create(LupaPage,{all:true});
+  let modal = this.modalCtrl.create(LupaPage,{'all':true});
   modal.present();
-  modal.onDidDismiss(data=>{
+  modal.onDidDismiss((data:any)=>{
      this.client = data;
+     console.log(data);
+
   })
 }
 OpenSearchDetail(){
   let modal = this.modalCtrl.create(ClientPointsPage,{details:this.client.dprosList});
   modal.present();
   modal.onDidDismiss((data:any)=>{
+    console.log(data);
     this.client.cdpros = data;
   })
 }

@@ -27,16 +27,11 @@
 <ion-content>
   <ion-list>
 
-        <ion-item  *ngFor="let employee of employees">
-          <button ion-item (click)="closeLupa(employee)">
+        <ion-item (click)="closeLupa(employee)"  *ngFor="let employee of employeesList">          
             <ion-label>
-                {{employee.Usu_Codi}}
+                {{employee.Usu_Nomb}}
             </ion-label>
               <ion-icon name='person' item-start></ion-icon>
-              <ion-note>
-              </ion-note>
-          </button>
-
      </ion-item>
   
     </ion-list>

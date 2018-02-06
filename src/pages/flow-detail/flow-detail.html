@@ -17,66 +17,77 @@
 <ion-content>
   <ion-list>
     <ion-item>
+      <ion-icon name ="podium" item-start></ion-icon>
      <ion-label>Prioridad</ion-label>
      <ion-note item-end>
     {{flow.SEG_PRIO}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name ="eye" item-start></ion-icon>
      <ion-label>Seguimiento</ion-label>
      <ion-note item-end>
   {{flow.SEG_CONT}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name ="clipboard" item-start></ion-icon>
      <ion-label>Asunto</ion-label>
      <ion-note item-end>
      {{flow.SEG_SUBJ}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name ="person" item-start></ion-icon>
      <ion-label>Quién registra</ion-label>
      <ion-note item-end>
       {{flow.USU_NOMB}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name ="person" item-start></ion-icon>
      <ion-label>Solicitado para</ion-label>
      <ion-note item-end>
     {{flow.SOLICITADO}}
      </ion-note>
     </ion-item>
     <ion-item>
+   <ion-icon name ="alarm" item-start></ion-icon>
      <ion-label>Recibido</ion-label>
      <ion-note item-end>
    {{flow.SEG_FREC| date: 'dd/MM/yyyy' }} &nbsp;{{flow.SEG_HREC | date: 'h:mm:ss a'}}
      </ion-note>
     </ion-item>
     <ion-item>
+        <ion-icon name ="alarm" item-start></ion-icon>
      <ion-label>Límite</ion-label>
      <ion-note item-end>
      {{flow.SEG_FLIM | date: 'dd/MM/yyyy'}} &nbsp;{{flow.SEG_HLIM | date: 'h:mm:ss a'}}
      </ion-note>
     </ion-item>
     <ion-item *ngIf="flow.ADICIO">
+        <ion-icon name ="twitch" item-start></ion-icon>
      <ion-label>Datos adicionales</ion-label>
      <ion-note item-end>
        {{flow.ADICIO}}
      </ion-note>
     </ion-item>
     <ion-item>
+    <ion-icon name ="create" item-start></ion-icon>
     <ion-label>Descripción</ion-label>
     </ion-item>
     <ion-item text-wrap>
         <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>
     </ion-item>
     <ion-item>
+        <ion-icon name ="clipboard" item-start></ion-icon>
     <ion-label>Comentarios para el ejecutor</ion-label>
     </ion-item>
     <ion-item text-wrap>
         <p text-wrap>    {{flow.SEG_COME}}</p>
     </ion-item>
     <ion-item>
+        <ion-icon name ="create" item-start></ion-icon>
     <ion-label>Comentarios para el segundo ejecutor</ion-label>
     </ion-item>
     <ion-item>

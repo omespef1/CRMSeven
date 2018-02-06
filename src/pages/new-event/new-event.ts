@@ -102,6 +102,11 @@ if(this.validEvent()){
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
+ console.log(this.newActivity.age_obse)
+ if( this.newActivity.age_obse==undefined){
+     this.showAlert("Debe especificar una observación", 'Lo sentimos!')
+ return;
+}
  //this.newActivity.Age_Fech = new Date();
  // if(this.invited.Usu_Codi !=null){
  //   this.newActivity.Inv_Codi = this.invited.Usu_Codi

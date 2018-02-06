@@ -38,17 +38,17 @@
   <ion-list #scheduleList no-lines>
       <ion-item-group no-border>
         <ion-item-sliding #slidingItem  class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">
-          <button ion-item (click)="goDetailsFlow(flow)">
+          <button ion-item (click)="goDetailsFlow(flow)" [disabled]="replicated">
         <h3>Caso {{flow.CAS_CONT}}</h3>
         <p>
         {{flow.CAS_DESC}}
         </p>
       </button>
       <ion-item-options side="right">
-     <button ion-button color="danger" (click)="flowReject(flow)">Rechazar</button>
+     <button ion-button color="danger" (click)="flowReject(flow)" [disabled]="replicated" >Rechazar</button>
  </ion-item-options>
  <ion-item-options side="left">
-<button ion-button color="primary" (click)="flowAprobment(flow)">Aprobar</button>
+<button ion-button color="primary" (click)="flowAprobment(flow)" [disabled]="replicated">Aprobar</button>
 </ion-item-options>
         </ion-item-sliding>
 

@@ -21,6 +21,7 @@ export class LupaPage {
   all:boolean= false;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private load:LoadingController, private viewCtrl:ViewController) {
   this.all = navParams.get('all');
+  console.log(this.all);
   }
 terminado(){
   console.log('termino');
@@ -31,7 +32,8 @@ terminado(){
 
   loadClients(value:any){
 if(value!=""){
-  return  this._seven.GetFaClien(this.value).then(data=>{
+  console.log(this.all);
+  return  this._seven.GetFaClien(this.value,this.all).then(data=>{
       this.clients = data;
         this.initializeItems();
           console.log('cargado');

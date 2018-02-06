@@ -25,15 +25,26 @@ export class FlowsPage {
   value = '';
   flowList:any;
   user:any;
+  replicated : boolean=false;
   constructor(public navCtrl: NavController , private _seven:SevenProvider,private toast:ToastController,private _user:UserDataProvider,
   private modal:ModalController) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FlowsPage');
-    this.getFlows();
 
+  }
+  ionViewWillEnter(){
+    console.log('ionViewDidLoad FlowsPage');
+    this._user.getReplicated().then(data=>{
+      if(data){
+          this.replicated = true;
+            this.getFlows();
+      }else {
+          this.replicated = false;
+        this.getFlows();
+      }
+    })
   }
   goDetailsFlow(flow:any){
   let modal =  this.modal.create(FlowDetailPage,{'flow':flow})
@@ -54,7 +65,6 @@ export class FlowsPage {
           //Error
         })
     })
-
   }
   initializeItems(): void {
    this.flowList = this.flows;

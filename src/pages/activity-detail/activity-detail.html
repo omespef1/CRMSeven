@@ -67,6 +67,7 @@
         DILIGENCIAR
       </ion-item-divider>
       <ion-item (click)="showStates()">
+       <ion-icon name="information-circle" item-start></ion-icon>
         <ion-label>
           Estado
         </ion-label>
@@ -75,7 +76,8 @@
         </ion-note>
       </ion-item>
       <ion-item (click)="showResults()">
-           <ion-icon name="create" item-start></ion-icon>
+          <ion-icon name="thumbs-up" item-start></ion-icon>
+
         <ion-label>
               Resultado
         </ion-label>
@@ -84,6 +86,7 @@
         </ion-note>
       </ion-item>
       <ion-item>
+        <ion-icon name="clipboard" item-start></ion-icon>
         <ion-label>
               Observaciones
         </ion-label>
@@ -106,11 +109,11 @@
         <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>
-    <ion-col>
+    <!-- <ion-col>
       <button ion-button block color="danger" (click)="ActivityReject()">
             <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar
       </button>
-    </ion-col>
+    </ion-col> -->
   </ion-row>
   <ion-row>
     <ion-col>
