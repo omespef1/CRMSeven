@@ -26,14 +26,11 @@ GetValidationUser(user:string, pass:string){
 ApproveFlow(flujo:any){
   return this.postData(flujo,'Flujos/FlujosAdm')
 }
-GetFaClien(value:string){
-  // return  this._storage.get("faClien").then(value=>{
-  // console.log(value);
-  // if(value!=undefined && !refresh){
-  //   console.log("speakers leídos de memoria");
-  //   return value;
-  // }
-  return this.getData('Actividades/cargarClientescrm?filter=' + value)
+GetFaClien(value:string,all:boolean =false){
+ let url : string = 'Actividades/cargarClientescrm?filter=' + value;
+ if(all)
+ url +='&all=true';
+  return this.getData(url)
     .then(data => {
       this._userdata.setFaClien(data);
        console.log("clientes leídos de bd");
@@ -83,7 +80,7 @@ GetUsers(usu_codi:string){
 // }
 
   getData(apiAction:string) {
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let load = this.load.create({
       content:'cargando...'
     })
@@ -102,7 +99,7 @@ GetUsers(usu_codi:string){
   }
   postData(data,apiAction:string) {
     //Comentarear para produccion
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+ Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })
@@ -124,8 +121,8 @@ getDataConex() {
   })
   load.present();
   return new Promise(resolve => {
-  this.http.get(Globals.CentralizationUrl).subscribe(data => {
-      //this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
+  //this.http.get(Globals.CentralizationUrl).subscribe(data => {
+      this.http.get('http://132.147.157.88/sevencentralizacion/api/GnConex/GetConnections').subscribe(data => {
       resolve(data);
       load.dismiss();
     }, err => {
