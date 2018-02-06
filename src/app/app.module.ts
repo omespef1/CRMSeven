@@ -35,6 +35,7 @@ import {FlowsFilterPage} from '../pages/flows-filter/flows-filter';
 import {ContactSearchPage} from '../pages/contact-search/contact-search';
 import { SearchPage} from '../pages/search/search';
 import {ClientPointsPage} from '../pages/client-points/client-points';
+import {EmployeesPage} from '../pages/employees/employees';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -79,7 +80,8 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     FlowsFilterPage,
     ContactSearchPage,
     SearchPage,
-    ClientPointsPage
+    ClientPointsPage,
+    EmployeesPage
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,8 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     FlowsFilterPage,
     ContactSearchPage,
     SearchPage,
-    ClientPointsPage
+    ClientPointsPage,
+    EmployeesPage
   ],
   providers: [
     StatusBar,

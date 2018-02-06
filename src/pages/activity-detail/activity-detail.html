@@ -22,36 +22,42 @@
       DETALLES
     </ion-item-divider>
     <ion-item>
+      <ion-icon name="alarm" item-start></ion-icon>
       <ion-label>Inicio</ion-label>
       <ion-note item-end>
       {{activity.AGE_FINI | digitalDate}}
       </ion-note>
      </ion-item>
      <ion-item>
+     <ion-icon name="alarm" item-start></ion-icon>
      <ion-label>Fin</ion-label>
      <ion-note item-end>
        {{activity.AGE_FFIN | digitalDate}}
      </ion-note>
     </ion-item>
   <ion-item>
+      <ion-icon name="person" item-start></ion-icon>
     <ion-label>Cliente</ion-label>
     <ion-note item-end (click)="showClient(activity)">
     {{activity.PRO_NOMB}}
     </ion-note>
    </ion-item>
    <ion-item>
+       <ion-icon name="contact" item-start></ion-icon>
      <ion-label>Contacto</ion-label>
      <ion-note   item-end class="wrap-text"  (click)="showContact(activity)">
      {{activity.CON_NOMB}}  {{activity.CON_APEL}}
      </ion-note>
     </ion-item>
     <ion-item>
+         <ion-icon name="create" item-start></ion-icon>
       <ion-label>Actividad</ion-label>
       <ion-note item-end>
     {{activity.ACT_NOMB}}
       </ion-note>
      </ion-item>
      <ion-item>
+         <ion-icon name="create" item-start></ion-icon>
        <ion-label>Asunto</ion-label>
        <ion-note item-end>
     {{activity.AGE_ASUN}}
@@ -69,6 +75,7 @@
         </ion-note>
       </ion-item>
       <ion-item (click)="showResults()">
+           <ion-icon name="create" item-start></ion-icon>
         <ion-label>
               Resultado
         </ion-label>

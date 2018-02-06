@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams ,AlertController,ModalController} f
 import {NewEventPage} from '../new-event/new-event';
 import {ActivityDetailPage} from '../activity-detail/activity-detail';
 import * as moment from 'moment';
+import {EmployeesPage} from '../employees/employees';
 
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
@@ -31,6 +32,7 @@ eventSource=[];
 viewTitle:string;
 selectedDay= new Date();
 selectedDayFormat:string;
+replicated:string;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
@@ -140,5 +142,13 @@ this._user.showAlert('Item agregado al calendario del dispostivo!','Listo!');
 }).catch(err=>{
   console.log(err);
 })
+}
+showUsers(){
+  let modal = this.modal.create(EmployeesPage);
+  modal.present();
+  modal.onDidDismiss(data=>{
+    this.replicated= data;
+  })
+
 }
 }

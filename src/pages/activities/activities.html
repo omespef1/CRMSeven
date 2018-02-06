@@ -14,6 +14,13 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  <ion-item (click)="showUsers()">
+ <ion-icon name="eye" item-start></ion-icon>
+ <ion-label>Visualizar como</ion-label>
+ <ion-note item-end *ngIf="replicated">
+   {{replicated.Usu_Nomb}}
+ </ion-note>
+  </ion-item>
   <calendar [eventSource]="eventSource"
           [calendarMode]="calendar.mode"
           [currentDate]="calendar.currentDate"

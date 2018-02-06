@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angul
 //pages
 import {LupaPage} from '../lupa/lupa';
 import {ClientPointsPage} from '../client-points/client-points';
+import {ContactDetailPage} from '../contact-detail/contact-detail';
 /**
  * Generated class for the SearchPage page.
  *
@@ -35,8 +36,11 @@ OpenSearchDetail(){
   let modal = this.modalCtrl.create(ClientPointsPage,{details:this.client.dprosList});
   modal.present();
   modal.onDidDismiss((data:any)=>{
-    this.client.conpr = data.
+    this.client.cdpros = data;
   })
 }
-
+openContact(contact:any){
+  let modal = this.modalCtrl.create(ContactDetailPage,{contact:contact});
+  modal.present();
+}
 }
