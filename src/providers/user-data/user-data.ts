@@ -110,15 +110,18 @@ private browserTab: BrowserTab) {
   }
   sendEmail(to:string){
     this.emailComposer.isAvailable().then((available: boolean) =>{
-     if(available) {
-       //Now we know we can send
-     }
-    });
-    let email = {
+   if(available) {
+     //Now we know we can send
+   }
+  });
+
+  let email = {
     to: to,
+    isHtml: false
   };
-    // Send a text message using default options
-    this.emailComposer.open(email);
+
+  // Send a text message using default options
+  this.emailComposer.open(email);
   }
   showAlert(mensaje:string, titulo:string) {
   let alert = this.alertCtrl.create({
