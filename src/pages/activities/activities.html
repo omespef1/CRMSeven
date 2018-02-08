@@ -59,10 +59,10 @@
                   <ion-icon name="clock" item-start></ion-icon>
                  </button>
                  <ion-item-options side="right">
-                <button ion-button color="danger" (click)="RejectActivity(agend)">Cancelar</button>
+                <button ion-button color="danger" (click)="RejectActivity(agend)" [disabled]="replicated!=undefined">Cancelar</button>
             </ion-item-options>
             <ion-item-options side="left">
-            <button ion-button color="primary" (click)="addCalendar(agend)" icon-start>
+            <button ion-button color="primary" (click)="addCalendar(agend)" [disabled]="replicated!=undefined" icon-start>
             <ion-icon name="calendar">
             </ion-icon> Añadir al calendario
           </button>

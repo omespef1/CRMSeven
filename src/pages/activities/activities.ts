@@ -32,8 +32,7 @@ eventSource=[];
 viewTitle:string;
 selectedDay= new Date();
 selectedDayFormat:string;
-replicated:string;
-isReplicated:boolean;
+replicated:any;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
@@ -45,18 +44,21 @@ nextActivities:any;
   }
 
   ionViewDidLoad() {
-
+    this._user.getReplicated().then(data=>{
+      if(data){
+        this.replicated = data;
+      }
+    })
 
     console.log('ionViewDidLoad ActivitiesPage');
   }
   ionViewWillEnter(){
   this._user.getReplicated().then(data=>{
-    if(data){
-      this.isReplicated=true;
-    }
-    else{
-        this.isReplicated=false;
-    }
+    if(data)
+      this.replicated = data;
+
+
+
   })
   }
 
@@ -156,15 +158,16 @@ showUsers(){
   modal.present();
   modal.onDidDismiss(data=>{
     if(data){
+        this._user.SetReplicated(data);
     this.replicated= data;
-    this._user.SetReplicated(data);
+
      this.LoadActivities();
    }
   })
 
 }
 removeReplicated(){
-  this.replicated = null;
+  this.replicated = undefined;
   this._user.removeReplicated();
    this.LoadActivities();
 }

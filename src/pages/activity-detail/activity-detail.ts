@@ -25,6 +25,7 @@ export class ActivityDetailPage {
 activity:any;
 invited:any ={};
 usu_codi :any;
+replicated:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private _seven:SevenProvider,
   private _user:UserDataProvider, private alertCtrl:AlertController,private modalCtrl:ModalController,private actionSheetCtrl:ActionSheetController) {
     this.activity = this.navParams.get('activity');
@@ -36,6 +37,10 @@ usu_codi :any;
     this.usu_codi = data.toUpperCase();
     console.log(this.usu_codi);
     this.activity.USU_PLAN =  this.activity.USU_PLAN.toUpperCase();
+    this._user.getReplicated().then(data=>{
+      if(data)
+      this.replicated = data;
+    })
   })
   }
 close(){

@@ -117,7 +117,7 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <button ion-button block color="primary" (click)="UpdateAgend()">
+      <button ion-button block color="primary" (click)="UpdateAgend()" [disabled]="replicated!=undefined">
       <ion-icon name="checkmark-circle" icon-left>
       </ion-icon>&nbsp;Hecho
 
