@@ -92,9 +92,9 @@
         </ion-label>
       </ion-item>
       <ion-item>
-        <ion-textarea  type="text"  [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>
+        <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>
       </ion-item>
-      <ion-item button (click)="openInvited()">
+      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
         <ion-label>Invitar</ion-label>
         <ion-note item-end>
           {{invited.Usu_Nomb}}
@@ -105,7 +105,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()">
+      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled]="activity.USU_PLAN != activity.USU_EJEC">
         <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>
