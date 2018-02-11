@@ -171,4 +171,26 @@ removeReplicated(){
   this._user.removeReplicated();
    this.LoadActivities();
 }
+showConfirmReject(activity:any){
+  let confirm = this.alert.create({
+     title: 'Eliminar?',
+     message: 'Está seguro de cancelar esta actividad?Se eliminará de su agenda',
+     buttons: [
+       {
+         text: 'Cancelar',
+         handler: () => {
+           console.log('Agree clicked');
+         }
+       },
+       {
+         text: 'Si',
+         handler: () => {
+           this.RejectActivity(activity)
+         }
+       }
+
+     ]
+   });
+   confirm.present();
+}
 }
