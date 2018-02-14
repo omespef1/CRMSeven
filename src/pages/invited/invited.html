@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Invitar</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="close()">
+      <button class="BigButton" ion-button icon-only (click)="close()">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
@@ -28,7 +28,7 @@
 <ion-content>
   <ion-list #clientsList>
       <ion-item-group>
-        <ion-item (click)="closeLupa(user)" *ngFor="let user of usersList">
+        <ion-item (click)="ShowConfirmInvited(user)" *ngFor="let user of usersList">
           <ion-label>
           {{user.Usu_Nomb}}
           </ion-label>

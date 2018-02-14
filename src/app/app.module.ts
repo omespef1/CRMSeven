@@ -36,6 +36,7 @@ import {ContactSearchPage} from '../pages/contact-search/contact-search';
 import { SearchPage} from '../pages/search/search';
 import {ClientPointsPage} from '../pages/client-points/client-points';
 import {EmployeesPage} from '../pages/employees/employees';
+import {AttchmentsPage} from '../pages/attchments/attchments';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -81,7 +82,8 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     ContactSearchPage,
     SearchPage,
     ClientPointsPage,
-    EmployeesPage
+    EmployeesPage,
+    AttchmentsPage
   ],
   imports: [
     BrowserModule,
@@ -117,7 +119,8 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     ContactSearchPage,
     SearchPage,
     ClientPointsPage,
-    EmployeesPage
+    EmployeesPage,
+    AttchmentsPage
   ],
   providers: [
     StatusBar,

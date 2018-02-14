@@ -26,6 +26,8 @@ activity:any;
 invited:any ={};
 usu_codi :any;
 replicated:any;
+invitedCount:number;
+inviteds:any[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,private _seven:SevenProvider,
   private _user:UserDataProvider, private alertCtrl:AlertController,private modalCtrl:ModalController,private actionSheetCtrl:ActionSheetController) {
     this.activity = this.navParams.get('activity');
@@ -35,11 +37,11 @@ replicated:any;
   ionViewDidLoad() {
   this._user.getUsername().then(data=>{
     this.usu_codi = data.toUpperCase();
-    console.log(this.usu_codi);
     this.activity.USU_PLAN =  this.activity.USU_PLAN.toUpperCase();
     this._user.getReplicated().then(data=>{
       if(data)
       this.replicated = data;
+      this.GetActivityInviteds();
     })
   })
   }
@@ -49,7 +51,6 @@ close(){
 ActivityReject(){
 
   this.activity.USU_CODI = this.usu_codi;
-  console.log(this.activity);
   this._seven.RejectActivity(this.activity).then(response=>{
     let data :any = response;
     if(!data.State){
@@ -65,20 +66,7 @@ ActivityReject(){
 
 
 }
-AcitityInvited(){
-  console.log("invitado");
-  this.activity.Inv_Codi = this.invited.Usu_Codi;
-  this.activity.Age_Fech=  this.activity.AGE_FREG;
-//  this.activity.AGE_FEJE = this.activity.AGE_FREG;
-  this._seven.InvitedActivity(this.activity).then(data=>{
-    let datos:any = data;
-    if(datos.State){
-      this.showAlert('El usuario ha sido invitado a la actividad','Listo!')
-      return;
-    }
-    this.showAlert('Error:' + datos.Message,'Lo sentimos!');
-  })
-}
+
 showAlert(mensaje:string, titulo:string) {
 let alert = this.alertCtrl.create({
   title: titulo,
@@ -88,11 +76,13 @@ let alert = this.alertCtrl.create({
 alert.present();
 }
  openInvited(){
-    let modal = this.modalCtrl.create(InvitedPage,{usu_codi:this.usu_codi});
+   console.log(this.activity);
+    let modal = this.modalCtrl.create(InvitedPage,{activity:this.activity});
     modal.present();
-    modal.onDidDismiss(data=>{
-      this.invited = data;
+    modal.onDidDismiss(()=>{
+      this.GetActivityInviteds();
     })
+
  }
  showContact(contact:any){
    let modal = this.modalCtrl.create(ContactDetailPage,{contact:contact});
@@ -187,5 +177,28 @@ this.activity.AGE_RESU = result;
       }
         this._user.showAlert("La agenda ha sido actualzada","Listo!")
     })
+ }
+ GetActivityInviteds(){
+   this._seven.GetActivityInviteds(this.activity).then((data:any)=>{
+     if(data){
+       console.log(data);
+       this.inviteds = data.ObjResult;
+       console.log(this.inviteds);
+       this.invitedCount = this.inviteds.length-1;
+     }
+   });
+ }
+ ShowInvites(){
+  let subtitle:string="";
+   for(let invited of this.inviteds){
+     subtitle += '-' +invited.Usu_Nomb +'<br>'
+   }
+   let alert = this.alertCtrl.create({
+     title:'Invitados a esta actividad',
+     subTitle :subtitle,
+     buttons: ['OK']
+
+   })
+   alert.present();
  }
 }

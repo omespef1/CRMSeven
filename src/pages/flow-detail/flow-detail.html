@@ -44,6 +44,11 @@
       {{flow.USU_NOMB}}
      </ion-note>
     </ion-item>
+    <ion-item (click)="OpenAttchments()" *ngIf="attchmentCount>0">
+  <ion-icon name="attach" item-start></ion-icon>
+  Adjuntos
+  <ion-badge item-end>{{attchmentCount}}</ion-badge>
+</ion-item>
     <ion-item>
         <ion-icon name ="person" item-start></ion-icon>
      <ion-label>Solicitado para</ion-label>

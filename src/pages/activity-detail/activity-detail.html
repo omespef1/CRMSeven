@@ -56,6 +56,11 @@
     {{activity.ACT_NOMB}}
       </ion-note>
      </ion-item>
+     <ion-item *ngIf="invitedCount>0" (click)="ShowInvites()">
+     <ion-icon name="contacts" item-start></ion-icon>
+     Invitados
+     <ion-badge item-end>{{invitedCount}}</ion-badge>
+   </ion-item>
      <ion-item>
          <ion-icon name="create" item-start></ion-icon>
        <ion-label>Asunto</ion-label>
@@ -94,19 +99,19 @@
       <ion-item>
         <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>
       </ion-item>
-      <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
+      <!-- <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
         <ion-label>Invitar</ion-label>
         <ion-note item-end>
           {{invited.Usu_Nomb}}
         </ion-note>
-       </ion-item>
+       </ion-item> -->
 
 </ion-list>
 <ion-grid>
   <ion-row>
     <ion-col>
-      <button *ngIf="invited" ion-button block color="primary" (click)="AcitityInvited()" [disabled]="activity.USU_PLAN != activity.USU_EJEC">
-        <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Invitar
+      <button ion-button block color="primary" (click)="openInvited()">
+        <ion-icon name="contacts"></ion-icon>&nbsp;Invitar
       </button>
     </ion-col>
     <!-- <ion-col>
@@ -120,7 +125,6 @@
       <button ion-button block color="primary" (click)="UpdateAgend()" [disabled]="replicated!=undefined">
       <ion-icon name="checkmark-circle" icon-left>
       </ion-icon>&nbsp;Hecho
-
       </button>
     </ion-col>
   </ion-row>

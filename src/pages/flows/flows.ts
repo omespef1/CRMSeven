@@ -121,6 +121,7 @@ flowAprobment(flow:any){
        this.ionViewDidLoad();
     return;
   }
+    this.getFlows();
     this._user.showToast(response.Message)
  })
 
@@ -133,6 +134,7 @@ flowReject(flow:any){
        this.ionViewDidLoad();
        return;
     }
+      this.getFlows();
     this._user.showToast(response.Message)
   })
 }

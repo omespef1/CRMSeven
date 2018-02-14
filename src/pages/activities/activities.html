@@ -40,7 +40,6 @@
     <ion-label>Cancelar visualización de Usuario</ion-label>
     <ion-icon item-start name="remove-circle"></ion-icon>
   </ion-item>
-
         <ion-list #scheduleList>
           <ion-list-header>
             <h2>Próximas</h2>
@@ -54,7 +53,6 @@
                 <button ion-item (click)="openActivity(agend)">
                   <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>
                   <h4>{{agend.PRO_NOMB}}</h4>
-
                  <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>
                   <ion-icon name="clock" item-start></ion-icon>
                  </button>
@@ -71,5 +69,4 @@
             </ion-item-group>
           </div>
         </ion-list>
-
 </ion-content>
