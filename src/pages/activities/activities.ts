@@ -33,6 +33,7 @@ viewTitle:string;
 selectedDay= new Date();
 selectedDayFormat:string;
 replicated:any;
+click:boolean=false;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
@@ -44,6 +45,7 @@ nextActivities:any;
   }
 
   ionViewDidLoad() {
+    this.click=true;
     this._user.getReplicated().then(data=>{
       if(data){
         this.replicated = data;
@@ -63,13 +65,23 @@ nextActivities:any;
   }
 
   onViewTitleChanged(title:string){
+    this.click=true;
 this.viewTitle = title;
   }
   onTimeSelected(ev){
+debugger;
+
    this.selectedDay = ev.selectedTime;
    this.selectedDay.setMinutes(0);
    this.selectedDay.setHours(0);
-   this.LoadActivities();
+if(this.click){
+
+
+     this.LoadActivities();
+}
+
+
+
   }
   onEventSelected(event){
     let start = moment(event.startTime).format('LLLL');
@@ -82,35 +94,41 @@ this.viewTitle = title;
     alert.present();
   }
 addEvent(event){
+
 let modal = this.modal.create(NewEventPage,{selectedDay:this.selectedDay});
 modal.present();
 modal.onDidDismiss(data=>{
     this.LoadActivities();
-  // if(data){
-  //   let eventData =  data;
-  //       eventData.startTime = new Date(data.startTime);
-  //       eventData.endTime = new Date(data.endTime);
-  //       let events = this.eventSource;
-  //       events.push(eventData);
-  //       this.eventSource =[];
-  //       setTimeout(()=>{
-  //         this.eventSource = events;
-  //       })
-  // }
 })
 }
 
 LoadActivities(){
   let fini= moment(this.selectedDay).format("YYYY-MM-DD HH:mm:ss");
-  let finalDate = new Date();
-  finalDate.setDate(this.selectedDay.getDate()+7);
+  let  days:number=moment(this.selectedDay).daysInMonth();
+  let daysToSearh = (days - this.selectedDay.getDate());
+  let finalDate = this.selectedDay;
+  finalDate.setDate(finalDate.getDate() + daysToSearh);
+  //finalDate = this.sumarDias(finalDate,daysToSearh);
+  //finalDate.setDate(this.selectedDay.getDate()+7);
   let fina = moment(finalDate).format("YYYY-MM-DD HH:mm:ss")
   this._user.getUsername().then(data=>{
     this._seven.GetUserActivities(data,fini,fina).then(data=>{
       let datos:any = data;
       if(datos.State){
         this.nextActivities = datos.ObjResult;
-          console.log(this.nextActivities);
+        let events = this.eventSource;
+        for(let group of this.nextActivities){
+          let eventData :any = { startTime : new Date(), endTime:new Date()}
+           eventData.startTime = new Date(group.Agenda[0].AGE_FINI);
+           eventData.endTime =  new Date(group.Agenda[0].AGE_FFIN);
+           events.push(eventData);
+        }
+            this.eventSource = [];
+            setTimeout(()=>{
+              this.eventSource = events;
+              this.click=false;
+            })
+
       }
     })
 })
@@ -137,7 +155,6 @@ RejectActivity(activity:any){
             this.LoadActivities();
 
     }).catch(err=>{
-      console.log(err);
        this._user.showToast('Error cancelando actividad');
     })
   })
@@ -145,12 +162,10 @@ RejectActivity(activity:any){
 addCalendar(agend:any){
 var startDate = moment(new Date(agend.AGE_FINI),'es').toDate();
 var endDate = moment(new Date(agend.AGE_FFIN),'es').toDate();
-console.log(startDate + '' + endDate);
 let notes = `Actividad:${agend.ACT_NOMB} Asunto:${agend.AGE_ASUN} Contacto:${agend.CON_NOMB}`;
 this.calendare.createEvent(agend.ACT_NOMB,'',notes,startDate,endDate).then(resp=>{
 this._user.showAlert('Item agregado al calendario del dispostivo!','Listo!');
 }).catch(err=>{
-  console.log(err);
 })
 }
 showUsers(){
@@ -179,7 +194,6 @@ showConfirmReject(activity:any){
        {
          text: 'Cancelar',
          handler: () => {
-           console.log('Agree clicked');
          }
        },
        {
@@ -192,5 +206,8 @@ showConfirmReject(activity:any){
      ]
    });
    confirm.present();
+}
+test(){
+  this.click=true;
 }
 }

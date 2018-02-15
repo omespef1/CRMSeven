@@ -15,13 +15,14 @@
     </ion-buttons>
   </ion-navbar>
 
-  <calendar [eventSource]="eventSource"
+  <calendar (click)="test()" [eventSource]="eventSource"
           [calendarMode]="calendar.mode"
           [currentDate]="calendar.currentDate"
           (onEventSelected)="onEventSelected($event)"
            (onTitleChanged)="onViewTitleChanged($event)"
           (onTimeSelected)="onTimeSelected($event)"
           [noEventsLabel]="Agenda"
+          [showEventDetail]='false'
           step="30"
           class="calendar">
         </calendar>

@@ -14,7 +14,6 @@ export class DigitalDatePipe implements PipeTransform {
    */
   transform(value: string, ...args) {
     value = moment(value).format("HH:mm:ss a");
-    console.log(value);
     return value;
   }
 }
