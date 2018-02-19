@@ -65,33 +65,29 @@ nextActivities:any;
   }
 
   onViewTitleChanged(title:string){
-    this.click=true;
+  this.click=true;
 this.viewTitle = title;
   }
   onTimeSelected(ev){
-debugger;
-
    this.selectedDay = ev.selectedTime;
    this.selectedDay.setMinutes(0);
    this.selectedDay.setHours(0);
-if(this.click){
+      if(this.click){
 
+           this.LoadActivities();
 
-     this.LoadActivities();
-}
-
-
+      }
 
   }
   onEventSelected(event){
-    let start = moment(event.startTime).format('LLLL');
-    let end = moment(event.endTime).format('LLLL');
-    let alert = this.alert.create({
-      title: event.title,
-      subTitle:'Desde ' + start + '<br>To  :' + end,
-      buttons: ['OK']
-    });
-    alert.present();
+    // let start = moment(event.startTime).format('LLLL');
+    // let end = moment(event.endTime).format('LLLL');
+    // let alert = this.alert.create({
+    //   title: event.title,
+    //   subTitle:'Desde ' + start + '<br>To  :' + end,
+    //   buttons: ['OK']
+    // });
+    // alert.present();
   }
 addEvent(event){
 
@@ -106,15 +102,17 @@ LoadActivities(){
   let fini= moment(this.selectedDay).format("YYYY-MM-DD HH:mm:ss");
   let  days:number=moment(this.selectedDay).daysInMonth();
   let daysToSearh = (days - this.selectedDay.getDate());
-  let finalDate = this.selectedDay;
+  let finalDate:Date = new Date(this.selectedDay);
   finalDate.setDate(finalDate.getDate() + daysToSearh);
+  finalDate.setHours(23,59,59);
   //finalDate = this.sumarDias(finalDate,daysToSearh);
   //finalDate.setDate(this.selectedDay.getDate()+7);
   let fina = moment(finalDate).format("YYYY-MM-DD HH:mm:ss")
   this._user.getUsername().then(data=>{
     this._seven.GetUserActivities(data,fini,fina).then(data=>{
       let datos:any = data;
-      if(datos.State){
+      if(datos.State && datos.ObjResult !=undefined){
+        console.log(data);
         this.nextActivities = datos.ObjResult;
         let events = this.eventSource;
         for(let group of this.nextActivities){
@@ -130,6 +128,10 @@ LoadActivities(){
             })
 
       }
+      else {
+        this.nextActivities = null;
+      }
+
     })
 })
 

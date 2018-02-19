@@ -161,10 +161,10 @@ alert.present();
      this.showAlert('Debe seleccionar una actividad','Lo sentimos');
      return false;
    }
-
-      if(  this.stage.ETA_CODI==null){
-         this.showAlert('Debe seleccionar una etapa ','Lo sentimos');
-         return false;
+console.log(this.stage.ETA_CODI);
+      if(this.stage.ETA_CODI==null || this.stage.ETA_CODI == undefined){
+        this.showAlert('Debe seleccionar una etapa, si la actividad no posee etapa, seleccione SIN ETAPA','Lo sentimos');
+        return false;
        }
 
 
