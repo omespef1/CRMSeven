@@ -61,6 +61,7 @@ var ActivitiesPage = (function () {
             mode: 'month',
             currentDate: this.selectedDay,
         };
+        this.todays = [];
     }
     ActivitiesPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -70,7 +71,6 @@ var ActivitiesPage = (function () {
                 _this.replicated = data;
             }
         });
-        console.log('ionViewDidLoad ActivitiesPage');
     };
     ActivitiesPage.prototype.ionViewWillEnter = function () {
         var _this = this;
@@ -111,11 +111,17 @@ var ActivitiesPage = (function () {
     };
     ActivitiesPage.prototype.LoadActivities = function () {
         var _this = this;
-        var fini = __WEBPACK_IMPORTED_MODULE_4_moment__(this.selectedDay).format("YYYY-MM-DD HH:mm:ss");
+        setTimeout(function () {
+            _this.eventSource = [];
+            _this.click = false;
+        });
+        this.todays = [];
+        var fini = __WEBPACK_IMPORTED_MODULE_4_moment__(new Date(this.selectedDay).setDate(1)).format("YYYY-MM-DD HH:mm:ss");
+        //Días que tiene el mes seleccionado
         var days = __WEBPACK_IMPORTED_MODULE_4_moment__(this.selectedDay).daysInMonth();
-        var daysToSearh = (days - this.selectedDay.getDate());
+        // Días restantes para finalizar el mes seleccionado
         var finalDate = new Date(this.selectedDay);
-        finalDate.setDate(finalDate.getDate() + daysToSearh);
+        finalDate.setDate(days);
         finalDate.setHours(23, 59, 59);
         //finalDate = this.sumarDias(finalDate,daysToSearh);
         //finalDate.setDate(this.selectedDay.getDate()+7);
@@ -124,11 +130,19 @@ var ActivitiesPage = (function () {
             _this._seven.GetUserActivities(data, fini, fina).then(function (data) {
                 var datos = data;
                 if (datos.State && datos.ObjResult != undefined) {
-                    console.log(data);
                     _this.nextActivities = datos.ObjResult;
-                    var events_1 = _this.eventSource;
                     for (var _i = 0, _a = _this.nextActivities; _i < _a.length; _i++) {
-                        var group = _a[_i];
+                        var fecha = _a[_i];
+                        for (var _b = 0, _c = fecha.Agenda; _b < _c.length; _b++) {
+                            var fechaHoy = _c[_b];
+                            if (__WEBPACK_IMPORTED_MODULE_4_moment__(fechaHoy.AGE_FFIN).isBetween(new Date().setHours(0), new Date().setHours(23))) {
+                                _this.todays.push(fechaHoy);
+                            }
+                        }
+                    }
+                    var events_1 = _this.eventSource;
+                    for (var _d = 0, _e = _this.nextActivities; _d < _e.length; _d++) {
+                        var group = _e[_d];
                         var eventData = { startTime: new Date(), endTime: new Date() };
                         eventData.startTime = new Date(group.Agenda[0].AGE_FINI);
                         eventData.endTime = new Date(group.Agenda[0].AGE_FFIN);
@@ -224,7 +238,7 @@ var ActivitiesPage = (function () {
     };
     ActivitiesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n  <calendar (click)="test()" [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          [noEventsLabel]="Agenda"\n          [showEventDetail]=\'false\'\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n  <ion-item (click)="showUsers()">\n <ion-icon name="eye" item-start></ion-icon>\n <ion-label>Visualizar como</ion-label>\n <ion-note item-end *ngIf="replicated">\n   {{replicated.Usu_Nomb}}\n </ion-note>\n  </ion-item>\n  <ion-item (click)="removeReplicated()" *ngIf="replicated">\n    <ion-label>Cancelar visualización de Usuario</ion-label>\n    <ion-icon item-start name="remove-circle"></ion-icon>\n  </ion-item>\n        <ion-list #scheduleList>\n          <ion-list-header>\n            <h2>Próximas</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n                <button ion-item (click)="openActivity(agend)">\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n                  <h4>{{agend.PRO_NOMB}}</h4>\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n                 <ion-item-options side="right">\n                <button ion-button color="danger" (click)="showConfirmReject(agend)" [disabled]="replicated!=undefined">Cancelar</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n            <button ion-button color="primary" (click)="addCalendar(agend)" [disabled]="replicated!=undefined" icon-start>\n            <ion-icon name="calendar">\n            </ion-icon> Añadir al calendario\n          </button>\n       </ion-item-options>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n        </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
+            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n  <calendar (click)="test()" [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          [noEventsLabel]="Agenda"\n          [showEventDetail]=\'false\'\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n  <ion-item no-lines (click)="showUsers()">\n <ion-icon name="eye" item-start></ion-icon>\n <ion-label>Visualizar como</ion-label>\n <ion-note item-end *ngIf="replicated">\n   {{replicated.Usu_Nomb}}\n </ion-note>\n  </ion-item>\n  <ion-item (click)="removeReplicated()" *ngIf="replicated">\n    <ion-label>Cancelar visualización de Usuario</ion-label>\n    <ion-icon item-start name="remove-circle"></ion-icon>\n  </ion-item>\n        <ion-list #scheduleList>\n          <div *ngIf="todays.length>0">\n            <ion-item-divider>\n              <h2>HOY</h2>\n            </ion-item-divider>\n          <ion-item-group>\n            <ion-item-sliding  *ngFor="let activityToday of todays">\n              <button ion-item (click)="openActivity(activityToday)">\n                <h3><b>{{activityToday.AGE_FINI | digitalDate}} - {{activityToday.AGE_FFIN | digitalDate}}</b></h3>\n                <h4>{{activityToday.PRO_NOMB}}</h4>\n               <p text-wrap>{{activityToday.CON_NOMB}} {{activityToday.CON_APEL}} - {{activityToday.AGE_ASUN}} - {{activityToday.ACT_NOMB}}</p>\n                <ion-icon name="clock" item-start></ion-icon>\n               </button>\n               <ion-item-options side="right">\n              <button ion-button color="danger" (click)="showConfirmReject(activityToday)" [disabled]="replicated!=undefined">Cancelar</button>\n          </ion-item-options>\n          <ion-item-options side="left">\n          <button ion-button color="primary" (click)="addCalendar(activityToday)" [disabled]="replicated!=undefined" icon-start>\n          <ion-icon name="calendar">\n          </ion-icon> Añadir al calendario\n        </button>\n     </ion-item-options>\n            </ion-item-sliding>\n          </ion-item-group>\n        </div>\n          <ion-list-header>\n            <h2>EN EL MES</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of nextActivities">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n                <button ion-item (click)="openActivity(agend)">\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n                  <h4>{{agend.PRO_NOMB}}</h4>\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n                 <ion-item-options side="right">\n                <button ion-button color="danger" (click)="showConfirmReject(agend)" [disabled]="replicated!=undefined">Cancelar</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n            <button ion-button color="primary" (click)="addCalendar(agend)" [disabled]="replicated!=undefined" icon-start>\n            <ion-icon name="calendar">\n            </ion-icon> Añadir al calendario\n          </button>\n       </ion-item-options>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n\n        </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_6__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_calendar__["a" /* Calendar */], __WEBPACK_IMPORTED_MODULE_9__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */]])
@@ -296,7 +310,8 @@ var NewEventPage = (function () {
         this.user = {};
         this.newActivity = {};
         this.stage = {};
-        var preSelectedDate = __WEBPACK_IMPORTED_MODULE_2_moment__(this.navParams.get('selectedDay')).format();
+        var dateSelected = new Date(this.navParams.get('selectedDay')).setHours(6);
+        var preSelectedDate = __WEBPACK_IMPORTED_MODULE_2_moment__(dateSelected).format();
         this.newActivity.Age_Fech = preSelectedDate;
         this.LoadInfo();
     }
@@ -320,7 +335,6 @@ var NewEventPage = (function () {
         var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_3__lupa_lupa__["a" /* LupaPage */]);
         modal.present();
         modal.onDidDismiss(function (data) {
-            console.log(data);
             _this.client = data;
         });
     };
@@ -329,7 +343,6 @@ var NewEventPage = (function () {
         var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_4__activities_search_activities_search__["a" /* ActivitiesSearchPage */]);
         modal.present();
         modal.onDidDismiss(function (data) {
-            console.log(data);
             _this.activity = data;
         });
     };
@@ -346,7 +359,6 @@ var NewEventPage = (function () {
         var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_5__stages_search_stages_search__["a" /* StagesSearchPage */]);
         modal.present();
         modal.onDidDismiss(function (data) {
-            console.log(data);
             _this.stage = data;
         });
     };
@@ -362,7 +374,6 @@ var NewEventPage = (function () {
             this.newActivity.Dpr_Codi = this.client.cdpros.DPR_CODI;
             this.newActivity.Con_Codi = this.contact.CON_CODI;
             this.newActivity.age_obse = this.observations;
-            console.log(this.newActivity.age_obse);
             if (this.newActivity.age_obse == undefined) {
                 this.showAlert("Debe especificar una observación", 'Lo sentimos!');
                 return;
@@ -371,7 +382,6 @@ var NewEventPage = (function () {
             // if(this.invited.Usu_Codi !=null){
             //   this.newActivity.Inv_Codi = this.invited.Usu_Codi
             // }
-            console.log(this.newActivity);
             this._seven.SaveActivity(this.newActivity).then(function (data) {
                 response = data;
                 if (response.State) {
@@ -420,7 +430,6 @@ var NewEventPage = (function () {
             this.showAlert('Debe seleccionar una actividad', 'Lo sentimos');
             return false;
         }
-        console.log(this.stage.ETA_CODI);
         if (this.stage.ETA_CODI == null || this.stage.ETA_CODI == undefined) {
             this.showAlert('Debe seleccionar una etapa, si la actividad no posee etapa, seleccione SIN ETAPA', 'Lo sentimos');
             return false;
@@ -433,7 +442,7 @@ var NewEventPage = (function () {
     };
     NewEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-new-event',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Nueva actividad</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item text-wrap button (click)="openLupa()">\n      <ion-icon name="person" item-start></ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="home" item-start></ion-icon>\n      <ion-label>Detalle cliente</ion-label>\n      <ion-note class="note" item-end *ngIf="client && client.cdpros">\n       {{client.cdpros.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaActivities()">\n        <ion-icon name="link" item-start></ion-icon>\n     <ion-label>Actividad</ion-label>\n     <ion-note class="note" item-end *ngIf="activity">\n     {{activity.ACT_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="openContacts(client.conpr)">\n        <ion-icon name="contact" item-start></ion-icon>\n      <ion-label>Contacto</ion-label>\n      <ion-note class="note" item-end *ngIf="contact">\n      {{contact.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaStages()">\n        <ion-icon name="git-network" item-start></ion-icon>\n     <ion-label>Etapa proceso</ion-label>\n     <ion-note class="note" item-end *ngIf="stage">\n     {{stage.ETA_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Inicio</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="DD/MM/YYYY HH:mm" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Horas</ion-label>\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="paper" item-start></ion-icon>\n      <ion-label>\n            Observaciones\n      </ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-textarea [(ngModel)]="observations"  placeholder="Ingrese sus observaciones aquí"></ion-textarea>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n    <ion-item>\n      <ion-label>Todo el día?</ion-label>\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n    </ion-item>\n  </ion-list>\n<button ion-button full icon-left (click) = "CreateActivity()">\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n</button>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/,
+            selector: 'page-new-event',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Nueva actividad</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item text-wrap button (click)="openLupa()">\n      <ion-icon name="person" item-start></ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="home" item-start></ion-icon>\n      <ion-label>Detalle cliente</ion-label>\n      <ion-note class="note" item-end *ngIf="client && client.cdpros">\n       {{client.cdpros.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaActivities()">\n        <ion-icon name="link" item-start></ion-icon>\n     <ion-label>Actividad</ion-label>\n     <ion-note class="note" item-end *ngIf="activity">\n     {{activity.ACT_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="openContacts(client.conpr)">\n        <ion-icon name="contact" item-start></ion-icon>\n      <ion-label>Contacto</ion-label>\n      <ion-note class="note" item-end *ngIf="contact">\n      {{contact.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaStages()">\n        <ion-icon name="git-network" item-start></ion-icon>\n     <ion-label>Etapa proceso</ion-label>\n     <ion-note class="note" item-end *ngIf="stage">\n     {{stage.ETA_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Inicio</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="HH:mm" min="06:00" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Horas</ion-label>\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="paper" item-start></ion-icon>\n      <ion-label>\n            Observaciones\n      </ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-textarea [(ngModel)]="observations"  placeholder="Ingrese sus observaciones aquí"></ion-textarea>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n    <ion-item>\n      <ion-label>Todo el día?</ion-label>\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n    </ion-item>\n  </ion-list>\n<button ion-button full icon-left (click) = "CreateActivity()">\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n</button>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_8__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_9__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
@@ -1886,6 +1895,7 @@ var SearchPage = (function () {
     };
     SearchPage.prototype.OpenSearchClient = function () {
         var _this = this;
+        this.contactList = [];
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__lupa_lupa__["a" /* LupaPage */], { 'all': true });
         modal.present();
         modal.onDidDismiss(function (data) {
@@ -1900,15 +1910,33 @@ var SearchPage = (function () {
         modal.onDidDismiss(function (data) {
             console.log(data);
             _this.client.cdpros = data;
+            _this.contacts = _this.client.cdpros.conpr;
+            _this.initializeItems();
         });
     };
     SearchPage.prototype.openContact = function (contact) {
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__contact_detail_contact_detail__["a" /* ContactDetailPage */], { contact: contact });
         modal.present();
     };
+    SearchPage.prototype.initializeItems = function () {
+        console.log(this.contactList);
+        this.contactList = this.contacts;
+    };
+    SearchPage.prototype.getItems = function (q) {
+        console.log('entra');
+        //Reseteo los items a su estado original
+        this.initializeItems();
+        //Si el valor es vacío no filtra ndada
+        if (!q || q.trim() === '') {
+            return;
+        }
+        console.log('llega');
+        //Realiza el filtrado
+        this.contactList = this.contactList.filter(function (v) { return v.CON_NOMB.toLowerCase().indexOf(q.toLowerCase()) > -1; });
+    };
     SearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Consultar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item (click)="OpenSearchClient()">\n      <ion-icon name ="man" item-start>\n      </ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client">\n      <ion-icon name ="home" item-start>\n      </ion-icon>\n     <ion-label>Detalle</ion-label>\n     <ion-note class="note"  item-end *ngIf="client && client.cdpros">\n     {{client.cdpros.DPR_NOMB}}\n     </ion-note>\n    </ion-item>\n    <div *ngIf="client && client.cdpros">\n    <ion-item-divider>\n      Contactos\n    </ion-item-divider>\n     <ion-item *ngFor="let contact of client.cdpros.conpr" (click)="openContact(contact)">\n       <ion-icon item-start name="person"></ion-icon>\n       <ion-label>{{contact.CON_NOMB}}</ion-label>\n     </ion-item>\n   </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/,
+            selector: 'page-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Consultar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item (click)="OpenSearchClient()">\n      <ion-icon name ="man" item-start>\n      </ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client">\n      <ion-icon name ="home" item-start>\n      </ion-icon>\n     <ion-label>Sucursal</ion-label>\n     <ion-note class="note"  item-end *ngIf="client && client.cdpros">\n     {{client.cdpros.DPR_NOMB}}\n     </ion-note>\n    </ion-item>\n    <div *ngIf="client && contactList">\n\n    <ion-item-divider>\n      Contactos\n    </ion-item-divider>\n\n      <ion-searchbar\n      [(ngModel)]="value"\n      (ionChange)="getItems($event.value)"\n      [showCancelButton]="shouldShowCancel"\n      placeholder="Buscar contactos">\n    </ion-searchbar>\n\n     <ion-item *ngFor="let contact of contactList" (click)="openContact(contact)">\n       <ion-icon item-start name="person"></ion-icon>\n       <ion-label>{{contact.CON_NOMB}}</ion-label>\n     </ion-item>\n   </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], SearchPage);
@@ -2468,11 +2496,11 @@ var map = {
 		15
 	],
 	"../pages/contact-detail/contact-detail.module": [
-		459,
+		460,
 		14
 	],
 	"../pages/contact-search/contact-search.module": [
-		460,
+		459,
 		13
 	],
 	"../pages/email/email.module": [
@@ -2500,15 +2528,15 @@ var map = {
 		7
 	],
 	"../pages/login/login.module": [
-		467,
+		469,
 		6
 	],
 	"../pages/lupa/lupa.module": [
-		468,
+		467,
 		5
 	],
 	"../pages/new-event/new-event.module": [
-		469,
+		468,
 		4
 	],
 	"../pages/search/search.module": [
@@ -2902,17 +2930,17 @@ var AppModule = (function () {
                         { loadChildren: '../pages/client-detail/client-detail.module#ClientDetailPageModule', name: 'ClientDetailPage', segment: 'client-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/client-points/client-points.module#ClientPointsPageModule', name: 'ClientPointsPage', segment: 'client-points', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/conex/conex.module#ConexPageModule', name: 'ConexPage', segment: 'conex', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact-search/contact-search.module#ContactSearchPageModule', name: 'ContactSearchPage', segment: 'contact-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/email/email.module#EmailPageModule', name: 'EmailPage', segment: 'email', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/employees/employees.module#EmployeesPageModule', name: 'EmployeesPage', segment: 'employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows-filter/flows-filter.module#FlowsFilterPageModule', name: 'FlowsFilterPage', segment: 'flows-filter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/lupa/lupa.module#LupaPageModule', name: 'LupaPage', segment: 'lupa', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
@@ -3576,7 +3604,7 @@ var LupaPage = (function () {
     };
     LupaPage.prototype.loadClients = function (value) {
         var _this = this;
-        if (value != "") {
+        if (value != "" && value.length > 2) {
             console.log(this.all);
             return this._seven.GetFaClien(this.value, this.all).then(function (data) {
                 _this.clients = data;

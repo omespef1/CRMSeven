@@ -26,16 +26,25 @@
     <ion-item (click)="OpenSearchDetail()" *ngIf="client">
       <ion-icon name ="home" item-start>
       </ion-icon>
-     <ion-label>Detalle</ion-label>
+     <ion-label>Sucursal</ion-label>
      <ion-note class="note"  item-end *ngIf="client && client.cdpros">
      {{client.cdpros.DPR_NOMB}}
      </ion-note>
     </ion-item>
-    <div *ngIf="client && client.cdpros">
+    <div *ngIf="client && contactList">
+
     <ion-item-divider>
       Contactos
     </ion-item-divider>
-     <ion-item *ngFor="let contact of client.cdpros.conpr" (click)="openContact(contact)">
+
+      <ion-searchbar
+      [(ngModel)]="value"
+      (ionChange)="getItems($event.value)"
+      [showCancelButton]="shouldShowCancel"
+      placeholder="Buscar contactos">
+    </ion-searchbar>
+
+     <ion-item *ngFor="let contact of contactList" (click)="openContact(contact)">
        <ion-icon item-start name="person"></ion-icon>
        <ion-label>{{contact.CON_NOMB}}</ion-label>
      </ion-item>

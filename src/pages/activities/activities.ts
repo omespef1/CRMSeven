@@ -39,6 +39,7 @@ calendar = {
   currentDate: this.selectedDay,
 };
 nextActivities:any;
+todays : any[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,private modal:ModalController,
   private _seven:SevenProvider,private _user:UserDataProvider,private calendare: Calendar,private digital:DigitalDatePipe) {
 
@@ -52,7 +53,6 @@ nextActivities:any;
       }
     })
 
-    console.log('ionViewDidLoad ActivitiesPage');
   }
   ionViewWillEnter(){
   this._user.getReplicated().then(data=>{
@@ -99,11 +99,17 @@ modal.onDidDismiss(data=>{
 }
 
 LoadActivities(){
-  let fini= moment(this.selectedDay).format("YYYY-MM-DD HH:mm:ss");
+  setTimeout(()=>{
+  this.eventSource = [];
+  this.click=false;
+  })
+  this.todays = [];
+  let fini= moment(new Date(this.selectedDay).setDate(1)).format("YYYY-MM-DD HH:mm:ss");
+  //Días que tiene el mes seleccionado
   let  days:number=moment(this.selectedDay).daysInMonth();
-  let daysToSearh = (days - this.selectedDay.getDate());
+  // Días restantes para finalizar el mes seleccionado
   let finalDate:Date = new Date(this.selectedDay);
-  finalDate.setDate(finalDate.getDate() + daysToSearh);
+  finalDate.setDate(days);
   finalDate.setHours(23,59,59);
   //finalDate = this.sumarDias(finalDate,daysToSearh);
   //finalDate.setDate(this.selectedDay.getDate()+7);
@@ -112,31 +118,29 @@ LoadActivities(){
     this._seven.GetUserActivities(data,fini,fina).then(data=>{
       let datos:any = data;
       if(datos.State && datos.ObjResult !=undefined){
-        console.log(data);
-        this.nextActivities = datos.ObjResult;
-        let events = this.eventSource;
-        for(let group of this.nextActivities){
+          this.nextActivities = datos.ObjResult;
+          for(let fecha of this.nextActivities){
+          for(let fechaHoy of fecha.Agenda){
+          if(moment(fechaHoy.AGE_FFIN).isBetween(new Date().setHours(0),new Date().setHours(23))){
+          this.todays.push(fechaHoy);
+          }}}
+          let events = this.eventSource;
+          for(let group of this.nextActivities){
           let eventData :any = { startTime : new Date(), endTime:new Date()}
-           eventData.startTime = new Date(group.Agenda[0].AGE_FINI);
-           eventData.endTime =  new Date(group.Agenda[0].AGE_FFIN);
-           events.push(eventData);
-        }
-            this.eventSource = [];
-            setTimeout(()=>{
-              this.eventSource = events;
-              this.click=false;
-            })
-
-      }
+          eventData.startTime = new Date(group.Agenda[0].AGE_FINI);
+          eventData.endTime =  new Date(group.Agenda[0].AGE_FFIN);
+          events.push(eventData);  }
+          this.eventSource = [];
+          setTimeout(()=>{
+          this.eventSource = events;
+          this.click=false;
+          })}
       else {
         this.nextActivities = null;
       }
-
     })
 })
-
 }
-
 openActivity(activity:any){
   let modal = this.modal.create(ActivityDetailPage,{'activity':activity});
   modal.present();

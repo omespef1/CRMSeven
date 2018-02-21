@@ -31,7 +31,7 @@ terminado(){
   }
 
   loadClients(value:any){
-if(value!=""){
+if(value!="" && value.length>2) {
   console.log(this.all);
   return  this._seven.GetFaClien(this.value,this.all).then(data=>{
       this.clients = data;

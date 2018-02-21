@@ -42,7 +42,8 @@ observations:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
   private _user:UserDataProvider, private _seven:SevenProvider,private alertCtrl:AlertController) {
-    let preSelectedDate = moment( this.navParams.get('selectedDay')).format();
+    let dateSelected = new Date(this.navParams.get('selectedDay')).setHours(6);
+    let preSelectedDate = moment(dateSelected).format();
     this.newActivity.Age_Fech = preSelectedDate;
     this.LoadInfo();
   }
@@ -64,7 +65,6 @@ openLupa(){
   let modal = this.modal.create(LupaPage);
   modal.present();
   modal.onDidDismiss(data=>{
-    console.log(data);
     this.client = data;
   })
 }
@@ -72,7 +72,6 @@ openLupaActivities(){
   let modal = this.modal.create(ActivitiesSearchPage);
   modal.present();
   modal.onDidDismiss(data=>{
-    console.log(data);
     this.activity = data;
   })
 }
@@ -87,7 +86,6 @@ openLupaStages(){
   let modal = this.modal.create(StagesSearchPage);
   modal.present();
   modal.onDidDismiss(data=>{
-    console.log(data);
     this.stage = data;
   })
 }
@@ -102,7 +100,6 @@ if(this.validEvent()){
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
- console.log(this.newActivity.age_obse)
  if( this.newActivity.age_obse==undefined){
      this.showAlert("Debe especificar una observación", 'Lo sentimos!')
  return;
@@ -111,7 +108,6 @@ if(this.validEvent()){
  // if(this.invited.Usu_Codi !=null){
  //   this.newActivity.Inv_Codi = this.invited.Usu_Codi
  // }
- console.log(this.newActivity);
     this._seven.SaveActivity(this.newActivity).then(data=>{
       response = data;
       if(response.State){
@@ -161,7 +157,6 @@ alert.present();
      this.showAlert('Debe seleccionar una actividad','Lo sentimos');
      return false;
    }
-console.log(this.stage.ETA_CODI);
       if(this.stage.ETA_CODI==null || this.stage.ETA_CODI == undefined){
         this.showAlert('Debe seleccionar una etapa, si la actividad no posee etapa, seleccione SIN ETAPA','Lo sentimos');
         return false;
