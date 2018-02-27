@@ -34,12 +34,13 @@ selectedDay= new Date();
 selectedDayFormat:string;
 replicated:any;
 click:boolean=false;
+daySelectedString:string;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
 };
 nextActivities:any;
-todays : any[]=[];
+inTimeDates : any[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,private modal:ModalController,
   private _seven:SevenProvider,private _user:UserDataProvider,private calendare: Calendar,private digital:DigitalDatePipe) {
 
@@ -73,7 +74,7 @@ this.viewTitle = title;
    this.selectedDay.setMinutes(0);
    this.selectedDay.setHours(0);
       if(this.click){
-
+          this.daySelectedString =  moment(this.selectedDay).format('DD/MM/YYYY');
            this.LoadActivities();
 
       }
@@ -103,7 +104,7 @@ LoadActivities(){
   this.eventSource = [];
   this.click=false;
   })
-  this.todays = [];
+  this.inTimeDates = [];
   let fini= moment(new Date(this.selectedDay).setDate(1)).format("YYYY-MM-DD HH:mm:ss");
   //Días que tiene el mes seleccionado
   let  days:number=moment(this.selectedDay).daysInMonth();
@@ -116,13 +117,14 @@ LoadActivities(){
   let fina = moment(finalDate).format("YYYY-MM-DD HH:mm:ss")
   this._user.getUsername().then(data=>{
     this._seven.GetUserActivities(data,fini,fina).then(data=>{
+      let daySelected = new Date(this.selectedDay);
       let datos:any = data;
       if(datos.State && datos.ObjResult !=undefined){
           this.nextActivities = datos.ObjResult;
           for(let fecha of this.nextActivities){
           for(let fechaHoy of fecha.Agenda){
-          if(moment(fechaHoy.AGE_FFIN).isBetween(new Date().setHours(0),new Date().setHours(23))){
-          this.todays.push(fechaHoy);
+          if(moment(fechaHoy.AGE_FINI).isBetween(new Date(daySelected).setHours(0),new Date(finalDate))){
+          this.inTimeDates.push(fecha);
           }}}
           let events = this.eventSource;
           for(let group of this.nextActivities){
@@ -208,7 +210,6 @@ showConfirmReject(activity:any){
            this.RejectActivity(activity)
          }
        }
-
      ]
    });
    confirm.present();

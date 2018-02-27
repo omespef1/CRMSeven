@@ -149,15 +149,16 @@ alert.present();
         this.showAlert('Debe seleccionar un detalle ','Lo sentimos');
         return false;
       }
-      if(this.contact.CON_CODI==null){
+      if(this.contact==null){
          this.showAlert('Debe seleccionar un contacto ','Lo sentimos');
          return false;
        }
-  if(this.activity.ACT_CODI==null){
+  if(this.activity==null){
      this.showAlert('Debe seleccionar una actividad','Lo sentimos');
      return false;
    }
-      if(this.stage.ETA_CODI==null || this.stage.ETA_CODI == undefined){
+
+      if(this.stage==undefined){
         this.showAlert('Debe seleccionar una etapa, si la actividad no posee etapa, seleccione SIN ETAPA','Lo sentimos');
         return false;
        }

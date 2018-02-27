@@ -42,9 +42,9 @@
     <ion-icon item-start name="remove-circle"></ion-icon>
   </ion-item>
         <ion-list #scheduleList>
-          <div *ngIf="todays.length>0">
+          <!-- <div *ngIf="todays.length>0">
             <ion-item-divider>
-              <h2>HOY</h2>
+              <h2>{{daySelectedString}}</h2>
             </ion-item-divider>
           <ion-item-group>
             <ion-item-sliding  *ngFor="let activityToday of todays">
@@ -65,11 +65,11 @@
      </ion-item-options>
             </ion-item-sliding>
           </ion-item-group>
-        </div>
+        </div> -->
           <ion-list-header>
-            <h2>EN EL MES</h2>
+            <h2>PRÓXIMAS</h2>
           </ion-list-header>
-          <div *ngFor="let activity of nextActivities">
+          <div *ngFor="let activity of inTimeDates">
           <ion-item-divider>
             <h3>{{activity.GrupoHora}}</h3>
           </ion-item-divider>
