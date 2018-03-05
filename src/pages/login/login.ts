@@ -65,7 +65,7 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
         return;
       }
        this.VerifyTouchID();
-        this._user.login(this.login.username,datos.ObjResult);
+        this._user.login(this.login.username,datos.ObjResult,this.login.password);
         }
     ).catch(err=>{
           this.showAlert(err,"Lo sentimos!")
@@ -74,17 +74,13 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
 
 
 GetAccessTouchID(){
-console.log('entro a get');
   if(this.platform.is("cordova")){
     this.keychainTouchId.has("password").then(()=>{
     this.touchID=true;
-      console.log('clave disponible');
       this.keychainTouchId.verify("password","Ingrese su huella dactilar para ingresar").then(pass=>{
-        console.log('password obtenido');
         this._user.getSecureUser().then(user=>{
           this.login.username = user;
           this.login.password = pass;
-          console.log('todo ok');
           this.TryAccess();
         })
       })
@@ -99,12 +95,9 @@ SetAccessTouchID(){
 }
 VerifyTouchID(){
   if(this.platform.is("cordova")){
-    console.log('va preguntar si esta dispnuble');
    this.keychainTouchId.isAvailable().then(()=>{
     this.touchID = true;
-    console.log('touch disponible');
     this.keychainTouchId.has("password").catch(err=>{
-      console.log('se va a preguntar por huella');
           this.faio.show({
             clientId: 'TouchIDConfirmation',
             localizedReason: 'Autentícate para ingresar con tu huella'
@@ -136,7 +129,6 @@ verifyConnections(){
     }
     else{
       this._user.getBackground().then(data=>{
-          console.log('bk from memory')
            this.background = data;
       })
       this._user.getLogo().then(data=>{

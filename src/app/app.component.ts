@@ -39,7 +39,8 @@ export class MyApp {
       console.log('entro logueado');
         this._userdata.getUsername().then(user=>{
         this._userdata.getUserInfo().then(info=>{
-        this._userdata.login(user,info);
+          console.log(info);
+        this._userdata.login(user,info,info.password);
         })
       });
     }

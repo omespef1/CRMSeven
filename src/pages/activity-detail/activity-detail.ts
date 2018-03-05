@@ -201,4 +201,11 @@ this.activity.AGE_RESU = result;
    })
    alert.present();
  }
+ openConsultoryFiles(){
+  this._user.getUserInfo().then(info=>{
+    console.log(info);
+    let urlConsultoria:string = `http://actas.digitalware.co?rsu=${info.Usu_Codi}&alc=${info.password}&pme=${this.activity.PRO_CONT}`;
+  this._user.openBrowser(urlConsultoria);
+  })
+ }
 }

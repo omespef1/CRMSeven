@@ -24,9 +24,10 @@ export class UserDataProvider {
 private browserTab: BrowserTab) {
     console.log('Hello UserDataProvider Provider');
   }
-  login(username: string,info:string): void {
+  login(username: string,info:any,usupass:string): void {
       this.storage.set(this.HAS_LOGGED_IN, true);
       this.setUsername(username);
+      info.password = usupass;
        this.setUserInfo(info)
       this.events.publish('user:login');
     };
