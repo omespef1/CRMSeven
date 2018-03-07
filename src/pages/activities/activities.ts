@@ -122,10 +122,12 @@ LoadActivities(){
       if(datos.State && datos.ObjResult !=undefined){
           this.nextActivities = datos.ObjResult;
           for(let fecha of this.nextActivities){
-          for(let fechaHoy of fecha.Agenda){
-          if(moment(fechaHoy.AGE_FINI).isBetween(new Date(daySelected).setHours(0),new Date(finalDate))){
+          // for(let fechaHoy of fecha.Agenda){
+          if(moment(fecha.Agenda[0].AGE_FINI).isBetween(new Date(daySelected).setHours(0),new Date(finalDate))){
           this.inTimeDates.push(fecha);
-          }}}
+          }
+        // }
+        }
           let events = this.eventSource;
           for(let group of this.nextActivities){
           let eventData :any = { startTime : new Date(), endTime:new Date()}
