@@ -40,7 +40,7 @@ export class MyApp {
         this._userdata.getUsername().then(user=>{
         this._userdata.getUserInfo().then(info=>{
           console.log(info);
-        this._userdata.login(user,info,info.password);
+           this._userdata.login(user,info,info.password);
         })
       });
     }

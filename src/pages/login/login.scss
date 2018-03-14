@@ -9,7 +9,7 @@ page-login {
     color: color($colors,light);
   }
   .loginColM{
-    margin-top: 20%;
+    margin-top: 10%;
   }
   .loginCol{
     margin-top: 5%;
@@ -47,9 +47,13 @@ page-login {
      //  margin-top: -30px;
      }
      .logoM{
-       width: 90%;
-      height: auto;
-     //  margin-top: -30px;
+       width: 100%;
+       height: auto;
+     }
+     .logodiv{
+       margin-left: auto;
+       margin-right: auto;
+       width:80%;
      }
      .item-inner {
        border-bottom-color: #ffffff !important;

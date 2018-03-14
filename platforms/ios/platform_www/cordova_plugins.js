@@ -42,14 +42,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-fingerprint-aio.Fingerprint",
-    "file": "plugins/cordova-plugin-fingerprint-aio/www/Fingerprint.js",
-    "pluginId": "cordova-plugin-fingerprint-aio",
-    "clobbers": [
-      "Fingerprint"
-    ]
-  },
-  {
     "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
     "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
     "pluginId": "cordova-plugin-ionic-webview",
@@ -95,13 +87,11 @@ module.exports.metadata =
 // TOP OF METADATA
 {
   "call-number": "0.0.2",
-  "cordova-plugin-add-swift-support": "1.7.1",
   "cordova-plugin-compat": "1.2.0",
   "cordova-plugin-browsertab": "0.2.0",
   "cordova-plugin-calendar": "4.6.0",
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
-  "cordova-plugin-fingerprint-aio": "1.3.4",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-whitelist": "1.3.3",

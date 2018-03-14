@@ -10,8 +10,6 @@
 
 
 <ion-content>
-
-
   <ion-grid>
     <ion-row>
       <ion-col text-center>
@@ -24,21 +22,22 @@
       <ion-col>
         <ion-label text-wrap>
           Tu dispositivo posee lector de huellas.Mediante esta autenticación podrás ingresar a la aplicación directamente.
+          Deseas utilizar este método de acceso?
         </ion-label>
       </ion-col>
     </ion-row>
     <ion-row>
 
       <ion-col>
-        <button ion-button block color="danger" icon-left>
+        <button ion-button block color="danger" icon-left (click)="remove()">
             <ion-icon name="alarm"></ion-icon>
-          Más tarde
+          No
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button block color="primary" icon-left>
+        <button ion-button block color="primary" icon-left close()>
           <ion-icon name="checkmark-circle"></ion-icon>
-          Entendido
+          Listo
         </button>
       </ion-col>
     </ion-row>

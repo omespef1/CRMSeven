@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController} from 'ionic-angular';
+//providers
+import {UserDataProvider} from '../../providers/user-data/user-data';
 
 /**
  * Generated class for the TouchIdPage page.
@@ -15,11 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TouchIdPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor( private viewCtrl:ViewController, private _user:UserDataProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TouchIdPage');
   }
-
+close(){
+this.viewCtrl.dismiss();
+}
+remove(){
+  this._user.RemoveTouchID();
+  this.viewCtrl.dismiss();
+}
 }

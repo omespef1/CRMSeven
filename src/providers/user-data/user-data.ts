@@ -161,6 +161,10 @@ private browserTab: BrowserTab) {
       return value;
     })
   }
+  RemoveTouchID(){
+    this.storage.remove('secureUser');
+      this.keychain.delete('password');
+  }
   removeData(){
     this.storage.remove('background');
     this.storage.remove('logo');

@@ -3,13 +3,13 @@ import { IonicPage, NavController, NavParams,AlertController,Platform,ModalContr
 //pages
 import {TabsPage} from '../tabs/tabs';
 import {ConexPage} from '../conex/conex';
+import {TouchIdPage} from '../../pages/touch-id/touch-id';
 import { NgForm } from '@angular/forms';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
 //plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 //Pipes
 import {ImagePipe} from '../../pipes/image/image';
@@ -35,7 +35,7 @@ export class LoginPage {
   url:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
-private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalController) {
+private platform:Platform,private modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
@@ -65,7 +65,8 @@ private platform:Platform,private faio: FingerprintAIO,private modalCtrl:ModalCo
         return;
       }
        this.VerifyTouchID();
-        this._user.login(this.login.username,datos.ObjResult,this.login.password);
+       this._user.login(this.login.username,datos.ObjResult,this.login.password);
+
         }
     ).catch(err=>{
           this.showAlert(err,"Lo sentimos!")
@@ -78,11 +79,15 @@ GetAccessTouchID(){
     this.keychainTouchId.has("password").then(()=>{
     this.touchID=true;
       this.keychainTouchId.verify("password","Ingrese su huella dactilar para ingresar").then(pass=>{
+        console.log('keychain');
+        console.log(pass);
         this._user.getSecureUser().then(user=>{
           this.login.username = user;
           this.login.password = pass;
           this.TryAccess();
         })
+      }).catch(()=>{
+
       })
     })
   }
@@ -94,19 +99,25 @@ SetAccessTouchID(){
    }
 }
 VerifyTouchID(){
-  if(this.platform.is("cordova")){
-   this.keychainTouchId.isAvailable().then(()=>{
-    this.touchID = true;
-    this.keychainTouchId.has("password").catch(err=>{
-          this.faio.show({
-            clientId: 'TouchIDConfirmation',
-            localizedReason: 'Autentícate para ingresar con tu huella'
-          })
-            .then((result: any) =>this.SetAccessTouchID())
-            .catch((error: any) => console.log(error))
-          })
-    })
-  }
+
+    if(this.platform.is("cordova")){
+     this.keychainTouchId.isAvailable().then(()=>{
+      this.touchID = true;
+      this.keychainTouchId.has("password").catch(err=>{
+          console.log('no hay huella');
+        this.SetAccessTouchID();
+        // console.log('setea touch');
+        //   let modalT= this.modalCtrl.create(TouchIdPage);
+        //    modalT.present();
+        //    modalT.onDidDismiss(()=>{
+        //      console.log('resuelvo');
+        //       resolve(true);
+        //    })
+         })
+      })
+    }
+
+
 }
 verifyConnections(){
   this._user.getSavedConnections().then(data=>{

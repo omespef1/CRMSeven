@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		148F3FB63C2C43889BB1123A /* GCDWebServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E05FF2BDAE4A51B4865F5C /* GCDWebServerConnection.m */; };
@@ -53,7 +52,6 @@
 		E45D68E8FFD14D019010C5A8 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6361D35A4A8A4EBABFED7A66 /* CDVWKWebViewUIDelegate.m */; };
 		F5E4E8BFD2DD4FC8A6E29E89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B863FA59CBE47D1B5914F9C /* Foundation.framework */; };
 		FD87F901AA6C4A478ED8ADA4 /* PSPDFThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A7FB38DAD947EBBCF356C9 /* PSPDFThreadSafeMutableDictionary.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		FE703004FCF64F43B32C59A2 /* Fingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEFC187A6D4CAE95DE7548 /* Fingerprint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +141,6 @@
 		AA271EF183C0407783E105E4 /* IonicKeyboard.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = IonicKeyboard.m; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; };
 		AB502D36161D46A091990F16 /* GCDWebServerResponse.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerResponse.m; path = "cordova-plugin-ionic-webview/GCDWebServerResponse.m"; sourceTree = "<group>"; };
 		AD9354E39A3E481C98BAA4B8 /* APPEmailComposerImpl.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = APPEmailComposerImpl.h; path = "cordova-plugin-email-composer/APPEmailComposerImpl.h"; sourceTree = "<group>"; };
-		B0EEFC187A6D4CAE95DE7548 /* Fingerprint.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Fingerprint.swift; path = "cordova-plugin-fingerprint-aio/Fingerprint.swift"; sourceTree = "<group>"; };
 		B189EED9C06F48FB867BAC16 /* GCDWebServerMultiPartFormRequest.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerMultiPartFormRequest.m; path = "cordova-plugin-ionic-webview/GCDWebServerMultiPartFormRequest.m"; sourceTree = "<group>"; };
 		B2E92B7DB6E2465295E9BD65 /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		BC83E83C7FDE4F2A9D078A46 /* sqlite3.c */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sqlite3.c; path = "cordova-sqlite-storage/sqlite3.c"; sourceTree = "<group>"; };
@@ -307,7 +304,6 @@
 				33EFFA4EE862499696DD69FB /* APPEmailComposerImpl.m */,
 				6BC9095A45BD4202BC0F5EB3 /* APPEmailComposer.h */,
 				AD9354E39A3E481C98BAA4B8 /* APPEmailComposerImpl.h */,
-				B0EEFC187A6D4CAE95DE7548 /* Fingerprint.swift */,
 				2273D6BED1AA4CDBA65594B9 /* CDVWKWebViewEngine.m */,
 				6361D35A4A8A4EBABFED7A66 /* CDVWKWebViewUIDelegate.m */,
 				5BB22EC9E4244F09A27043BB /* CDVWKProcessPoolFactory.m */,
@@ -492,7 +488,6 @@
 				C857F8E0FF214EF2A44F7FAF /* CDVDevice.m in Sources */,
 				498EF8F5B4354C298B64EC28 /* APPEmailComposer.m in Sources */,
 				C8FD3A0C00AB4BA39A21F4D2 /* APPEmailComposerImpl.m in Sources */,
-				FE703004FCF64F43B32C59A2 /* Fingerprint.swift in Sources */,
 				C4A6E3B01E9E40C69DE3465B /* CDVWKWebViewEngine.m in Sources */,
 				E45D68E8FFD14D019010C5A8 /* CDVWKWebViewUIDelegate.m in Sources */,
 				2D80AC5DAE574E9B8D4D8776 /* CDVWKProcessPoolFactory.m in Sources */,

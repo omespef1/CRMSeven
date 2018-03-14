@@ -47,7 +47,6 @@ import {DigitalDatePipe} from '../pipes/digital-date/digital-date';
 import {ImagePipe} from '../pipes/image/image';
 //Plugins
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
@@ -130,7 +129,6 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     SevenProvider,
     UserDataProvider,
     KeychainTouchId,
-    FingerprintAIO,
     CallNumber,
     EmailComposer,
     BrowserTab,
