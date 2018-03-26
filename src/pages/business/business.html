@@ -1,0 +1,35 @@
+<!--
+  Generated template for the BusinessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Seleccione su empresa</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+    [(ngModel)]="value"
+    (ionChange)="getItems($event.value)"
+    [showCancelButton]="shouldShowCancel"
+    placeholder="Buscar">
+  </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+      <ion-item-group>
+        <ion-item (click)="closeLupa(client)" *ngFor="let client of businessList">
+          <ion-label>
+          {{client.Emp_Nomb}}
+          </ion-label>
+          <ion-icon name='ios-home' item-start></ion-icon>
+        </ion-item>
+      </ion-item-group>
+  </ion-list>
+
+</ion-content>

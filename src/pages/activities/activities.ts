@@ -35,6 +35,7 @@ selectedDayFormat:string;
 replicated:any;
 click:boolean=false;
 daySelectedString:string;
+emp_codi:number;
 calendar = {
   mode:'month',
   currentDate: this.selectedDay,
@@ -43,7 +44,9 @@ nextActivities:any;
 inTimeDates : any[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,private modal:ModalController,
   private _seven:SevenProvider,private _user:UserDataProvider,private calendare: Calendar,private digital:DigitalDatePipe) {
-
+this._user.GetBusinessClient().then(data=>{
+  this.emp_codi = data.Emp_Codi;
+})
   }
 
   ionViewDidLoad() {
@@ -155,6 +158,7 @@ openActivity(activity:any){
 RejectActivity(activity:any){
   this._user.getUsername().then(data=>{
     activity.USU_CODI = data;
+    activity.EMP_CODI = this.emp_codi;
     this._seven.RejectActivity(activity).then(response=>{
       let data :any = response;
       if(!data.State){

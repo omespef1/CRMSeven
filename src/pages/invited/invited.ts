@@ -29,9 +29,9 @@ export class InvitedPage {
 this.LoadUsers();
   }
  LoadUsers(){
-    this._seven.GetUsers(this.activity.USU_CODI).then(data=>{
+    this._seven.GetUsers(this.activity.USU_CODI).then((data:any)=>{
       console.log(data);
-      this.users = data;
+      this.users = data.ObjResult;
       this.initializeItems();
       // loading.dismiss();
     }).catch(err=>{

@@ -104,6 +104,23 @@ private browserTab: BrowserTab) {
     console.log("faclien almacenados en memoria");
     this.storage.set("faClien",data)
   }
+  setBusiness(data:any){
+    this.storage.set("business",data);
+  }
+  GetBusiness():Promise<any>{
+    return this.storage.get('business').then(value=>{
+      return value;
+    })
+  }
+  SetBusinessClient(client:any){
+    this.storage.set("businessClient",client);
+  }
+  GetBusinessClient(){
+    return this.storage.get('businessClient').then(value=>{
+      console.log(value);
+      return value;
+    })
+  }
   callContact(number:string){
     this.callNumber.callNumber(number, true)
   .then(() => console.log('Launched dialer!'))
@@ -173,6 +190,10 @@ private browserTab: BrowserTab) {
     this.storage.remove('username');
     this.storage.remove('secureUser');
     this.keychain.delete('password');
+    this.storage.remove("business");
+    this.storage.remove('replicated');
+    this.storage.remove("businessClient");
+    this.storage.remove("SavedConnection");
     this.logout();
   }
   removeReplicated(){

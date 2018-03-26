@@ -5,6 +5,7 @@ import {TabsPage} from '../tabs/tabs';
 import {ConexPage} from '../conex/conex';
 import {TouchIdPage} from '../../pages/touch-id/touch-id';
 import { NgForm } from '@angular/forms';
+import {BusinessPage} from '../../pages/business/business';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -33,18 +34,14 @@ export class LoginPage {
   background:string;
   logo:any;
   url:string;
+  businessList:any[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
-    // this.faio.show({
-    //   clientId: 'TouchIDConfirmation',
-    //   localizedReason: 'Autentícate para ingresar con tu huella'
-    // })
-    //   .then((result: any) =>console.log('yes'))
-    //   .catch((error: any) => console.log(error))
+
   }
  ionViewWillEnter(){
 
@@ -57,20 +54,25 @@ private platform:Platform,private modalCtrl:ModalController) {
 
   }
   TryAccess(){
-    this._seven.GetValidationUser(this.login.username,this.login.password).then(data=>{
-      let datos:any;
-          datos=data;
-        if(!datos.State){
-          this.showAlert('Usuario o contraseña incorrectos','Lo sentimos');
-        return;
-      }
-       this.VerifyTouchID();
-       this._user.login(this.login.username,datos.ObjResult,this.login.password);
-
+    try{
+      this._seven.GetValidationUser(this.login.username,this.login.password).then(data=>{
+        let datos:any;
+            datos=data;
+          if(!datos.State){
+            this.showAlert(datos.Message,'Lo sentimos');
+          return;
         }
-    ).catch(err=>{
-          this.showAlert(err,"Lo sentimos!")
-    })
+         this.VerifyTouchID();
+         this._user.login(this.login.username,datos.ObjResult,this.login.password);
+
+          }
+      ).catch(err=>{
+            this.showAlert(err,"Lo sentimos!")
+      })
+    }
+catch(err){
+  console.log(err);
+}
   }
 
 
@@ -135,7 +137,22 @@ verifyConnections(){
        this.background= conex.CNX_BACK;
        this.logo = conex.CNX_LOGO;
        this.url = conex.CNX_LINK;
-
+       this._seven.GetGnEmpre().then((empresasObj:any)=>{
+         console.log(empresasObj);
+         this.businessList  = empresasObj.ObjResult;
+        if(this.businessList.length>1){
+          this._user.setBusiness(this.businessList);
+        let modal =this.modalCtrl.create(BusinessPage);
+        modal.present();
+        modal.onDidDismiss(data=>{
+          console.log(data);
+          this._user.SetBusinessClient(data);
+        })
+        }
+          if(this.businessList.length<2){
+            this._user.SetBusinessClient(this.businessList[0])
+          }
+       })
      })
     }
     else{
@@ -151,6 +168,10 @@ verifyConnections(){
            this._user.getSavedConnections().then(data=>{
                this._user.setSavedConnections(data);
             });
+
+            this._user.GetBusiness().then(data=>{
+              this.businessList =data;
+            })
     }
   })
 }
@@ -164,5 +185,19 @@ alert.present();
 }
 openUrl(){
 this._user.openBrowser(this.url);
+}
+changeBusiness(){
+  this._seven.GetGnEmpre().then((empresasObj:any)=>{
+    let empresas:any[];
+   empresas = empresasObj.ObjResult;
+   let modal =this.modalCtrl.create(BusinessPage);
+   modal.present();
+   modal.onDidDismiss(data=>{
+     console.log(data);
+     this._user.SetBusinessClient(data);
+   })
+
+
+  })
 }
 }

@@ -54,6 +54,7 @@ if(acc_cont!="")
   }
   flowReject(){
     this._seven.RejectFlow(this.flow).then(data=>{
+  
       let response:any = data;
       if(response.State){
          this.showAlert('El flujo ha sido rechazado!','Listo!')

@@ -1,4 +1,4 @@
-import { HttpClient ,HttpHeaders,HttpRequest} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingController} from 'ionic-angular'
 import  {Globals} from '../../assets/global';
@@ -13,8 +13,10 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 */
 @Injectable()
 export class SevenProvider {
-  constructor(public http: HttpClient, private load:LoadingController,private _storage:Storage,private _userdata:UserDataProvider) {
+  businessClient :any;
+  constructor(public http: HttpClient, private load:LoadingController,private _userdata:UserDataProvider) {
     console.log('Hello SevenProvider Provider');
+
   }
 
 getFlows(usu_codi:string){
@@ -30,6 +32,9 @@ return  this._userdata.getReplicated().then(data=>{
 }
 GetValidationUser(user:string, pass:string){
   return this.getData(`GnUsuar/ValidateUser?user=${user}&pass=${pass}`);
+}
+GetGnEmpre(){
+    return this.getData(`GnEmpre/GetEmpresas?`);
 }
 ApproveFlow(flujo:any){
   return this.postData(flujo,'Flujos/FlujosAdm')
@@ -52,10 +57,10 @@ GetFaClien(value:string,all:boolean =false){
 
 }
 GetActivities(){
-    return this.getData('Actividades/ListarActividades');
+    return this.getData('Actividades/ListarActividades?');
 }
 GetStages(){
-  return this.getData('Actividades/ListarEtapas');
+  return this.getData('Actividades/ListarEtapas?');
 }
 GetUserActivities(usu_codi:string,fini:string,fina:string){
   return this._userdata.getReplicated().then(data=>{
@@ -109,22 +114,35 @@ GetActivityInviteds(agend:any){
 // }
 
   getData(apiAction:string) {
- //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
-    let load = this.load.create({
-      content:'cargando...'
-    })
-    load.present();
-    return new Promise(resolve => {
-      console.log(apiAction);
-      console.log(Globals.ClientUrl);
-      this.http.get(Globals.ClientUrl + apiAction).subscribe(data => {
-        resolve(data);
-        load.dismiss();
-      }, err => {
-        console.log(err);
-          load.dismiss();
-      });
-    });
+    //  Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+         let load = this.load.create({
+           content:'cargando...'
+         })
+         load.present();
+         return new Promise(resolve => {
+           this._userdata.GetBusinessClient().then(data=>{
+             console.log('lee empresas');
+               this.businessClient = data;
+               console.log(data);
+             if(data== null)
+             this.businessClient=0;
+             console.log(apiAction);
+             console.log(Globals.ClientUrl);
+             let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
+             console.log(uri);
+             this.http.get(uri).subscribe(data => {
+               resolve(data);
+               load.dismiss();
+             }, err => {
+               console.log(err);
+                 load.dismiss();
+             });
+
+           })
+
+         });
+
+
   }
   postData(data,apiAction:string) {
     //Comentarear para produccion
@@ -134,6 +152,7 @@ GetActivityInviteds(agend:any){
     })
     loading.present();
   return new Promise((resolve, reject) => {
+
     this.http.post(Globals.ClientUrl+ apiAction, data)
       .subscribe(res => {
         resolve(res);

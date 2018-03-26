@@ -28,7 +28,7 @@ employeesList:any;
     this._user.getUsername().then(data=>{
       this._seven.GetEmployees(data).then((employees:any)=>{
         if(employees)
-          this.employees = employees;
+          this.employees = employees.ObjResult;
           this.initializeItems();
       });
     })

@@ -21,10 +21,12 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController,
   private _userdata:UserDataProvider) {
     platform.ready().then(() => {
+      statusBar.styleDefault();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
       splashScreen.hide();
+
+
       this._userdata.hasLoggedIn().then((hasLoggedIn) => {
       //  this.enableMenu(true);
         this.listenToLoginEvents();
@@ -36,7 +38,6 @@ export class MyApp {
   validLogin(){
   this._userdata.hasLoggedIn().then(log=>{
     if(log){
-      console.log('entro logueado');
         this._userdata.getUsername().then(user=>{
         this._userdata.getUserInfo().then(info=>{
           console.log(info);

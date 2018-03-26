@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ViewController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ViewController,ModalController} from 'ionic-angular';
+//pages
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
+import {UserDataProvider} from '../../providers/user-data/user-data';
 
 /**
  * Generated class for the ConexPage page.
@@ -17,7 +19,9 @@ import {SevenProvider} from '../../providers/seven/seven';
 })
 export class ConexPage {
 connections:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _seven:SevenProvider,private viewCtrl:ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+     private _seven:SevenProvider,private viewCtrl:ViewController,
+   private modalCtrl:ModalController,private _user:UserDataProvider) {
   }
 
   ionViewDidLoad() {

@@ -38,6 +38,7 @@ usu_codi:string;
 invited:any;
 contact:any;
 observations:any;
+emp_codi:number;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
@@ -45,6 +46,9 @@ observations:any;
     let dateSelected = new Date(this.navParams.get('selectedDay')).setHours(6);
     let preSelectedDate = moment(dateSelected).format();
     this.newActivity.Age_Fech = preSelectedDate;
+    this._user.GetBusinessClient().then(data=>{
+      this.emp_codi = data.Emp_Codi;
+    })
     this.LoadInfo();
   }
   ionViewDidLoad() {
@@ -100,6 +104,7 @@ if(this.validEvent()){
  this.newActivity.Dpr_Codi=  this.client.cdpros.DPR_CODI;
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
+ this.newActivity.Emp_Codi = this.emp_codi;
  if( this.newActivity.age_obse==undefined){
      this.showAlert("Debe especificar una observación", 'Lo sentimos!')
  return;

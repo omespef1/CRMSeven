@@ -18,7 +18,9 @@
 					</ion-item>
 
 					<ion-item>
-						<ion-label><ion-icon name="ios-lock"></ion-icon></ion-label>
+						<ion-label>
+							<ion-icon name="ios-lock"></ion-icon>
+						</ion-label>
 						<ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>
 					</ion-item>
 			</ion-col>
@@ -30,33 +32,37 @@
 				</button>
 			</ion-col>
 		</ion-row>
+		<ion-row *ngIf="businessList && businessList.length>1">
+			<ion-col>
+				<button ion-button class="submit-btn" full (click)="changeBusiness()">
+				<ion-icon name="undo"></ion-icon>&nbsp;Cambiar empresa
+				</button>
+			</ion-col>
+		</ion-row>
 		<ion-row>
 			<ion-col class="loginCol">
-				<img class="logo" src="assets/imgs/logoseven.png"/>
+				<div class="logodiv">
+				<img class="logoM" src="assets/imgs/logoseven.png"/>
+			</div>
 
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col text-center>
-				<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID">
+			<div  class="fingerprint" button tappable (click)="GetAccessTouchID()" *ngIf="touchID"> 
 				<img src="assets/imgs/fingerprint.svg">
 			</div>
 			</ion-col>
 		</ion-row>
 	</form>
-
 </ion-grid>
 </ion-header>
 
 <ion-content [style.background-color] ="background">
-	<!-- <div class="logo">
-		<img src="assets/img/appicon.svg" alt="Ionic logo">
-	</div> -->
-
 
 
 </ion-content>
 <ion-footer text-center>
 	<p>SEVEN ERP©1992-2018 DigitalWare</p>
-    <p>Versión 18.2.1.0</p>
+    <p>Versión 18.3.1.0</p>
 </ion-footer>
