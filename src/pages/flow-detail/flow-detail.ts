@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,AlertController,ViewController,ModalController} from 'ionic-angular';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
+import { LinqService } from 'ng2-linq'
 //pages
 import {AttchmentsPage} from '../../pages/attchments/attchments';
 /**
@@ -48,13 +49,18 @@ if(acc_cont!="")
        this.showRadioActions()
        return;
     }
+    if(response.Message=="EJECUTORES_REQUERIDOS"){
+      this._seven.GetNextExecutors(this.flow).then(data=>{
+
+      })
+    }
     this.showAlert(response.Message,'Lo sentimos!')
    })
 
   }
   flowReject(){
     this._seven.RejectFlow(this.flow).then(data=>{
-  
+
       let response:any = data;
       if(response.State){
          this.showAlert('El flujo ha sido rechazado!','Listo!')

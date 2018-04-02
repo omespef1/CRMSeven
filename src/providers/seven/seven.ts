@@ -78,6 +78,9 @@ GetActivitiesForProspect(usu_codi:string,pro_cont:number){
 GetEmployees(usu_codi:string){
     return this.getData(`Actividades/ListarEmpleados?usu_codi=${usu_codi}`);
 }
+GetNextExecutors(flujo:any){
+  return this.getData(`Flujos/nextExecutors?emp_codi=${flujo.emp_codi}&eta_cont=${flujo.eta_cont}&flu_cont=${flujo.flu_cont}`)
+}
 RejectFlow(flujo:any){
   let param : any = {objResult:null}  ;
   param.objResult = flujo;
