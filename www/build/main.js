@@ -1668,8 +1668,7 @@ var ConexPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_flows_flows_provider__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_attchments_attchments__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_attchments_attchments__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1683,7 +1682,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //providers
 
-
 //pages
 
 /**
@@ -1693,21 +1691,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FlowDetailPage = (function () {
-    function FlowDetailPage(navCtrl, navParams, _seven, alertCtrl, viewCtrl, modal, _flow) {
+    function FlowDetailPage(navCtrl, navParams, _seven, alertCtrl, viewCtrl, modal) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this._seven = _seven;
         this.alertCtrl = alertCtrl;
         this.viewCtrl = viewCtrl;
         this.modal = modal;
-        this._flow = _flow;
         this.flow = navParams.get('flow');
     }
     FlowDetailPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FlowDetailPage');
         this.GetAttachmentCount();
     };
-    FlowDetailPage.prototype.flowAprobment = function () {
+    FlowDetailPage.prototype.flowAprobment = function (acc_cont) {
         var _this = this;
+        if (acc_cont === void 0) { acc_cont = ""; }
+        if (acc_cont != "")
+            this.flow.ACC_CONT = acc_cont;
         this._seven.ApproveFlow(this.flow).then(function (data) {
             console.log(data);
             var response = data;
@@ -1716,7 +1717,29 @@ var FlowDetailPage = (function () {
                 _this.close();
                 return;
             }
+            if (response.Message == "Seleccione una acción.") {
+                console.log(response);
+                _this.actions = response.ObjResult;
+                _this.showRadioActions();
+                return;
+            }
+            if (response.Message == "EJECUTORES_REQUERIDOS") {
+                _this._seven.GetNextExecutors(_this.flow).then(function (data) {
+                });
+            }
             _this.showAlert(response.Message, 'Lo sentimos!');
+        });
+    };
+    FlowDetailPage.prototype.flowReject = function () {
+        var _this = this;
+        this._seven.RejectFlow(this.flow).then(function (data) {
+            var response = data;
+            if (response.State) {
+                _this.showAlert('El flujo ha sido rechazado!', 'Listo!');
+                _this.close();
+                return;
+            }
+            _this.showAlert('Ups!Ocurrió un error!', 'Lo sentimos!');
         });
     };
     FlowDetailPage.prototype.showAlert = function (mensaje, titulo) {
@@ -1730,6 +1753,30 @@ var FlowDetailPage = (function () {
     FlowDetailPage.prototype.close = function () {
         this.viewCtrl.dismiss();
     };
+    FlowDetailPage.prototype.showRadioActions = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create();
+        alert.setTitle('Acciones');
+        console.log(this.actions);
+        for (var _i = 0, _a = this.actions; _i < _a.length; _i++) {
+            var action = _a[_i];
+            alert.addInput({
+                type: 'radio',
+                label: action.ACC_NOMB,
+                value: action.ACC_CONT,
+            });
+        }
+        alert.addButton('Cancelar');
+        alert.addButton({
+            text: 'OK',
+            handler: function (data) {
+                // this.testRadioOpen = false;
+                // this.testRadioResult = data;
+                _this.flowAprobment(data);
+            }
+        });
+        alert.present();
+    };
     FlowDetailPage.prototype.GetAttachmentCount = function () {
         var _this = this;
         this._seven.GetAttachmentCount(this.flow.CAS_CONT).then(function (data) {
@@ -1737,29 +1784,17 @@ var FlowDetailPage = (function () {
         });
     };
     FlowDetailPage.prototype.OpenAttchments = function () {
-        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_4__pages_attchments_attchments__["a" /* AttchmentsPage */], { flow: this.flow });
+        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_3__pages_attchments_attchments__["a" /* AttchmentsPage */], { flow: this.flow });
         modal.present();
-    };
-    FlowDetailPage.prototype.flowNextTracing = function () {
-        var _this = this;
-        this._flow.FlowEndTracing(this.flow).then(function () {
-            _this.close();
-        });
-    };
-    FlowDetailPage.prototype.flowReject = function () {
-        var _this = this;
-        this._flow.flowReject(this.flow).then(function () {
-            _this.close();
-        });
     };
     FlowDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-flow-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/'<!--\n\n  Generated template for the FlowDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Caso {{flow.CAS_CONT}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-icon name ="podium" item-start></ion-icon>\n\n     <ion-label>Prioridad</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SEG_PRIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="eye" item-start></ion-icon>\n\n     <ion-label>Seguimiento</ion-label>\n\n     <ion-note item-end>\n\n  {{flow.SEG_CONT}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n     <ion-label>Asunto</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_SUBJ}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Quién registra</ion-label>\n\n     <ion-note item-end>\n\n      {{flow.USU_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="OpenAttchments()" *ngIf="attchmentCount>0">\n\n  <ion-icon name="attach" item-start></ion-icon>\n\n  Adjuntos\n\n  <ion-badge item-end>{{attchmentCount}}</ion-badge>\n\n</ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Solicitado para</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SOLICITADO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n   <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Recibido</ion-label>\n\n     <ion-note item-end>\n\n   {{flow.SEG_FREC| date: \'dd/MM/yyyy\' }} &nbsp;{{flow.SEG_HREC | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Límite</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_FLIM | date: \'dd/MM/yyyy\'}} &nbsp;{{flow.SEG_HLIM | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item *ngIf="flow.ADICIO">\n\n        <ion-icon name ="twitch" item-start></ion-icon>\n\n     <ion-label>Datos adicionales</ion-label>\n\n     <ion-note item-end>\n\n       {{flow.ADICIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n    <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Descripción</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n    <ion-label>Comentarios para el ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p text-wrap>    {{flow.SEG_COME}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Comentarios para el segundo ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-textarea [(ngModel)]="flow.COMENTARIOS"  placeholder="Ingrese sus comentarios aquí"></ion-textarea>\n\n    </ion-item>\n\n  </ion-list>\n\n      <ion-grid>\n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button block color="primary" (click)="flowNextTracing()">\n\n              <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Aprobar\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button block color="danger" (click)="flowReject()">\n\n                  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/,
+            selector: 'page-flow-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/'<!--\n\n  Generated template for the FlowDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Caso {{flow.CAS_CONT}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-icon name ="podium" item-start></ion-icon>\n\n     <ion-label>Prioridad</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SEG_PRIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="eye" item-start></ion-icon>\n\n     <ion-label>Seguimiento</ion-label>\n\n     <ion-note item-end>\n\n  {{flow.SEG_CONT}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n     <ion-label>Asunto</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_SUBJ}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Quién registra</ion-label>\n\n     <ion-note item-end>\n\n      {{flow.USU_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Tercero Asociado</ion-label>\n\n     <ion-note item-end>\n\n      {{flow.TER_NOCO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="OpenAttchments()" *ngIf="attchmentCount>0">\n\n  <ion-icon name="attach" item-start></ion-icon>\n\n  Adjuntos\n\n  <ion-badge item-end>{{attchmentCount}}</ion-badge>\n\n</ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Solicitado para</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SOLICITADO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n   <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Recibido</ion-label>\n\n     <ion-note item-end>\n\n   {{flow.SEG_FREC| date: \'dd/MM/yyyy\' }} &nbsp;{{flow.SEG_HREC | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Límite</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_FLIM | date: \'dd/MM/yyyy\'}} &nbsp;{{flow.SEG_HLIM | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item *ngIf="flow.ADICIO">\n\n        <ion-icon name ="twitch" item-start></ion-icon>\n\n     <ion-label>Datos adicionales</ion-label>\n\n     <ion-note item-end>\n\n       {{flow.ADICIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n    <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Descripción</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n    <ion-label>Comentarios para el ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p text-wrap>    {{flow.SEG_COME}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Comentarios para el segundo ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-textarea [(ngModel)]="flow.COMENTARIOS"  placeholder="Ingrese sus comentarios aquí"></ion-textarea>\n\n    </ion-item>\n\n  </ion-list>\n\n      <ion-grid>\n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button block color="primary" (click)="flowNextTracing()">\n\n              <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Aprobar\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button block color="danger" (click)="flowReject()">\n\n                  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__providers_flows_flows_provider__["a" /* FlowsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_flows_flows_provider__["a" /* FlowsProvider */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], FlowDetailPage);
     return FlowDetailPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=flow-detail.js.map
@@ -1841,8 +1876,7 @@ var FlowsFilterPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flow_detail_flow_detail__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__flows_filter_flows_filter__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__flows_filter_flows_filter__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1858,7 +1892,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //providers
 
 
-
 //pages
 
 /**
@@ -1868,13 +1901,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FlowsPage = (function () {
-    function FlowsPage(navCtrl, _seven, toast, _user, modal, _flows) {
+    function FlowsPage(navCtrl, _seven, toast, _user, modal) {
         this.navCtrl = navCtrl;
         this._seven = _seven;
         this.toast = toast;
         this._user = _user;
         this.modal = modal;
-        this._flows = _flows;
         this.value = '';
         this.replicated = false;
     }
@@ -1952,7 +1984,7 @@ var FlowsPage = (function () {
     };
     FlowsPage.prototype.presentFilter = function () {
         var _this = this;
-        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_6__flows_filter_flows_filter__["a" /* FlowsFilterPage */], this.flowList);
+        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_5__flows_filter_flows_filter__["a" /* FlowsFilterPage */], this.flowList);
         modal.present();
         modal.onWillDismiss(function (data) {
             if (data) {
@@ -1962,43 +1994,38 @@ var FlowsPage = (function () {
     };
     FlowsPage.prototype.flowAprobment = function (flow) {
         var _this = this;
-        this._flows.FlowEndTracing(flow).then(function () {
+        this._seven.ApproveFlow(flow).then(function (data) {
+            var response = data;
+            if (response.State) {
+                _this._user.showToast('El flujo ha sido aprobado!');
+                _this.ionViewDidLoad();
+                return;
+            }
             _this.getFlows();
+            _this._user.showToast(response.Message);
         });
-        // this._seven.ApproveFlow(flow).then(data=>{
-        //   let response:any = data;
-        //   if(response.State){
-        //    this._user.showToast('El flujo ha sido aprobado!')
-        //       this.ionViewDidLoad();
-        //    return;
-        //  }
-        //    this.getFlows();
-        //    this._user.showToast(response.Message)
-        // })
     };
     FlowsPage.prototype.flowReject = function (flow) {
         var _this = this;
-        this._flows.flowReject(flow).then(function () {
+        this._seven.RejectFlow(flow).then(function (data) {
+            var response = data;
+            if (response.State) {
+                _this._user.showToast('El flujo ha sido rechazado!');
+                _this.ionViewDidLoad();
+                return;
+            }
             _this.getFlows();
+            _this._user.showToast(response.Message);
         });
-        // this._seven.RejectFlow(flow).then(data=>{
-        //   let response:any = data;
-        //   if(response.State){
-        //     this._user.showToast('El flujo ha sido rechazado!')
-        //       this.getFlows();
-        //      return;
-        //   }
-        //   this._user.showToast(response.Message)
-        // })
     };
     FlowsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-flows',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/'<!--\n\n  Generated template for the FlowsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar no-border-bottom>\n\n    <ion-title>\n\n      Flujos\n\n    </ion-title>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="presentFilter()">\n\n        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n  <ion-refresher-content>\n\n  </ion-refresher-content>\n\n  </ion-refresher>\n\n  <ion-list #scheduleList no-lines>\n\n      <ion-item-group no-border>\n\n        <ion-item-sliding #slidingItem  class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">\n\n          <button ion-item (click)="goDetailsFlow(flow)" [disabled]="replicated">\n\n        <h3>Caso {{flow.CAS_CONT}}</h3>\n\n        <p>\n\n        {{flow.CAS_DESC}}\n\n        </p>\n\n      </button>\n\n      <ion-item-options side="right">\n\n     <button ion-button color="danger" (click)="flowReject(flow)" [disabled]="replicated" >Rechazar</button>\n\n </ion-item-options>\n\n <ion-item-options side="left">\n\n<button ion-button color="primary" (click)="flowAprobment(flow)" [disabled]="replicated">Aprobar</button>\n\n</ion-item-options>\n\n        </ion-item-sliding>\n\n\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__["a" /* FlowsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__["a" /* FlowsProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], FlowsPage);
     return FlowsPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=flows.js.map
@@ -2989,8 +3016,6 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_call_number__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_email_composer__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_browser_tab__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_flows_flows_provider__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_general_general_provider__ = __webpack_require__(481);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3044,8 +3069,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 //Plugins
-
-
 
 
 
@@ -3164,9 +3187,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_44__ionic_native_email_composer__["a" /* EmailComposer */],
                 __WEBPACK_IMPORTED_MODULE_45__ionic_native_browser_tab__["a" /* BrowserTab */],
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__["a" /* Calendar */],
-                __WEBPACK_IMPORTED_MODULE_40__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */],
-                __WEBPACK_IMPORTED_MODULE_46__providers_flows_flows_provider__["a" /* FlowsProvider */],
-                __WEBPACK_IMPORTED_MODULE_47__providers_general_general_provider__["a" /* GeneralProvider */]
+                __WEBPACK_IMPORTED_MODULE_40__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */]
             ]
         })
     ], AppModule);
@@ -3737,246 +3758,6 @@ var ImagePipe = (function () {
 }());
 
 //# sourceMappingURL=image.js.map
-
-/***/ }),
-
-/***/ 479:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlowsProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__ = __webpack_require__(481);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//providers
-
-
-/*
-  Generated class for the FlowsProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var FlowsProvider = (function () {
-    function FlowsProvider(_seven, alertCtrl, _general) {
-        this._seven = _seven;
-        this.alertCtrl = alertCtrl;
-        this._general = _general;
-        console.log('Hello FlowsProvider Provider');
-    }
-    FlowsProvider.prototype.FlowEndTracing = function (flow) {
-        var _this = this;
-        var promise = new Promise(function (resolve, reject) {
-            _this._seven.GetStagesFlow(flow).then(function (data) {
-                console.log(data);
-                flow.ACCIONES = data.ObjResult;
-                _this.showRadioActions(flow).then(function (data) {
-                    flow.ACC_CONT = data;
-                    _this._seven.GetExecutionTypesFlow(flow).then(function (executors) {
-                        console.log(executors);
-                        if (executors.State && executors.ObjResult != null) {
-                            var executionUsers = executors.ObjResult.execution;
-                            var message_1 = 'Esta etapa requiere que el ejecutor sea seleccionado ahora';
-                            _this.showExecutionUsers('Selecciones en ejecución', message_1, executionUsers).then(function (data) {
-                                flow.SelExec = data;
-                                console.log(flow.SelExec);
-                                var tracingUsers = executors.ObjResult.tracing;
-                                _this.showExecutionUsers('Selecciones en ejecución para seguimiento', message_1, tracingUsers).then(function (data) {
-                                    flow.SelExecSeg = data.Usu_Codi;
-                                    _this.flowAprobment(flow).then(function () {
-                                        resolve();
-                                    });
-                                }).catch(function (err) { return console.log(err); });
-                            }).catch(function (err) { return console.log(err); });
-                        }
-                    });
-                }).catch(function (err) { return console.log(err); });
-            });
-        });
-        return promise;
-    };
-    FlowsProvider.prototype.showRadioActions = function (flow) {
-        var _this = this;
-        var promise = new Promise(function (resolve, reject) {
-            var countActions = flow.ACCIONES;
-            if (countActions == null)
-                resolve(' ');
-            if (countActions.length == 1)
-                resolve(countActions[0].ACC_CONT);
-            var alert = _this.alertCtrl.create();
-            alert.setTitle('Acciones');
-            for (var _i = 0, _a = flow.ACCIONES; _i < _a.length; _i++) {
-                var action = _a[_i];
-                alert.addInput({
-                    type: 'radio',
-                    label: action.ACC_NOMB,
-                    value: action.ACC_CONT,
-                });
-            }
-            alert.addButton({
-                text: 'Cancelar',
-                handler: function () {
-                }
-            });
-            alert.addButton({
-                text: 'OK',
-                handler: function (data) {
-                    if (data != undefined)
-                        resolve(data);
-                    if (data == undefined)
-                        reject(null);
-                }
-            });
-            alert.present();
-        });
-        return promise;
-    };
-    FlowsProvider.prototype.showExecutionUsers = function (title, subTitle, options) {
-        var _this = this;
-        var promise = new Promise(function (resolve, reject) {
-            if (options.length == 0) {
-                resolve('');
-                return;
-            }
-            console.log(options);
-            var alert = _this.alertCtrl.create();
-            alert.setTitle(title);
-            alert.setSubTitle(subTitle);
-            for (var _i = 0, options_1 = options; _i < options_1.length; _i++) {
-                var executionUser = options_1[_i];
-                alert.addInput({
-                    type: 'radio',
-                    label: executionUser.Usu_Nomb,
-                    value: executionUser.Usu_Codi + "," + executionUser.ETA_COND
-                });
-            }
-            ;
-            alert.addButton({
-                text: 'Cancelar',
-                handler: function () {
-                }
-            });
-            alert.addButton({
-                text: 'OK',
-                handler: function (data) {
-                    if (data != undefined)
-                        resolve(data);
-                    if (data == undefined)
-                        reject(null);
-                }
-            });
-            alert.present();
-        });
-        return promise;
-    };
-    FlowsProvider.prototype.flowAprobment = function (flow) {
-        var _this = this;
-        console.log(flow);
-        return this._seven.ApproveFlow(flow).then(function (data) {
-            console.log(data);
-            var response = data;
-            if (response.State) {
-                _this._general.showToast('El flujo ha sido aprobado!');
-                //this.close()
-                return;
-            }
-            _this._general.showAlert(response.Message, 'Lo sentimos!');
-        });
-    };
-    FlowsProvider.prototype.flowReject = function (flow) {
-        var _this = this;
-        var promise = new Promise(function (resolve, reject) {
-            _this._seven.RejectFlow(flow).then(function (data) {
-                var response = data;
-                if (response.State) {
-                    _this._general.showToast('El flujo ha sido rechazado!');
-                    resolve();
-                    return;
-                }
-                _this._general.showAlert('Ups!Ocurrió un error!', 'Lo sentimos!');
-            });
-        });
-        return promise;
-    };
-    FlowsProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__["a" /* GeneralProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__["a" /* GeneralProvider */]) === "function" && _c || Object])
-    ], FlowsProvider);
-    return FlowsProvider;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=flows-provider.js.map
-
-/***/ }),
-
-/***/ 481:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/*
-  Generated class for the GeneralProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var GeneralProvider = (function () {
-    function GeneralProvider(_toastCtrl, alertCtrl) {
-        this._toastCtrl = _toastCtrl;
-        this.alertCtrl = alertCtrl;
-        console.log('Hello GeneralProvider Provider');
-    }
-    GeneralProvider.prototype.showToast = function (mensaje) {
-        var toast = this._toastCtrl.create({
-            message: mensaje,
-            duration: 2000,
-            position: 'top'
-        });
-        toast.present();
-    };
-    GeneralProvider.prototype.showAlert = function (mensaje, titulo) {
-        var alert = this.alertCtrl.create({
-            title: titulo,
-            subTitle: mensaje,
-            buttons: ['OK']
-        });
-        alert.present();
-    };
-    GeneralProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object])
-    ], GeneralProvider);
-    return GeneralProvider;
-    var _a, _b;
-}());
-
-//# sourceMappingURL=general-provider.js.map
 
 /***/ }),
 
