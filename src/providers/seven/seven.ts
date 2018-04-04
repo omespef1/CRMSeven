@@ -110,14 +110,21 @@ GetAttachmentCount(cas_cont:number){
 GetActivityInviteds(agend:any){
   return this.postData(agend,'CrAgend/invitadosAgenda');
 }
-
+GetExecutionTypesFlow(flow:any){
+    return this.getData(`Flujos/GetExecutionUsers?flu_cont=${flow.FLU_CONT}&eta_cont=${flow.ETA_CONT}&acc_cont=${flow.ACC_CONT}`);
+}
+GetStagesFlow(flow:any){
+    return this.getData(`Flujos/GetAcciones?flu_cont=${flow.FLU_CONT}&eta_cont=${flow.ETA_CONT}`);
+}
 // setConnection(connection:string){
 //   console.log(connection);
 //    Globals.ClientUrl = connection;
 // }
 
   getData(apiAction:string) {
-    //  Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+    //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+    Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+
          let load = this.load.create({
            content:'cargando...'
          })
@@ -131,7 +138,8 @@ GetActivityInviteds(agend:any){
              this.businessClient=0;
              console.log(apiAction);
              console.log(Globals.ClientUrl);
-             let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
+          //   let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
+             let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${102}`;
              console.log(uri);
              this.http.get(uri).subscribe(data => {
                resolve(data);
@@ -150,6 +158,7 @@ GetActivityInviteds(agend:any){
   postData(data,apiAction:string) {
     //Comentarear para produccion
 //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+  Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })

@@ -51,6 +51,7 @@ import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
+import { FlowsProvider } from '../providers/flows/flows-provider';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { BrowserTab } from '@ionic-native/browser-tab';
     EmailComposer,
     BrowserTab,
     Calendar,
-    DigitalDatePipe
+    DigitalDatePipe,
+    FlowsProvider
   ]
 })
 export class AppModule {}

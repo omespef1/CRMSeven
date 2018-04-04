@@ -7,7 +7,6 @@ import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
 import { BrowserTab } from '@ionic-native/browser-tab';
-//import {SevenProvider} from '../seven/seven';
 import  {Globals} from '../../assets/global';
 
 /*
