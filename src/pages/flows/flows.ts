@@ -4,6 +4,7 @@ import {FlowDetailPage} from '../flow-detail/flow-detail';
 //providers
 import {SevenProvider} from '../../providers/seven/seven';
 import {UserDataProvider} from '../../providers/user-data/user-data';
+import {FlowsProvider} from '../../providers/flows/flows-provider';
 //PipesModule
 import{FlowsPipe} from '../../pipes/flows/flows';
 //pages
@@ -27,7 +28,7 @@ export class FlowsPage {
   user:any;
   replicated : boolean=false;
   constructor(public navCtrl: NavController , private _seven:SevenProvider,private toast:ToastController,private _user:UserDataProvider,
-  private modal:ModalController) {
+  private modal:ModalController, private _flows:FlowsProvider) {
 
   }
 
@@ -114,28 +115,33 @@ export class FlowsPage {
 }
 flowAprobment(flow:any){
 
- this._seven.ApproveFlow(flow).then(data=>{
-   let response:any = data;
-   if(response.State){
-    this._user.showToast('El flujo ha sido aprobado!')
-       this.ionViewDidLoad();
-    return;
-  }
-    this.getFlows();
-    this._user.showToast(response.Message)
- })
+this._flows.FlowEndTracing(flow).then(()=>{
+  this.getFlows();
+})
+ // this._seven.ApproveFlow(flow).then(data=>{
+ //   let response:any = data;
+ //   if(response.State){
+ //    this._user.showToast('El flujo ha sido aprobado!')
+ //       this.ionViewDidLoad();
+ //    return;
+ //  }
+ //    this.getFlows();
+ //    this._user.showToast(response.Message)
+ // })
 
 }
 flowReject(flow:any){
-  this._seven.RejectFlow(flow).then(data=>{
-    let response:any = data;
-    if(response.State){
-      this._user.showToast('El flujo ha sido rechazado!')
-       this.ionViewDidLoad();
-       return;
-    }
-      this.getFlows();
-    this._user.showToast(response.Message)
+  this._flows.flowReject(flow).then(()=>{
+    this.getFlows();
   })
+  // this._seven.RejectFlow(flow).then(data=>{
+  //   let response:any = data;
+  //   if(response.State){
+  //     this._user.showToast('El flujo ha sido rechazado!')
+  //       this.getFlows();
+  //      return;
+  //   }
+  //   this._user.showToast(response.Message)
+  // })
 }
 }

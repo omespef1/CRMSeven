@@ -52,6 +52,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { FlowsProvider } from '../providers/flows/flows-provider';
+import { GeneralProvider } from '../providers/general/general-provider';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,8 @@ import { FlowsProvider } from '../providers/flows/flows-provider';
     BrowserTab,
     Calendar,
     DigitalDatePipe,
-    FlowsProvider
+    FlowsProvider,
+    GeneralProvider
   ]
 })
 export class AppModule {}

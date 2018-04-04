@@ -32,6 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import {SevenProvider} from '../seven/seven';
 
 /*
   Generated class for the UserDataProvider provider.
@@ -252,10 +253,11 @@ var UserDataProvider = (function () {
     };
     UserDataProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__["a" /* EmailComposer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__["a" /* EmailComposer */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__["a" /* BrowserTab */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__["a" /* BrowserTab */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__["a" /* BrowserTab */]])
     ], UserDataProvider);
     return UserDataProvider;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=user-data.js.map
@@ -1839,7 +1841,8 @@ var FlowsFilterPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flow_detail_flow_detail__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__flows_filter_flows_filter__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__flows_filter_flows_filter__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1855,6 +1858,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //providers
 
 
+
 //pages
 
 /**
@@ -1864,12 +1868,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FlowsPage = (function () {
-    function FlowsPage(navCtrl, _seven, toast, _user, modal) {
+    function FlowsPage(navCtrl, _seven, toast, _user, modal, _flows) {
         this.navCtrl = navCtrl;
         this._seven = _seven;
         this.toast = toast;
         this._user = _user;
         this.modal = modal;
+        this._flows = _flows;
         this.value = '';
         this.replicated = false;
     }
@@ -1947,7 +1952,7 @@ var FlowsPage = (function () {
     };
     FlowsPage.prototype.presentFilter = function () {
         var _this = this;
-        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_5__flows_filter_flows_filter__["a" /* FlowsFilterPage */], this.flowList);
+        var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_6__flows_filter_flows_filter__["a" /* FlowsFilterPage */], this.flowList);
         modal.present();
         modal.onWillDismiss(function (data) {
             if (data) {
@@ -1957,38 +1962,43 @@ var FlowsPage = (function () {
     };
     FlowsPage.prototype.flowAprobment = function (flow) {
         var _this = this;
-        this._seven.ApproveFlow(flow).then(function (data) {
-            var response = data;
-            if (response.State) {
-                _this._user.showToast('El flujo ha sido aprobado!');
-                _this.ionViewDidLoad();
-                return;
-            }
+        this._flows.FlowEndTracing(flow).then(function () {
             _this.getFlows();
-            _this._user.showToast(response.Message);
         });
+        // this._seven.ApproveFlow(flow).then(data=>{
+        //   let response:any = data;
+        //   if(response.State){
+        //    this._user.showToast('El flujo ha sido aprobado!')
+        //       this.ionViewDidLoad();
+        //    return;
+        //  }
+        //    this.getFlows();
+        //    this._user.showToast(response.Message)
+        // })
     };
     FlowsPage.prototype.flowReject = function (flow) {
         var _this = this;
-        this._seven.RejectFlow(flow).then(function (data) {
-            var response = data;
-            if (response.State) {
-                _this._user.showToast('El flujo ha sido rechazado!');
-                _this.ionViewDidLoad();
-                return;
-            }
+        this._flows.flowReject(flow).then(function () {
             _this.getFlows();
-            _this._user.showToast(response.Message);
         });
+        // this._seven.RejectFlow(flow).then(data=>{
+        //   let response:any = data;
+        //   if(response.State){
+        //     this._user.showToast('El flujo ha sido rechazado!')
+        //       this.getFlows();
+        //      return;
+        //   }
+        //   this._user.showToast(response.Message)
+        // })
     };
     FlowsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-flows',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/'<!--\n\n  Generated template for the FlowsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar no-border-bottom>\n\n    <ion-title>\n\n      Flujos\n\n    </ion-title>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="presentFilter()">\n\n        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n  <ion-refresher-content>\n\n  </ion-refresher-content>\n\n  </ion-refresher>\n\n  <ion-list #scheduleList no-lines>\n\n      <ion-item-group no-border>\n\n        <ion-item-sliding #slidingItem  class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">\n\n          <button ion-item (click)="goDetailsFlow(flow)" [disabled]="replicated">\n\n        <h3>Caso {{flow.CAS_CONT}}</h3>\n\n        <p>\n\n        {{flow.CAS_DESC}}\n\n        </p>\n\n      </button>\n\n      <ion-item-options side="right">\n\n     <button ion-button color="danger" (click)="flowReject(flow)" [disabled]="replicated" >Rechazar</button>\n\n </ion-item-options>\n\n <ion-item-options side="left">\n\n<button ion-button color="primary" (click)="flowAprobment(flow)" [disabled]="replicated">Aprobar</button>\n\n</ion-item-options>\n\n        </ion-item-sliding>\n\n\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__["a" /* FlowsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__["a" /* FlowsProvider */]) === "function" && _f || Object])
     ], FlowsPage);
     return FlowsPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=flows.js.map
@@ -2508,9 +2518,9 @@ var SevenProvider = (function () {
     //    Globals.ClientUrl = connection;
     // }
     SevenProvider.prototype.getData = function (apiAction) {
-        var _this = this;
         //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
-        __WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl = 'http://localhost/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+        var _this = this;
         var load = this.load.create({
             content: 'cargando...'
         });
@@ -2524,8 +2534,8 @@ var SevenProvider = (function () {
                     _this.businessClient = 0;
                 console.log(apiAction);
                 console.log(__WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl);
-                //   let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
-                var uri = "" + __WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl + apiAction + "&emp_codi=" + 102;
+                var uri = "" + __WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl + apiAction + "&emp_codi=" + _this.businessClient.Emp_Codi;
+                //     let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${102}`;
                 console.log(uri);
                 _this.http.get(uri).subscribe(function (data) {
                     resolve(data);
@@ -2541,7 +2551,7 @@ var SevenProvider = (function () {
         var _this = this;
         //Comentarear para produccion
         //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
-        __WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl = 'http://localhost/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
         var loading = this.load.create({
             content: 'Cargando...'
         });
@@ -2980,6 +2990,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_email_composer__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_browser_tab__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_flows_flows_provider__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_general_general_provider__ = __webpack_require__(481);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3033,6 +3044,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 //Plugins
+
 
 
 
@@ -3153,7 +3165,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_45__ionic_native_browser_tab__["a" /* BrowserTab */],
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__["a" /* Calendar */],
                 __WEBPACK_IMPORTED_MODULE_40__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */],
-                __WEBPACK_IMPORTED_MODULE_46__providers_flows_flows_provider__["a" /* FlowsProvider */]
+                __WEBPACK_IMPORTED_MODULE_46__providers_flows_flows_provider__["a" /* FlowsProvider */],
+                __WEBPACK_IMPORTED_MODULE_47__providers_general_general_provider__["a" /* GeneralProvider */]
             ]
         })
     ], AppModule);
@@ -3735,6 +3748,7 @@ var ImagePipe = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__ = __webpack_require__(481);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3748,6 +3762,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //providers
 
+
 /*
   Generated class for the FlowsProvider provider.
 
@@ -3755,9 +3770,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   and Angular DI.
 */
 var FlowsProvider = (function () {
-    function FlowsProvider(_seven, alertCtrl) {
+    function FlowsProvider(_seven, alertCtrl, _general) {
         this._seven = _seven;
         this.alertCtrl = alertCtrl;
+        this._general = _general;
         console.log('Hello FlowsProvider Provider');
     }
     FlowsProvider.prototype.FlowEndTracing = function (flow) {
@@ -3818,7 +3834,7 @@ var FlowsProvider = (function () {
             alert.addButton({
                 text: 'OK',
                 handler: function (data) {
-                    resolve(data.ACC_CONT);
+                    resolve(data);
                 }
             });
             alert.present();
@@ -3841,7 +3857,7 @@ var FlowsProvider = (function () {
                 alert.addInput({
                     type: 'radio',
                     label: executionUser.Usu_Nomb,
-                    value: executionUser.Usu_Codi
+                    value: executionUser.Usu_Codi + "," + executionUser.ETA_COND
                 });
             }
             ;
@@ -3868,20 +3884,12 @@ var FlowsProvider = (function () {
             console.log(data);
             var response = data;
             if (response.State) {
-                _this.showAlert('El flujo ha sido aprobado!', 'Listo!');
+                _this._general.showToast('El flujo ha sido aprobado!');
                 //this.close()
                 return;
             }
-            _this.showAlert(response.Message, 'Lo sentimos!');
+            _this._general.showAlert(response.Message, 'Lo sentimos!');
         });
-    };
-    FlowsProvider.prototype.showAlert = function (mensaje, titulo) {
-        var alert = this.alertCtrl.create({
-            title: titulo,
-            subTitle: mensaje,
-            buttons: ['OK']
-        });
-        alert.present();
     };
     FlowsProvider.prototype.flowReject = function (flow) {
         var _this = this;
@@ -3889,24 +3897,82 @@ var FlowsProvider = (function () {
             _this._seven.RejectFlow(flow).then(function (data) {
                 var response = data;
                 if (response.State) {
-                    _this.showAlert('El flujo ha sido rechazado!', 'Listo!');
+                    _this._general.showToast('El flujo ha sido rechazado!');
                     resolve();
                     return;
                 }
-                _this.showAlert('Ups!Ocurrió un error!', 'Lo sentimos!');
+                _this._general.showAlert('Ups!Ocurrió un error!', 'Lo sentimos!');
             });
         });
         return promise;
     };
     FlowsProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__["a" /* GeneralProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_general_general_provider__["a" /* GeneralProvider */]) === "function" && _c || Object])
     ], FlowsProvider);
     return FlowsProvider;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=flows-provider.js.map
+
+/***/ }),
+
+/***/ 481:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/*
+  Generated class for the GeneralProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var GeneralProvider = (function () {
+    function GeneralProvider(_toastCtrl, alertCtrl) {
+        this._toastCtrl = _toastCtrl;
+        this.alertCtrl = alertCtrl;
+        console.log('Hello GeneralProvider Provider');
+    }
+    GeneralProvider.prototype.showToast = function (mensaje) {
+        var toast = this._toastCtrl.create({
+            message: mensaje,
+            duration: 2000,
+            position: 'top'
+        });
+        toast.present();
+    };
+    GeneralProvider.prototype.showAlert = function (mensaje, titulo) {
+        var alert = this.alertCtrl.create({
+            title: titulo,
+            subTitle: mensaje,
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    GeneralProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _b || Object])
+    ], GeneralProvider);
+    return GeneralProvider;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=general-provider.js.map
 
 /***/ }),
 
