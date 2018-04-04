@@ -3798,11 +3798,11 @@ var FlowsProvider = (function () {
                                     _this.flowAprobment(flow).then(function () {
                                         resolve();
                                     });
-                                });
-                            }).catch();
+                                }).catch(function (err) { return console.log(err); });
+                            }).catch(function (err) { return console.log(err); });
                         }
                     });
-                });
+                }).catch(function (err) { return console.log(err); });
             });
         });
         return promise;
@@ -3827,14 +3827,16 @@ var FlowsProvider = (function () {
             }
             alert.addButton({
                 text: 'Cancelar',
-                handler: function (data) {
-                    reject();
+                handler: function () {
                 }
             });
             alert.addButton({
                 text: 'OK',
                 handler: function (data) {
-                    resolve(data);
+                    if (data != undefined)
+                        resolve(data);
+                    if (data == undefined)
+                        reject(null);
                 }
             });
             alert.present();
@@ -3869,8 +3871,10 @@ var FlowsProvider = (function () {
             alert.addButton({
                 text: 'OK',
                 handler: function (data) {
-                    console.log(data);
-                    resolve(data);
+                    if (data != undefined)
+                        resolve(data);
+                    if (data == undefined)
+                        reject(null);
                 }
             });
             alert.present();

@@ -38,11 +38,11 @@ export class FlowsProvider {
                   this.flowAprobment(flow).then(() => {
                     resolve();
                   })
-                })
-              }).catch()
+                }).catch(err=>console.log(err))
+              }).catch(err=>console.log(err))
             }
           })
-        })
+        }).catch(err=>console.log(err))
 
       })
     })
@@ -67,14 +67,18 @@ export class FlowsProvider {
       }
       alert.addButton({
         text: 'Cancelar',
-        handler: data => {
-          reject();
+        handler: () => {
+
         }
       });
       alert.addButton({
         text: 'OK',
         handler: (data: any) => {
-          resolve(data);
+          if(data!=undefined)
+           resolve(data);
+           if(data==undefined)
+           reject(null);
+
         }
       });
       alert.present();
@@ -106,8 +110,10 @@ export class FlowsProvider {
       alert.addButton({
         text: 'OK',
         handler: data => {
-          console.log(data);
+        if(data!=undefined)
           resolve(data);
+          if(data==undefined)
+            reject(null);
         }
       });
       alert.present();
