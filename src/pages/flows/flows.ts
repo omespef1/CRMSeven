@@ -36,7 +36,6 @@ export class FlowsPage {
 
   }
   ionViewWillEnter(){
-    console.log('ionViewDidLoad FlowsPage');
     this._user.getReplicated().then(data=>{
       if(data){
           this.replicated = true;
@@ -82,8 +81,7 @@ export class FlowsPage {
 }
   doRefresh(refresher: Refresher) {
     this._user.getUsername().then(data=>{
-      this._seven.getFlows(data).then(data=>{
-        console.log(data);
+      this._seven.getFlows(data,false).then(data=>{
         this.flows = data;
         this.initializeItems();
         refresher.complete();

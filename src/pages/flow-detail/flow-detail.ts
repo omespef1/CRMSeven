@@ -33,29 +33,6 @@ private _flow: FlowsProvider) {
 
   }
 
-  flowAprobment(){
-   this._seven.ApproveFlow(this.flow).then(data=>{
-     console.log(data);
-     let response:any = data;
-     if(response.State){
-      this.showAlert('El flujo ha sido aprobado!','Listo!')
-       this.close()
-      return;
-    }
-    this.showAlert(response.Message,'Lo sentimos!')
-   })
-
-  }
-
-  showAlert(mensaje:string, titulo:string) {
-  let alert = this.alertCtrl.create({
-    title: titulo,
-    subTitle: mensaje,
-    buttons: ['OK']
-  });
-  alert.present();
-  }
-
   close(){
     this.viewCtrl.dismiss();
   }
@@ -74,12 +51,43 @@ private _flow: FlowsProvider) {
    this._flow.FlowEndTracing(this.flow).then(()=>{
      this.close();
    })
+    // this._flow.ValidTypeStage(this.flow).then(()=>{
+    // this.close();
+  
  }
  flowReject(){
    this._flow.flowReject(this.flow).then(()=>{
      this.close();
    })
  }
+
+
+ }
+
+
+   // flowAprobment(){
+   //  this._seven.ApproveFlow(this.flow).then(data=>{
+   //    console.log(data);
+   //    let response:any = data;
+   //    if(response.State){
+   //     this.showAlert('El flujo ha sido aprobado!','Listo!')
+   //      this.close()
+   //     return;
+   //   }
+   //   this.showAlert(response.Message,'Lo sentimos!')
+   //  })
+   //
+   // }
+
+   // showAlert(mensaje:string, titulo:string) {
+   // let alert = this.alertCtrl.create({
+   //   title: titulo,
+   //   subTitle: mensaje,
+   //   buttons: ['OK']
+   // });
+   // alert.present();
+   // }
+
  // flowReject(){
  //   this._seven.RejectFlow(this.flow).then(data=>{
  //     let response:any = data;
@@ -181,6 +189,3 @@ private _flow: FlowsProvider) {
  //   return promise;
  //
  // }
-
-
-}

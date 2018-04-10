@@ -24,8 +24,7 @@ export class FlowsPipe implements PipeTransform {
       case "B":
       color= "FlowGreen";
       break;
-    }
-    console.log(color);
+    }  
     return color;
   }
 }
