@@ -19,8 +19,10 @@ export class FlowsProvider {
   FlowEndTracing(flow: any) {
     let promise = new Promise((resolve, reject) => {
       this._seven.GetStagesFlow(flow).then((data: any) => {
+
         flow.ACCIONES = data.ObjResult;
         this.showRadioActions(flow).then(data => {
+
           //Muestra dialogo de acciones, si no hay ninguna se selecciona " ";
           if(flow.ETA_MACC=="N"){
           flow.ACC_CONT = data;
@@ -29,6 +31,7 @@ export class FlowsProvider {
           flow.ACC_CONT_LIST = data;
           }
           this._seven.GetExecutionTypesFlow(flow).then((executors: any) => {
+
             console.log(executors);
             //Carga todos los ejecutores de seguimiento y de etapa
             if (executors.State && executors.ObjResult != null) {
@@ -39,9 +42,11 @@ export class FlowsProvider {
                 //Muestra dialogos de ejecutores de seguimiento, si no se selecciona nada trae vacio
                flow.SelExecSeg = data;
                this.validExecutionUsers(executors.ObjResult).then(usuariosEjecutores=>{
+
                  //Muestra todos los ejecutores de etapa, si no se seleccionad nada, trae vacío.
                 flow.SelExec = usuariosEjecutores;
                 this.flowAprobment(flow).then(() => {
+
                   resolve();
                 })
               })
@@ -82,8 +87,8 @@ export class FlowsProvider {
       let countActions: any[] = flow.ACCIONES;
       if (countActions == null)
         resolve(' ');
-      if (countActions.length == 1)
-        resolve(countActions[0].ACC_CONT);
+      // if (countActions.length == 1)
+      //   resolve(countActions[0].ACC_CONT);
       let alert = this.alertCtrl.create();
       alert.setTitle('Acciones');
       if(flow.ETA_MACC=="N"){
@@ -181,7 +186,7 @@ export class FlowsProvider {
           resolve();
           return;
         }
-        this._general.showAlert('Ups!Ocurrió un error!', 'Lo sentimos!')
+        this._general.showAlert(response.Message, 'Lo sentimos!')
       })
     })
     return promise;
