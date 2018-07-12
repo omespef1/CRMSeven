@@ -35,6 +35,7 @@ export class LoginPage {
   logo:any;
   url:string;
   businessList:any[];
+  version = Date.now();
   constructor(public navCtrl: NavController, public navParams: NavParams,private _seven:SevenProvider,private alertCtrl:AlertController,
   private _user:UserDataProvider,private keychainTouchId: KeychainTouchId,
 private platform:Platform,private modalCtrl:ModalController) {
