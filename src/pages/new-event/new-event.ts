@@ -9,6 +9,7 @@ import {InvitedPage} from '../invited/invited';
 import {ContactDetailPage} from '../contact-detail/contact-detail';
 import {ClientDetailPage} from '../client-detail/client-detail';
 import {ContactSearchPage} from '../contact-search/contact-search';
+import {TerceSearchPage} from '../terce-search/terce-search';
 
 //providers
 import {UserDataProvider} from '../../providers/user-data/user-data';
@@ -39,6 +40,7 @@ invited:any;
 contact:any;
 observations:any;
 emp_codi:number;
+terce:any;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
@@ -93,6 +95,14 @@ openLupaStages(){
     this.stage = data;
   })
 }
+openLupaTerce(){
+  let modal = this.modal.create(TerceSearchPage);
+  modal.present();
+  modal.onDidDismiss(data=>{
+    this.terce = data;
+  })
+}
+
 CreateActivity(){
 let response :any;
 if(this.validEvent()){
@@ -105,6 +115,7 @@ if(this.validEvent()){
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
  this.newActivity.Emp_Codi = this.emp_codi;
+ this.newActivity.Ter_Codi = this.terce.ter_codi;
  if( this.newActivity.age_obse==undefined){
      this.showAlert("Debe especificar una observación", 'Lo sentimos!')
  return;

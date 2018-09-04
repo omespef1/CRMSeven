@@ -56,6 +56,13 @@
      {{stage.ETA_NOMB}}
      </ion-note>
     </ion-item>
+    <ion-item button (click)="openLupaTerce()">
+        <ion-icon name="person" item-start></ion-icon>
+     <ion-label>Tercero Asociado</ion-label>
+     <ion-note class="note" item-end *ngIf="terce">
+     {{terce.ter_noco}}
+     </ion-note>
+    </ion-item>
     <ion-item>
       <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="newActivity.Age_Asun"></ion-input>
     </ion-item>

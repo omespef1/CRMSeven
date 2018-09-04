@@ -38,6 +38,7 @@ import {ClientPointsPage} from '../pages/client-points/client-points';
 import {EmployeesPage} from '../pages/employees/employees';
 import {AttchmentsPage} from '../pages/attchments/attchments';
 import { BusinessPage} from '../pages/business/business';
+import {TerceSearchPage} from '../pages/terce-search/terce-search';
 //providers
 import { SevenProvider } from '../providers/seven/seven';
 import { UserDataProvider } from '../providers/user-data/user-data';
@@ -85,7 +86,8 @@ import { GeneralProvider } from '../providers/general/general-provider';
     ClientPointsPage,
     EmployeesPage,
     AttchmentsPage,
-     BusinessPage
+     BusinessPage,
+    TerceSearchPage
   ],
   imports: [
     BrowserModule,
@@ -123,7 +125,8 @@ import { GeneralProvider } from '../providers/general/general-provider';
     ClientPointsPage,
     EmployeesPage,
     AttchmentsPage,
-    BusinessPage
+    BusinessPage,
+    TerceSearchPage
   ],
   providers: [
     StatusBar,

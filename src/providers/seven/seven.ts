@@ -65,6 +65,9 @@ GetActivities(){
 GetStages(){
   return this.getData('Actividades/ListarEtapas?');
 }
+GetGnTerce(value:string){
+  return this.getData(`GnTerce/GetGnTerce?filter=${value}`);
+}
 GetUserActivities(usu_codi:string,fini:string,fina:string){
   return this._userdata.getReplicated().then(data=>{
     if(data){
@@ -122,7 +125,7 @@ GetStagesFlow(flow:any){
 
   getData(apiAction:string,showLoad:boolean=true) {
     //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
-   // Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+  // Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
 
          let load = this.load.create({
            content:'cargando...'
@@ -136,8 +139,8 @@ GetStagesFlow(flow:any){
              this.businessClient=0;
              console.log(apiAction);
              console.log(Globals.ClientUrl);
-         let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
-          //  let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${102}`;
+        let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${this.businessClient.Emp_Codi}`;
+        //  let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${102}`;
              console.log(uri);
              this.http.get(uri).subscribe(data => {
               load.dismiss();
@@ -156,7 +159,7 @@ GetStagesFlow(flow:any){
   postData(data,apiAction:string) {
     //Comentarear para produccion
 //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
-  // Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+//  Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })
