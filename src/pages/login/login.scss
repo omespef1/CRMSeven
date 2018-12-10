@@ -64,7 +64,7 @@ page-login {
      }
      .fingerprint{
        img{
-       width: 25%;
+       max-width: 20%;
        height: auto;
      }
      p{
@@ -109,7 +109,7 @@ page-login {
 }
 @media screen and (min-height : 680px) and (max-height : 750px) {
   .logoM{
-    height: 130px;
+    height: 90px;
   }
   .loginColM{
     margin-top: 10%;
@@ -117,7 +117,7 @@ page-login {
 }
 @media screen and (min-height : 750px) and (max-height : 900px) {
   .logoM{
-    height: 150px;
+    height: 100px;
   }
   .loginColM{
     margin-top: 10%;

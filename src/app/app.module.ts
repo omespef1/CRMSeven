@@ -54,6 +54,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { FlowsProvider } from '../providers/flows/flows-provider';
 import { GeneralProvider } from '../providers/general/general-provider';
+import { Keyboard } from '@ionic-native/keyboard';
 @NgModule({
   declarations: [
     MyApp,
@@ -91,7 +92,16 @@ import { GeneralProvider } from '../providers/general/general-provider';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      platforms : {
+        ios : {
+          // These options are available in ionic-angular@2.0.0-beta.2 and up.
+          scrollAssist: false,    // Valid options appear to be [true, false]
+          autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+        }
+        // http://ionicframework.com/docs/v2/api/config/Config/)
+      }
+    }),
     HttpClientModule,
     NgCalendarModule,
      IonicStorageModule.forRoot()
@@ -142,7 +152,8 @@ import { GeneralProvider } from '../providers/general/general-provider';
     Calendar,
     DigitalDatePipe,
     FlowsProvider,
-    GeneralProvider
+    GeneralProvider,
+    Keyboard
   ]
 })
 export class AppModule {}

@@ -18,11 +18,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NewEventPageModule = (function () {
+var NewEventPageModule = /** @class */ (function () {
     function NewEventPageModule() {
     }
     NewEventPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__new_event__["a" /* NewEventPage */],
             ],

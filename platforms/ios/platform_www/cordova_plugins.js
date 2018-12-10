@@ -42,6 +42,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-ionic-keyboard.keyboard",
+    "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+    "pluginId": "cordova-plugin-ionic-keyboard",
+    "clobbers": [
+      "window.Keyboard"
+    ]
+  },
+  {
     "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
     "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
     "pluginId": "cordova-plugin-ionic-webview",
@@ -92,8 +100,9 @@ module.exports.metadata =
   "cordova-plugin-calendar": "4.6.0",
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
+  "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-ionic-webview": "1.2.1",
-  "cordova-plugin-keychain-touch-id": "3.2.1",
+  "cordova-plugin-keychain-touch-id": "3.3.0",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.1.2",

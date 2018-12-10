@@ -18,11 +18,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var InvitedPageModule = (function () {
+var InvitedPageModule = /** @class */ (function () {
     function InvitedPageModule() {
     }
     InvitedPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__invited__["a" /* InvitedPage */],
             ],

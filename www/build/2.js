@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 480:
+/***/ 481:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,11 +18,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var StagesSearchPageModule = (function () {
+var StagesSearchPageModule = /** @class */ (function () {
     function StagesSearchPageModule() {
     }
     StagesSearchPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__stages_search__["a" /* StagesSearchPage */],
             ],

@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 481:
+/***/ 480:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,11 +18,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TerceSearchPageModule = (function () {
+var TerceSearchPageModule = /** @class */ (function () {
     function TerceSearchPageModule() {
     }
     TerceSearchPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__terce_search__["a" /* TerceSearchPage */],
             ],

@@ -105,12 +105,22 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-keychain-touch-id": {
+  "cordova-plugin-ionic-keyboard": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-keychain-touch-id@^3.2.1"
+      "id": "cordova-plugin-ionic-keyboard"
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-keychain-touch-id": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id"
+    },
+    "is_top_level": true,
+    "variables": {
+      "FACEID_USAGE_DESCRIPTION": "For easy authentication"
+    }
   }
 }
