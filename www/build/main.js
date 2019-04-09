@@ -2919,15 +2919,15 @@ var map = {
 		13
 	],
 	"../pages/employees/employees.module": [
-		472,
+		470,
 		12
 	],
 	"../pages/flow-detail/flow-detail.module": [
-		470,
+		471,
 		11
 	],
 	"../pages/flows-filter/flows-filter.module": [
-		471,
+		472,
 		10
 	],
 	"../pages/flows/flows.module": [
@@ -2959,11 +2959,11 @@ var map = {
 		3
 	],
 	"../pages/stages-search/stages-search.module": [
-		481,
+		480,
 		2
 	],
 	"../pages/terce-search/terce-search.module": [
-		480,
+		481,
 		1
 	],
 	"../pages/touch-id/touch-id.module": [
@@ -3435,9 +3435,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact-search/contact-search.module#ContactSearchPageModule', name: 'ContactSearchPage', segment: 'contact-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/email/email.module#EmailPageModule', name: 'EmailPage', segment: 'email', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/employees/employees.module#EmployeesPageModule', name: 'EmployeesPage', segment: 'employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows-filter/flows-filter.module#FlowsFilterPageModule', name: 'FlowsFilterPage', segment: 'flows-filter', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/employees/employees.module#EmployeesPageModule', name: 'EmployeesPage', segment: 'employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
@@ -3445,8 +3445,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/terce-search/terce-search.module#TerceSearchPageModule', name: 'TerceSearchPage', segment: 'terce-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/terce-search/terce-search.module#TerceSearchPageModule', name: 'TerceSearchPage', segment: 'terce-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -3818,15 +3818,16 @@ var MyApp = /** @class */ (function () {
         this.events = events;
         this.toast = toast;
         this._userdata = _userdata;
+        this._key = _key;
         this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
+            if (platform.is("ios")) {
+                _this._key.disableScroll(true);
+            }
             statusBar.styleDefault();
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             splashScreen.hide();
-            if (platform.is("ios")) {
-                _key.hideFormAccessoryBar(true);
-            }
             _this._userdata.hasLoggedIn().then(function (hasLoggedIn) {
                 //  this.enableMenu(true);
                 _this.listenToLoginEvents();

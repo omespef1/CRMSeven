@@ -9,6 +9,7 @@ import {SettingsPage} from '../pages/settings/settings';
 import {TouchIdPage} from '../pages/touch-id/touch-id';
 import { Keyboard } from '@ionic-native/keyboard';
 
+
 //Providers
 import {UserDataProvider} from '../providers/user-data/user-data';
 
@@ -20,17 +21,18 @@ export class MyApp {
   rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController,
-  private _userdata:UserDataProvider,_key:Keyboard) {
+  private _userdata:UserDataProvider,private _key:Keyboard) {
     platform.ready().then(() => {
+      if(platform.is("ios")){
+        this._key.disableScroll(true);
+      }
+   
       statusBar.styleDefault();
       
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       splashScreen.hide();
-if(platform.is("ios")){
-  _key.hideFormAccessoryBar(true);
-}
 
       this._userdata.hasLoggedIn().then((hasLoggedIn) => {
       //  this.enableMenu(true);
