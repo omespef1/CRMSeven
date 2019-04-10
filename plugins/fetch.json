@@ -33,14 +33,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-ionic-webview": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-webview@^1.1.16"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-splashscreen": {
     "source": {
       "type": "registry",
@@ -122,5 +114,13 @@
     "variables": {
       "FACEID_USAGE_DESCRIPTION": "For easy authentication"
     }
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@4.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

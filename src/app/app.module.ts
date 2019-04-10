@@ -96,8 +96,10 @@ import { Keyboard } from '@ionic-native/keyboard';
       platforms : {
         ios : {
           // These options are available in ionic-angular@2.0.0-beta.2 and up.
-          scrollAssist: false,    // Valid options appear to be [true, false]
-          autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+          scrollAssist: true,    // Valid options appear to be [true, false]
+          autoFocusAssist: true , // Valid options appear to be ['instant', 'delay', false]
+          statusbarPadding: true,
+          scrollPadding: true
         }
         // http://ionicframework.com/docs/v2/api/config/Config/)
       }

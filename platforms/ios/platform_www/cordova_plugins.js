@@ -50,14 +50,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
-    "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
-    "pluginId": "cordova-plugin-ionic-webview",
-    "clobbers": [
-      "cordova.exec"
-    ]
-  },
-  {
     "id": "cordova-plugin-keychain-touch-id.TouchID",
     "file": "plugins/cordova-plugin-keychain-touch-id/www/touchid.js",
     "pluginId": "cordova-plugin-keychain-touch-id",
@@ -89,6 +81,22 @@ module.exports = [
       "cordova.plugins.Keyboard"
     ],
     "runs": true
+  },
+  {
+    "id": "cordova-plugin-ionic-webview.IonicWebView",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+    "pluginId": "cordova-plugin-ionic-webview",
+    "clobbers": [
+      "Ionic.WebView"
+    ]
+  },
+  {
+    "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+    "pluginId": "cordova-plugin-ionic-webview",
+    "clobbers": [
+      "cordova.exec"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -101,12 +109,12 @@ module.exports.metadata =
   "cordova-plugin-device": "1.1.7",
   "cordova-plugin-email-composer": "0.8.15",
   "cordova-plugin-ionic-keyboard": "2.1.3",
-  "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-keychain-touch-id": "3.3.0",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.1.2",
-  "ionic-plugin-keyboard": "2.2.1"
+  "ionic-plugin-keyboard": "2.2.1",
+  "cordova-plugin-ionic-webview": "4.0.1"
 };
 // BOTTOM OF METADATA
 });

@@ -24,7 +24,8 @@ export class MyApp {
   private _userdata:UserDataProvider,private _key:Keyboard) {
     platform.ready().then(() => {
       if(platform.is("ios")){
-        this._key.disableScroll(true);
+        //this._key.disableScroll(false);
+        
       }
    
       statusBar.styleDefault();
