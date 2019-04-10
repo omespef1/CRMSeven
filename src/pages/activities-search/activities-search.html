@@ -30,6 +30,7 @@
   <ion-list #AcivitiesList>
       <ion-item-group>
         <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">
+            <ion-icon item-start name="flash"></ion-icon>
           <ion-label>
           {{activity.ACT_NOMB}}
           </ion-label>

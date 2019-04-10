@@ -14,6 +14,7 @@ import {TerceSearchPage} from '../terce-search/terce-search';
 //providers
 import {UserDataProvider} from '../../providers/user-data/user-data';
 import {SevenProvider} from '../../providers/seven/seven';
+import { ClientPointsPage } from '../client-points/client-points';
 
 /**
  * Generated class for the NewEventPage page.
@@ -41,6 +42,7 @@ contact:any;
 observations:any;
 emp_codi:number;
 terce:any;
+contactList:any;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
@@ -68,10 +70,28 @@ close(){
     this.viewCtrl.dismiss();
 }
 openLupa(){
-  let modal = this.modal.create(LupaPage);
+  let modal = this.modal.create(LupaPage,{'all':true});
   modal.present();
-  modal.onDidDismiss(data=>{
-    this.client = data;
+  modal.onDidDismiss((data:any)=>{
+    console.log(data);
+     this.client = data;
+     let details:any[] = this.client.dprosList;
+     if(details.length>0){
+      this.client.cdpros = details[0];      
+     }
+    
+     console.log(data);
+
+  })
+}
+
+OpenSearchDetail(){
+  let modal = this.modal.create(ClientPointsPage,{details:this.client.dprosList});
+  modal.present();
+  modal.onDidDismiss((data:any)=>{
+    console.log(data);
+    this.client.cdpros = data;   
+    this.contact = undefined;   
   })
 }
 openLupaActivities(){

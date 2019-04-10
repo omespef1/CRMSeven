@@ -29,6 +29,7 @@
   <ion-list #AcivitiesList>
       <ion-item-group>
         <ion-item (click)="closeLupa(stage)" *ngFor="let stage of stagesList">
+            <ion-icon item-start name="git-compare"></ion-icon>
           <ion-label>
           {{stage.ETA_NOMB}}
           </ion-label>
