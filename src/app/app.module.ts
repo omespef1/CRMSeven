@@ -54,7 +54,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { FlowsProvider } from '../providers/flows/flows-provider';
 import { GeneralProvider } from '../providers/general/general-provider';
-import { Keyboard } from '@ionic-native/keyboard';
 @NgModule({
   declarations: [
     MyApp,
@@ -155,7 +154,6 @@ import { Keyboard } from '@ionic-native/keyboard';
     DigitalDatePipe,
     FlowsProvider,
     GeneralProvider,
-    Keyboard
   ]
 })
 export class AppModule {}

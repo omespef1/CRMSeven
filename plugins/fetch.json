@@ -49,14 +49,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "ionic-plugin-keyboard": {
-    "source": {
-      "type": "registry",
-      "id": "ionic-plugin-keyboard@^2.2.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-compat": {
     "source": {
       "type": "registry",
@@ -121,6 +113,8 @@
       "id": "cordova-plugin-ionic-webview@4.0.1"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+    }
   }
 }

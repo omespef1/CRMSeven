@@ -4,8 +4,8 @@
     "EventKitUI.framework": 1,
     "libz.tbd": 1,
     "MessageUI.framework": 1,
+    "WebKit.framework": 1,
     "Security.framework": 1,
     "Foundation.framework": 1,
-    "LocalAuthentication.framework": 1,
-    "WebKit.framework": 1
+    "LocalAuthentication.framework": 1
 }

@@ -7,7 +7,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {SettingsPage} from '../pages/settings/settings';
 import {TouchIdPage} from '../pages/touch-id/touch-id';
-import { Keyboard } from '@ionic-native/keyboard';
 
 
 //Providers
@@ -21,13 +20,8 @@ export class MyApp {
   rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController,
-  private _userdata:UserDataProvider,private _key:Keyboard) {
+  private _userdata:UserDataProvider) {
     platform.ready().then(() => {
-      if(platform.is("ios")){
-        //this._key.disableScroll(false);
-        
-      }
-   
       statusBar.styleDefault();
       
 
