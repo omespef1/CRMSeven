@@ -29,11 +29,11 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>19.4.2.0</string>
+    <string>19.4.3.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>19.4.2.0</string>
+    <string>19.4.3.0</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>mailto</string>
@@ -49,8 +49,6 @@
     <string/>
     <key>NSFaceIDUsageDescription</key>
     <string>autenticación</string>
-    <key>NSMainNibFile</key>
-    <string/>
     <key>NSMainNibFile~ipad</key>
     <string/>
     <key>UILaunchStoryboardName</key>
