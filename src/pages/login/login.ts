@@ -86,13 +86,7 @@ export class LoginPage {
           this.showIconBiometric(type);
         })
         this.keychainTouchId.verify("password", "Ingrese su huella dactilar para ingresar").then(pass => {
-          console.log('keychain');
-          console.log(pass);
-          this._user.getSecureUser().then(user => {
-            this.login.username = user;
-            this.login.password = pass;
-            this.TryAccess();
-          })
+        this._user.loginBiometric();
         }).catch(() => {
 
         })

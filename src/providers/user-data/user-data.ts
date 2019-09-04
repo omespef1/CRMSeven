@@ -30,6 +30,11 @@ private browserTab: BrowserTab) {
        this.setUserInfo(info)
       this.events.publish('user:login');
     };
+
+    loginBiometric(): void {
+      this.storage.set(this.HAS_LOGGED_IN, true);
+      this.events.publish('user:login');
+    };
     signup(username: string): void {
       this.storage.set(this.HAS_LOGGED_IN, true);
       this.setUsername(username);
@@ -38,8 +43,8 @@ private browserTab: BrowserTab) {
     logout(): void {
     console.log("borrando usuario");
     this.storage.remove(this.HAS_LOGGED_IN);
-    this.storage.remove('username');
-    this.storage.remove('userinfo');
+    // this.storage.remove('username');
+    // this.storage.remove('userinfo');
     this.events.publish('user:logout');
   };
   setUsername(username: string): void {
