@@ -7,12 +7,12 @@ webpackJsonp([24],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_global__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -272,94 +272,10 @@ var UserDataProvider = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivitiesSearchPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the ActivitiesSearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ActivitiesSearchPage = /** @class */ (function () {
-    function ActivitiesSearchPage(navCtrl, navParams, _seven, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this._seven = _seven;
-        this.viewCtrl = viewCtrl;
-    }
-    ActivitiesSearchPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ActivitiesSearchPage');
-        this.LoadActivities();
-    };
-    ActivitiesSearchPage.prototype.LoadActivities = function () {
-        var _this = this;
-        // let loading = this.loading.create({
-        //   content:'Cargando...'
-        // });
-        // loading.present();
-        this._seven.GetActivities().then(function (data) {
-            //  console.log(data);
-            _this.activities = data;
-            _this.initializeItems();
-            // loading.dismiss();
-        }).catch(function (err) {
-            // loading.dismiss();
-        });
-    };
-    ActivitiesSearchPage.prototype.closeLupa = function (activity) {
-        this.viewCtrl.dismiss(activity);
-    };
-    ActivitiesSearchPage.prototype.close = function () {
-        this.viewCtrl.dismiss();
-    };
-    ActivitiesSearchPage.prototype.initializeItems = function () {
-        this.activitiesList = this.activities;
-    };
-    ActivitiesSearchPage.prototype.getItems = function (q) {
-        //Reseteo los items a su estado original
-        this.initializeItems();
-        //Si el valor es vacío ni filtra ndada
-        if (!q || q.trim() === '') {
-            return;
-        }
-        //Realiza el filtrado
-        this.activitiesList = this.activitiesList.filter(function (v) { return v.ACT_NOMB.toLowerCase().indexOf(q.toLowerCase()) > -1; });
-    };
-    ActivitiesSearchPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-activities-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/'<!--\n  Generated template for the ActivitiesSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Actividades</ion-title>\n    <ion-buttons end>\n      <button  class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar"\n    animated="true">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #AcivitiesList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">\n            <ion-icon item-start name="flash"></ion-icon>\n          <ion-label>\n          {{activity.ACT_NOMB}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
-    ], ActivitiesSearchPage);
-    return ActivitiesSearchPage;
-}());
-
-//# sourceMappingURL=activities-search.js.map
-
-/***/ }),
-
-/***/ 114:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivitiesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_event_new_event__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_event_new_event__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activity_detail_activity_detail__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
@@ -608,7 +524,7 @@ var ActivitiesPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -618,7 +534,7 @@ var ActivitiesPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lupa_lupa__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__activities_search_activities_search__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__activities_search_activities_search__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stages_search_stages_search__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invited_invited__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contact_search_contact_search__ = __webpack_require__(117);
@@ -843,6 +759,90 @@ var NewEventPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=new-event.js.map
+
+/***/ }),
+
+/***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivitiesSearchPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__ = __webpack_require__(13);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the ActivitiesSearchPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ActivitiesSearchPage = /** @class */ (function () {
+    function ActivitiesSearchPage(navCtrl, navParams, _seven, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this._seven = _seven;
+        this.viewCtrl = viewCtrl;
+    }
+    ActivitiesSearchPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ActivitiesSearchPage');
+        this.LoadActivities();
+    };
+    ActivitiesSearchPage.prototype.LoadActivities = function () {
+        var _this = this;
+        // let loading = this.loading.create({
+        //   content:'Cargando...'
+        // });
+        // loading.present();
+        this._seven.GetActivities().then(function (data) {
+            //  console.log(data);
+            _this.activities = data;
+            _this.initializeItems();
+            // loading.dismiss();
+        }).catch(function (err) {
+            // loading.dismiss();
+        });
+    };
+    ActivitiesSearchPage.prototype.closeLupa = function (activity) {
+        this.viewCtrl.dismiss(activity);
+    };
+    ActivitiesSearchPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    ActivitiesSearchPage.prototype.initializeItems = function () {
+        this.activitiesList = this.activities;
+    };
+    ActivitiesSearchPage.prototype.getItems = function (q) {
+        //Reseteo los items a su estado original
+        this.initializeItems();
+        //Si el valor es vacío ni filtra ndada
+        if (!q || q.trim() === '') {
+            return;
+        }
+        //Realiza el filtrado
+        this.activitiesList = this.activitiesList.filter(function (v) { return v.ACT_NOMB.toLowerCase().indexOf(q.toLowerCase()) > -1; });
+    };
+    ActivitiesSearchPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-activities-search',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/'<!--\n  Generated template for the ActivitiesSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Actividades</ion-title>\n    <ion-buttons end>\n      <button  class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar"\n    animated="true">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #AcivitiesList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">\n            <ion-icon item-start name="flash"></ion-icon>\n          <ion-label>\n          {{activity.ACT_NOMB}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
+    ], ActivitiesSearchPage);
+    return ActivitiesSearchPage;
+}());
+
+//# sourceMappingURL=activities-search.js.map
 
 /***/ }),
 
@@ -2412,7 +2412,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-content [style.background-color]="background">\n	<ion-grid>\n		<ion-row>\n			<ion-col>\n				<div class="logodiv">\n					<img class="logoM" [src]="logo" (click)="openUrl()" />\n				</div>\n				<h1>CRM</h1>\n			</ion-col>\n\n		</ion-row>\n		<form #registerForm="ngForm" class="loginForm">\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-person"></ion-icon>\n						</ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-lock"></ion-icon>\n						</ion-label>\n						<ion-input #password [type]="passwordType" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n						<button type="button" ion-button icon-only clear item-right tappable (tap)="showKey()">\n							<ion-icon item-end [name]="passwordIcon"></ion-icon>\n						</button>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n						<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button *ngIf="businessList && businessList.length>1" ion-button class="submit-btn" full (click)="changeBusiness()">\n						<ion-icon name="undo"></ion-icon>&nbsp;Cambiar empresa\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col class="loginCol">\n					<div class="logodiv">\n						<img class="logoM" src="assets/imgs/logoseven.png" />\n					</div>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col text-center>\n					<div class="fingerprint" button tappable (click)="GetAccessTouchID()">\n						<img *ngIf="touchID" src="assets/imgs/fingerprint.svg">\n						<img *ngIf="faceID" src="assets/imgs/faceid.svg">\n					</div>\n\n				</ion-col>\n			</ion-row>\n		</form>\n	</ion-grid>\n</ion-content>\n<ion-footer text-center>\n	<p>SEVEN ERP©1992-{{version | date: \'yyyy\'}} DigitalWare</p>\n	<p>Versión 19.0.9.0</p>\n</ion-footer>'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-content [style.background-color]="background">\n	<ion-grid>\n		<ion-row>\n			<ion-col>\n				<div class="logodiv">\n					<img class="logoM" [src]="logo" (click)="openUrl()" />\n				</div>\n				<h1>CRM</h1>\n			</ion-col>\n\n		</ion-row>\n		<form #registerForm="ngForm" class="loginForm">\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-person"></ion-icon>\n						</ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-lock"></ion-icon>\n						</ion-label>\n						<ion-input #password [type]="passwordType" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n						<button type="button" ion-button icon-only clear item-right tappable (tap)="showKey()">\n							<ion-icon item-end [name]="passwordIcon"></ion-icon>\n						</button>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n						<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button *ngIf="businessList && businessList.length>1" ion-button class="submit-btn" full (click)="changeBusiness()">\n						<ion-icon name="undo"></ion-icon>&nbsp;Cambiar empresa\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col class="loginCol">\n					<div class="logodiv">\n						<img class="logoM" src="assets/imgs/logoseven.png" />\n					</div>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col text-center>\n					<div class="fingerprint" button tappable (click)="GetAccessTouchID()">\n						<img *ngIf="touchID" src="assets/imgs/fingerprint.svg">\n						<img *ngIf="faceID" src="assets/imgs/faceid.svg">\n					</div>\n\n				</ion-col>\n			</ion-row>\n		</form>\n	</ion-grid>\n</ion-content>\n<ion-footer text-center>\n	<p>SEVEN ERP©1992-{{version | date: \'yyyy\'}} DigitalWare</p>\n	<p>Versión 19.0.11.0</p>\n</ion-footer>'/*ion-inline-end:"/Users/omarstevenperezbeltran/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
@@ -2663,7 +2663,7 @@ var SevenProvider = /** @class */ (function () {
         return this.getData("Flujos/GetAcciones?flu_cont=" + flow.FLU_CONT + "&eta_cont=" + flow.ETA_CONT);
     };
     SevenProvider.prototype.getData = function (apiAction, showLoad) {
-        //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+        // Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
         // Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
         var _this = this;
         if (showLoad === void 0) { showLoad = true; }
@@ -2680,7 +2680,7 @@ var SevenProvider = /** @class */ (function () {
                 console.log(apiAction);
                 console.log(__WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl);
                 var uri = "" + __WEBPACK_IMPORTED_MODULE_3__assets_global__["a" /* Globals */].ClientUrl + apiAction + "&emp_codi=" + _this.businessClient.Emp_Codi;
-                //  let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${102}`;
+                //  let uri =`${Globals.ClientUrl}${apiAction}&emp_codi=${1}`;
                 console.log(uri);
                 _this.http.get(uri).subscribe(function (data) {
                     load.dismiss();
@@ -2695,7 +2695,7 @@ var SevenProvider = /** @class */ (function () {
     SevenProvider.prototype.postData = function (data, apiAction) {
         var _this = this;
         //Comentarear para produccion
-        //Globals.ClientUrl ='http://132.147.157.88/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
         //  Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
         var loading = this.load.create({
             content: 'Cargando...'
@@ -2731,10 +2731,9 @@ var SevenProvider = /** @class */ (function () {
     };
     SevenProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], SevenProvider);
     return SevenProvider;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=seven.js.map
@@ -2826,19 +2825,19 @@ webpackEmptyAsyncContext.id = 142;
 
 var map = {
 	"../pages/activities-search/activities-search.module": [
-		462,
+		464,
 		23
 	],
 	"../pages/activities/activities.module": [
-		463,
+		462,
 		22
 	],
 	"../pages/activity-detail/activity-detail.module": [
-		465,
+		463,
 		21
 	],
 	"../pages/attchments/attchments.module": [
-		464,
+		465,
 		20
 	],
 	"../pages/business/business.module": [
@@ -2858,11 +2857,11 @@ var map = {
 		16
 	],
 	"../pages/contact-detail/contact-detail.module": [
-		470,
+		471,
 		15
 	],
 	"../pages/contact-search/contact-search.module": [
-		471,
+		470,
 		14
 	],
 	"../pages/email/email.module": [
@@ -2890,23 +2889,23 @@ var map = {
 		8
 	],
 	"../pages/login/login.module": [
-		479,
+		478,
 		7
 	],
 	"../pages/lupa/lupa.module": [
-		478,
+		479,
 		6
 	],
 	"../pages/new-event/new-event.module": [
-		482,
+		480,
 		5
 	],
 	"../pages/search/search.module": [
-		480,
+		481,
 		4
 	],
 	"../pages/settings/settings.module": [
-		481,
+		482,
 		3
 	],
 	"../pages/stages-search/stages-search.module": [
@@ -3050,7 +3049,7 @@ var GeneralProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings_settings__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flows_flows__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activities_activities__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__activities_activities__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_search__ = __webpack_require__(129);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3219,21 +3218,21 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(318);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(361);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(446);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(457);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(458);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(459);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_login_login__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_stages_search_stages_search__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__ = __webpack_require__(57);
@@ -3256,9 +3255,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_digital_date_digital_date__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_image_image__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_keychain_touch_id__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_email_composer__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__ionic_native_browser_tab__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_email_composer__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__ionic_native_browser_tab__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_flows_flows_provider__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_general_general_provider__ = __webpack_require__(320);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3375,27 +3374,27 @@ var AppModule = /** @class */ (function () {
                     }
                 }, {
                     links: [
-                        { loadChildren: '../pages/activities-search/activities-search.module#ActivitiesSearchPageModule', name: 'ActivitiesSearchPage', segment: 'activities-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/activities/activities.module#ActivitiesPageModule', name: 'ActivitiesPage', segment: 'activities', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/attchments/attchments.module#AttchmentsPageModule', name: 'AttchmentsPage', segment: 'attchments', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/activity-detail/activity-detail.module#ActivityDetailPageModule', name: 'ActivityDetailPage', segment: 'activity-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/activities-search/activities-search.module#ActivitiesSearchPageModule', name: 'ActivitiesSearchPage', segment: 'activities-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/attchments/attchments.module#AttchmentsPageModule', name: 'AttchmentsPage', segment: 'attchments', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/business/business.module#BusinessPageModule', name: 'BusinessPage', segment: 'business', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/client-detail/client-detail.module#ClientDetailPageModule', name: 'ClientDetailPage', segment: 'client-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/client-points/client-points.module#ClientPointsPageModule', name: 'ClientPointsPage', segment: 'client-points', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/conex/conex.module#ConexPageModule', name: 'ConexPage', segment: 'conex', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact-search/contact-search.module#ContactSearchPageModule', name: 'ContactSearchPage', segment: 'contact-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/contact-detail/contact-detail.module#ContactDetailPageModule', name: 'ContactDetailPage', segment: 'contact-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/email/email.module#EmailPageModule', name: 'EmailPage', segment: 'email', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/employees/employees.module#EmployeesPageModule', name: 'EmployeesPage', segment: 'employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows-filter/flows-filter.module#FlowsFilterPageModule', name: 'FlowsFilterPage', segment: 'flows-filter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/lupa/lupa.module#LupaPageModule', name: 'LupaPage', segment: 'lupa', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/lupa/lupa.module#LupaPageModule', name: 'LupaPage', segment: 'lupa', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terce-search/terce-search.module#TerceSearchPageModule', name: 'TerceSearchPage', segment: 'terce-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] }
@@ -3462,264 +3461,264 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 427:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 191,
-	"./af.js": 191,
-	"./ar": 192,
-	"./ar-dz": 193,
-	"./ar-dz.js": 193,
-	"./ar-kw": 194,
-	"./ar-kw.js": 194,
-	"./ar-ly": 195,
-	"./ar-ly.js": 195,
-	"./ar-ma": 196,
-	"./ar-ma.js": 196,
-	"./ar-sa": 197,
-	"./ar-sa.js": 197,
-	"./ar-tn": 198,
-	"./ar-tn.js": 198,
-	"./ar.js": 192,
-	"./az": 199,
-	"./az.js": 199,
-	"./be": 200,
-	"./be.js": 200,
-	"./bg": 201,
-	"./bg.js": 201,
-	"./bm": 202,
-	"./bm.js": 202,
-	"./bn": 203,
-	"./bn.js": 203,
-	"./bo": 204,
-	"./bo.js": 204,
-	"./br": 205,
-	"./br.js": 205,
-	"./bs": 206,
-	"./bs.js": 206,
-	"./ca": 207,
-	"./ca.js": 207,
-	"./cs": 208,
-	"./cs.js": 208,
-	"./cv": 209,
-	"./cv.js": 209,
-	"./cy": 210,
-	"./cy.js": 210,
-	"./da": 211,
-	"./da.js": 211,
-	"./de": 212,
-	"./de-at": 213,
-	"./de-at.js": 213,
-	"./de-ch": 214,
-	"./de-ch.js": 214,
-	"./de.js": 212,
-	"./dv": 215,
-	"./dv.js": 215,
-	"./el": 216,
-	"./el.js": 216,
-	"./en-SG": 217,
-	"./en-SG.js": 217,
-	"./en-au": 218,
-	"./en-au.js": 218,
-	"./en-ca": 219,
-	"./en-ca.js": 219,
-	"./en-gb": 220,
-	"./en-gb.js": 220,
-	"./en-ie": 221,
-	"./en-ie.js": 221,
-	"./en-il": 222,
-	"./en-il.js": 222,
-	"./en-nz": 223,
-	"./en-nz.js": 223,
-	"./eo": 224,
-	"./eo.js": 224,
-	"./es": 225,
-	"./es-do": 226,
-	"./es-do.js": 226,
-	"./es-us": 227,
-	"./es-us.js": 227,
-	"./es.js": 225,
-	"./et": 228,
-	"./et.js": 228,
-	"./eu": 229,
-	"./eu.js": 229,
-	"./fa": 230,
-	"./fa.js": 230,
-	"./fi": 231,
-	"./fi.js": 231,
-	"./fo": 232,
-	"./fo.js": 232,
-	"./fr": 233,
-	"./fr-ca": 234,
-	"./fr-ca.js": 234,
-	"./fr-ch": 235,
-	"./fr-ch.js": 235,
-	"./fr.js": 233,
-	"./fy": 236,
-	"./fy.js": 236,
-	"./ga": 237,
-	"./ga.js": 237,
-	"./gd": 238,
-	"./gd.js": 238,
-	"./gl": 239,
-	"./gl.js": 239,
-	"./gom-latn": 240,
-	"./gom-latn.js": 240,
-	"./gu": 241,
-	"./gu.js": 241,
-	"./he": 242,
-	"./he.js": 242,
-	"./hi": 243,
-	"./hi.js": 243,
-	"./hr": 244,
-	"./hr.js": 244,
-	"./hu": 245,
-	"./hu.js": 245,
-	"./hy-am": 246,
-	"./hy-am.js": 246,
-	"./id": 247,
-	"./id.js": 247,
-	"./is": 248,
-	"./is.js": 248,
-	"./it": 249,
-	"./it-ch": 250,
-	"./it-ch.js": 250,
-	"./it.js": 249,
-	"./ja": 251,
-	"./ja.js": 251,
-	"./jv": 252,
-	"./jv.js": 252,
-	"./ka": 253,
-	"./ka.js": 253,
-	"./kk": 254,
-	"./kk.js": 254,
-	"./km": 255,
-	"./km.js": 255,
-	"./kn": 256,
-	"./kn.js": 256,
-	"./ko": 257,
-	"./ko.js": 257,
-	"./ku": 258,
-	"./ku.js": 258,
-	"./ky": 259,
-	"./ky.js": 259,
-	"./lb": 260,
-	"./lb.js": 260,
-	"./lo": 261,
-	"./lo.js": 261,
-	"./lt": 262,
-	"./lt.js": 262,
-	"./lv": 263,
-	"./lv.js": 263,
-	"./me": 264,
-	"./me.js": 264,
-	"./mi": 265,
-	"./mi.js": 265,
-	"./mk": 266,
-	"./mk.js": 266,
-	"./ml": 267,
-	"./ml.js": 267,
-	"./mn": 268,
-	"./mn.js": 268,
-	"./mr": 269,
-	"./mr.js": 269,
-	"./ms": 270,
-	"./ms-my": 271,
-	"./ms-my.js": 271,
-	"./ms.js": 270,
-	"./mt": 272,
-	"./mt.js": 272,
-	"./my": 273,
-	"./my.js": 273,
-	"./nb": 274,
-	"./nb.js": 274,
-	"./ne": 275,
-	"./ne.js": 275,
-	"./nl": 276,
-	"./nl-be": 277,
-	"./nl-be.js": 277,
-	"./nl.js": 276,
-	"./nn": 278,
-	"./nn.js": 278,
-	"./pa-in": 279,
-	"./pa-in.js": 279,
-	"./pl": 280,
-	"./pl.js": 280,
-	"./pt": 281,
-	"./pt-br": 282,
-	"./pt-br.js": 282,
-	"./pt.js": 281,
-	"./ro": 283,
-	"./ro.js": 283,
-	"./ru": 284,
-	"./ru.js": 284,
-	"./sd": 285,
-	"./sd.js": 285,
-	"./se": 286,
-	"./se.js": 286,
-	"./si": 287,
-	"./si.js": 287,
-	"./sk": 288,
-	"./sk.js": 288,
-	"./sl": 289,
-	"./sl.js": 289,
-	"./sq": 290,
-	"./sq.js": 290,
-	"./sr": 291,
-	"./sr-cyrl": 292,
-	"./sr-cyrl.js": 292,
-	"./sr.js": 291,
-	"./ss": 293,
-	"./ss.js": 293,
-	"./sv": 294,
-	"./sv.js": 294,
-	"./sw": 295,
-	"./sw.js": 295,
-	"./ta": 296,
-	"./ta.js": 296,
-	"./te": 297,
-	"./te.js": 297,
-	"./tet": 298,
-	"./tet.js": 298,
-	"./tg": 299,
-	"./tg.js": 299,
-	"./th": 300,
-	"./th.js": 300,
-	"./tl-ph": 301,
-	"./tl-ph.js": 301,
-	"./tlh": 302,
-	"./tlh.js": 302,
-	"./tr": 303,
-	"./tr.js": 303,
-	"./tzl": 304,
-	"./tzl.js": 304,
-	"./tzm": 305,
-	"./tzm-latn": 306,
-	"./tzm-latn.js": 306,
-	"./tzm.js": 305,
-	"./ug-cn": 307,
-	"./ug-cn.js": 307,
-	"./uk": 308,
-	"./uk.js": 308,
-	"./ur": 309,
-	"./ur.js": 309,
-	"./uz": 310,
-	"./uz-latn": 311,
-	"./uz-latn.js": 311,
-	"./uz.js": 310,
-	"./vi": 312,
-	"./vi.js": 312,
-	"./x-pseudo": 313,
-	"./x-pseudo.js": 313,
-	"./yo": 314,
-	"./yo.js": 314,
-	"./zh-cn": 315,
-	"./zh-cn.js": 315,
-	"./zh-hk": 316,
-	"./zh-hk.js": 316,
-	"./zh-tw": 317,
-	"./zh-tw.js": 317
+	"./af": 185,
+	"./af.js": 185,
+	"./ar": 186,
+	"./ar-dz": 187,
+	"./ar-dz.js": 187,
+	"./ar-kw": 188,
+	"./ar-kw.js": 188,
+	"./ar-ly": 189,
+	"./ar-ly.js": 189,
+	"./ar-ma": 190,
+	"./ar-ma.js": 190,
+	"./ar-sa": 191,
+	"./ar-sa.js": 191,
+	"./ar-tn": 192,
+	"./ar-tn.js": 192,
+	"./ar.js": 186,
+	"./az": 193,
+	"./az.js": 193,
+	"./be": 194,
+	"./be.js": 194,
+	"./bg": 195,
+	"./bg.js": 195,
+	"./bm": 196,
+	"./bm.js": 196,
+	"./bn": 197,
+	"./bn.js": 197,
+	"./bo": 198,
+	"./bo.js": 198,
+	"./br": 199,
+	"./br.js": 199,
+	"./bs": 200,
+	"./bs.js": 200,
+	"./ca": 201,
+	"./ca.js": 201,
+	"./cs": 202,
+	"./cs.js": 202,
+	"./cv": 203,
+	"./cv.js": 203,
+	"./cy": 204,
+	"./cy.js": 204,
+	"./da": 205,
+	"./da.js": 205,
+	"./de": 206,
+	"./de-at": 207,
+	"./de-at.js": 207,
+	"./de-ch": 208,
+	"./de-ch.js": 208,
+	"./de.js": 206,
+	"./dv": 209,
+	"./dv.js": 209,
+	"./el": 210,
+	"./el.js": 210,
+	"./en-SG": 211,
+	"./en-SG.js": 211,
+	"./en-au": 212,
+	"./en-au.js": 212,
+	"./en-ca": 213,
+	"./en-ca.js": 213,
+	"./en-gb": 214,
+	"./en-gb.js": 214,
+	"./en-ie": 215,
+	"./en-ie.js": 215,
+	"./en-il": 216,
+	"./en-il.js": 216,
+	"./en-nz": 217,
+	"./en-nz.js": 217,
+	"./eo": 218,
+	"./eo.js": 218,
+	"./es": 219,
+	"./es-do": 220,
+	"./es-do.js": 220,
+	"./es-us": 221,
+	"./es-us.js": 221,
+	"./es.js": 219,
+	"./et": 222,
+	"./et.js": 222,
+	"./eu": 223,
+	"./eu.js": 223,
+	"./fa": 224,
+	"./fa.js": 224,
+	"./fi": 225,
+	"./fi.js": 225,
+	"./fo": 226,
+	"./fo.js": 226,
+	"./fr": 227,
+	"./fr-ca": 228,
+	"./fr-ca.js": 228,
+	"./fr-ch": 229,
+	"./fr-ch.js": 229,
+	"./fr.js": 227,
+	"./fy": 230,
+	"./fy.js": 230,
+	"./ga": 231,
+	"./ga.js": 231,
+	"./gd": 232,
+	"./gd.js": 232,
+	"./gl": 233,
+	"./gl.js": 233,
+	"./gom-latn": 234,
+	"./gom-latn.js": 234,
+	"./gu": 235,
+	"./gu.js": 235,
+	"./he": 236,
+	"./he.js": 236,
+	"./hi": 237,
+	"./hi.js": 237,
+	"./hr": 238,
+	"./hr.js": 238,
+	"./hu": 239,
+	"./hu.js": 239,
+	"./hy-am": 240,
+	"./hy-am.js": 240,
+	"./id": 241,
+	"./id.js": 241,
+	"./is": 242,
+	"./is.js": 242,
+	"./it": 243,
+	"./it-ch": 244,
+	"./it-ch.js": 244,
+	"./it.js": 243,
+	"./ja": 245,
+	"./ja.js": 245,
+	"./jv": 246,
+	"./jv.js": 246,
+	"./ka": 247,
+	"./ka.js": 247,
+	"./kk": 248,
+	"./kk.js": 248,
+	"./km": 249,
+	"./km.js": 249,
+	"./kn": 250,
+	"./kn.js": 250,
+	"./ko": 251,
+	"./ko.js": 251,
+	"./ku": 252,
+	"./ku.js": 252,
+	"./ky": 253,
+	"./ky.js": 253,
+	"./lb": 254,
+	"./lb.js": 254,
+	"./lo": 255,
+	"./lo.js": 255,
+	"./lt": 256,
+	"./lt.js": 256,
+	"./lv": 257,
+	"./lv.js": 257,
+	"./me": 258,
+	"./me.js": 258,
+	"./mi": 259,
+	"./mi.js": 259,
+	"./mk": 260,
+	"./mk.js": 260,
+	"./ml": 261,
+	"./ml.js": 261,
+	"./mn": 262,
+	"./mn.js": 262,
+	"./mr": 263,
+	"./mr.js": 263,
+	"./ms": 264,
+	"./ms-my": 265,
+	"./ms-my.js": 265,
+	"./ms.js": 264,
+	"./mt": 266,
+	"./mt.js": 266,
+	"./my": 267,
+	"./my.js": 267,
+	"./nb": 268,
+	"./nb.js": 268,
+	"./ne": 269,
+	"./ne.js": 269,
+	"./nl": 270,
+	"./nl-be": 271,
+	"./nl-be.js": 271,
+	"./nl.js": 270,
+	"./nn": 272,
+	"./nn.js": 272,
+	"./pa-in": 273,
+	"./pa-in.js": 273,
+	"./pl": 274,
+	"./pl.js": 274,
+	"./pt": 275,
+	"./pt-br": 276,
+	"./pt-br.js": 276,
+	"./pt.js": 275,
+	"./ro": 277,
+	"./ro.js": 277,
+	"./ru": 278,
+	"./ru.js": 278,
+	"./sd": 279,
+	"./sd.js": 279,
+	"./se": 280,
+	"./se.js": 280,
+	"./si": 281,
+	"./si.js": 281,
+	"./sk": 282,
+	"./sk.js": 282,
+	"./sl": 283,
+	"./sl.js": 283,
+	"./sq": 284,
+	"./sq.js": 284,
+	"./sr": 285,
+	"./sr-cyrl": 286,
+	"./sr-cyrl.js": 286,
+	"./sr.js": 285,
+	"./ss": 287,
+	"./ss.js": 287,
+	"./sv": 288,
+	"./sv.js": 288,
+	"./sw": 289,
+	"./sw.js": 289,
+	"./ta": 290,
+	"./ta.js": 290,
+	"./te": 291,
+	"./te.js": 291,
+	"./tet": 292,
+	"./tet.js": 292,
+	"./tg": 293,
+	"./tg.js": 293,
+	"./th": 294,
+	"./th.js": 294,
+	"./tl-ph": 295,
+	"./tl-ph.js": 295,
+	"./tlh": 296,
+	"./tlh.js": 296,
+	"./tr": 297,
+	"./tr.js": 297,
+	"./tzl": 298,
+	"./tzl.js": 298,
+	"./tzm": 299,
+	"./tzm-latn": 300,
+	"./tzm-latn.js": 300,
+	"./tzm.js": 299,
+	"./ug-cn": 301,
+	"./ug-cn.js": 301,
+	"./uk": 302,
+	"./uk.js": 302,
+	"./ur": 303,
+	"./ur.js": 303,
+	"./uz": 304,
+	"./uz-latn": 305,
+	"./uz-latn.js": 305,
+	"./uz.js": 304,
+	"./vi": 306,
+	"./vi.js": 306,
+	"./x-pseudo": 307,
+	"./x-pseudo.js": 307,
+	"./yo": 308,
+	"./yo.js": 308,
+	"./zh-cn": 309,
+	"./zh-cn.js": 309,
+	"./zh-hk": 310,
+	"./zh-hk.js": 310,
+	"./zh-tw": 311,
+	"./zh-tw.js": 311
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -3735,7 +3734,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 427;
+webpackContext.id = 413;
 
 /***/ }),
 
