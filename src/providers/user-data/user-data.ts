@@ -73,7 +73,7 @@ private browserTab: BrowserTab) {
       return value;
     });
   };
-  SetReplicated(replicated:string):void{
+  SetReplicated(replicated:string):void {
       this.storage.set('replicated', replicated);
   }
   getReplicated(): Promise<any> {

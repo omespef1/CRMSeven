@@ -1,10 +1,12 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingController} from 'ionic-angular'
 import  {Globals} from '../../assets/global';
 //providers
 import { Storage } from '@ionic/storage';
 import {UserDataProvider} from '../../providers/user-data/user-data';
+import { Observable } from 'rxjs';
+import { GeneralProvider } from '../general/general-provider';
 /*
   Generated class for the SevenProvider provider.
 
@@ -14,7 +16,9 @@ import {UserDataProvider} from '../../providers/user-data/user-data';
 @Injectable()
 export class SevenProvider {
   businessClient :any;
-  constructor(public http: HttpClient, private load:LoadingController,private _userdata:UserDataProvider) {
+  loading: any;
+  constructor(public http: HttpClient, private load:LoadingController,
+    private _userdata:UserDataProvider,private _general:GeneralProvider) {
     console.log('Hello SevenProvider Provider');
 
   }
@@ -192,4 +196,62 @@ getDataConex() {
     });
   });
 }
+GetCentralizacion(contentText: string = "", loading: boolean = true) {
+  console.log('haciendo get a centralzación...');
+  if (contentText == "")
+    contentText = "Consultando información de clientes...";
+  if (loading) {
+    this.loading = this.load.create({
+      content: contentText,
+      spinner: 'ios'
+    });
+  }
+  let promise = new Promise((resolve, reject) => {
+    if (loading)
+      this.loading.present();
+    console.log(`${Globals.CentralizationUrl}`);
+
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin':'*'
+    }
+
+    let bodyRequest: any = {
+      headers:  new HttpHeaders(headerDict),              
+    }
+    return this.http.get(`${Globals.CentralizationUrl}`,bodyRequest).retryWhen(error => {
+      return error
+        .flatMap((error: any) => {
+          if (error.status === 503) {
+            return Observable.of(error.status).delay(1000)
+          }
+          return Observable.throw({ error: `Servicio no disponible. Error ${error.status}` });
+        })
+        .take(5)
+        .concat(Observable.throw({ error: `Hubo un error conectando con el servidor, contacte con su administrador` }));
+    })
+      .subscribe((resp: any) => {
+        if (loading)
+          this.loading.dismiss();
+        if (resp.State == false) {
+          this._general.showToast(resp.TxtError);
+          resp = null;
+        }
+        resolve(resp);
+      }, (err: HttpErrorResponse) => {
+
+        this._general.showToast(err.error);
+        console.log(err);
+        if (loading)
+          this.loading.dismiss();
+      })
+  })
+
+  return promise;
+}
+
+
+
 }

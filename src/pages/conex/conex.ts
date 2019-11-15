@@ -29,7 +29,7 @@ connections:any;
     this.GetConnections();
   }
  GetConnections(){
-     this._seven.getDataConex().then(data=>{
+     this._seven.GetCentralizacion('Cargando clientes...',true).then(data=>{
        let datos:any = data;
        console.log(data);
        if(datos){
