@@ -170,6 +170,7 @@ export class ActivityDetailPage {
     actionSheet.present();
   }
   UpdateAgend() {
+  console.log(this.activity);
     this._seven.UpdateActivity(this.activity).then((result: any) => {
       if (!result.State) {
         this._user.showAlert(result.Message, "Lo sentimos!");

@@ -14,11 +14,7 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
-
 </ion-header>
-
-
 <ion-content>
   <ion-list>
     <ion-item text-wrap button (click)="openLupa()" detail-push tappable>
@@ -75,6 +71,11 @@
         <ion-icon name="alarm" item-start></ion-icon>
       <ion-label>Horas</ion-label>
       <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" item-start ></ion-icon>
+      <ion-label>Nro Documento</ion-label>
+      <ion-input  type="text" placeholder = "Identificación" [(ngModel)] ="newActivity.Age_Ndoc"></ion-input>
     </ion-item>
     <ion-item>
         <ion-icon name="paper" item-start></ion-icon>

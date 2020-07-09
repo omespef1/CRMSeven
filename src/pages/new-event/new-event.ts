@@ -135,7 +135,10 @@ if(this.validEvent()){
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
  this.newActivity.Emp_Codi = this.emp_codi;
+ if(this.newActivity.Ter_Codi!=undefined)
  this.newActivity.Ter_Codi = this.terce.ter_codi;
+ if(this.newActivity.Age_Ndoc==undefined)
+ this.newActivity.Age_Ndoc ="";
  if( this.newActivity.age_obse==undefined){
      this.showAlert("Debe especificar una observación", 'Lo sentimos!')
  return;

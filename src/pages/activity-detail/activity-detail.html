@@ -18,9 +18,10 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-item-divider text-center>
-      DETALLES
-    </ion-item-divider>
+   <ion-list-header>
+     Detalles
+   </ion-list-header>
+   <div padding>
     <ion-item>
       <ion-icon name="alarm" item-start></ion-icon>
       <ion-label>Inicio</ion-label>
@@ -49,7 +50,7 @@
      {{activity.CON_NOMB}}  {{activity.CON_APEL}}
      </ion-note>
     </ion-item>
-    <ion-item *ngIf="activity.TER_NOCO && activity.TER_CODI!='0'" (click)="showTercero(activity)">
+    <ion-item *ngIf="activity.TER_NOCO && activity.TER_CODI!='0' && activity.TER_CODA!='0'" (click)="showTercero(activity)">
          <ion-icon name="person" item-start></ion-icon>
       <ion-label>Tercero asociado</ion-label>
       <ion-note item-end>
@@ -76,37 +77,50 @@
     {{activity.AGE_ASUN}}
        </ion-note>
       </ion-item>
-      <ion-item-divider text-center>
-        DILIGENCIAR
-      </ion-item-divider>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+      <ion-label>Nro. Documento</ion-label>
+    <ion-input *ngIf="activity.AGE_ESTA == 'P' || activity.AGE_ESTA=='E'" type="text" maxlength="30" [(ngModel)]="activity.AGE_NDOC" > </ion-input>  
+    <ion-note *ngIf="activity.AGE_ESTA != 'P' && activity.AGE_ESTA!='E'" item-end>
+      {{activity.AGE_NDOC}}
+         </ion-note>
+    </ion-item>
+   </div>
+    
+    <ion-list-header>
+      Diligenciar
+    </ion-list-header>
+    <div padding>
       <ion-item (click)="showStates()">
-       <ion-icon name="information-circle" item-start></ion-icon>
-        <ion-label>
-          Estado
-        </ion-label>
-        <ion-note item-end>
-          {{activity.AGE_ESTA}}
-        </ion-note>
-      </ion-item>
-      <ion-item (click)="showResults()">
-          <ion-icon name="thumbs-up" item-start></ion-icon>
-
-        <ion-label>
-              Resultado
-        </ion-label>
-        <ion-note item-end>
-          {{activity.AGE_RESU}}
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="clipboard" item-start></ion-icon>
-        <ion-label>
-              Observaciones
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>
-      </ion-item>
+        <ion-icon name="information-circle" item-start></ion-icon>
+         <ion-label>
+           Estado
+         </ion-label>
+         <ion-note item-end>
+           {{activity.AGE_ESTA}}
+         </ion-note>
+       </ion-item>
+       <ion-item (click)="showResults()">
+           <ion-icon name="thumbs-up" item-start></ion-icon>
+ 
+         <ion-label>
+               Resultado
+         </ion-label>
+         <ion-note item-end>
+           {{activity.AGE_RESU}}
+         </ion-note>
+       </ion-item>
+       <ion-item>
+         <ion-icon name="clipboard" item-start></ion-icon>
+         <ion-label>
+               Observaciones
+         </ion-label>
+       </ion-item>
+       <ion-item>
+         <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>
+       </ion-item>
+    </div>
+     
       <!-- <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">
         <ion-label>Invitar</ion-label>
         <ion-note item-end>
