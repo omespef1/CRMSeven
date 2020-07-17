@@ -100,7 +100,7 @@
   "cordova-plugin-keychain-touch-id": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id"
+      "id": "git+https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id.git"
     },
     "is_top_level": true,
     "variables": {
@@ -110,7 +110,7 @@
   "cordova-plugin-ionic-webview": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-ionic-webview@4.0.1"
+      "id": "cordova-plugin-ionic-webview@^4.0.1"
     },
     "is_top_level": true,
     "variables": {

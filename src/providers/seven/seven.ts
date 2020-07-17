@@ -163,7 +163,7 @@ GetStagesFlow(flow:any){
   postData(data,apiAction:string) {
     //Comentarear para produccion
 //Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
-  Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+  //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
     let loading =this.load.create({
       content:'Cargando...'
     })
