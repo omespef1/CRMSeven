@@ -3148,10 +3148,11 @@ var SevenProvider = /** @class */ (function () {
         return this.getData("Flujos/GetAcciones?flu_cont=" + flow.FLU_CONT + "&eta_cont=" + flow.ETA_CONT);
     };
     SevenProvider.prototype.getData = function (apiAction, showLoad) {
-        // Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
-        //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
         var _this = this;
         if (showLoad === void 0) { showLoad = true; }
+        // Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://192.168.1.107/SevenCRMApi/api/';
         var load = this.load.create({
             content: 'cargando...'
         });
@@ -3181,7 +3182,7 @@ var SevenProvider = /** @class */ (function () {
         var _this = this;
         //Comentarear para produccion
         //Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
-        //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
+        //Globals.ClientUrl ='http://192.168.1.107/SevenCRMApi/api/';
         var loading = this.load.create({
             content: 'Cargando...'
         });
@@ -3345,11 +3346,11 @@ var map = {
 		9
 	],
 	"../pages/invited/invited.module": [
-		872,
+		873,
 		8
 	],
 	"../pages/login/login.module": [
-		873,
+		872,
 		7
 	],
 	"../pages/lupa/lupa.module": [
@@ -3357,15 +3358,15 @@ var map = {
 		6
 	],
 	"../pages/new-event/new-event.module": [
-		875,
+		877,
 		5
 	],
 	"../pages/search/search.module": [
-		876,
+		875,
 		4
 	],
 	"../pages/settings/settings.module": [
-		877,
+		876,
 		3
 	],
 	"../pages/stages-search/stages-search.module": [
@@ -3792,12 +3793,12 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/flow-detail/flow-detail.module#FlowDetailPageModule', name: 'FlowDetailPage', segment: 'flow-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows-filter/flows-filter.module#FlowsFilterPageModule', name: 'FlowsFilterPage', segment: 'flows-filter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/flows/flows.module#FlowsPageModule', name: 'FlowsPage', segment: 'flows', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/invited/invited.module#InvitedPageModule', name: 'InvitedPage', segment: 'invited', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/lupa/lupa.module#LupaPageModule', name: 'LupaPage', segment: 'lupa', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terce-search/terce-search.module#TerceSearchPageModule', name: 'TerceSearchPage', segment: 'terce-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] }

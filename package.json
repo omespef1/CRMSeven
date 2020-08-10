@@ -31,7 +31,7 @@
     "@ionic/storage": "^2.2.0",
     "call-number": "^1.0.1",
     "cordova": "8.1.2",
-    "cordova-android": "7.1.4",
+    "cordova-android": "^8.0.0",
     "cordova-browser": "5.0.4",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-browsertab": "^0.2.0",
@@ -81,6 +81,7 @@
     },
     "platforms": [
       "browser",
+      "ios",
       "android"
     ]
   }
