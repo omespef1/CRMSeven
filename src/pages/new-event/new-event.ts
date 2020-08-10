@@ -135,7 +135,7 @@ if(this.validEvent()){
  this.newActivity.Con_Codi = this.contact.CON_CODI;
  this.newActivity.age_obse = this.observations;
  this.newActivity.Emp_Codi = this.emp_codi;
- if(this.newActivity.Ter_Codi!=undefined)
+ if(this.terce!=undefined)
  this.newActivity.Ter_Codi = this.terce.ter_codi;
  if(this.newActivity.Age_Ndoc==undefined)
  this.newActivity.Age_Ndoc ="";

@@ -20,7 +20,7 @@ export class SevenProvider {
   constructor(public http: HttpClient, private load:LoadingController,
     private _userdata:UserDataProvider,private _general:GeneralProvider) {
     console.log('Hello SevenProvider Provider');
-
+   
   }
 
 getFlows(usu_codi:string,showLoad:boolean=true){
@@ -128,9 +128,7 @@ GetStagesFlow(flow:any){
 }
 
   getData(apiAction:string,showLoad:boolean=true) {
-   // Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
-  //Globals.ClientUrl ='http://localhost/SevenCRMApi/api/';
-  //Globals.ClientUrl ='http://192.168.1.107/SevenCRMApi/api/';
+    Globals.ClientUrl = "http://localhost/SevenCRMApi/api/";
          let load = this.load.create({
            content:'cargando...'
          })
@@ -162,8 +160,7 @@ GetStagesFlow(flow:any){
   }
   postData(data,apiAction:string) {
     //Comentarear para produccion
-//Globals.ClientUrl ='http://132.147.157.140/SevenCRMApi/api/';
-  //Globals.ClientUrl ='http://192.168.1.107/SevenCRMApi/api/';
+    Globals.ClientUrl = "http://localhost/SevenCRMApi/api/";
     let loading =this.load.create({
       content:'Cargando...'
     })
