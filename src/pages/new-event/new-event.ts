@@ -15,6 +15,8 @@ import {TerceSearchPage} from '../terce-search/terce-search';
 import {UserDataProvider} from '../../providers/user-data/user-data';
 import {SevenProvider} from '../../providers/seven/seven';
 import { ClientPointsPage } from '../client-points/client-points';
+import { GoogleCalendarProvider } from '../../providers/google-calendar/google-calendar';
+import { calendarEvent } from '../../models/calendar.model';
 
 /**
  * Generated class for the NewEventPage page.
@@ -46,7 +48,7 @@ contactList:any;
 // client : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController,private modal:ModalController,
-  private _user:UserDataProvider, private _seven:SevenProvider,private alertCtrl:AlertController) {
+  private _user:UserDataProvider, private _seven:SevenProvider,private alertCtrl:AlertController,private _calendar:GoogleCalendarProvider) {
     let dateSelected = new Date(this.navParams.get('selectedDay')).setHours(6);
     let preSelectedDate = moment(dateSelected).format();
     this.newActivity.Age_Fech = preSelectedDate;
@@ -152,6 +154,7 @@ if(this.validEvent()){
       if(response.State){
          this.showAlert('Actividad Guardada correctamente','Perfecto!')
          this.viewCtrl.dismiss();
+
          return;
        }
          this.showAlert('Error:' + response.Message,'Lo sentimos!')
@@ -159,6 +162,13 @@ if(this.validEvent()){
   }
 
 
+}
+
+testCalendar(){
+  let event:calendarEvent = new calendarEvent();
+  event.name = "Prueba Omar Pérez";
+         this._calendar.sendInvite(event)
+         return;
 }
 openInvited(){
    let modal = this.modal.create(InvitedPage,{usu_codi:this.usu_codi});

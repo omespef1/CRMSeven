@@ -13,7 +13,7 @@ import { Calendar } from '@ionic-native/calendar';
 
 //Pipes
 import {DigitalDatePipe} from '../../pipes/digital-date/digital-date';
-
+declare var gapi: any;
 
 /**
  * Generated class for the ActivitiesPage page.
@@ -27,6 +27,8 @@ import {DigitalDatePipe} from '../../pipes/digital-date/digital-date';
   selector: 'page-activities',
   templateUrl: 'activities.html',
 })
+
+
 export class ActivitiesPage {
 eventSource=[];
 viewTitle:string;
@@ -42,6 +44,7 @@ calendar = {
 };
 nextActivities:any;
 inTimeDates : any[]=[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,private modal:ModalController,
   private _seven:SevenProvider,private _user:UserDataProvider,private calendare: Calendar,private digital:DigitalDatePipe) {
 this._user.GetBusinessClient().then(data=>{

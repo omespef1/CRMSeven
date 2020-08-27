@@ -1,4 +1,4 @@
-webpackJsonp([24],{
+webpackJsonp([25],{
 
 /***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -468,7 +468,7 @@ var ActivitiesSearchPage = /** @class */ (function () {
     };
     ActivitiesSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-activities-search',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/'<!--\n  Generated template for the ActivitiesSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Actividades</ion-title>\n    <ion-buttons end>\n      <button  class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar"\n    animated="true">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #AcivitiesList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">\n            <ion-icon item-start name="flash"></ion-icon>\n          <ion-label>\n          {{activity.ACT_NOMB}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activities-search/activities-search.html"*/,
+            selector: 'page-activities-search',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activities-search\activities-search.html"*/'<!--\n\n  Generated template for the ActivitiesSearchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Actividades</ion-title>\n\n    <ion-buttons end>\n\n      <button  class="BigButton" ion-button icon-only (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar"\n\n    animated="true">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #AcivitiesList>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(activity)" *ngFor="let activity of activitiesList">\n\n            <ion-icon item-start name="flash"></ion-icon>\n\n          <ion-label>\n\n          {{activity.ACT_NOMB}}\n\n          </ion-label>\n\n        </ion-item>\n\n      </ion-item-group>\n\n    </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activities-search\activities-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], ActivitiesSearchPage);
@@ -493,8 +493,8 @@ var ActivitiesSearchPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__employees_employees__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_seven_seven__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_data_user_data__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_calendar__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pipes_digital_date_digital_date__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_calendar__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pipes_digital_date_digital_date__ = __webpack_require__(468);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -723,7 +723,7 @@ var ActivitiesPage = /** @class */ (function () {
     };
     ActivitiesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-activities',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/'<!--\n  Generated template for the ActivitiesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>{{viewTitle}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n  <calendar (click)="test()" [eventSource]="eventSource"\n          [calendarMode]="calendar.mode"\n          [currentDate]="calendar.currentDate"\n          (onEventSelected)="onEventSelected($event)"\n           (onTitleChanged)="onViewTitleChanged($event)"\n          (onTimeSelected)="onTimeSelected($event)"\n          [noEventsLabel]="Agenda"\n          [showEventDetail]=\'false\'\n          step="30"\n          class="calendar">\n        </calendar>\n</ion-header>\n\n\n<ion-content>\n  <ion-item no-lines (click)="showUsers()">\n <ion-icon name="eye" item-start></ion-icon>\n <ion-label>Visualizar como</ion-label>\n <ion-note item-end *ngIf="replicated">\n   {{replicated.Usu_Nomb}}\n </ion-note>\n  </ion-item>\n  <ion-item (click)="removeReplicated()" *ngIf="replicated">\n    <ion-label>Cancelar visualización de Usuario</ion-label>\n    <ion-icon item-start name="remove-circle"></ion-icon>\n  </ion-item>\n        <ion-list #scheduleList>\n          <!-- <div *ngIf="todays.length>0">\n            <ion-item-divider>\n              <h2>{{daySelectedString}}</h2>\n            </ion-item-divider>\n          <ion-item-group>\n            <ion-item-sliding  *ngFor="let activityToday of todays">\n              <button ion-item (click)="openActivity(activityToday)">\n                <h3><b>{{activityToday.AGE_FINI | digitalDate}} - {{activityToday.AGE_FFIN | digitalDate}}</b></h3>\n                <h4>{{activityToday.PRO_NOMB}}</h4>\n               <p text-wrap>{{activityToday.CON_NOMB}} {{activityToday.CON_APEL}} - {{activityToday.AGE_ASUN}} - {{activityToday.ACT_NOMB}}</p>\n                <ion-icon name="clock" item-start></ion-icon>\n               </button>\n               <ion-item-options side="right">\n              <button ion-button color="danger" (click)="showConfirmReject(activityToday)" [disabled]="replicated!=undefined">Cancelar</button>\n          </ion-item-options>\n          <ion-item-options side="left">\n          <button ion-button color="primary" (click)="addCalendar(activityToday)" [disabled]="replicated!=undefined" icon-start>\n          <ion-icon name="calendar">\n          </ion-icon> Añadir al calendario\n        </button>\n     </ion-item-options>\n            </ion-item-sliding>\n          </ion-item-group>\n        </div> -->\n          <ion-list-header>\n            <h2>PRÓXIMAS</h2>\n          </ion-list-header>\n          <div *ngFor="let activity of inTimeDates">\n          <ion-item-divider>\n            <h3>{{activity.GrupoHora}}</h3>\n          </ion-item-divider>\n            <ion-item-group>\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n                <button ion-item (click)="openActivity(agend)">\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n                  <h4>{{agend.PRO_NOMB}}</h4>\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n                  <ion-icon name="clock" item-start></ion-icon>\n                 </button>\n                 <ion-item-options side="right">\n                <button ion-button color="danger" (click)="showConfirmReject(agend)" [disabled]="replicated!=undefined">Cancelar</button>\n            </ion-item-options>\n            <ion-item-options side="left">\n            <button ion-button color="primary" (click)="addCalendar(agend)" [disabled]="replicated!=undefined" icon-start>\n            <ion-icon name="calendar">\n            </ion-icon> Añadir al calendario\n          </button>\n       </ion-item-options>\n              </ion-item-sliding>\n            </ion-item-group>\n          </div>\n\n        </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activities/activities.html"*/,
+            selector: 'page-activities',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activities\activities.html"*/'<!--\n\n  Generated template for the ActivitiesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>{{viewTitle}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only  class="BigButton"(click)="addEvent()">\n\n        <ion-icon name="add"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n  <calendar (click)="test()" [eventSource]="eventSource"\n\n          [calendarMode]="calendar.mode"\n\n          [currentDate]="calendar.currentDate"\n\n          (onEventSelected)="onEventSelected($event)"\n\n           (onTitleChanged)="onViewTitleChanged($event)"\n\n          (onTimeSelected)="onTimeSelected($event)"\n\n          [noEventsLabel]="Agenda"\n\n          [showEventDetail]=\'false\'\n\n          step="30"\n\n          class="calendar">\n\n        </calendar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-item no-lines (click)="showUsers()">\n\n <ion-icon name="eye" item-start></ion-icon>\n\n <ion-label>Visualizar como</ion-label>\n\n <ion-note item-end *ngIf="replicated">\n\n   {{replicated.Usu_Nomb}}\n\n </ion-note>\n\n  </ion-item>\n\n  <ion-item (click)="removeReplicated()" *ngIf="replicated">\n\n    <ion-label>Cancelar visualización de Usuario</ion-label>\n\n    <ion-icon item-start name="remove-circle"></ion-icon>\n\n  </ion-item>\n\n        <ion-list #scheduleList>\n\n          <!-- <div *ngIf="todays.length>0">\n\n            <ion-item-divider>\n\n              <h2>{{daySelectedString}}</h2>\n\n            </ion-item-divider>\n\n          <ion-item-group>\n\n            <ion-item-sliding  *ngFor="let activityToday of todays">\n\n              <button ion-item (click)="openActivity(activityToday)">\n\n                <h3><b>{{activityToday.AGE_FINI | digitalDate}} - {{activityToday.AGE_FFIN | digitalDate}}</b></h3>\n\n                <h4>{{activityToday.PRO_NOMB}}</h4>\n\n               <p text-wrap>{{activityToday.CON_NOMB}} {{activityToday.CON_APEL}} - {{activityToday.AGE_ASUN}} - {{activityToday.ACT_NOMB}}</p>\n\n                <ion-icon name="clock" item-start></ion-icon>\n\n               </button>\n\n               <ion-item-options side="right">\n\n              <button ion-button color="danger" (click)="showConfirmReject(activityToday)" [disabled]="replicated!=undefined">Cancelar</button>\n\n          </ion-item-options>\n\n          <ion-item-options side="left">\n\n          <button ion-button color="primary" (click)="addCalendar(activityToday)" [disabled]="replicated!=undefined" icon-start>\n\n          <ion-icon name="calendar">\n\n          </ion-icon> Añadir al calendario\n\n        </button>\n\n     </ion-item-options>\n\n            </ion-item-sliding>\n\n          </ion-item-group>\n\n        </div> -->\n\n          <ion-list-header>\n\n            <h2>PRÓXIMAS</h2>\n\n          </ion-list-header>\n\n          <div *ngFor="let activity of inTimeDates">\n\n          <ion-item-divider>\n\n            <h3>{{activity.GrupoHora}}</h3>\n\n          </ion-item-divider>\n\n            <ion-item-group>\n\n              <ion-item-sliding  *ngFor="let agend of activity.Agenda">\n\n                <button ion-item (click)="openActivity(agend)">\n\n                  <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n\n                  <h4>{{agend.PRO_NOMB}}</h4>\n\n                 <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n\n                  <ion-icon name="clock" item-start></ion-icon>\n\n                 </button>\n\n                 <ion-item-options side="right">\n\n                <button ion-button color="danger" (click)="showConfirmReject(agend)" [disabled]="replicated!=undefined">Cancelar</button>\n\n            </ion-item-options>\n\n            <ion-item-options side="left">\n\n            <button ion-button color="primary" (click)="addCalendar(agend)" [disabled]="replicated!=undefined" icon-start>\n\n            <ion-icon name="calendar">\n\n            </ion-icon> Añadir al calendario\n\n          </button>\n\n       </ion-item-options>\n\n              </ion-item-sliding>\n\n            </ion-item-group>\n\n          </div>\n\n\n\n        </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activities\activities.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_6__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_calendar__["a" /* Calendar */], __WEBPACK_IMPORTED_MODULE_9__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */]])
@@ -753,6 +753,8 @@ var ActivitiesPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_data_user_data__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_seven_seven__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__client_points_client_points__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_google_calendar_google_calendar__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__models_calendar_model__ = __webpack_require__(826);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -776,6 +778,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
  * Generated class for the NewEventPage page.
  *
@@ -784,7 +788,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var NewEventPage = /** @class */ (function () {
     // client : any;
-    function NewEventPage(navCtrl, navParams, viewCtrl, modal, _user, _seven, alertCtrl) {
+    function NewEventPage(navCtrl, navParams, viewCtrl, modal, _user, _seven, alertCtrl, _calendar) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -793,6 +797,7 @@ var NewEventPage = /** @class */ (function () {
         this._user = _user;
         this._seven = _seven;
         this.alertCtrl = alertCtrl;
+        this._calendar = _calendar;
         this.event = { startTime: new Date().toISOString(), allDay: false };
         this.minDate = new Date().toISOString();
         this.client = {};
@@ -915,6 +920,12 @@ var NewEventPage = /** @class */ (function () {
             });
         }
     };
+    NewEventPage.prototype.testCalendar = function () {
+        var event = new __WEBPACK_IMPORTED_MODULE_13__models_calendar_model__["a" /* calendarEvent */]();
+        event.name = "Prueba Omar Pérez";
+        this._calendar.sendInvite(event);
+        return;
+    };
     NewEventPage.prototype.openInvited = function () {
         var _this = this;
         var modal = this.modal.create(__WEBPACK_IMPORTED_MODULE_6__invited_invited__["a" /* InvitedPage */], { usu_codi: this.usu_codi });
@@ -964,10 +975,10 @@ var NewEventPage = /** @class */ (function () {
     };
     NewEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-new-event',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Nueva actividad</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item text-wrap button (click)="openLupa()" detail-push tappable>\n      <ion-icon name="person" item-start></ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client" detail-push tappable>\n        <ion-icon name="home" item-start></ion-icon>\n      <ion-label>Sucursal</ion-label>\n      <ion-note class="note" item-end *ngIf="client && client.cdpros">\n        {{client.cdpros.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaActivities()" detail-push tappable>\n        <ion-icon name="link" item-start></ion-icon>\n     <ion-label>Actividad</ion-label>\n     <ion-note class="note" item-end *ngIf="activity">\n     {{activity.ACT_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="openContacts(client.cdpros.conpr)" detail-push tappable>\n        <ion-icon name="contact" item-start></ion-icon>\n      <ion-label>Contacto</ion-label>\n      <ion-note class="note" item-end *ngIf="contact">\n      {{contact.CON_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaStages()" detail-push tappable>\n        <ion-icon name="git-network" item-start></ion-icon>\n     <ion-label>Etapa proceso</ion-label>\n     <ion-note class="note" item-end *ngIf="stage">\n     {{stage.ETA_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item button (click)="openLupaTerce()" detail-push tappable>\n        <ion-icon name="person" item-start></ion-icon>\n     <ion-label>Tercero Asociado</ion-label>\n     <ion-note class="note" item-end *ngIf="terce">\n     {{terce.ter_noco}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Digite el asunto aquí" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Inicio</ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="HH:mm" min="06:00" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Horas</ion-label>\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="person" item-start ></ion-icon>\n      <ion-label>Nro Documento</ion-label>\n      <ion-input  type="text" placeholder = "Identificación" [(ngModel)] ="newActivity.Age_Ndoc"></ion-input>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="paper" item-start></ion-icon>\n      <ion-label>\n            Observaciones\n      </ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-textarea [(ngModel)]="observations"  placeholder="Ingrese sus observaciones aquí"></ion-textarea>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n    <ion-item>\n      <ion-label>Todo el día?</ion-label>\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n    </ion-item>\n  </ion-list>\n<button ion-button full icon-left (click) = "CreateActivity()">\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n</button>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/new-event/new-event.html"*/,
+            selector: 'page-new-event',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\new-event\new-event.html"*/'<!--\n\n  Generated template for the NewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Nueva actividad</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item text-wrap button (click)="openLupa()" detail-push tappable>\n\n      <ion-icon name="person" item-start></ion-icon>\n\n     <ion-label>Cliente</ion-label>\n\n     <ion-note class="note"  item-end *ngIf="client">\n\n     {{client.PRO_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client" detail-push tappable>\n\n        <ion-icon name="home" item-start></ion-icon>\n\n      <ion-label>Sucursal</ion-label>\n\n      <ion-note class="note" item-end *ngIf="client && client.cdpros">\n\n        {{client.cdpros.DPR_NOMB}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item button (click)="openLupaActivities()" detail-push tappable>\n\n        <ion-icon name="link" item-start></ion-icon>\n\n     <ion-label>Actividad</ion-label>\n\n     <ion-note class="note" item-end *ngIf="activity">\n\n     {{activity.ACT_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="openContacts(client.cdpros.conpr)" detail-push tappable>\n\n        <ion-icon name="contact" item-start></ion-icon>\n\n      <ion-label>Contacto</ion-label>\n\n      <ion-note class="note" item-end *ngIf="contact">\n\n      {{contact.CON_NOMB}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item button (click)="openLupaStages()" detail-push tappable>\n\n        <ion-icon name="git-network" item-start></ion-icon>\n\n     <ion-label>Etapa proceso</ion-label>\n\n     <ion-note class="note" item-end *ngIf="stage">\n\n     {{stage.ETA_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item button (click)="openLupaTerce()" detail-push tappable>\n\n        <ion-icon name="person" item-start></ion-icon>\n\n     <ion-label>Tercero Asociado</ion-label>\n\n     <ion-note class="note" item-end *ngIf="terce">\n\n     {{terce.ter_noco}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-input  type="text" placeholder = "Digite el asunto aquí" [(ngModel)] ="newActivity.Age_Asun"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-icon name="alarm" item-start></ion-icon>\n\n      <ion-label>Inicio</ion-label>\n\n      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat ="HH:mm" min="06:00" [(ngModel)] = "newActivity.Age_Fech"></ion-datetime>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name="alarm" item-start></ion-icon>\n\n      <ion-label>Horas</ion-label>\n\n      <ion-input  type="number" placeholder = "Horas" [(ngModel)] ="newActivity.Age_Dura"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-icon name="person" item-start ></ion-icon>\n\n      <ion-label>Nro Documento</ion-label>\n\n      <ion-input  type="text" placeholder = "Identificación" [(ngModel)] ="newActivity.Age_Ndoc"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name="paper" item-start></ion-icon>\n\n      <ion-label>\n\n            Observaciones\n\n      </ion-label>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-textarea [(ngModel)]="observations"  placeholder="Ingrese sus observaciones aquí"></ion-textarea>\n\n    </ion-item>\n\n    <!-- <ion-item (click)="openInvited()">\n\n      <ion-label>Invitar</ion-label>\n\n      <ion-note item-end *ngIf="invited">\n\n        {{invited.Usu_Nomb}}\n\n      </ion-note>\n\n     </ion-item> -->\n\n    <ion-item>\n\n      <ion-label>Todo el día?</ion-label>\n\n    <ion-toggle [(ngModel)] = "event.allDay"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n<button ion-button full icon-left (click) = "CreateActivity()">\n\n  <ion-icon name ="checkmark"></ion-icon>Añadir evento\n\n</button>\n\n<button ion-button full icon-left (click) = "testCalendar()">\n\n  <ion-icon name ="checkmark"></ion-icon>Test Calendar\n\n</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\new-event\new-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_10__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+            __WEBPACK_IMPORTED_MODULE_9__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_10__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_12__providers_google_calendar_google_calendar__["a" /* GoogleCalendarProvider */]])
     ], NewEventPage);
     return NewEventPage;
 }());
@@ -1048,7 +1059,7 @@ var StagesSearchPage = /** @class */ (function () {
     };
     StagesSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-stages-search',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/stages-search/stages-search.html"*/'<!--\n  Generated template for the StagesSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Etapas</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #AcivitiesList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(stage)" *ngFor="let stage of stagesList">\n            <ion-icon item-start name="git-compare"></ion-icon>\n          <ion-label>\n          {{stage.ETA_NOMB}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/stages-search/stages-search.html"*/,
+            selector: 'page-stages-search',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\stages-search\stages-search.html"*/'<!--\n\n  Generated template for the StagesSearchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Etapas</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #AcivitiesList>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(stage)" *ngFor="let stage of stagesList">\n\n            <ion-icon item-start name="git-compare"></ion-icon>\n\n          <ion-label>\n\n          {{stage.ETA_NOMB}}\n\n          </ion-label>\n\n        </ion-item>\n\n      </ion-item-group>\n\n    </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\stages-search\stages-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], StagesSearchPage);
@@ -1121,7 +1132,7 @@ var ContactSearchPage = /** @class */ (function () {
     };
     ContactSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-contact-search',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/'<!--\n  Generated template for the Contact-search page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Contactos</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #contactList>\n      <ion-item-group>\n        <ion-item-sliding  *ngFor="let contact of contactsList">\n          <button ion-item (click)="closeLupa(contact)">\n            <ion-label>\n                {{contact.CON_NOMB}}\n            </ion-label>\n              <ion-icon name=\'person\' item-start></ion-icon>\n              <ion-note class="detalle" item-end>\n              <ion-label> {{contact.CON_CARG}}</ion-label>\n              </ion-note>\n          </button>\n        <ion-item-options side="right">\n           <button ion-button color="primary" (click)="seeDetail(contact)">Detalles</button>\n       </ion-item-options>\n     </ion-item-sliding>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact-search/contact-search.html"*/,
+            selector: 'page-contact-search',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact-search\contact-search.html"*/'<!--\n\n  Generated template for the Contact-search page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Contactos</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #contactList>\n\n      <ion-item-group>\n\n        <ion-item-sliding  *ngFor="let contact of contactsList">\n\n          <button ion-item (click)="closeLupa(contact)">\n\n            <ion-label>\n\n                {{contact.CON_NOMB}}\n\n            </ion-label>\n\n              <ion-icon name=\'person\' item-start></ion-icon>\n\n              <ion-note class="detalle" item-end>\n\n              <ion-label> {{contact.CON_CARG}}</ion-label>\n\n              </ion-note>\n\n          </button>\n\n        <ion-item-options side="right">\n\n           <button ion-button color="primary" (click)="seeDetail(contact)">Detalles</button>\n\n       </ion-item-options>\n\n     </ion-item-sliding>\n\n      </ion-item-group>\n\n    </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact-search\contact-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], ContactSearchPage);
@@ -1196,7 +1207,7 @@ var TerceSearchPage = /** @class */ (function () {
     };
     TerceSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-terce-search',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/terce-search/terce-search.html"*/'<!--\n  Generated template for the StagesSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Terceros</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="loadTerce($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(terce)" *ngFor="let terce of terceList">\n          <ion-icon name="person" item-start></ion-icon>\n          <ion-label>\n          {{terce.ter_noco}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/terce-search/terce-search.html"*/,
+            selector: 'page-terce-search',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\terce-search\terce-search.html"*/'<!--\n\n  Generated template for the StagesSearchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Terceros</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="loadTerce($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(terce)" *ngFor="let terce of terceList">\n\n          <ion-icon name="person" item-start></ion-icon>\n\n          <ion-label>\n\n          {{terce.ter_noco}}\n\n          </ion-label>\n\n        </ion-item>\n\n      </ion-item-group>\n\n    </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\terce-search\terce-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
@@ -1440,7 +1451,7 @@ var ActivityDetailPage = /** @class */ (function () {
     };
     ActivityDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-activity-detail',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/'<!--\n  Generated template for the ActivityDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{activity.AGE_ASUN}}</ion-title>\n    <ion-buttons end>\n      <button class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n  <ion-list>\n   <ion-list-header>\n     Detalles\n   </ion-list-header>\n   <div padding>\n    <ion-item>\n      <ion-icon name="alarm" item-start></ion-icon>\n      <ion-label>Inicio</ion-label>\n      <ion-note item-end>\n      {{activity.AGE_FINI | digitalDate}}\n      </ion-note>\n     </ion-item>\n     <ion-item>\n     <ion-icon name="alarm" item-start></ion-icon>\n     <ion-label>Fin</ion-label>\n     <ion-note item-end>\n       {{activity.AGE_FFIN | digitalDate}}\n     </ion-note>\n    </ion-item>\n  <ion-item detail-push>\n      <ion-icon name="person" item-start></ion-icon>\n    <ion-label>Cliente</ion-label>\n    <ion-note item-end (click)="showClient(activity)">\n    {{activity.PRO_NOMB}}\n    </ion-note>\n   </ion-item>\n     <ion-item detail-push>\n       <ion-icon name="contact" item-start></ion-icon>\n     <ion-label>Contacto</ion-label>\n     <ion-note   item-end class="wrap-text"  (click)="showContact(activity)">\n     {{activity.CON_NOMB}}  {{activity.CON_APEL}}\n     </ion-note>\n    </ion-item>\n    <ion-item *ngIf="activity.TER_NOCO && activity.TER_CODI!=\'0\' && activity.TER_CODA!=\'0\'" (click)="showTercero(activity)">\n         <ion-icon name="person" item-start></ion-icon>\n      <ion-label>Tercero asociado</ion-label>\n      <ion-note item-end>\n    {{activity.TER_NOCO}}\n      </ion-note>\n       <ion-icon name="information-circle" color="danger" item-end></ion-icon>\n     </ion-item>\n    <ion-item>\n         <ion-icon name="create" item-start></ion-icon>\n      <ion-label>Actividad</ion-label>\n      <ion-note item-end>\n    {{activity.ACT_NOMB}}\n      </ion-note>\n     </ion-item>\n     <ion-item *ngIf="invitedCount>0" (click)="ShowInvites()">\n     <ion-icon name="contacts" item-start></ion-icon>\n     Invitados\n     <ion-badge item-end>{{invitedCount}}</ion-badge>\n   </ion-item>\n     <ion-item>\n         <ion-icon name="create" item-start></ion-icon>\n       <ion-label>Asunto</ion-label>\n       <ion-note item-end>\n    {{activity.AGE_ASUN}}\n       </ion-note>\n      </ion-item>\n      <ion-item>\n        <ion-icon name="card" item-start></ion-icon>\n      <ion-label>Nro. Documento</ion-label>\n    <ion-input *ngIf="activity.AGE_ESTA == \'P\' || activity.AGE_ESTA==\'E\'" type="text" maxlength="30" [(ngModel)]="activity.AGE_NDOC" > </ion-input>  \n    <ion-note *ngIf="activity.AGE_ESTA != \'P\' && activity.AGE_ESTA!=\'E\'" item-end>\n      {{activity.AGE_NDOC}}\n         </ion-note>\n    </ion-item>\n   </div>\n    \n    <ion-list-header>\n      Diligenciar\n    </ion-list-header>\n    <div padding>\n      <ion-item (click)="showStates()">\n        <ion-icon name="information-circle" item-start></ion-icon>\n         <ion-label>\n           Estado\n         </ion-label>\n         <ion-note item-end>\n           {{activity.AGE_ESTA}}\n         </ion-note>\n       </ion-item>\n       <ion-item (click)="showResults()">\n           <ion-icon name="thumbs-up" item-start></ion-icon>\n \n         <ion-label>\n               Resultado\n         </ion-label>\n         <ion-note item-end>\n           {{activity.AGE_RESU}}\n         </ion-note>\n       </ion-item>\n       <ion-item>\n         <ion-icon name="clipboard" item-start></ion-icon>\n         <ion-label>\n               Observaciones\n         </ion-label>\n       </ion-item>\n       <ion-item>\n         <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>\n       </ion-item>\n    </div>\n     \n      <!-- <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">\n        <ion-label>Invitar</ion-label>\n        <ion-note item-end>\n          {{invited.Usu_Nomb}}\n        </ion-note>\n       </ion-item> -->\n\n</ion-list>\n<ion-grid>\n  <ion-row>\n    <ion-col>\n      <button *ngIf="activity.EMP_CODI==\'1\'" ion-button block color="primary" (click)="openConsultoryFiles()">\n        <ion-icon name="clipboard"></ion-icon>&nbsp;Actas de Consultoría\n      </button>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <button ion-button block color="primary" (click)="openInvited()">\n        <ion-icon name="contacts"></ion-icon>&nbsp;Invitar\n      </button>\n    </ion-col>\n    <!-- <ion-col>\n      <button ion-button block color="danger" (click)="ActivityReject()">\n            <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar\n      </button>\n    </ion-col> -->\n  </ion-row>\n  <ion-row>\n    <ion-col>\n      <button ion-button block color="primary" (click)="UpdateAgend()" [disabled]="replicated!=undefined">\n      <ion-icon name="checkmark-circle" icon-left>\n      </ion-icon>&nbsp;Hecho\n      </button>\n    </ion-col>\n  </ion-row>\n</ion-grid>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/activity-detail/activity-detail.html"*/,
+            selector: 'page-activity-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activity-detail\activity-detail.html"*/'<!--\n\n  Generated template for the ActivityDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>{{activity.AGE_ASUN}}</ion-title>\n\n    <ion-buttons end>\n\n      <button class="BigButton" ion-button icon-only (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n   <ion-list-header>\n\n     Detalles\n\n   </ion-list-header>\n\n   <div padding>\n\n    <ion-item>\n\n      <ion-icon name="alarm" item-start></ion-icon>\n\n      <ion-label>Inicio</ion-label>\n\n      <ion-note item-end>\n\n      {{activity.AGE_FINI | digitalDate}}\n\n      </ion-note>\n\n     </ion-item>\n\n     <ion-item>\n\n     <ion-icon name="alarm" item-start></ion-icon>\n\n     <ion-label>Fin</ion-label>\n\n     <ion-note item-end>\n\n       {{activity.AGE_FFIN | digitalDate}}\n\n     </ion-note>\n\n    </ion-item>\n\n  <ion-item detail-push>\n\n      <ion-icon name="person" item-start></ion-icon>\n\n    <ion-label>Cliente</ion-label>\n\n    <ion-note item-end (click)="showClient(activity)">\n\n    {{activity.PRO_NOMB}}\n\n    </ion-note>\n\n   </ion-item>\n\n     <ion-item detail-push>\n\n       <ion-icon name="contact" item-start></ion-icon>\n\n     <ion-label>Contacto</ion-label>\n\n     <ion-note   item-end class="wrap-text"  (click)="showContact(activity)">\n\n     {{activity.CON_NOMB}}  {{activity.CON_APEL}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item *ngIf="activity.TER_NOCO && activity.TER_CODI!=\'0\' && activity.TER_CODA!=\'0\'" (click)="showTercero(activity)">\n\n         <ion-icon name="person" item-start></ion-icon>\n\n      <ion-label>Tercero asociado</ion-label>\n\n      <ion-note item-end>\n\n    {{activity.TER_NOCO}}\n\n      </ion-note>\n\n       <ion-icon name="information-circle" color="danger" item-end></ion-icon>\n\n     </ion-item>\n\n    <ion-item>\n\n         <ion-icon name="create" item-start></ion-icon>\n\n      <ion-label>Actividad</ion-label>\n\n      <ion-note item-end>\n\n    {{activity.ACT_NOMB}}\n\n      </ion-note>\n\n     </ion-item>\n\n     <ion-item *ngIf="invitedCount>0" (click)="ShowInvites()">\n\n     <ion-icon name="contacts" item-start></ion-icon>\n\n     Invitados\n\n     <ion-badge item-end>{{invitedCount}}</ion-badge>\n\n   </ion-item>\n\n     <ion-item>\n\n         <ion-icon name="create" item-start></ion-icon>\n\n       <ion-label>Asunto</ion-label>\n\n       <ion-note item-end>\n\n    {{activity.AGE_ASUN}}\n\n       </ion-note>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-icon name="card" item-start></ion-icon>\n\n      <ion-label>Nro. Documento</ion-label>\n\n    <ion-input *ngIf="activity.AGE_ESTA == \'P\' || activity.AGE_ESTA==\'E\'" type="text" maxlength="30" [(ngModel)]="activity.AGE_NDOC" > </ion-input>  \n\n    <ion-note *ngIf="activity.AGE_ESTA != \'P\' && activity.AGE_ESTA!=\'E\'" item-end>\n\n      {{activity.AGE_NDOC}}\n\n         </ion-note>\n\n    </ion-item>\n\n   </div>\n\n    \n\n    <ion-list-header>\n\n      Diligenciar\n\n    </ion-list-header>\n\n    <div padding>\n\n      <ion-item (click)="showStates()">\n\n        <ion-icon name="information-circle" item-start></ion-icon>\n\n         <ion-label>\n\n           Estado\n\n         </ion-label>\n\n         <ion-note item-end>\n\n           {{activity.AGE_ESTA}}\n\n         </ion-note>\n\n       </ion-item>\n\n       <ion-item (click)="showResults()">\n\n           <ion-icon name="thumbs-up" item-start></ion-icon>\n\n \n\n         <ion-label>\n\n               Resultado\n\n         </ion-label>\n\n         <ion-note item-end>\n\n           {{activity.AGE_RESU}}\n\n         </ion-note>\n\n       </ion-item>\n\n       <ion-item>\n\n         <ion-icon name="clipboard" item-start></ion-icon>\n\n         <ion-label>\n\n               Observaciones\n\n         </ion-label>\n\n       </ion-item>\n\n       <ion-item>\n\n         <ion-textarea [(ngModel)]="activity.AGE_OBSE"  placeholder="Ingrese sus comentarios sobre la actividad"></ion-textarea>\n\n       </ion-item>\n\n    </div>\n\n     \n\n      <!-- <ion-item button (click)="openInvited()" *ngIf="activity.USU_PLAN == activity.USU_EJEC">\n\n        <ion-label>Invitar</ion-label>\n\n        <ion-note item-end>\n\n          {{invited.Usu_Nomb}}\n\n        </ion-note>\n\n       </ion-item> -->\n\n\n\n</ion-list>\n\n<ion-grid>\n\n  <ion-row>\n\n    <ion-col>\n\n      <button *ngIf="activity.EMP_CODI==\'1\'" ion-button block color="primary" (click)="openConsultoryFiles()">\n\n        <ion-icon name="clipboard"></ion-icon>&nbsp;Actas de Consultoría\n\n      </button>\n\n    </ion-col>\n\n  </ion-row>\n\n  <ion-row>\n\n    <ion-col>\n\n      <button ion-button block color="primary" (click)="openInvited()">\n\n        <ion-icon name="contacts"></ion-icon>&nbsp;Invitar\n\n      </button>\n\n    </ion-col>\n\n    <!-- <ion-col>\n\n      <button ion-button block color="danger" (click)="ActivityReject()">\n\n            <ion-icon name="remove-circle"></ion-icon>&nbsp;Cancelar\n\n      </button>\n\n    </ion-col> -->\n\n  </ion-row>\n\n  <ion-row>\n\n    <ion-col>\n\n      <button ion-button block color="primary" (click)="UpdateAgend()" [disabled]="replicated!=undefined">\n\n      <ion-icon name="checkmark-circle" icon-left>\n\n      </ion-icon>&nbsp;Hecho\n\n      </button>\n\n    </ion-col>\n\n  </ion-row>\n\n</ion-grid>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\activity-detail\activity-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_5__providers_seven_seven__["a" /* SevenProvider */],
             __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
@@ -1523,7 +1534,7 @@ var ClientDetailPage = /** @class */ (function () {
     };
     ClientDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-client-detail',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/client-detail/client-detail.html"*/'<!--\n  Generated template for the ClientDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle Cliente</ion-title>\n    <ion-buttons end>\n      <button class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item>\n        <ion-icon name="person" item-start></ion-icon>\n      <ion-label>Nombre</ion-label>\n      <ion-note item-end>\n     {{client.CR_DPROS.DPR_NOMB}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="call" item-start></ion-icon>\n      <ion-label>Teléfono</ion-label>\n      <ion-note item-end *ngIf="client.CR_DPROS.DPR_NTEL" (click)="callContact(client.CR_DPROS.DPR_NTEL)">\n       {{client.CR_DPROS.DPR_NTEL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="mail" item-start></ion-icon>\n      <ion-label>Email</ion-label>\n      <ion-note item-end *ngIf="client.CR_DPROS.DPR_MAIL" (click)="openMail(client.CR_DPROS.DPR_MAIL)">\n       {{client.CR_DPROS.DPR_MAIL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name="locate" item-start></ion-icon>\n      <ion-label>Direccion</ion-label>\n      <ion-note item-end>\n       {{client.CR_DPROS.DPR_DIRE}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="globe" item-start></ion-icon>\n      <ion-label>Página Web</ion-label>\n      <ion-note *ngIf="client.PRO_SWEB" item-end (click)="openUrl(client.PRO_SWEB)">\n       {{client.PRO_SWEB}}\n      </ion-note>\n    </ion-item>\n  </ion-list>\n  <ion-list #scheduleList>\n    <ion-list-header>\n      <h2>Anteriores</h2>\n    </ion-list-header>\n    <div *ngFor="let activity of LastActivities">\n    <ion-item-divider>\n      <h3>{{activity.GrupoHora}}</h3>\n    </ion-item-divider>\n      <ion-item-group>\n        <ion-item *ngFor="let agend of activity.Agenda">\n          <button ion-item detail-none>\n            <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n            <h4>{{agend.PRO_NOMB}}</h4>\n           <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n            <ion-icon name="clock" item-start></ion-icon>\n           </button>\n        </ion-item>\n      </ion-item-group>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/client-detail/client-detail.html"*/,
+            selector: 'page-client-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\client-detail\client-detail.html"*/'<!--\n\n  Generated template for the ClientDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Detalle Cliente</ion-title>\n\n    <ion-buttons end>\n\n      <button class="BigButton" ion-button icon-only (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n        <ion-icon name="person" item-start></ion-icon>\n\n      <ion-label>Nombre</ion-label>\n\n      <ion-note item-end>\n\n     {{client.CR_DPROS.DPR_NOMB}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name="call" item-start></ion-icon>\n\n      <ion-label>Teléfono</ion-label>\n\n      <ion-note item-end *ngIf="client.CR_DPROS.DPR_NTEL" (click)="callContact(client.CR_DPROS.DPR_NTEL)">\n\n       {{client.CR_DPROS.DPR_NTEL}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name="mail" item-start></ion-icon>\n\n      <ion-label>Email</ion-label>\n\n      <ion-note item-end *ngIf="client.CR_DPROS.DPR_MAIL" (click)="openMail(client.CR_DPROS.DPR_MAIL)">\n\n       {{client.CR_DPROS.DPR_MAIL}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name="locate" item-start></ion-icon>\n\n      <ion-label>Direccion</ion-label>\n\n      <ion-note item-end>\n\n       {{client.CR_DPROS.DPR_DIRE}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-icon name="globe" item-start></ion-icon>\n\n      <ion-label>Página Web</ion-label>\n\n      <ion-note *ngIf="client.PRO_SWEB" item-end (click)="openUrl(client.PRO_SWEB)">\n\n       {{client.PRO_SWEB}}\n\n      </ion-note>\n\n    </ion-item>\n\n  </ion-list>\n\n  <ion-list #scheduleList>\n\n    <ion-list-header>\n\n      <h2>Anteriores</h2>\n\n    </ion-list-header>\n\n    <div *ngFor="let activity of LastActivities">\n\n    <ion-item-divider>\n\n      <h3>{{activity.GrupoHora}}</h3>\n\n    </ion-item-divider>\n\n      <ion-item-group>\n\n        <ion-item *ngFor="let agend of activity.Agenda">\n\n          <button ion-item detail-none>\n\n            <h3><b>{{agend.AGE_FINI | digitalDate}} - {{agend.AGE_FFIN | digitalDate}}</b></h3>\n\n            <h4>{{agend.PRO_NOMB}}</h4>\n\n           <p text-wrap>{{agend.CON_NOMB}} {{agend.CON_APEL}} - {{agend.AGE_ASUN}} - {{agend.ACT_NOMB}}</p>\n\n            <ion-icon name="clock" item-start></ion-icon>\n\n           </button>\n\n        </ion-item>\n\n      </ion-item-group>\n\n    </div>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\client-detail\client-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */]])
@@ -1605,7 +1616,7 @@ var EmployeesPage = /** @class */ (function () {
     };
     EmployeesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-employees',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/employees/employees.html"*/'<!--\n  Generated template for the EmployeesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Empleados</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n        <ion-item (click)="closeLupa(employee)"  *ngFor="let employee of employeesList">          \n            <ion-label>\n                {{employee.Usu_Nomb}}\n            </ion-label>\n              <ion-icon name=\'person\' item-start></ion-icon>\n     </ion-item>\n  \n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/employees/employees.html"*/,
+            selector: 'page-employees',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\employees\employees.html"*/'<!--\n\n  Generated template for the EmployeesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Empleados</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n\n\n        <ion-item (click)="closeLupa(employee)"  *ngFor="let employee of employeesList">          \n\n            <ion-label>\n\n                {{employee.Usu_Nomb}}\n\n            </ion-label>\n\n              <ion-icon name=\'person\' item-start></ion-icon>\n\n     </ion-item>\n\n  \n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\employees\employees.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_data_user_data__["a" /* UserDataProvider */]])
@@ -1680,7 +1691,7 @@ var AttchmentsPage = /** @class */ (function () {
     };
     AttchmentsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-attchments',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/attchments/attchments.html"*/'<!--\n  Generated template for the AttchmentsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Adjuntos</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-item *ngFor="let attachment of attachments" (click)="OpenAttachment(attachment)">\n<ion-icon  name="attach" item-start></ion-icon>\n  {{attachment.adj_nomb}}\n</ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/attchments/attchments.html"*/,
+            selector: 'page-attchments',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\attchments\attchments.html"*/'<!--\n\n  Generated template for the AttchmentsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Adjuntos</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-item *ngFor="let attachment of attachments" (click)="OpenAttachment(attachment)">\n\n<ion-icon  name="attach" item-start></ion-icon>\n\n  {{attachment.adj_nomb}}\n\n</ion-item>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\attchments\attchments.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
@@ -1752,7 +1763,7 @@ var BusinessPage = /** @class */ (function () {
     };
     BusinessPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-business',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/business/business.html"*/'<!--\n  Generated template for the BusinessPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Seleccione su empresa</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(client)" *ngFor="let client of businessList">\n          <ion-label>\n          {{client.Emp_Nomb}}\n          </ion-label>\n          <ion-icon name=\'ios-home\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/business/business.html"*/,
+            selector: 'page-business',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\business\business.html"*/'<!--\n\n  Generated template for the BusinessPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Seleccione su empresa</ion-title>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(client)" *ngFor="let client of businessList">\n\n          <ion-label>\n\n          {{client.Emp_Nomb}}\n\n          </ion-label>\n\n          <ion-icon name=\'ios-home\' item-start></ion-icon>\n\n        </ion-item>\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\business\business.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
@@ -1825,7 +1836,7 @@ var ConexPage = /** @class */ (function () {
     };
     ConexPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-conex',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/conex/conex.html"*/'<!--\n  Generated template for the ConexPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Conexiones</ion-title>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list #clientsList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(conection)" *ngFor="let conection of connections">\n          <ion-label>\n          {{conection.CNX_NOMB}}\n          </ion-label>\n          <ion-icon name=\'wifi\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/conex/conex.html"*/,
+            selector: 'page-conex',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\conex\conex.html"*/'<!--\n\n  Generated template for the ConexPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Conexiones</ion-title>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #clientsList>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(conection)" *ngFor="let conection of connections">\n\n          <ion-label>\n\n          {{conection.CNX_NOMB}}\n\n          </ion-label>\n\n          <ion-icon name=\'wifi\' item-start></ion-icon>\n\n        </ion-item>\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\conex\conex.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
@@ -1913,7 +1924,7 @@ var FlowDetailPage = /** @class */ (function () {
     };
     FlowDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-flow-detail',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flow-detail/flow-detail.html"*/'<!--\n  Generated template for the FlowDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Caso {{flow.CAS_CONT}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-icon name ="podium" item-start></ion-icon>\n     <ion-label>Prioridad</ion-label>\n     <ion-note item-end>\n    {{flow.SEG_PRIO}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="eye" item-start></ion-icon>\n     <ion-label>Seguimiento</ion-label>\n     <ion-note item-end>\n  {{flow.SEG_CONT}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="clipboard" item-start></ion-icon>\n     <ion-label>Asunto</ion-label>\n     <ion-note item-end>\n     {{flow.SEG_SUBJ}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="person" item-start></ion-icon>\n     <ion-label>Quién registra</ion-label>\n     <ion-note item-end>\n      {{flow.USU_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="person" item-start></ion-icon>\n     <ion-label>Tercero Asociado</ion-label>\n     <ion-note item-end>\n      {{flow.TER_NOCO}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="OpenAttchments()" *ngIf="attchmentCount>0">\n  <ion-icon name="attach" item-start></ion-icon>\n  Adjuntos\n  <ion-badge item-end>{{attchmentCount}}</ion-badge>\n</ion-item>\n    <ion-item>\n        <ion-icon name ="person" item-start></ion-icon>\n     <ion-label>Solicitado para</ion-label>\n     <ion-note item-end>\n    {{flow.SOLICITADO}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n   <ion-icon name ="alarm" item-start></ion-icon>\n     <ion-label>Recibido</ion-label>\n     <ion-note item-end>\n   {{flow.SEG_FREC| date: \'dd/MM/yyyy\' }} &nbsp;{{flow.SEG_HREC | date: \'h:mm:ss a\'}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="alarm" item-start></ion-icon>\n     <ion-label>Límite</ion-label>\n     <ion-note item-end>\n     {{flow.SEG_FLIM | date: \'dd/MM/yyyy\'}} &nbsp;{{flow.SEG_HLIM | date: \'h:mm:ss a\'}}\n     </ion-note>\n    </ion-item>\n    <ion-item *ngIf="flow.ADICIO">\n        <ion-icon name ="twitch" item-start></ion-icon>\n     <ion-label>Datos adicionales</ion-label>\n     <ion-note item-end>\n       {{flow.ADICIO}}\n     </ion-note>\n    </ion-item>\n    <ion-item>\n    <ion-icon name ="create" item-start></ion-icon>\n    <ion-label>Descripción</ion-label>\n    </ion-item>\n    <ion-item text-wrap>\n        <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="clipboard" item-start></ion-icon>\n    <ion-label>Comentarios para el ejecutor</ion-label>\n    </ion-item>\n    <ion-item text-wrap>\n        <p text-wrap>    {{flow.SEG_COME}}</p>\n    </ion-item>\n    <ion-item>\n        <ion-icon name ="create" item-start></ion-icon>\n    <ion-label>Comentarios para el segundo ejecutor</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-textarea [(ngModel)]="flow.COMENTARIOS"  placeholder="Ingrese sus comentarios aquí"></ion-textarea>\n    </ion-item>\n  </ion-list>\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            <button ion-button block color="primary" (click)="flowNextTracing()">\n              <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Aprobar\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button block color="danger" (click)="flowReject()">\n                  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar\n            </button>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flow-detail/flow-detail.html"*/,
+            selector: 'page-flow-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/'<!--\n\n  Generated template for the FlowDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Caso {{flow.CAS_CONT}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only  class="BigButton" (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-icon name ="podium" item-start></ion-icon>\n\n     <ion-label>Prioridad</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SEG_PRIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="eye" item-start></ion-icon>\n\n     <ion-label>Seguimiento</ion-label>\n\n     <ion-note item-end>\n\n  {{flow.SEG_CONT}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n     <ion-label>Asunto</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_SUBJ}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Quién registra</ion-label>\n\n     <ion-note item-end>\n\n      {{flow.USU_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Tercero Asociado</ion-label>\n\n     <ion-note item-end>\n\n      {{flow.TER_NOCO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="OpenAttchments()" *ngIf="attchmentCount>0">\n\n  <ion-icon name="attach" item-start></ion-icon>\n\n  Adjuntos\n\n  <ion-badge item-end>{{attchmentCount}}</ion-badge>\n\n</ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="person" item-start></ion-icon>\n\n     <ion-label>Solicitado para</ion-label>\n\n     <ion-note item-end>\n\n    {{flow.SOLICITADO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n   <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Recibido</ion-label>\n\n     <ion-note item-end>\n\n   {{flow.SEG_FREC| date: \'dd/MM/yyyy\' }} &nbsp;{{flow.SEG_HREC | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="alarm" item-start></ion-icon>\n\n     <ion-label>Límite</ion-label>\n\n     <ion-note item-end>\n\n     {{flow.SEG_FLIM | date: \'dd/MM/yyyy\'}} &nbsp;{{flow.SEG_HLIM | date: \'h:mm:ss a\'}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item *ngIf="flow.ADICIO">\n\n        <ion-icon name ="twitch" item-start></ion-icon>\n\n     <ion-label>Datos adicionales</ion-label>\n\n     <ion-note item-end>\n\n       {{flow.ADICIO}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n    <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Descripción</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p ion-text text-wrap>  {{flow.CAS_DESC}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="clipboard" item-start></ion-icon>\n\n    <ion-label>Comentarios para el ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item text-wrap>\n\n        <p text-wrap>    {{flow.SEG_COME}}</p>\n\n    </ion-item>\n\n    <ion-item>\n\n        <ion-icon name ="create" item-start></ion-icon>\n\n    <ion-label>Comentarios para el segundo ejecutor</ion-label>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-textarea [(ngModel)]="flow.COMENTARIOS"  placeholder="Ingrese sus comentarios aquí"></ion-textarea>\n\n    </ion-item>\n\n  </ion-list>\n\n      <ion-grid>\n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button block color="primary" (click)="flowNextTracing()">\n\n              <ion-icon name="checkmark-circle"></ion-icon>&nbsp;Aprobar\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button block color="danger" (click)="flowReject()">\n\n                  <ion-icon name="remove-circle"></ion-icon>&nbsp;Rechazar\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flow-detail\flow-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
@@ -2100,7 +2111,7 @@ var FlowsFilterPage = /** @class */ (function () {
     };
     FlowsFilterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-flows-filter',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flows-filter/flows-filter.html"*/'<ion-header>\n  <ion-toolbar>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">Cerrar</button>\n    </ion-buttons>\n\n    <ion-title>\n    Filtrar por prioridad\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button (click)="applyFilters()" strong>Aplicar</button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class="outer-content">\n\n  <ion-list>\n    <ion-list-header>Prioridades</ion-list-header>\n\n     <ion-item *ngFor="let track of tracks">\n      <span item-start class="dot"></span>\n     <ion-label>{{track.name}}</ion-label>\n     <ion-toggle [color]="track.color" ></ion-toggle>\n    </ion-item>\n  </ion-list>\n\n  <ion-list>\n    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">\n      Restablecer filtros\n    </button>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flows-filter/flows-filter.html"*/,
+            selector: 'page-flows-filter',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows-filter\flows-filter.html"*/'<ion-header>\n\n  <ion-toolbar>\n\n    <ion-buttons start>\n\n      <button ion-button (click)="dismiss()">Cerrar</button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>\n\n    Filtrar por prioridad\n\n    </ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button (click)="applyFilters()" strong>Aplicar</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content class="outer-content">\n\n\n\n  <ion-list>\n\n    <ion-list-header>Prioridades</ion-list-header>\n\n\n\n     <ion-item *ngFor="let track of tracks">\n\n      <span item-start class="dot"></span>\n\n     <ion-label>{{track.name}}</ion-label>\n\n     <ion-toggle [color]="track.color" ></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <ion-list>\n\n    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">\n\n      Restablecer filtros\n\n    </button>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows-filter\flows-filter.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], FlowsFilterPage);
@@ -2271,7 +2282,7 @@ var FlowsPage = /** @class */ (function () {
     };
     FlowsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-flows',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flows/flows.html"*/'<!--\n  Generated template for the FlowsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar no-border-bottom>\n    <ion-title>\n      Flujos\n    </ion-title>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="presentFilter()">\n        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n  <ion-refresher-content>\n  </ion-refresher-content>\n  </ion-refresher>\n  <ion-list #scheduleList no-lines>\n      <ion-item-group no-border>\n        <ion-item-sliding #slidingItem  class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">\n          <button ion-item (click)="goDetailsFlow(flow)" [disabled]="replicated">\n        <h3>Caso {{flow.CAS_CONT}}</h3>\n        <p>\n        {{flow.CAS_DESC}}\n        </p>\n      </button>\n      <ion-item-options side="right">\n     <button ion-button color="danger" (click)="flowReject(flow)" [disabled]="replicated" >Rechazar</button>\n </ion-item-options>\n <ion-item-options side="left">\n<button ion-button color="primary" (click)="flowAprobment(flow)" [disabled]="replicated">Aprobar</button>\n</ion-item-options>\n        </ion-item-sliding>\n\n      </ion-item-group>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/flows/flows.html"*/,
+            selector: 'page-flows',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/'<!--\n\n  Generated template for the FlowsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar no-border-bottom>\n\n    <ion-title>\n\n      Flujos\n\n    </ion-title>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="presentFilter()">\n\n        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n\n  <ion-refresher-content>\n\n  </ion-refresher-content>\n\n  </ion-refresher>\n\n  <ion-list #scheduleList no-lines>\n\n      <ion-item-group no-border>\n\n        <ion-item-sliding #slidingItem  class="flujo" [class]= "flow.SEG_PRIO | flows" *ngFor="let flow of flowList">\n\n          <button ion-item (click)="goDetailsFlow(flow)" [disabled]="replicated">\n\n        <h3>Caso {{flow.CAS_CONT}}</h3>\n\n        <p>\n\n        {{flow.CAS_DESC}}\n\n        </p>\n\n      </button>\n\n      <ion-item-options side="right">\n\n     <button ion-button color="danger" (click)="flowReject(flow)" [disabled]="replicated" >Rechazar</button>\n\n </ion-item-options>\n\n <ion-item-options side="left">\n\n<button ion-button color="primary" (click)="flowAprobment(flow)" [disabled]="replicated">Aprobar</button>\n\n</ion-item-options>\n\n        </ion-item-sliding>\n\n\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\flows\flows.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__["a" /* UserDataProvider */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_5__providers_flows_flows_provider__["a" /* FlowsProvider */]])
@@ -2543,7 +2554,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/'<ion-content [style.background-color]="background">\n	<ion-grid>\n		<ion-row>\n			<ion-col>\n				<div class="logodiv">\n					<img class="logoM" [src]="logo" (click)="openUrl()" />\n				</div>\n				<h1>CRM</h1>\n			</ion-col>\n\n		</ion-row>\n		<form #registerForm="ngForm" class="loginForm">\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-person"></ion-icon>\n						</ion-label>\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>\n							<ion-icon name="ios-lock"></ion-icon>\n						</ion-label>\n						<ion-input #password [type]="passwordType" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n						<button type="button" ion-button icon-only clear item-right tappable (tap)="showKey()">\n							<ion-icon item-end [name]="passwordIcon"></ion-icon>\n						</button>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n						<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<button *ngIf="businessList && businessList.length>1" ion-button class="submit-btn" full (click)="changeBusiness()">\n						<ion-icon name="undo"></ion-icon>&nbsp;Cambiar empresa\n					</button>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col class="loginCol">\n					<div class="logodiv">\n						<img class="logoM" src="assets/imgs/logoseven.png" />\n					</div>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col text-center>\n					<div class="fingerprint" button tappable (click)="GetAccessTouchID()">\n						<img *ngIf="touchID" src="assets/imgs/fingerprint.svg">\n						<img *ngIf="faceID" src="assets/imgs/faceid.svg">\n					</div>\n\n				</ion-col>\n			</ion-row>\n		</form>\n	</ion-grid>\n</ion-content>\n<ion-footer text-center>\n	<p>SEVEN ERP©1992-{{version | date: \'yyyy\'}} DigitalWare</p>\n	<p>Versión 20.0.8.0</p>\n</ion-footer>'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\login\login.html"*/'<ion-content [style.background-color]="background">\n\n	<ion-grid>\n\n		<ion-row>\n\n			<ion-col>\n\n				<div class="logodiv">\n\n					<img class="logoM" [src]="logo" (click)="openUrl()" />\n\n				</div>\n\n				<h1>CRM</h1>\n\n			</ion-col>\n\n\n\n		</ion-row>\n\n		<form #registerForm="ngForm" class="loginForm">\n\n			<ion-row>\n\n				<ion-col>\n\n					<ion-item>\n\n						<ion-label>\n\n							<ion-icon name="ios-person"></ion-icon>\n\n						</ion-label>\n\n						<ion-input type="text" placeholder="Usuario" name="email" [(ngModel)]="login.username" required></ion-input>\n\n					</ion-item>\n\n				</ion-col>\n\n			</ion-row>\n\n			<ion-row>\n\n				<ion-col>\n\n					<ion-item>\n\n						<ion-label>\n\n							<ion-icon name="ios-lock"></ion-icon>\n\n						</ion-label>\n\n						<ion-input #password [type]="passwordType" placeholder="Contraseña" name="password" [(ngModel)]="login.password" required></ion-input>\n\n						<button type="button" ion-button icon-only clear item-right tappable (tap)="showKey()">\n\n							<ion-icon item-end [name]="passwordIcon"></ion-icon>\n\n						</button>\n\n					</ion-item>\n\n				</ion-col>\n\n			</ion-row>\n\n			<ion-row>\n\n				<ion-col>\n\n					<button ion-button class="submit-btn" full (click)="onLogin()" [disabled]="!registerForm.form.valid">\n\n						<ion-icon name="log-in"></ion-icon>&nbsp;Ingresar\n\n					</button>\n\n				</ion-col>\n\n			</ion-row>\n\n			<ion-row>\n\n				<ion-col>\n\n					<button *ngIf="businessList && businessList.length>1" ion-button class="submit-btn" full (click)="changeBusiness()">\n\n						<ion-icon name="undo"></ion-icon>&nbsp;Cambiar empresa\n\n					</button>\n\n				</ion-col>\n\n			</ion-row>\n\n			<ion-row>\n\n				<div class="g-signin2" data-onsuccess="onSignIn"></div>\n\n			</ion-row>\n\n			<ion-row>\n\n				<ion-col class="loginCol">\n\n					<div class="logodiv">\n\n						<img class="logoM" src="assets/imgs/logoseven.png" />\n\n					</div>\n\n				</ion-col>\n\n			</ion-row>\n\n			<ion-row>\n\n				<ion-col text-center>\n\n					<div class="fingerprint" button tappable (click)="GetAccessTouchID()">\n\n						<img *ngIf="touchID" src="assets/imgs/fingerprint.svg">\n\n						<img *ngIf="faceID" src="assets/imgs/faceid.svg">\n\n					</div>\n\n\n\n				</ion-col>\n\n			</ion-row>\n\n		</form>\n\n	</ion-grid>\n\n</ion-content>\n\n<ion-footer text-center>\n\n	<p>SEVEN ERP©1992-{{version | date: \'yyyy\'}} DigitalWare</p>\n\n	<p>Versión 20.0.8.0</p>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__["a" /* KeychainTouchId */],
@@ -2639,7 +2650,7 @@ var SearchPage = /** @class */ (function () {
     };
     SearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-search',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Consultar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item (click)="OpenSearchClient()">\n      <ion-icon name ="man" item-start>\n      </ion-icon>\n     <ion-label>Cliente</ion-label>\n     <ion-note class="note"  item-end *ngIf="client">\n     {{client.PRO_NOMB}}\n     </ion-note>\n    </ion-item>\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client">\n      <ion-icon name ="home" item-start>\n      </ion-icon>\n     <ion-label>Sucursal</ion-label>\n     <ion-note class="note"  item-end *ngIf="client && client.cdpros">\n     {{client.cdpros.DPR_NOMB}}\n     </ion-note>\n    </ion-item>\n    <div *ngIf="client && contactList">\n\n    <ion-item-divider>\n      Contactos\n    </ion-item-divider>\n\n      <ion-searchbar\n      [(ngModel)]="value"\n      (ionChange)="getItems($event.value)"\n      [showCancelButton]="shouldShowCancel"\n      placeholder="Buscar contactos">\n    </ion-searchbar>\n\n     <ion-item *ngFor="let contact of contactList" (click)="openContact(contact)">\n       <ion-icon item-start name="person"></ion-icon>\n       <ion-label>{{contact.CON_NOMB}}</ion-label>\n     </ion-item>\n   </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/search/search.html"*/,
+            selector: 'page-search',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\search\search.html"*/'<!--\n\n  Generated template for the SearchPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Consultar</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item (click)="OpenSearchClient()">\n\n      <ion-icon name ="man" item-start>\n\n      </ion-icon>\n\n     <ion-label>Cliente</ion-label>\n\n     <ion-note class="note"  item-end *ngIf="client">\n\n     {{client.PRO_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="OpenSearchDetail()" *ngIf="client">\n\n      <ion-icon name ="home" item-start>\n\n      </ion-icon>\n\n     <ion-label>Sucursal</ion-label>\n\n     <ion-note class="note"  item-end *ngIf="client && client.cdpros">\n\n     {{client.cdpros.DPR_NOMB}}\n\n     </ion-note>\n\n    </ion-item>\n\n    <div *ngIf="client && contactList">\n\n\n\n    <ion-item-divider>\n\n      Contactos\n\n    </ion-item-divider>\n\n\n\n      <ion-searchbar\n\n      [(ngModel)]="value"\n\n      (ionChange)="getItems($event.value)"\n\n      [showCancelButton]="shouldShowCancel"\n\n      placeholder="Buscar contactos">\n\n    </ion-searchbar>\n\n\n\n     <ion-item *ngFor="let contact of contactList" (click)="openContact(contact)">\n\n       <ion-icon item-start name="person"></ion-icon>\n\n       <ion-label>{{contact.CON_NOMB}}</ion-label>\n\n     </ion-item>\n\n   </div>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\search\search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], SearchPage);
@@ -2657,12 +2668,12 @@ var SearchPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDataProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_keychain_touch_id__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_browser_tab__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_global__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2970,7 +2981,7 @@ var SettingsPage = /** @class */ (function () {
     };
     SettingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-settings',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/'\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>Ajustes</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-list no-border>\n    <ion-list-header>\n      Perfil\n    </ion-list-header>\n    <ion-item>\n      <ion-avatar item-start *ngIf="user.Usu_Foto">\n      <img [src]="\'data:image/jpg;base64,\'+user.Usu_Foto" />\n    </ion-avatar>\n    <ion-note item-end>\n     {{user.Usu_Nomb}}\n    </ion-note>\n    </ion-item>\n    <ion-list-header>\n      Soporte\n    </ion-list-header>\n    <ion-item (click)="sendMail(\'sevensoporte@digitalware.com.co\')">\n      <ion-icon name ="mail" item-start>\n      </ion-icon>\n    Enviar correo a soporte\n      <!-- <ion-note (click)="sendMail(sevensoporte@digitalware.com.co)">\n        sevensoporte@digitalware.com.co\n      </ion-note> -->\n    </ion-item>\n    <ion-list-header>\n      Cuenta\n    </ion-list-header>\n    <!-- <ion-item>\n      <ion-toggle checked="false"></ion-toggle>\n      <ion-label>\n        Notificaciones\n      </ion-label>\n      <ion-icon name=\'notifications\' item-start></ion-icon>\n    </ion-item> -->\n    <ion-item>\n      <ion-label>\n      Almacenamiento\n      </ion-label>\n      <ion-icon name=\'trash\' item-start></ion-icon>\n      <ion-note item-end (click)="remove()">\n     Borrar datos de usuario\n      </ion-note>\n    </ion-item>\n    <ion-item (click)="logOut()">\n      <ion-icon name=\'log-out\' item-start></ion-icon>\n      Salir\n      <ion-note item-end>\n      Cerrar sesión\n      </ion-note>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/settings/settings.html"*/,
+            selector: 'page-settings',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\settings\settings.html"*/'\n\n\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Ajustes</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n\n\n  <ion-list no-border>\n\n    <ion-list-header>\n\n      Perfil\n\n    </ion-list-header>\n\n    <ion-item>\n\n      <ion-avatar item-start *ngIf="user.Usu_Foto">\n\n      <img [src]="\'data:image/jpg;base64,\'+user.Usu_Foto" />\n\n    </ion-avatar>\n\n    <ion-note item-end>\n\n     {{user.Usu_Nomb}}\n\n    </ion-note>\n\n    </ion-item>\n\n    <ion-list-header>\n\n      Soporte\n\n    </ion-list-header>\n\n    <ion-item (click)="sendMail(\'sevensoporte@digitalware.com.co\')">\n\n      <ion-icon name ="mail" item-start>\n\n      </ion-icon>\n\n    Enviar correo a soporte\n\n      <!-- <ion-note (click)="sendMail(sevensoporte@digitalware.com.co)">\n\n        sevensoporte@digitalware.com.co\n\n      </ion-note> -->\n\n    </ion-item>\n\n    <ion-list-header>\n\n      Cuenta\n\n    </ion-list-header>\n\n    <!-- <ion-item>\n\n      <ion-toggle checked="false"></ion-toggle>\n\n      <ion-label>\n\n        Notificaciones\n\n      </ion-label>\n\n      <ion-icon name=\'notifications\' item-start></ion-icon>\n\n    </ion-item> -->\n\n    <ion-item>\n\n      <ion-label>\n\n      Almacenamiento\n\n      </ion-label>\n\n      <ion-icon name=\'trash\' item-start></ion-icon>\n\n      <ion-note item-end (click)="remove()">\n\n     Borrar datos de usuario\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item (click)="logOut()">\n\n      <ion-icon name=\'log-out\' item-start></ion-icon>\n\n      Salir\n\n      <ion-note item-end>\n\n      Cerrar sesión\n\n      </ion-note>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\settings\settings.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], SettingsPage);
@@ -2981,7 +2992,52 @@ var SettingsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 193:
+/***/ 181:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestCalendarPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the TestCalendarPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var TestCalendarPage = /** @class */ (function () {
+    function TestCalendarPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    TestCalendarPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TestCalendarPage');
+    };
+    TestCalendarPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-test-calendar',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/'<!--\n  Generated template for the TestCalendarPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-navbar>\n    <ion-title>testCalendar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button id="authorize_button" style="display: none;">Authorize</button>\n  <button id="signout_button" style="display: none;">Sign Out</button>\n  <pre id="content" style="white-space: pre-wrap;"></pre>\n</ion-content>\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], TestCalendarPage);
+    return TestCalendarPage;
+}());
+
+//# sourceMappingURL=test-calendar.js.map
+
+/***/ }),
+
+/***/ 194:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -2994,7 +3050,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 193;
+webpackEmptyAsyncContext.id = 194;
 
 /***/ }),
 
@@ -3008,7 +3064,7 @@ webpackEmptyAsyncContext.id = 193;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_global__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_data_user_data__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__general_general_provider__ = __webpack_require__(140);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3278,104 +3334,108 @@ var SevenProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/activities-search/activities-search.module": [
-		857,
-		23
+		861,
+		24
 	],
 	"../pages/activities/activities.module": [
-		858,
-		22
+		862,
+		23
 	],
 	"../pages/activity-detail/activity-detail.module": [
-		859,
-		21
+		863,
+		22
 	],
 	"../pages/attchments/attchments.module": [
-		860,
-		20
+		864,
+		21
 	],
 	"../pages/business/business.module": [
-		861,
-		19
+		865,
+		20
 	],
 	"../pages/client-detail/client-detail.module": [
-		862,
-		18
+		866,
+		19
 	],
 	"../pages/client-points/client-points.module": [
-		863,
-		17
+		867,
+		18
 	],
 	"../pages/conex/conex.module": [
-		864,
-		16
+		868,
+		17
 	],
 	"../pages/contact-detail/contact-detail.module": [
-		865,
-		15
+		869,
+		16
 	],
 	"../pages/contact-search/contact-search.module": [
-		866,
-		14
+		870,
+		15
 	],
 	"../pages/email/email.module": [
-		867,
-		13
+		871,
+		14
 	],
 	"../pages/employees/employees.module": [
-		868,
-		12
+		872,
+		13
 	],
 	"../pages/flow-detail/flow-detail.module": [
-		869,
-		11
+		873,
+		12
 	],
 	"../pages/flows-filter/flows-filter.module": [
-		870,
-		10
+		874,
+		11
 	],
 	"../pages/flows/flows.module": [
-		871,
-		9
+		875,
+		10
 	],
 	"../pages/invited/invited.module": [
-		872,
-		8
+		876,
+		9
 	],
 	"../pages/login/login.module": [
-		873,
-		7
+		877,
+		8
 	],
 	"../pages/lupa/lupa.module": [
-		874,
-		6
+		878,
+		7
 	],
 	"../pages/new-event/new-event.module": [
-		875,
-		5
+		879,
+		6
 	],
 	"../pages/search/search.module": [
-		876,
-		4
+		880,
+		5
 	],
 	"../pages/settings/settings.module": [
-		877,
-		3
+		881,
+		4
 	],
 	"../pages/stages-search/stages-search.module": [
-		878,
-		2
+		882,
+		3
 	],
 	"../pages/terce-search/terce-search.module": [
-		879,
+		883,
+		2
+	],
+	"../pages/test-calendar/test-calendar.module": [
+		884,
 		1
 	],
 	"../pages/touch-id/touch-id.module": [
-		880,
+		885,
 		0
 	]
 };
@@ -3390,12 +3450,172 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 237;
+webpackAsyncContext.id = 238;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
 /***/ 465:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleCalendarProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__ = __webpack_require__(466);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/*
+  Generated class for the GoogleCalendarProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var GoogleCalendarProvider = /** @class */ (function () {
+    function GoogleCalendarProvider(iabrowser) {
+        this.iabrowser = iabrowser;
+        this.calendarEvent = {};
+        this.attendees = [{
+                email: ""
+            }];
+        this.validation = {};
+        this.CLIENT_ID = '933058478038-4kbs5heipcs0asi984gb75nr39pv1fgp.apps.googleusercontent.com'; // Client ID of your google console project
+        this.SCOPES = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+        this.APIKEY = "AIzaSyAycTC_jM4K_wEYPUsrEvsvYvs6iRush20"; // API key of your google console project
+        this.REDIRECTURL = "http://localhost/callback";
+        console.log('Hello GoogleCalendarProvider Provider');
+    }
+    GoogleCalendarProvider.prototype.sendInvite = function (calendar) {
+        var _this = this;
+        // if(!this.validate()) {
+        //   alert("Please fill all fields for sending invite.");
+        //   return;
+        // }
+        this.validation.failure = false;
+        // var startDateTimeISO = this.buildISODate(calendar.startDate, calendar.startTime);
+        // var enddateTimeISO = this.buildISODate(calendar.endDate, calendar.endTime);
+        // this.popLastAttendeeIfEmpty(this.attendees);
+        var browser = this.iabrowser.create("https://accounts.google.com/o/oauth2/auth?client_id=" + this.CLIENT_ID + "&redirect_uri=" + this.REDIRECTURL + "&scope=https://www.googleapis.com/auth/calendar&approval_prompt=force&response_type=token", '_blank', 'location=no');
+        browser.on("loadstart").subscribe(function (event) {
+            console.log(event);
+            if ((event["url"]).indexOf("http://localhost/callback") === 0) {
+                var url = event["url"];
+                var token = url.split('access_token=')[1].split('&token_type')[0];
+                //SENDING THE INVITE USING THE GOOGLE CALENDAR API
+                gapi.client.setApiKey(_this.APIKEY);
+                var request = gapi.client.request({
+                    'path': '/calendar/v3/calendars/primary/events?alt=json',
+                    'method': 'POST',
+                    'headers': {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    'body': JSON.stringify({
+                        "summary": "TEST",
+                        "location": "BOG",
+                        "description": "OMAR PEREZ DESCRIPCION",
+                        "start": {
+                            "dateTime": new Date().toISOString(),
+                        },
+                        "end": {
+                            "dateTime": new Date().toISOString(),
+                        },
+                        "recurrence": [
+                            "RRULE:FREQ=DAILY;COUNT=1" //// TODO : Parameterize this, Frequency of the event
+                        ],
+                        "reminders": {
+                            "useDefault": false,
+                            "overrides": [
+                                {
+                                    "method": "email",
+                                    "minutes": 1440 // TODO : Parameterize this, No. of minutes before you want google services to send an email reminder
+                                },
+                                {
+                                    "method": "popup",
+                                    "minutes": 10 // TODO : Parameterize this, No. of minutes before you want google services to send an popup reminder
+                                }
+                            ]
+                        }
+                    }),
+                    'callback': function (jsonR, rawR) {
+                        if (jsonR.id) {
+                            alert("Invitation sent successfully");
+                        }
+                        else {
+                            alert("Failed to sent invite.");
+                        }
+                        console.log(jsonR); // Everything related to invite once created, use this for further enhancements
+                    }
+                });
+            }
+        });
+        browser.on("exit").subscribe(function (event) { });
+    };
+    GoogleCalendarProvider.prototype.buildISODate = function (date, time) {
+        var dateArray = date && date.split('-');
+        var timeArray = time && time.split(':');
+        var normalDate = new Date(parseInt(dateArray[0]), parseInt(dateArray[1]) - 1, parseInt(dateArray[2]), parseInt(timeArray[0]), parseInt(timeArray[1]), 0, 0);
+        return normalDate.toISOString();
+    };
+    GoogleCalendarProvider.prototype.popLastAttendeeIfEmpty = function (itemsList) {
+        if (!!itemsList.length) {
+            return itemsList[0]["email"] == "" ? itemsList.shift(itemsList[0]) : itemsList;
+        }
+        return [];
+    };
+    GoogleCalendarProvider.prototype.addAttendees = function () {
+        if (this.attendees[this.attendees.length - 1].email == '')
+            return;
+        var newAttendee = { email: "" };
+        this.attendees.unshift(newAttendee);
+    };
+    GoogleCalendarProvider.prototype.removeAttendees = function (itemIndex) {
+        this.attendees.splice(itemIndex, 1);
+    };
+    // validate() {
+    //   return this.isStringValid(calendar.name) && 
+    //   this.isStringValid(calendar.name) && 
+    //   this.isStringValid(calendar.location) && 
+    //   this.isStringValid(calendar.description) &&
+    //   this.isStringValid(calendar.startDate) &&
+    //   this.isStringValid(calendar.startTime) &&
+    //   this.isStringValid(calendar.endDate) &&
+    //   this.isStringValid(calendar.endTime) &&
+    //   this.areAttendeesValid(this.attendees);
+    // }
+    GoogleCalendarProvider.prototype.isStringValid = function (str) {
+        if (typeof str != 'undefined' && str) {
+            return true;
+        }
+        ;
+        return false;
+    };
+    GoogleCalendarProvider.prototype.areAttendeesValid = function (attendees) {
+        if (attendees.length == 1 && !this.isStringValid(attendees[0]["email"])) {
+            return false;
+        }
+        return true;
+    };
+    GoogleCalendarProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _a || Object])
+    ], GoogleCalendarProvider);
+    return GoogleCalendarProvider;
+    var _a;
+}());
+
+//# sourceMappingURL=google-calendar.js.map
+
+/***/ }),
+
+/***/ 468:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3442,7 +3662,7 @@ var DigitalDatePipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 507:
+/***/ 510:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3474,7 +3694,7 @@ var TabsPage = /** @class */ (function () {
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_1__settings_settings__["a" /* SettingsPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Agenda" tabIcon="calendar"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Flujos" tabIcon="git-network"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Buscar" tabIcon="search"></ion-tab>\n    <ion-tab [root]="tab4Root" tabTitle="Ajustes" tabIcon="cog"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Agenda" tabIcon="calendar"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Flujos" tabIcon="git-network"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Buscar" tabIcon="search"></ion-tab>\n\n    <ion-tab [root]="tab4Root" tabTitle="Ajustes" tabIcon="cog"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -3485,7 +3705,7 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 508:
+/***/ 511:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3524,7 +3744,7 @@ var EmailPage = /** @class */ (function () {
     };
     EmailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-email',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/email/email.html"*/'<!--\n  Generated template for the EmailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Enviar Email</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Para" [(ngModel)] ="to"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Copia" [(ngModel)] ="cc"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="subject"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-textarea max="500"  type="text" placeholder  = "Mensaje" [(ngModel)] ="body"></ion-textarea>\n    </ion-item>\n  </ion-list>\n  <button ion-button icon-left full (click)="sendEmail()">\n    <ion-icon name="mail"></ion-icon> Enviar\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/email/email.html"*/,
+            selector: 'page-email',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\email\email.html"*/'<!--\n\n  Generated template for the EmailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Enviar Email</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-input  type="text" placeholder = "Para" [(ngModel)] ="to"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-input  type="text" placeholder = "Copia" [(ngModel)] ="cc"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-input  type="text" placeholder = "Asunto" [(ngModel)] ="subject"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-textarea max="500"  type="text" placeholder  = "Mensaje" [(ngModel)] ="body"></ion-textarea>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button icon-left full (click)="sendEmail()">\n\n    <ion-icon name="mail"></ion-icon> Enviar\n\n  </button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\email\email.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], EmailPage);
@@ -3535,7 +3755,7 @@ var EmailPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 509:
+/***/ 512:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3579,7 +3799,7 @@ var TouchIdPage = /** @class */ (function () {
     };
     TouchIdPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-touch-id',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/touch-id/touch-id.html"*/'<!--\n  Generated template for the TouchIdPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <div  class="fingerprint">\n        <img src="assets/imgs/fingerprint.svg">\n      </div>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <ion-label text-wrap>\n          Tu dispositivo posee lector de huellas.Mediante esta autenticación podrás ingresar a la aplicación directamente.\n          Deseas utilizar este método de acceso?\n        </ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n\n      <ion-col>\n        <button ion-button block color="danger" icon-left (click)="remove()">\n            <ion-icon name="alarm"></ion-icon>\n          No\n        </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block color="primary" icon-left close()>\n          <ion-icon name="checkmark-circle"></ion-icon>\n          Listo\n        </button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/touch-id/touch-id.html"*/,
+            selector: 'page-touch-id',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\touch-id\touch-id.html"*/'<!--\n\n  Generated template for the TouchIdPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col text-center>\n\n        <div  class="fingerprint">\n\n        <img src="assets/imgs/fingerprint.svg">\n\n      </div>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-label text-wrap>\n\n          Tu dispositivo posee lector de huellas.Mediante esta autenticación podrás ingresar a la aplicación directamente.\n\n          Deseas utilizar este método de acceso?\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n\n\n      <ion-col>\n\n        <button ion-button block color="danger" icon-left (click)="remove()">\n\n            <ion-icon name="alarm"></ion-icon>\n\n          No\n\n        </button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button block color="primary" icon-left close()>\n\n          <ion-icon name="checkmark-circle"></ion-icon>\n\n          Listo\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\touch-id\touch-id.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */]])
     ], TouchIdPage);
@@ -3590,13 +3810,13 @@ var TouchIdPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 510:
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(511);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(514);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 
 
@@ -3607,30 +3827,30 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 515:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(840);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(505);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(506);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(841);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(844);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_calendar__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_calendar__ = __webpack_require__(845);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_activities_activities__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_flows_flows__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_flow_detail_flow_detail__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_new_event_new_event__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(852);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(853);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(854);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_about_about__ = __webpack_require__(856);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contact_contact__ = __webpack_require__(857);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(858);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_tabs_tabs__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_login_login__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_lupa_lupa__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_activities_search_activities_search__ = __webpack_require__(163);
@@ -3638,10 +3858,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_activity_detail_activity_detail__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_invited_invited__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_conex_conex__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_touch_id_touch_id__ = __webpack_require__(512);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_contact_detail_contact_detail__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_client_detail_client_detail__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_email_email__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_email_email__ = __webpack_require__(511);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_flows_filter_flows_filter__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_contact_search_contact_search__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_search_search__ = __webpack_require__(179);
@@ -3652,15 +3872,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_terce_search_terce_search__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__providers_seven_seven__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__providers_user_data_user_data__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_flows_flows__ = __webpack_require__(855);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_digital_date_digital_date__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_image_image__ = __webpack_require__(856);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_flows_flows__ = __webpack_require__(859);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_digital_date_digital_date__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_image_image__ = __webpack_require__(860);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__ionic_native_keychain_touch_id__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_email_composer__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__ionic_native_browser_tab__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__ionic_native_call_number__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__ionic_native_email_composer__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__ionic_native_browser_tab__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_flows_flows_provider__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_general_general_provider__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__providers_google_calendar_google_calendar__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__ionic_native_in_app_browser__ = __webpack_require__(466);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pages_test_calendar_test_calendar__ = __webpack_require__(181);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3721,6 +3944,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -3758,7 +3984,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_34__pages_employees_employees__["a" /* EmployeesPage */],
                 __WEBPACK_IMPORTED_MODULE_35__pages_attchments_attchments__["a" /* AttchmentsPage */],
                 __WEBPACK_IMPORTED_MODULE_36__pages_business_business__["a" /* BusinessPage */],
-                __WEBPACK_IMPORTED_MODULE_37__pages_terce_search_terce_search__["a" /* TerceSearchPage */]
+                __WEBPACK_IMPORTED_MODULE_37__pages_terce_search_terce_search__["a" /* TerceSearchPage */],
+                __WEBPACK_IMPORTED_MODULE_51__pages_test_calendar_test_calendar__["a" /* TestCalendarPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -3798,6 +4025,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stages-search/stages-search.module#StagesSearchPageModule', name: 'StagesSearchPage', segment: 'stages-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terce-search/terce-search.module#TerceSearchPageModule', name: 'TerceSearchPage', segment: 'terce-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/test-calendar/test-calendar.module#TestCalendarPageModule', name: 'TestCalendarPage', segment: 'test-calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/touch-id/touch-id.module#TouchIdPageModule', name: 'TouchIdPage', segment: 'touch-id', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -3835,7 +4063,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_34__pages_employees_employees__["a" /* EmployeesPage */],
                 __WEBPACK_IMPORTED_MODULE_35__pages_attchments_attchments__["a" /* AttchmentsPage */],
                 __WEBPACK_IMPORTED_MODULE_36__pages_business_business__["a" /* BusinessPage */],
-                __WEBPACK_IMPORTED_MODULE_37__pages_terce_search_terce_search__["a" /* TerceSearchPage */]
+                __WEBPACK_IMPORTED_MODULE_37__pages_terce_search_terce_search__["a" /* TerceSearchPage */],
+                __WEBPACK_IMPORTED_MODULE_51__pages_test_calendar_test_calendar__["a" /* TestCalendarPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
@@ -3852,6 +4081,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_41__pipes_digital_date_digital_date__["a" /* DigitalDatePipe */],
                 __WEBPACK_IMPORTED_MODULE_47__providers_flows_flows_provider__["a" /* FlowsProvider */],
                 __WEBPACK_IMPORTED_MODULE_48__providers_general_general_provider__["a" /* GeneralProvider */],
+                __WEBPACK_IMPORTED_MODULE_49__providers_google_calendar_google_calendar__["a" /* GoogleCalendarProvider */],
+                __WEBPACK_IMPORTED_MODULE_50__ionic_native_in_app_browser__["a" /* InAppBrowser */]
             ]
         })
     ], AppModule);
@@ -3862,264 +4093,264 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 822:
+/***/ 825:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 337,
-	"./af.js": 337,
-	"./ar": 338,
-	"./ar-dz": 339,
-	"./ar-dz.js": 339,
-	"./ar-kw": 340,
-	"./ar-kw.js": 340,
-	"./ar-ly": 341,
-	"./ar-ly.js": 341,
-	"./ar-ma": 342,
-	"./ar-ma.js": 342,
-	"./ar-sa": 343,
-	"./ar-sa.js": 343,
-	"./ar-tn": 344,
-	"./ar-tn.js": 344,
-	"./ar.js": 338,
-	"./az": 345,
-	"./az.js": 345,
-	"./be": 346,
-	"./be.js": 346,
-	"./bg": 347,
-	"./bg.js": 347,
-	"./bm": 348,
-	"./bm.js": 348,
-	"./bn": 349,
-	"./bn.js": 349,
-	"./bo": 350,
-	"./bo.js": 350,
-	"./br": 351,
-	"./br.js": 351,
-	"./bs": 352,
-	"./bs.js": 352,
-	"./ca": 353,
-	"./ca.js": 353,
-	"./cs": 354,
-	"./cs.js": 354,
-	"./cv": 355,
-	"./cv.js": 355,
-	"./cy": 356,
-	"./cy.js": 356,
-	"./da": 357,
-	"./da.js": 357,
-	"./de": 358,
-	"./de-at": 359,
-	"./de-at.js": 359,
-	"./de-ch": 360,
-	"./de-ch.js": 360,
-	"./de.js": 358,
-	"./dv": 361,
-	"./dv.js": 361,
-	"./el": 362,
-	"./el.js": 362,
-	"./en-SG": 363,
-	"./en-SG.js": 363,
-	"./en-au": 364,
-	"./en-au.js": 364,
-	"./en-ca": 365,
-	"./en-ca.js": 365,
-	"./en-gb": 366,
-	"./en-gb.js": 366,
-	"./en-ie": 367,
-	"./en-ie.js": 367,
-	"./en-il": 368,
-	"./en-il.js": 368,
-	"./en-nz": 369,
-	"./en-nz.js": 369,
-	"./eo": 370,
-	"./eo.js": 370,
-	"./es": 371,
-	"./es-do": 372,
-	"./es-do.js": 372,
-	"./es-us": 373,
-	"./es-us.js": 373,
-	"./es.js": 371,
-	"./et": 374,
-	"./et.js": 374,
-	"./eu": 375,
-	"./eu.js": 375,
-	"./fa": 376,
-	"./fa.js": 376,
-	"./fi": 377,
-	"./fi.js": 377,
-	"./fo": 378,
-	"./fo.js": 378,
-	"./fr": 379,
-	"./fr-ca": 380,
-	"./fr-ca.js": 380,
-	"./fr-ch": 381,
-	"./fr-ch.js": 381,
-	"./fr.js": 379,
-	"./fy": 382,
-	"./fy.js": 382,
-	"./ga": 383,
-	"./ga.js": 383,
-	"./gd": 384,
-	"./gd.js": 384,
-	"./gl": 385,
-	"./gl.js": 385,
-	"./gom-latn": 386,
-	"./gom-latn.js": 386,
-	"./gu": 387,
-	"./gu.js": 387,
-	"./he": 388,
-	"./he.js": 388,
-	"./hi": 389,
-	"./hi.js": 389,
-	"./hr": 390,
-	"./hr.js": 390,
-	"./hu": 391,
-	"./hu.js": 391,
-	"./hy-am": 392,
-	"./hy-am.js": 392,
-	"./id": 393,
-	"./id.js": 393,
-	"./is": 394,
-	"./is.js": 394,
-	"./it": 395,
-	"./it-ch": 396,
-	"./it-ch.js": 396,
-	"./it.js": 395,
-	"./ja": 397,
-	"./ja.js": 397,
-	"./jv": 398,
-	"./jv.js": 398,
-	"./ka": 399,
-	"./ka.js": 399,
-	"./kk": 400,
-	"./kk.js": 400,
-	"./km": 401,
-	"./km.js": 401,
-	"./kn": 402,
-	"./kn.js": 402,
-	"./ko": 403,
-	"./ko.js": 403,
-	"./ku": 404,
-	"./ku.js": 404,
-	"./ky": 405,
-	"./ky.js": 405,
-	"./lb": 406,
-	"./lb.js": 406,
-	"./lo": 407,
-	"./lo.js": 407,
-	"./lt": 408,
-	"./lt.js": 408,
-	"./lv": 409,
-	"./lv.js": 409,
-	"./me": 410,
-	"./me.js": 410,
-	"./mi": 411,
-	"./mi.js": 411,
-	"./mk": 412,
-	"./mk.js": 412,
-	"./ml": 413,
-	"./ml.js": 413,
-	"./mn": 414,
-	"./mn.js": 414,
-	"./mr": 415,
-	"./mr.js": 415,
-	"./ms": 416,
-	"./ms-my": 417,
-	"./ms-my.js": 417,
-	"./ms.js": 416,
-	"./mt": 418,
-	"./mt.js": 418,
-	"./my": 419,
-	"./my.js": 419,
-	"./nb": 420,
-	"./nb.js": 420,
-	"./ne": 421,
-	"./ne.js": 421,
-	"./nl": 422,
-	"./nl-be": 423,
-	"./nl-be.js": 423,
-	"./nl.js": 422,
-	"./nn": 424,
-	"./nn.js": 424,
-	"./pa-in": 425,
-	"./pa-in.js": 425,
-	"./pl": 426,
-	"./pl.js": 426,
-	"./pt": 427,
-	"./pt-br": 428,
-	"./pt-br.js": 428,
-	"./pt.js": 427,
-	"./ro": 429,
-	"./ro.js": 429,
-	"./ru": 430,
-	"./ru.js": 430,
-	"./sd": 431,
-	"./sd.js": 431,
-	"./se": 432,
-	"./se.js": 432,
-	"./si": 433,
-	"./si.js": 433,
-	"./sk": 434,
-	"./sk.js": 434,
-	"./sl": 435,
-	"./sl.js": 435,
-	"./sq": 436,
-	"./sq.js": 436,
-	"./sr": 437,
-	"./sr-cyrl": 438,
-	"./sr-cyrl.js": 438,
-	"./sr.js": 437,
-	"./ss": 439,
-	"./ss.js": 439,
-	"./sv": 440,
-	"./sv.js": 440,
-	"./sw": 441,
-	"./sw.js": 441,
-	"./ta": 442,
-	"./ta.js": 442,
-	"./te": 443,
-	"./te.js": 443,
-	"./tet": 444,
-	"./tet.js": 444,
-	"./tg": 445,
-	"./tg.js": 445,
-	"./th": 446,
-	"./th.js": 446,
-	"./tl-ph": 447,
-	"./tl-ph.js": 447,
-	"./tlh": 448,
-	"./tlh.js": 448,
-	"./tr": 449,
-	"./tr.js": 449,
-	"./tzl": 450,
-	"./tzl.js": 450,
-	"./tzm": 451,
-	"./tzm-latn": 452,
-	"./tzm-latn.js": 452,
-	"./tzm.js": 451,
-	"./ug-cn": 453,
-	"./ug-cn.js": 453,
-	"./uk": 454,
-	"./uk.js": 454,
-	"./ur": 455,
-	"./ur.js": 455,
-	"./uz": 456,
-	"./uz-latn": 457,
-	"./uz-latn.js": 457,
-	"./uz.js": 456,
-	"./vi": 458,
-	"./vi.js": 458,
-	"./x-pseudo": 459,
-	"./x-pseudo.js": 459,
-	"./yo": 460,
-	"./yo.js": 460,
-	"./zh-cn": 461,
-	"./zh-cn.js": 461,
-	"./zh-hk": 462,
-	"./zh-hk.js": 462,
-	"./zh-tw": 463,
-	"./zh-tw.js": 463
+	"./af": 338,
+	"./af.js": 338,
+	"./ar": 339,
+	"./ar-dz": 340,
+	"./ar-dz.js": 340,
+	"./ar-kw": 341,
+	"./ar-kw.js": 341,
+	"./ar-ly": 342,
+	"./ar-ly.js": 342,
+	"./ar-ma": 343,
+	"./ar-ma.js": 343,
+	"./ar-sa": 344,
+	"./ar-sa.js": 344,
+	"./ar-tn": 345,
+	"./ar-tn.js": 345,
+	"./ar.js": 339,
+	"./az": 346,
+	"./az.js": 346,
+	"./be": 347,
+	"./be.js": 347,
+	"./bg": 348,
+	"./bg.js": 348,
+	"./bm": 349,
+	"./bm.js": 349,
+	"./bn": 350,
+	"./bn.js": 350,
+	"./bo": 351,
+	"./bo.js": 351,
+	"./br": 352,
+	"./br.js": 352,
+	"./bs": 353,
+	"./bs.js": 353,
+	"./ca": 354,
+	"./ca.js": 354,
+	"./cs": 355,
+	"./cs.js": 355,
+	"./cv": 356,
+	"./cv.js": 356,
+	"./cy": 357,
+	"./cy.js": 357,
+	"./da": 358,
+	"./da.js": 358,
+	"./de": 359,
+	"./de-at": 360,
+	"./de-at.js": 360,
+	"./de-ch": 361,
+	"./de-ch.js": 361,
+	"./de.js": 359,
+	"./dv": 362,
+	"./dv.js": 362,
+	"./el": 363,
+	"./el.js": 363,
+	"./en-SG": 364,
+	"./en-SG.js": 364,
+	"./en-au": 365,
+	"./en-au.js": 365,
+	"./en-ca": 366,
+	"./en-ca.js": 366,
+	"./en-gb": 367,
+	"./en-gb.js": 367,
+	"./en-ie": 368,
+	"./en-ie.js": 368,
+	"./en-il": 369,
+	"./en-il.js": 369,
+	"./en-nz": 370,
+	"./en-nz.js": 370,
+	"./eo": 371,
+	"./eo.js": 371,
+	"./es": 372,
+	"./es-do": 373,
+	"./es-do.js": 373,
+	"./es-us": 374,
+	"./es-us.js": 374,
+	"./es.js": 372,
+	"./et": 375,
+	"./et.js": 375,
+	"./eu": 376,
+	"./eu.js": 376,
+	"./fa": 377,
+	"./fa.js": 377,
+	"./fi": 378,
+	"./fi.js": 378,
+	"./fo": 379,
+	"./fo.js": 379,
+	"./fr": 380,
+	"./fr-ca": 381,
+	"./fr-ca.js": 381,
+	"./fr-ch": 382,
+	"./fr-ch.js": 382,
+	"./fr.js": 380,
+	"./fy": 383,
+	"./fy.js": 383,
+	"./ga": 384,
+	"./ga.js": 384,
+	"./gd": 385,
+	"./gd.js": 385,
+	"./gl": 386,
+	"./gl.js": 386,
+	"./gom-latn": 387,
+	"./gom-latn.js": 387,
+	"./gu": 388,
+	"./gu.js": 388,
+	"./he": 389,
+	"./he.js": 389,
+	"./hi": 390,
+	"./hi.js": 390,
+	"./hr": 391,
+	"./hr.js": 391,
+	"./hu": 392,
+	"./hu.js": 392,
+	"./hy-am": 393,
+	"./hy-am.js": 393,
+	"./id": 394,
+	"./id.js": 394,
+	"./is": 395,
+	"./is.js": 395,
+	"./it": 396,
+	"./it-ch": 397,
+	"./it-ch.js": 397,
+	"./it.js": 396,
+	"./ja": 398,
+	"./ja.js": 398,
+	"./jv": 399,
+	"./jv.js": 399,
+	"./ka": 400,
+	"./ka.js": 400,
+	"./kk": 401,
+	"./kk.js": 401,
+	"./km": 402,
+	"./km.js": 402,
+	"./kn": 403,
+	"./kn.js": 403,
+	"./ko": 404,
+	"./ko.js": 404,
+	"./ku": 405,
+	"./ku.js": 405,
+	"./ky": 406,
+	"./ky.js": 406,
+	"./lb": 407,
+	"./lb.js": 407,
+	"./lo": 408,
+	"./lo.js": 408,
+	"./lt": 409,
+	"./lt.js": 409,
+	"./lv": 410,
+	"./lv.js": 410,
+	"./me": 411,
+	"./me.js": 411,
+	"./mi": 412,
+	"./mi.js": 412,
+	"./mk": 413,
+	"./mk.js": 413,
+	"./ml": 414,
+	"./ml.js": 414,
+	"./mn": 415,
+	"./mn.js": 415,
+	"./mr": 416,
+	"./mr.js": 416,
+	"./ms": 417,
+	"./ms-my": 418,
+	"./ms-my.js": 418,
+	"./ms.js": 417,
+	"./mt": 419,
+	"./mt.js": 419,
+	"./my": 420,
+	"./my.js": 420,
+	"./nb": 421,
+	"./nb.js": 421,
+	"./ne": 422,
+	"./ne.js": 422,
+	"./nl": 423,
+	"./nl-be": 424,
+	"./nl-be.js": 424,
+	"./nl.js": 423,
+	"./nn": 425,
+	"./nn.js": 425,
+	"./pa-in": 426,
+	"./pa-in.js": 426,
+	"./pl": 427,
+	"./pl.js": 427,
+	"./pt": 428,
+	"./pt-br": 429,
+	"./pt-br.js": 429,
+	"./pt.js": 428,
+	"./ro": 430,
+	"./ro.js": 430,
+	"./ru": 431,
+	"./ru.js": 431,
+	"./sd": 432,
+	"./sd.js": 432,
+	"./se": 433,
+	"./se.js": 433,
+	"./si": 434,
+	"./si.js": 434,
+	"./sk": 435,
+	"./sk.js": 435,
+	"./sl": 436,
+	"./sl.js": 436,
+	"./sq": 437,
+	"./sq.js": 437,
+	"./sr": 438,
+	"./sr-cyrl": 439,
+	"./sr-cyrl.js": 439,
+	"./sr.js": 438,
+	"./ss": 440,
+	"./ss.js": 440,
+	"./sv": 441,
+	"./sv.js": 441,
+	"./sw": 442,
+	"./sw.js": 442,
+	"./ta": 443,
+	"./ta.js": 443,
+	"./te": 444,
+	"./te.js": 444,
+	"./tet": 445,
+	"./tet.js": 445,
+	"./tg": 446,
+	"./tg.js": 446,
+	"./th": 447,
+	"./th.js": 447,
+	"./tl-ph": 448,
+	"./tl-ph.js": 448,
+	"./tlh": 449,
+	"./tlh.js": 449,
+	"./tr": 450,
+	"./tr.js": 450,
+	"./tzl": 451,
+	"./tzl.js": 451,
+	"./tzm": 452,
+	"./tzm-latn": 453,
+	"./tzm-latn.js": 453,
+	"./tzm.js": 452,
+	"./ug-cn": 454,
+	"./ug-cn.js": 454,
+	"./uk": 455,
+	"./uk.js": 455,
+	"./ur": 456,
+	"./ur.js": 456,
+	"./uz": 457,
+	"./uz-latn": 458,
+	"./uz-latn.js": 458,
+	"./uz.js": 457,
+	"./vi": 459,
+	"./vi.js": 459,
+	"./x-pseudo": 460,
+	"./x-pseudo.js": 460,
+	"./yo": 461,
+	"./yo.js": 461,
+	"./zh-cn": 462,
+	"./zh-cn.js": 462,
+	"./zh-hk": 463,
+	"./zh-hk.js": 463,
+	"./zh-tw": 464,
+	"./zh-tw.js": 464
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -4135,20 +4366,35 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 822;
+webpackContext.id = 825;
 
 /***/ }),
 
-/***/ 840:
+/***/ 826:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return calendarEvent; });
+var calendarEvent = /** @class */ (function () {
+    function calendarEvent() {
+    }
+    return calendarEvent;
+}());
+
+//# sourceMappingURL=calendar.model.js.map
+
+/***/ }),
+
+/***/ 844:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(505);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(506);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4218,29 +4464,29 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Nav */]) === "function" && _a || Object)
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_user_data_user_data__["a" /* UserDataProvider */]) === "function" && _g || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 845:
+/***/ 849:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 852:
+/***/ 856:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4264,7 +4510,7 @@ var AboutPage = /** @class */ (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], AboutPage);
@@ -4275,7 +4521,7 @@ var AboutPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 853:
+/***/ 857:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4299,7 +4545,7 @@ var ContactPage = /** @class */ (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], ContactPage);
@@ -4310,7 +4556,7 @@ var ContactPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 854:
+/***/ 858:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4334,7 +4580,7 @@ var HomePage = /** @class */ (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Welcome to Ionic!</h2>\n\n  <p>\n\n    This starter project comes with simple tabs-based layout for apps\n\n    that are going to primarily use a Tabbed UI.\n\n  </p>\n\n  <p>\n\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n\n    update any existing page or create new pages.\n\n  </p>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
     ], HomePage);
@@ -4345,7 +4591,7 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 855:
+/***/ 859:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4396,13 +4642,13 @@ var FlowsPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 856:
+/***/ 860:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagePipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4508,7 +4754,7 @@ var LupaPage = /** @class */ (function () {
     };
     LupaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-lupa',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/lupa/lupa.html"*/'<!--\n  Generated template for the LupaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Clientes</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    [debounce]="500"\n    (ionChange)="loadClients($event.value)"\n    [showCancelButton]="true"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #clientsList>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(client)" *ngFor="let client of clientesList">\n          <ion-label>\n          {{client.PRO_NOMB}}\n          </ion-label>\n          <ion-icon name=\'person\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n  </ion-list>\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/lupa/lupa.html"*/,
+            selector: 'page-lupa',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\lupa\lupa.html"*/'<!--\n\n  Generated template for the LupaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Clientes</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    [debounce]="500"\n\n    (ionChange)="loadClients($event.value)"\n\n    [showCancelButton]="true"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #clientsList>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(client)" *ngFor="let client of clientesList">\n\n          <ion-label>\n\n          {{client.PRO_NOMB}}\n\n          </ion-label>\n\n          <ion-icon name=\'person\' item-start></ion-icon>\n\n        </ion-item>\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\lupa\lupa.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], LupaPage);
@@ -4634,7 +4880,7 @@ var InvitedPage = /** @class */ (function () {
     };
     InvitedPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-invited',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/invited/invited.html"*/'<!--\n  Generated template for the InvitedPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Invitar</ion-title>\n    <ion-buttons end>\n      <button class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list #clientsList>\n      <ion-item-group>\n        <ion-item (click)="ShowConfirmInvited(user)" *ngFor="let user of usersList">\n          <ion-label>\n          {{user.Usu_Nomb}}\n          </ion-label>\n          <ion-icon name=\'person\' item-start></ion-icon>\n        </ion-item>\n      </ion-item-group>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/invited/invited.html"*/,
+            selector: 'page-invited',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\invited\invited.html"*/'<!--\n\n  Generated template for the InvitedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Invitar</ion-title>\n\n    <ion-buttons end>\n\n      <button class="BigButton" ion-button icon-only (click)="close()">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list #clientsList>\n\n      <ion-item-group>\n\n        <ion-item (click)="ShowConfirmInvited(user)" *ngFor="let user of usersList">\n\n          <ion-label>\n\n          {{user.Usu_Nomb}}\n\n          </ion-label>\n\n          <ion-icon name=\'person\' item-start></ion-icon>\n\n        </ion-item>\n\n      </ion-item-group>\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\invited\invited.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_seven_seven__["a" /* SevenProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_data_user_data__["a" /* UserDataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
@@ -4702,7 +4948,7 @@ var ClientPointsPage = /** @class */ (function () {
     };
     ClientPointsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-client-points',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/client-points/client-points.html"*/'<!--\n  Generated template for the ClientPointsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle Cliente</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()" class="BigButton">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-toolbar no-border-top>\n    <ion-searchbar\n    [(ngModel)]="value"\n    (ionChange)="getItems($event.value)"\n    [showCancelButton]="shouldShowCancel"\n    placeholder="Buscar">\n  </ion-searchbar>\n  </ion-toolbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item-group>\n        <ion-item (click)="closeLupa(detail)" *ngFor="let detail of detailsList">\n          <ion-icon name="home" item-start></ion-icon>\n          <ion-label>\n          {{detail.DPR_NOMB}}\n          </ion-label>\n        </ion-item>\n      </ion-item-group>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/client-points/client-points.html"*/,
+            selector: 'page-client-points',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\client-points\client-points.html"*/'<!--\n\n  Generated template for the ClientPointsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Detalle Cliente</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="close()" class="BigButton">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n\n    <ion-searchbar\n\n    [(ngModel)]="value"\n\n    (ionChange)="getItems($event.value)"\n\n    [showCancelButton]="shouldShowCancel"\n\n    placeholder="Buscar">\n\n  </ion-searchbar>\n\n  </ion-toolbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n      <ion-item-group>\n\n        <ion-item (click)="closeLupa(detail)" *ngFor="let detail of detailsList">\n\n          <ion-icon name="home" item-start></ion-icon>\n\n          <ion-label>\n\n          {{detail.DPR_NOMB}}\n\n          </ion-label>\n\n        </ion-item>\n\n      </ion-item-group>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\client-points\client-points.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */]])
     ], ClientPointsPage);
@@ -4764,7 +5010,7 @@ var ContactDetailPage = /** @class */ (function () {
     };
     ContactDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-contact-detail',template:/*ion-inline-start:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact-detail/contact-detail.html"*/'<!--\n  Generated template for the ContactDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Detalle Contacto</ion-title>\n    <ion-buttons end>\n      <button class="BigButton" ion-button icon-only (click)="close()">\n        <ion-icon name="close" ></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n       <ion-icon name="school" item-start></ion-icon>\n      <ion-label>Título</ion-label>\n      <ion-note item-end>\n       {{contact.ITE_TITU}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="person" item-start></ion-icon>\n      <ion-label>Nombre</ion-label>\n      <ion-note item-end>\n     {{contact.CON_NOMB}} {{contact.CON_APEL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="ribbon" item-start></ion-icon>\n      <ion-label>Cargo</ion-label>\n      <ion-note item-end>\n       {{contact.CON_CARG}}\n      </ion-note>\n    </ion-item>\n\n    <ion-item>\n       <ion-icon name="mail" item-start></ion-icon>\n      <ion-label>Email</ion-label>\n      <ion-note item-end (click)="openMail(contact.CON_EMAI)">\n       {{contact.CON_EMAI}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="call" item-start></ion-icon>\n      <ion-label>Teléfono</ion-label>\n      <ion-note item-end  *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">\n       {{contact.CON_TEL}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="phone-portrait" item-start></ion-icon>\n      <ion-label>Trabajo</ion-label>\n      <ion-note item-end *ngIf="contact.CON_CELU" (click)="callContact(contact.CON_CELU)">\n       {{contact.CON_CELU}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="phone-portrait" item-start></ion-icon>\n      <ion-label>Personal</ion-label>\n      <ion-note item-end *ngIf="contact.CON_TELT"  (click)="callContact(contact.CON_TELT)">\n       {{contact.CON_TELT}}\n      </ion-note>\n    </ion-item>\n    <ion-item>\n       <ion-icon name="pin" item-start></ion-icon>\n      <ion-label>Dirección</ion-label>\n      <ion-note item-end>\n       {{contact.CON_DIRE}}\n      </ion-note>\n    </ion-item>\n    <!-- <ion-item (click)="openInvited()">\n      <ion-label>Invitar</ion-label>\n      <ion-note item-end *ngIf="invited">\n        {{invited.Usu_Nomb}}\n      </ion-note>\n     </ion-item> -->\n\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/omarperez/Documents/GitHub/CRMSeven/src/pages/contact-detail/contact-detail.html"*/,
+            selector: 'page-contact-detail',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact-detail\contact-detail.html"*/'<!--\n\n  Generated template for the ContactDetailPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Detalle Contacto</ion-title>\n\n    <ion-buttons end>\n\n      <button class="BigButton" ion-button icon-only (click)="close()">\n\n        <ion-icon name="close" ></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item>\n\n       <ion-icon name="school" item-start></ion-icon>\n\n      <ion-label>Título</ion-label>\n\n      <ion-note item-end>\n\n       {{contact.ITE_TITU}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="person" item-start></ion-icon>\n\n      <ion-label>Nombre</ion-label>\n\n      <ion-note item-end>\n\n     {{contact.CON_NOMB}} {{contact.CON_APEL}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="ribbon" item-start></ion-icon>\n\n      <ion-label>Cargo</ion-label>\n\n      <ion-note item-end>\n\n       {{contact.CON_CARG}}\n\n      </ion-note>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n       <ion-icon name="mail" item-start></ion-icon>\n\n      <ion-label>Email</ion-label>\n\n      <ion-note item-end (click)="openMail(contact.CON_EMAI)">\n\n       {{contact.CON_EMAI}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="call" item-start></ion-icon>\n\n      <ion-label>Teléfono</ion-label>\n\n      <ion-note item-end  *ngIf="contact.CON_TEL" (click)="callContact(contact.CON_TEL)">\n\n       {{contact.CON_TEL}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="phone-portrait" item-start></ion-icon>\n\n      <ion-label>Trabajo</ion-label>\n\n      <ion-note item-end *ngIf="contact.CON_CELU" (click)="callContact(contact.CON_CELU)">\n\n       {{contact.CON_CELU}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="phone-portrait" item-start></ion-icon>\n\n      <ion-label>Personal</ion-label>\n\n      <ion-note item-end *ngIf="contact.CON_TELT"  (click)="callContact(contact.CON_TELT)">\n\n       {{contact.CON_TELT}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <ion-item>\n\n       <ion-icon name="pin" item-start></ion-icon>\n\n      <ion-label>Dirección</ion-label>\n\n      <ion-note item-end>\n\n       {{contact.CON_DIRE}}\n\n      </ion-note>\n\n    </ion-item>\n\n    <!-- <ion-item (click)="openInvited()">\n\n      <ion-label>Invitar</ion-label>\n\n      <ion-note item-end *ngIf="invited">\n\n        {{invited.Usu_Nomb}}\n\n      </ion-note>\n\n     </ion-item> -->\n\n\n\n  </ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\contact-detail\contact-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_user_data_user_data__["a" /* UserDataProvider */]])
@@ -4776,5 +5022,5 @@ var ContactDetailPage = /** @class */ (function () {
 
 /***/ })
 
-},[510]);
+},[513]);
 //# sourceMappingURL=main.js.map
