@@ -164,12 +164,12 @@ if(this.validEvent()){
 
 }
 
-testCalendar(){
-  let event:calendarEvent = new calendarEvent();
-  event.name = "Prueba Omar Pérez";
-         this._calendar.sendInvite(event)
-         return;
-}
+// testCalendar(){
+//   let event:calendarEvent = new calendarEvent();
+//   event.name = "Prueba Omar Pérez";
+//          this._calendar.sendInvite(event)
+//          return;
+// }
 openInvited(){
    let modal = this.modal.create(InvitedPage,{usu_codi:this.usu_codi});
    modal.present();

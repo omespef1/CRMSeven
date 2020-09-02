@@ -2,10 +2,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { LoadingController} from 'ionic-angular'
 import  {Globals} from '../../assets/global';
+
 //providers
 import { Storage } from '@ionic/storage';
 import {UserDataProvider} from '../../providers/user-data/user-data';
 import { Observable } from 'rxjs';
+import { retryWhen } from 'rxjs/operator/retryWhen';
 import { GeneralProvider } from '../general/general-provider';
 /*
   Generated class for the SevenProvider provider.
@@ -218,17 +220,8 @@ GetCentralizacion(contentText: string = "", loading: boolean = true) {
     let bodyRequest: any = {
       headers:  new HttpHeaders(headerDict),              
     }
-    return this.http.get(`${Globals.CentralizationUrl}`,bodyRequest).retryWhen(error => {
-      return error
-        .flatMap((error: any) => {
-          if (error.status === 503) {
-            return Observable.of(error.status).delay(1000)
-          }
-          return Observable.throw({ error: `Servicio no disponible. Error ${error.status}` });
-        })
-        .take(5)
-        .concat(Observable.throw({ error: `Hubo un error conectando con el servidor, contacte con su administrador` }));
-    })
+    return this.http.get(`${Globals.CentralizationUrl}`,bodyRequest)     
+    
       .subscribe((resp: any) => {
         if (loading)
           this.loading.dismiss();
