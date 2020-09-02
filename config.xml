@@ -19,8 +19,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <platform name="android">
-    <preference name="OverrideUserAgent" value="Chrome/84.0" />
+    <platform name="android">    
         <preference name="android-minSdkVersion" value="26" />
         <preference name="android-targetSdkVersion" value="29" />
         <allow-intent href="market:*" />
@@ -43,8 +42,7 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <platform name="ios">
-    <preference name="OverrideUserAgent" value="Safari" />
+    <platform name="ios">   
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <config-file parent="NSFaceIDUsageDescription" target="*-Info.plist">
