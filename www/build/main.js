@@ -3831,7 +3831,7 @@ var EmailPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestCalendarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__ = __webpack_require__(645);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_google_calendar_google_calendar__ = __webpack_require__(138);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3843,153 +3843,197 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// interface BrowserRef extends InAppBrowserRef{
-//   addEventListener(type: string, callback: (event: InAppBrowserEvent) => void): any;
-// }
+/**
+ * Generated class for the TestCalendarPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 var TestCalendarPage = /** @class */ (function () {
-    function TestCalendarPage(app) {
-        this.app = app;
-        // ionViewDidLoad() {
-        //   console.log('ionViewDidLoad TestCalendarPage');
-        // }
-        this.calendarEvent = {};
-        this.attendees = [
-            {
-                email: "",
-            },
-        ];
-        this.validation = {};
-        this.CLIENT_ID = "933058478038-4kbs5heipcs0asi984gb75nr39pv1fgp.apps.googleusercontent.com";
-        this.SCOPES = ["https://www.googleapis.com/auth/calendar"];
-        this.APIKEY = "AIzaSyBZVATUD306jdCUjl1E_odvGjBnEy7fK6k";
-        this.REDIRECTURL = "http://localhost/callback";
+    function TestCalendarPage(auth) {
+        this.auth = auth;
     }
-    TestCalendarPage.prototype.sendInvite = function () {
-        var _this = this;
-        if (!this.validate()) {
-            alert("Please fill all fields for sending invite.");
-            return;
-        }
-        this.validation.failure = false;
-        var startDateTimeISO = this.buildISODate(this.calendarEvent.startDate, this.calendarEvent.startTime);
-        var enddateTimeISO = this.buildISODate(this.calendarEvent.endDate, this.calendarEvent.endTime);
-        this.popLastAttendeeIfEmpty(this.attendees);
-        var browserRef = this.app.create("https://accounts.google.com/o/oauth2/auth?client_id=" +
-            this.CLIENT_ID +
-            "&redirect_uri=" +
-            this.REDIRECTURL +
-            "&scope=https://www.googleapis.com/auth/calendar&approval_prompt=force&response_type=token", "_blank", "location=no");
-        browserRef.on("loadstart").subscribe(function (event) {
-            if (event["url"].indexOf("http://localhost/callback") === 0) {
-                var url = event["url"];
-                var token = url.split("access_token=")[1].split("&token_type")[0];
-                browserRef.on("exit").subscribe(function () { });
-                browserRef.close();
-                //Sending the google calendar invite from the google api
-                gapi.client.setApiKey(_this.APIKEY);
-                var request = gapi.client.request({
-                    path: "/calendar/v3/calendars/primary/events?alt=json",
-                    method: "POST",
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                    body: JSON.stringify({
-                        summary: _this.calendarEvent.name,
-                        location: _this.calendarEvent.location,
-                        description: _this.calendarEvent.description,
-                        start: {
-                            dateTime: startDateTimeISO,
-                            timeZone: "Asia/Kolkata",
-                        },
-                        end: {
-                            dateTime: enddateTimeISO,
-                            timeZone: "Asia/Kolkata",
-                        },
-                        recurrence: ["RRULE:FREQ=DAILY;COUNT=1"],
-                        attendees: _this.attendees,
-                        reminders: {
-                            useDefault: false,
-                            overrides: [
-                                {
-                                    method: "email",
-                                    minutes: 1440,
-                                },
-                                {
-                                    method: "popup",
-                                    minutes: 10,
-                                },
-                            ],
-                        },
-                    }),
-                    callback: function (jsonR, rawR) {
-                        if (jsonR.id) {
-                            alert("Invitation sent successfully");
-                        }
-                        else {
-                            alert("Failed to sent invite.");
-                        }
-                        console.log(jsonR);
-                    },
-                });
-            }
-        });
-    };
-    TestCalendarPage.prototype.buildISODate = function (date, time) {
-        var dateArray = date && date.split("-");
-        var timeArray = time && time.split(":");
-        var normalDate = new Date(parseInt(dateArray[0]), parseInt(dateArray[1]) - 1, parseInt(dateArray[2]), parseInt(timeArray[0]), parseInt(timeArray[1]), 0, 0);
-        return normalDate.toISOString();
-    };
-    TestCalendarPage.prototype.addAttendees = function () {
-        if (this.attendees[this.attendees.length - 1].email == "")
-            return;
-        var newAttendee = { email: "" };
-        this.attendees.unshift(newAttendee);
-    };
-    TestCalendarPage.prototype.removeAttendees = function (itemIndex) {
-        this.attendees.splice(itemIndex, 1);
-    };
-    TestCalendarPage.prototype.popLastAttendeeIfEmpty = function (itemsList) {
-        if (!!itemsList.length) {
-            return itemsList[0]["email"] == ""
-                ? itemsList.shift(itemsList[0])
-                : itemsList;
-        }
-        return [];
-    };
-    TestCalendarPage.prototype.validate = function () {
-        return (this.isStringValid(this.calendarEvent.name) &&
-            this.isStringValid(this.calendarEvent.name) &&
-            this.isStringValid(this.calendarEvent.location) &&
-            this.isStringValid(this.calendarEvent.description) &&
-            this.isStringValid(this.calendarEvent.startDate) &&
-            this.isStringValid(this.calendarEvent.startTime) &&
-            this.isStringValid(this.calendarEvent.endDate) &&
-            this.isStringValid(this.calendarEvent.endTime) &&
-            this.areAttendeesValid(this.attendees));
-    };
-    TestCalendarPage.prototype.isStringValid = function (str) {
-        if (typeof str != "undefined" && str) {
-            return true;
-        }
-        return false;
-    };
-    TestCalendarPage.prototype.areAttendeesValid = function (attendees) {
-        if (attendees.length == 1 && !this.isStringValid(attendees[0]["email"])) {
-            return false;
-        }
-        return true;
+    TestCalendarPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TestCalendarPage');
     };
     var _a;
     TestCalendarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: "page-test-calendar",template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/'<!--\n  Generated template for the TestCalendarPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- \n<ion-header>\n  <ion-navbar>\n    <ion-title>testCalendar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Google Calendar + Firebase</h3>\n  <p>Welcome to AngularFirebase world </p>\n\n  <div *ngIf="auth.user$ | async as user">\n      <h3>Logged in as {{ user.displayName }}</h3>\n      <img src="{{ user.photoURL }}" width="50px">\n  </div>\n\n\n  <button (click)="auth.login()" class="button is-danger">Login with Google</button>\n\n  <button (click)="auth.logout()" class="button">Logout</button>\n\n  <hr>\n\n  <div *ngIf="auth.user$ | async">\n\n      <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>\n      <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button>\n\n      <div *ngFor="let item of auth.calendarItems">\n          <h3>{{ item.summary }} - {{ item.status }}</h3>\n          <p><em>Created {{ item.created }}</em></p>\n          <p>{{ item.description }}</p>\n          <hr>\n      </div>\n\n  </div>\n</ion-content> -->\n\n\n<ion-navbar *navbar>\n  <button menuToggle>\n    <ion-icon name="menu"></ion-icon>\n  </button>\n  <ion-title>Ionic2 + Google Calendar</ion-title>\n</ion-navbar>\n\n<ion-content padding class="getting-started">\n  <ion-list> \n      <ion-item-group>\n          <ion-item-divider light>Event Details</ion-item-divider>\n      <ion-item>\n          <ion-label>Name</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.name"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Location</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.location"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Description</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.description"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.startDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.startTime"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.endDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.endTime"></ion-datetime>\n      </ion-item>\n        <ion-item-group>\n        <ion-item-divider light>Attendees</ion-item-divider>\n            <ion-list>\n                <ion-item *ngFor="let attendee of attendees;let i = index" inset>\n                    <ion-label>Attendee {{attendees.length - i}}</ion-label>\n                    <ion-input [(ngModel)]="attendee.email"></ion-input>\n                    <ion-icon name="md-remove-circle" item-right class="addRemoveBtn" (click)="removeAttendees(i)" *ngIf="attendees.length - i < attendees.length"></ion-icon>\n                    <ion-icon name="md-add-circle" item-right class="addRemoveBtn" (click)="addAttendees()" *ngIf="attendees.length - i  == attendees.length"></ion-icon>\n                </ion-item>\n            </ion-list>\n        </ion-item-group>\n        \n    </ion-item-group>\n  </ion-list>\n  <button primary (click)="sendInvite()">Send Google Calendar Invite</button>\n  \n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/,
+            selector: 'page-test-calendar',template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/'<!--\n  Generated template for the TestCalendarPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- \n<ion-header>\n  <ion-navbar>\n    <ion-title>testCalendar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Google Calendar + Firebase</h3>\n  <p>Welcome to AngularFirebase world </p>\n\n  <div *ngIf="auth.user$ | async as user">\n      <h3>Logged in as {{ user.displayName }}</h3>\n      <img src="{{ user.photoURL }}" width="50px">\n  </div>\n\n\n  <button (click)="auth.login()" class="button is-danger">Login with Google</button>\n\n  <button (click)="auth.logout()" class="button">Logout</button>\n\n  <hr>\n\n  <div *ngIf="auth.user$ | async">\n\n      <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>\n      <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button>\n\n      <div *ngFor="let item of auth.calendarItems">\n          <h3>{{ item.summary }} - {{ item.status }}</h3>\n          <p><em>Created {{ item.created }}</em></p>\n          <p>{{ item.description }}</p>\n          <hr>\n      </div>\n\n  </div>\n</ion-content> -->\n\n\n<ion-navbar *navbar>\n  <button menuToggle>\n    <ion-icon name="menu"></ion-icon>\n  </button>\n  <ion-title>Ionic2 + Google Calendar</ion-title>\n</ion-navbar>\n\n<ion-content padding class="getting-started">\n  <ion-list> \n      <ion-item-group>\n          <ion-item-divider light>Event Details</ion-item-divider>\n      <ion-item>\n          <ion-label>Name</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.name"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Location</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.location"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Description</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.description"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.startDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.startTime"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.endDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.endTime"></ion-datetime>\n      </ion-item>\n        <ion-item-group>\n        <ion-item-divider light>Attendees</ion-item-divider>\n            <ion-list>\n                <ion-item *ngFor="let attendee of attendees;let i = index" inset>\n                    <ion-label>Attendee {{attendees.length - i}}</ion-label>\n                    <ion-input [(ngModel)]="attendee.email"></ion-input>\n                    <ion-icon name="md-remove-circle" item-right class="addRemoveBtn" (click)="removeAttendees(i)" *ngIf="attendees.length - i < attendees.length"></ion-icon>\n                    <ion-icon name="md-add-circle" item-right class="addRemoveBtn" (click)="addAttendees()" *ngIf="attendees.length - i  == attendees.length"></ion-icon>\n                </ion-item>\n            </ion-list>\n        </ion-item-group>\n        \n    </ion-item-group>\n  </ion-list>\n  <button primary (click)="sendInvite()">Send Google Calendar Invite</button>\n  \n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" ? _a : Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_google_calendar_google_calendar__["a" /* GoogleCalendarProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_google_calendar_google_calendar__["a" /* GoogleCalendarProvider */]) === "function" ? _a : Object])
     ], TestCalendarPage);
     return TestCalendarPage;
 }());
 
+// declare var gapi: any;
+// import { Component } from "@angular/core";
+// import { IonicPage, NavController, NavParams } from "ionic-angular";
+// import {
+//   InAppBrowser,
+//   InAppBrowserEvent,
+//   InAppBrowserOptions,
+// } from "@ionic-native/in-app-browser";
+// interface BrowserEvent extends InAppBrowserEvent {}
+// // interface BrowserRef extends InAppBrowserRef{
+// //   addEventListener(type: string, callback: (event: InAppBrowserEvent) => void): any;
+// // }
+// @IonicPage()
+// @Component({
+//   selector: "page-test-calendar",
+//template:/*ion-inline-start:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/'<!--\n  Generated template for the TestCalendarPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- \n<ion-header>\n  <ion-navbar>\n    <ion-title>testCalendar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Google Calendar + Firebase</h3>\n  <p>Welcome to AngularFirebase world </p>\n\n  <div *ngIf="auth.user$ | async as user">\n      <h3>Logged in as {{ user.displayName }}</h3>\n      <img src="{{ user.photoURL }}" width="50px">\n  </div>\n\n\n  <button (click)="auth.login()" class="button is-danger">Login with Google</button>\n\n  <button (click)="auth.logout()" class="button">Logout</button>\n\n  <hr>\n\n  <div *ngIf="auth.user$ | async">\n\n      <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>\n      <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button>\n\n      <div *ngFor="let item of auth.calendarItems">\n          <h3>{{ item.summary }} - {{ item.status }}</h3>\n          <p><em>Created {{ item.created }}</em></p>\n          <p>{{ item.description }}</p>\n          <hr>\n      </div>\n\n  </div>\n</ion-content> -->\n\n\n<ion-navbar *navbar>\n  <button menuToggle>\n    <ion-icon name="menu"></ion-icon>\n  </button>\n  <ion-title>Ionic2 + Google Calendar</ion-title>\n</ion-navbar>\n\n<ion-content padding class="getting-started">\n  <ion-list> \n      <ion-item-group>\n          <ion-item-divider light>Event Details</ion-item-divider>\n      <ion-item>\n          <ion-label>Name</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.name"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Location</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.location"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Description</ion-label>\n          <ion-input type="text" [(ngModel)]="calendarEvent.description"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.startDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>Start Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.startTime"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Date</ion-label>\n          <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="calendarEvent.endDate"></ion-datetime>\n      </ion-item>\n      <ion-item>\n          <ion-label>End Time</ion-label>\n          <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="calendarEvent.endTime"></ion-datetime>\n      </ion-item>\n        <ion-item-group>\n        <ion-item-divider light>Attendees</ion-item-divider>\n            <ion-list>\n                <ion-item *ngFor="let attendee of attendees;let i = index" inset>\n                    <ion-label>Attendee {{attendees.length - i}}</ion-label>\n                    <ion-input [(ngModel)]="attendee.email"></ion-input>\n                    <ion-icon name="md-remove-circle" item-right class="addRemoveBtn" (click)="removeAttendees(i)" *ngIf="attendees.length - i < attendees.length"></ion-icon>\n                    <ion-icon name="md-add-circle" item-right class="addRemoveBtn" (click)="addAttendees()" *ngIf="attendees.length - i  == attendees.length"></ion-icon>\n                </ion-item>\n            </ion-list>\n        </ion-item-group>\n        \n    </ion-item-group>\n  </ion-list>\n  <button primary (click)="sendInvite()">Send Google Calendar Invite</button>\n  \n</ion-content>\n\n'/*ion-inline-end:"C:\Users\omarp\Documents\GitHub\CRMSeven\src\pages\test-calendar\test-calendar.html"*/,
+// })
+// export class TestCalendarPage {
+//   constructor(private app: InAppBrowser) {}
+//   // ionViewDidLoad() {
+//   //   console.log('ionViewDidLoad TestCalendarPage');
+//   // }
+//   calendarEvent: any = {};
+//   attendees = [
+//     {
+//       email: "",
+//     },
+//   ];
+//   validation: any = {};
+//   CLIENT_ID =
+//     "933058478038-4kbs5heipcs0asi984gb75nr39pv1fgp.apps.googleusercontent.com";
+//   SCOPES = ["https://www.googleapis.com/auth/calendar"];
+//   APIKEY = "AIzaSyBZVATUD306jdCUjl1E_odvGjBnEy7fK6k";
+//   REDIRECTURL = "http://localhost:8100";
+//   sendInvite() {
+//     if (!this.validate()) {
+//       alert("Please fill all fields for sending invite.");
+//       return;
+//     }
+//     this.validation.failure = false;
+//     var startDateTimeISO = this.buildISODate(
+//       this.calendarEvent.startDate,
+//       this.calendarEvent.startTime
+//     );
+//     var enddateTimeISO = this.buildISODate(
+//       this.calendarEvent.endDate,
+//       this.calendarEvent.endTime
+//     );
+//     this.popLastAttendeeIfEmpty(this.attendees);
+//     var browserRef = this.app.create(
+//       "https://accounts.google.com/o/oauth2/auth?client_id=" +
+//         this.CLIENT_ID +
+//         "&redirect_uri=" +
+//         this.REDIRECTURL +
+//         "&scope=https://www.googleapis.com/auth/calendar&approval_prompt=force&response_type=token",
+//       "_blank",
+//       "location=no"
+//     );
+//     browserRef.on("loadstart").subscribe((event) => {
+//       if (event["url"].indexOf("http://localhost/callback") === 0) {
+//         var url = event["url"];
+//         var token = url.split("access_token=")[1].split("&token_type")[0];
+//         browserRef.on("exit").subscribe(() => {});
+//         browserRef.close();
+//         //Sending the google calendar invite from the google api
+//         gapi.client.setApiKey(this.APIKEY);
+//         var request = gapi.client.request({
+//           path: "/calendar/v3/calendars/primary/events?alt=json",
+//           method: "POST",
+//           headers: {
+//             Authorization: "Bearer " + token,
+//           },
+//           body: JSON.stringify({
+//             summary: this.calendarEvent.name,
+//             location: this.calendarEvent.location,
+//             description: this.calendarEvent.description,
+//             start: {
+//               dateTime: startDateTimeISO,
+//               timeZone: "Asia/Kolkata",
+//             },
+//             end: {
+//               dateTime: enddateTimeISO,
+//               timeZone: "Asia/Kolkata", // TODO : Parameterize this timezone
+//             },
+//             recurrence: ["RRULE:FREQ=DAILY;COUNT=1"],
+//             attendees: this.attendees,
+//             reminders: {
+//               useDefault: false,
+//               overrides: [
+//                 {
+//                   method: "email",
+//                   minutes: 1440,
+//                 },
+//                 {
+//                   method: "popup",
+//                   minutes: 10,
+//                 },
+//               ],
+//             },
+//           }),
+//           callback: function (jsonR, rawR) {
+//             if (jsonR.id) {
+//               alert("Invitation sent successfully");
+//             } else {
+//               alert("Failed to sent invite.");
+//             }
+//             console.log(jsonR);
+//           },
+//         });
+//       }
+//     });
+//   }
+//   buildISODate(date, time) {
+//     var dateArray = date && date.split("-");
+//     var timeArray = time && time.split(":");
+//     var normalDate = new Date(
+//       parseInt(dateArray[0]),
+//       parseInt(dateArray[1]) - 1,
+//       parseInt(dateArray[2]),
+//       parseInt(timeArray[0]),
+//       parseInt(timeArray[1]),
+//       0,
+//       0
+//     );
+//     return normalDate.toISOString();
+//   }
+//   addAttendees() {
+//     if (this.attendees[this.attendees.length - 1].email == "") return;
+//     var newAttendee = { email: "" };
+//     this.attendees.unshift(newAttendee);
+//   }
+//   removeAttendees(itemIndex) {
+//     this.attendees.splice(itemIndex, 1);
+//   }
+//   popLastAttendeeIfEmpty(itemsList) {
+//     if (!!itemsList.length) {
+//       return itemsList[0]["email"] == ""
+//         ? itemsList.shift(itemsList[0])
+//         : itemsList;
+//     }
+//     return [];
+//   }
+//   validate() {
+//     return (
+//       this.isStringValid(this.calendarEvent.name) &&
+//       this.isStringValid(this.calendarEvent.name) &&
+//       this.isStringValid(this.calendarEvent.location) &&
+//       this.isStringValid(this.calendarEvent.description) &&
+//       this.isStringValid(this.calendarEvent.startDate) &&
+//       this.isStringValid(this.calendarEvent.startTime) &&
+//       this.isStringValid(this.calendarEvent.endDate) &&
+//       this.isStringValid(this.calendarEvent.endTime) &&
+//       this.areAttendeesValid(this.attendees)
+//     );
+//   }
+//   isStringValid(str) {
+//     if (typeof str != "undefined" && str) {
+//       return true;
+//     }
+//     return false;
+//   }
+//   areAttendeesValid(attendees) {
+//     if (attendees.length == 1 && !this.isStringValid(attendees[0]["email"])) {
+//       return false;
+//     }
+//     return true;
+//   }
+// }
 //# sourceMappingURL=test-calendar.js.map
 
 /***/ }),
