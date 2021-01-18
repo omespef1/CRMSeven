@@ -58,17 +58,6 @@ import { GoogleCalendarProvider } from '../providers/google-calendar/google-cale
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { TestCalendarPage } from '../pages/test-calendar/test-calendar';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
- const firebaseConfig = {
-  apiKey: "AIzaSyCjDEPwGI4MfIgCJ1D7TQQpKJuKfvfeD8Y",
-    authDomain: "networking-digitalware.firebaseapp.com",
-    databaseURL: "https://networking-digitalware.firebaseio.com",
-    projectId: "networking-digitalware",
-    storageBucket: "networking-digitalware.appspot.com",
-    messagingSenderId: "640444190374",
-    appId: "1:640444190374:web:6403a526aa3c5b90356e67"
-  };
 @NgModule({
   declarations: [
     MyApp,
@@ -107,8 +96,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule, 
     IonicModule.forRoot(MyApp, {
       platforms : {
         ios : {

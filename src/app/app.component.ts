@@ -11,14 +11,13 @@ import {TouchIdPage} from '../pages/touch-id/touch-id';
 
 //Providers
 import {UserDataProvider} from '../providers/user-data/user-data';
-import { TestCalendarPage } from '../pages/test-calendar/test-calendar';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav
-  rootPage:any = TestCalendarPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public events: Events, private toast:ToastController,
   private _userdata:UserDataProvider) {
