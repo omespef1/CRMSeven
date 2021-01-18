@@ -128,7 +128,7 @@ GetStagesFlow(flow:any){
 }
 
   getData(apiAction:string,showLoad:boolean=true) {
-  Globals.ClientUrl = "http://localhost/SevenCRMApi/api/";
+    Globals.ClientUrl = "http://localhost/SevenCRMApi/api/";
          let load = this.load.create({
            content:'cargando...'
          })

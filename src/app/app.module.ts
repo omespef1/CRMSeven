@@ -54,9 +54,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { BrowserTab } from '@ionic-native/browser-tab';
 import { FlowsProvider } from '../providers/flows/flows-provider';
 import { GeneralProvider } from '../providers/general/general-provider';
-import { GoogleCalendarProvider } from '../providers/google-calendar/google-calendar';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -90,7 +87,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     EmployeesPage,
     AttchmentsPage,
      BusinessPage,
-    TerceSearchPage    
+    TerceSearchPage
   ],
   imports: [
     BrowserModule,
@@ -157,8 +154,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     DigitalDatePipe,
     FlowsProvider,
     GeneralProvider,
-    GoogleCalendarProvider,
-    InAppBrowser
   ]
 })
 export class AppModule {}
