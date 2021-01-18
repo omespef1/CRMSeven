@@ -1,14 +1,14 @@
 webpackJsonp([6],{
 
-/***/ 879:
+/***/ 877:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewEventPageModule", function() { return NewEventPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LupaPageModule", function() { return LupaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_event__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lupa__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NewEventPageModule = /** @class */ (function () {
-    function NewEventPageModule() {
+var LupaPageModule = /** @class */ (function () {
+    function LupaPageModule() {
     }
-    NewEventPageModule = __decorate([
+    LupaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__new_event__["a" /* NewEventPage */],
+                __WEBPACK_IMPORTED_MODULE_2__lupa__["a" /* LupaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__new_event__["a" /* NewEventPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__lupa__["a" /* LupaPage */]),
             ],
         })
-    ], NewEventPageModule);
-    return NewEventPageModule;
+    ], LupaPageModule);
+    return LupaPageModule;
 }());
 
-//# sourceMappingURL=new-event.module.js.map
+//# sourceMappingURL=lupa.module.js.map
 
 /***/ })
 

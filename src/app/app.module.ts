@@ -56,7 +56,6 @@ import { FlowsProvider } from '../providers/flows/flows-provider';
 import { GeneralProvider } from '../providers/general/general-provider';
 import { GoogleCalendarProvider } from '../providers/google-calendar/google-calendar';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { TestCalendarPage } from '../pages/test-calendar/test-calendar';
 
 @NgModule({
   declarations: [
@@ -91,8 +90,7 @@ import { TestCalendarPage } from '../pages/test-calendar/test-calendar';
     EmployeesPage,
     AttchmentsPage,
      BusinessPage,
-    TerceSearchPage,
-    TestCalendarPage
+    TerceSearchPage    
   ],
   imports: [
     BrowserModule,
@@ -142,8 +140,7 @@ import { TestCalendarPage } from '../pages/test-calendar/test-calendar';
     EmployeesPage,
     AttchmentsPage,
     BusinessPage,
-    TerceSearchPage,
-    TestCalendarPage
+    TerceSearchPage
   ],
   providers: [
     StatusBar,

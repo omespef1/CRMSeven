@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 875:
+/***/ 873:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlowsPageModule", function() { return FlowsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlowsFilterPageModule", function() { return FlowsFilterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flows__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flows_filter__ = __webpack_require__(176);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FlowsPageModule = /** @class */ (function () {
-    function FlowsPageModule() {
+var FlowsFilterPageModule = /** @class */ (function () {
+    function FlowsFilterPageModule() {
     }
-    FlowsPageModule = __decorate([
+    FlowsFilterPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__flows__["a" /* FlowsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__flows_filter__["a" /* FlowsFilterPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__flows__["a" /* FlowsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__flows_filter__["a" /* FlowsFilterPage */]),
             ],
         })
-    ], FlowsPageModule);
-    return FlowsPageModule;
+    ], FlowsFilterPageModule);
+    return FlowsFilterPageModule;
 }());
 
-//# sourceMappingURL=flows.module.js.map
+//# sourceMappingURL=flows-filter.module.js.map
 
 /***/ })
 
