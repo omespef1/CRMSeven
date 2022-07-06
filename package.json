@@ -49,7 +49,7 @@
     "ionic-angular": "^3.9.4-201903121725",
     "ionic2-calendar": "^0.4.6",
     "ionicons": "3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mx.ferreyra.callnumber": "0.0.2",
     "node-sass": "^4.14.1",
     "rxjs": "5.5.2",
